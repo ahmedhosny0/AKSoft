@@ -1,0 +1,46 @@
+﻿@model HSales
+<link rel="stylesheet" href="~/Content/style.css" />
+@{
+    ViewBag.Title = "SaveInvoicSales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("SaveInvoicSales", "Product", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="Elements">
+        <div>
+            <label class="Lab">Store</label>
+            @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop" })
+</div>
+ <label class="Lab">Category</label>
+            @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop" })
+        <div>
+            <label class="Lab">Product Name</label>
+            @Html.DropDownListFor(model => model.ItemSerial, ViewBag.DepartmentList4 as SelectList, "--select--", new { @class = "Txt drop" })
+           </div>
+    <div>
+             <label class="Lab">Unit Name</label>
+            @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop" })
+      </div>
+              <div class="">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "Lab" })
+
+            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Quantity" } })
+      </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt", @placeholder = "Price" } })
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt", @placeholder = "Total" } })
+        </div>
+        <button class="save">Save</button>
+    </div>
+
+}
+

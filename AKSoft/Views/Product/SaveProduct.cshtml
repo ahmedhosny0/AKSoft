@@ -1,0 +1,60 @@
+﻿@model ItemCode
+<link rel="stylesheet" href="~/Content/style.css" />
+
+@{
+    ViewBag.Title = "SaveProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("SaveProduct", "Product", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="Elements">
+        <h4>ProductModel</h4>
+        <hr />
+
+        <div class="">
+            @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
+
+            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName" } })
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+        </div>
+        <label class="Lab">Stock</label>
+        @Html.DropDownListFor(model => model.StoreID, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop" })
+       <br /> <label class="Lab">Unit</label>
+          @Html.DropDownListFor(model => model.Unit1, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop" })
+       <br /> <label class="Lab">Category</label>
+         @Html.DropDownListFor(model => model.SerialGroup, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop" })
+        <div class="">
+            <label class="Lab">Purchase price</label>
+            @Html.EditorFor(model => model.PricePurchase1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </div>
+        <div class="">
+            <label class="Lab">Sales price</label>
+            @Html.EditorFor(model => model.PriceSale1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </div>
+        <div class="">
+            <label class="Lab">Quantity</label>
+            @Html.EditorFor(model => model.Counts, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </div>
+        <br />
+        <div class="">
+            <button class="save">Save</button>
+        </div>
+    </div>
+}
+
