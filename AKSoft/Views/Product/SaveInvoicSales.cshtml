@@ -4,43 +4,74 @@
     ViewBag.Title = "SaveInvoicSales";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
 
-@using (Html.BeginForm("SaveInvoicSales", "Product", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm("SaveInvoicSales", "Product", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="Elements">
-        <div>
-            <label class="Lab">Store</label>
-            @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop" })
-</div>
- <label class="Lab">Category</label>
+        <div class="Elements">
+            <div>
+                <label class="Lab">Store</label>
+                @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop" })
+            </div>
+            <label class="Lab">Category</label>
             @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop" })
-        <div>
-            <label class="Lab">Product Name</label>
-            @Html.DropDownListFor(model => model.ItemSerial, ViewBag.DepartmentList4 as SelectList, "--select--", new { @class = "Txt drop" })
-           </div>
-    <div>
-             <label class="Lab">Unit Name</label>
-            @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop" })
-      </div>
-              <div class="">
-            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "Lab" })
+            <div>
+                <label class="Lab">Product Name</label>
+                @Html.DropDownListFor(model => model.ItemSerial, ViewBag.DepartmentList4 as SelectList, "--select--", new { @class = "Txt drop" })
+            </div>
+            <div>
+                <label class="Lab">Unit Name</label>
+                @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop" })
+            </div>
+            <div class="">
+                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "Lab" })
 
-            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Quantity" } })
-      </div>
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Quantity" } })
+            </div>
 
-        <div class="">
-            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "Lab" })
-            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt", @placeholder = "Price" } })
+            <div class="">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "Lab" })
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt", @placeholder = "Price" } })
+            </div>
+
+            <div class="">
+                @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "Lab" })
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt", @placeholder = "Total" } })
+            </div>
+            <button class="save">Save</button>
         </div>
 
-        <div class="">
-            @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "Lab" })
-            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt", @placeholder = "Total" } })
-        </div>
-        <button class="save">Save</button>
-    </div>
+    }
+    <script>
+        $(function () {
 
-}
+            $("#quantity,#price").keyup(function (e) {
 
+                var val1 = $("#quantity").val(),
+                    val2 = $("#price").val(),
+                    result = "";
+
+                if (val1.length > 0) {
+                    result += val1;
+                }
+
+                if (val2.length > 0) {
+                    result += val2;
+                }
+
+                $("#totoal").val(result);
+
+            });
+
+        });
+    </script>
+</body>
+</html>
