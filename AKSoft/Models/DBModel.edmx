@@ -1,0 +1,806 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TopSoftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GroupCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="Code" Type="int" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="150" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
+          <Property Name="DescName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="ColorName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HSales">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="BranchCode" Type="int" />
+          <Property Name="Code" Type="int" />
+          <Property Name="Date" Type="smalldatetime" />
+          <Property Name="CurrencyCode" Type="int" />
+          <Property Name="Factor" Type="float" />
+          <Property Name="StoreSerial" Type="int" />
+          <Property Name="DealerCode" Type="int" />
+          <Property Name="RegionCode" Type="int" />
+          <Property Name="FirstPayment" Type="float" />
+          <Property Name="Paid" Type="float" />
+          <Property Name="ItemSerial" Type="int" />
+          <Property Name="UnitSerial" Type="int" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="Tax" Type="float" />
+          <Property Name="Total" Type="float" />
+          <Property Name="TotalAfterDisc" Type="float" />
+          <Property Name="DiscValue" Type="float" />
+          <Property Name="GroupSerial" Type="int" />
+        </EntityType>
+        <EntityType Name="ItemCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="Code" Type="int" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="150" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
+          <Property Name="DescName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="SerialGroup" Type="int" />
+          <Property Name="Unit1" Type="int" />
+          <Property Name="Unit2" Type="int" />
+          <Property Name="Unit3" Type="int" />
+          <Property Name="PricePurchase1Unit1" Type="float" />
+          <Property Name="PricePurchase1Unit2" Type="float" />
+          <Property Name="PriceSale1Unit1" Type="float" />
+          <Property Name="PriceSale1Unit2" Type="float" />
+          <Property Name="StoreID" Type="int" />
+          <Property Name="Counts" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArabicName" Type="varchar" MaxLength="50" />
+          <Property Name="EnglishName" Type="varchar" MaxLength="50" />
+          <Property Name="DescName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StoreCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="Code" Type="int" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="150" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
+          <Property Name="DescName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="NumberOfLeans" Type="int" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="20" />
+          <Property Name="StoreKeeper" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone3" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone4" Type="nvarchar" MaxLength="20" />
+          <Property Name="AreaStock" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.tblCities' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblCities">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UnitCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="Code" Type="int" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="150" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
+          <Property Name="DescName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.RptSales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RptSales">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="ItCode" Type="int" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
+          <Property Name="StCode" Type="int" />
+          <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="price" Type="float" />
+          <Property Name="Total" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="StoreState">
+          <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
+          <Property Name="StoreKeeper" Type="nvarchar" MaxLength="150" />
+        </EntityType>-->
+        <Association Name="FK_ItemCode_GroupCode">
+          <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
+          <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="ItemCode">
+              <PropertyRef Name="SerialGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCode_StoreCode">
+          <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1" />
+          <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StoreCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="ItemCode">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCode_UnitCode">
+          <End Role="UnitCode" Type="Self.UnitCode" Multiplicity="0..1" />
+          <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="ItemCode">
+              <PropertyRef Name="Unit1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GroupSerial">
+          <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="GroupSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StoreSerial">
+          <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StoreCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="StoreSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UnitSerial">
+          <End Role="UnitCode" Type="Self.UnitCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="UnitSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TopSoftModelStoreContainer">
+          <EntitySet Name="GroupCode" EntityType="Self.GroupCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HSales" EntityType="Self.HSales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemCode" EntityType="Self.ItemCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StoreCode" EntityType="Self.StoreCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Product].[Serial] AS [Serial], 
+    [Product].[ArabicName] AS [ArabicName], 
+    [Product].[EnglishName] AS [EnglishName], 
+    [Product].[DescName] AS [DescName]
+    FROM [dbo].[Product] AS [Product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblCities" EntityType="Self.tblCities" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblCities].[CityID] AS [CityID], 
+    [tblCities].[CityName] AS [CityName]
+    FROM [dbo].[tblCities] AS [tblCities]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RptSales" EntityType="Self.RptSales" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RptSales].[Code] AS [Code], 
+    [RptSales].[ItCode] AS [ItCode], 
+    [RptSales].[ItemName] AS [ItemName], 
+    [RptSales].[StCode] AS [StCode], 
+    [RptSales].[StoreName] AS [StoreName], 
+    [RptSales].[UnitName] AS [UnitName], 
+    [RptSales].[Quantity] AS [Quantity], 
+    [RptSales].[price] AS [price], 
+    [RptSales].[Total] AS [Total]
+    FROM [dbo].[RptSales] AS [RptSales]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ItemCode_GroupCode" Association="Self.FK_ItemCode_GroupCode">
+            <End Role="GroupCode" EntitySet="GroupCode" />
+            <End Role="ItemCode" EntitySet="ItemCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCode_StoreCode" Association="Self.FK_ItemCode_StoreCode">
+            <End Role="StoreCode" EntitySet="StoreCode" />
+            <End Role="ItemCode" EntitySet="ItemCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCode_UnitCode" Association="Self.FK_ItemCode_UnitCode">
+            <End Role="UnitCode" EntitySet="UnitCode" />
+            <End Role="ItemCode" EntitySet="ItemCode" />
+          </AssociationSet>
+          <AssociationSet Name="GroupSerial" Association="Self.GroupSerial">
+            <End Role="GroupCode" EntitySet="GroupCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
+          <AssociationSet Name="StoreSerial" Association="Self.StoreSerial">
+            <End Role="StoreCode" EntitySet="StoreCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
+          <AssociationSet Name="UnitSerial" Association="Self.UnitSerial">
+            <End Role="UnitCode" EntitySet="UnitCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TopSoftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GroupCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="ArabicName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_GroupCode" FromRole="GroupCode" ToRole="ItemCode" />
+          <NavigationProperty Name="HSales" Relationship="Self.GroupSerial" FromRole="GroupCode" ToRole="HSales" />
+        </EntityType>
+        <EntityType Name="HSales">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="BranchCode" Type="Int32" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="CurrencyCode" Type="Int32" />
+          <Property Name="Factor" Type="Double" />
+          <Property Name="StoreSerial" Type="Int32" />
+          <Property Name="DealerCode" Type="Int32" />
+          <Property Name="RegionCode" Type="Int32" />
+          <Property Name="FirstPayment" Type="Double" />
+          <Property Name="Paid" Type="Double" />
+          <Property Name="ItemSerial" Type="Int32" />
+          <Property Name="UnitSerial" Type="Int32" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="Tax" Type="Double" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="TotalAfterDisc" Type="Double" />
+          <Property Name="DiscValue" Type="Double" />
+          <Property Name="GroupSerial" Type="Int32" />
+          <NavigationProperty Name="GroupCode" Relationship="Self.GroupSerial" FromRole="HSales" ToRole="GroupCode" />
+          <NavigationProperty Name="StoreCode" Relationship="Self.StoreSerial" FromRole="HSales" ToRole="StoreCode" />
+          <NavigationProperty Name="UnitCode" Relationship="Self.UnitSerial" FromRole="HSales" ToRole="UnitCode" />
+        </EntityType>
+        <EntityType Name="ItemCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="ArabicName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SerialGroup" Type="Int32" />
+          <Property Name="Unit1" Type="Int32" />
+          <Property Name="Unit2" Type="Int32" />
+          <Property Name="Unit3" Type="Int32" />
+          <Property Name="PricePurchase1Unit1" Type="Double" />
+          <Property Name="PricePurchase1Unit2" Type="Double" />
+          <Property Name="PriceSale1Unit1" Type="Double" />
+          <Property Name="PriceSale1Unit2" Type="Double" />
+          <Property Name="StoreID" Type="Int32" />
+          <Property Name="Counts" Type="Double" />
+          <NavigationProperty Name="GroupCode" Relationship="Self.FK_ItemCode_GroupCode" FromRole="ItemCode" ToRole="GroupCode" />
+          <NavigationProperty Name="StoreCode" Relationship="Self.FK_ItemCode_StoreCode" FromRole="ItemCode" ToRole="StoreCode" />
+          <NavigationProperty Name="UnitCode" Relationship="Self.FK_ItemCode_UnitCode" FromRole="ItemCode" ToRole="UnitCode" />
+        </EntityType>
+        <EntityType Name="StoreCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="ArabicName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfLeans" Type="Int32" />
+          <Property Name="Phone1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StoreKeeper" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AreaStock" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HSales" Relationship="Self.StoreSerial" FromRole="StoreCode" ToRole="HSales" />
+          <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_StoreCode" FromRole="StoreCode" ToRole="ItemCode" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RePassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UnitCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="ArabicName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HSales" Relationship="Self.UnitSerial" FromRole="UnitCode" ToRole="HSales" />
+          <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_UnitCode" FromRole="UnitCode" ToRole="ItemCode" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RePassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArabicName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnglishName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DescName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCities">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RptSales">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="ItCode" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StCode" Type="Int32" />
+          <Property Name="StoreName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="price" Type="Double" />
+          <Property Name="Total" Type="Double" />
+        </EntityType>
+        <Association Name="FK_ItemCode_GroupCode">
+          <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
+          <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="ItemCode">
+              <PropertyRef Name="SerialGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GroupSerial">
+          <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="GroupSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StoreSerial">
+          <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StoreCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="StoreSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UnitSerial">
+          <End Role="UnitCode" Type="Self.UnitCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="UnitSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCode_StoreCode">
+          <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1" />
+          <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StoreCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="ItemCode">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemCode_UnitCode">
+          <End Role="UnitCode" Type="Self.UnitCode" Multiplicity="0..1" />
+          <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="ItemCode">
+              <PropertyRef Name="Unit1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TopSoft" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GroupCode" EntityType="Self.GroupCode" />
+          <EntitySet Name="HSales" EntityType="Self.HSales" />
+          <EntitySet Name="ItemCode" EntityType="Self.ItemCode" />
+          <EntitySet Name="StoreCode" EntityType="Self.StoreCode" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Table" EntityType="Self.Table" />
+          <EntitySet Name="UnitCode" EntityType="Self.UnitCode" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="tblCities" EntityType="Self.tblCities" />
+          <EntitySet Name="RptSales" EntityType="Self.RptSales" />
+          <AssociationSet Name="FK_ItemCode_GroupCode" Association="Self.FK_ItemCode_GroupCode">
+            <End Role="GroupCode" EntitySet="GroupCode" />
+            <End Role="ItemCode" EntitySet="ItemCode" />
+          </AssociationSet>
+          <AssociationSet Name="GroupSerial" Association="Self.GroupSerial">
+            <End Role="GroupCode" EntitySet="GroupCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
+          <AssociationSet Name="StoreSerial" Association="Self.StoreSerial">
+            <End Role="StoreCode" EntitySet="StoreCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
+          <AssociationSet Name="UnitSerial" Association="Self.UnitSerial">
+            <End Role="UnitCode" EntitySet="UnitCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCode_StoreCode" Association="Self.FK_ItemCode_StoreCode">
+            <End Role="StoreCode" EntitySet="StoreCode" />
+            <End Role="ItemCode" EntitySet="ItemCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemCode_UnitCode" Association="Self.FK_ItemCode_UnitCode">
+            <End Role="UnitCode" EntitySet="UnitCode" />
+            <End Role="ItemCode" EntitySet="ItemCode" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TopSoftModelStoreContainer" CdmEntityContainer="TopSoft">
+          <EntitySetMapping Name="GroupCode">
+            <EntityTypeMapping TypeName="TopSoftModel.GroupCode">
+              <MappingFragment StoreEntitySet="GroupCode">
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HSales">
+            <EntityTypeMapping TypeName="TopSoftModel.HSales">
+              <MappingFragment StoreEntitySet="HSales">
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+                <ScalarProperty Name="FirstPayment" ColumnName="FirstPayment" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
+                <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
+                <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
+                <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemCode">
+            <EntityTypeMapping TypeName="TopSoftModel.ItemCode">
+              <MappingFragment StoreEntitySet="ItemCode">
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SerialGroup" ColumnName="SerialGroup" />
+                <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+                <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+                <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+                <ScalarProperty Name="PricePurchase1Unit1" ColumnName="PricePurchase1Unit1" />
+                <ScalarProperty Name="PricePurchase1Unit2" ColumnName="PricePurchase1Unit2" />
+                <ScalarProperty Name="PriceSale1Unit1" ColumnName="PriceSale1Unit1" />
+                <ScalarProperty Name="PriceSale1Unit2" ColumnName="PriceSale1Unit2" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StoreCode">
+            <EntityTypeMapping TypeName="TopSoftModel.StoreCode">
+              <MappingFragment StoreEntitySet="StoreCode">
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="NumberOfLeans" ColumnName="NumberOfLeans" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="StoreKeeper" ColumnName="StoreKeeper" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone3" ColumnName="Phone3" />
+                <ScalarProperty Name="Phone4" ColumnName="Phone4" />
+                <ScalarProperty Name="AreaStock" ColumnName="AreaStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TopSoftModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table">
+            <EntityTypeMapping TypeName="TopSoftModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RePassword" ColumnName="RePassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitCode">
+            <EntityTypeMapping TypeName="TopSoftModel.UnitCode">
+              <MappingFragment StoreEntitySet="UnitCode">
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="TopSoftModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RePassword" ColumnName="RePassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="TopSoftModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCities">
+            <EntityTypeMapping TypeName="TopSoftModel.tblCities">
+              <MappingFragment StoreEntitySet="tblCities">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RptSales">
+            <EntityTypeMapping TypeName="TopSoftModel.RptSales">
+              <MappingFragment StoreEntitySet="RptSales">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ItCode" ColumnName="ItCode" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="StCode" ColumnName="StCode" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
