@@ -5,8 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AKSoft.Controllers
-{
     public class ProductController : Controller
     {
        //  GET: Test
@@ -64,6 +62,7 @@ namespace AKSoft.Controllers
                 db.ItemCode.Add(product);
                 db.SaveChanges();
                 int latestEmpId = product.Serial;
+                TempData["Al"] = product.ArabicName;
                 return RedirectToAction("SaveProduct");
             }
 
@@ -102,6 +101,7 @@ namespace AKSoft.Controllers
                 db.StoreCode.Add(stock);
                 db.SaveChanges();
                 int latestEmpId = stock.Serial;
+                TempData["Al"] = stock.ArabicName;
                 return RedirectToAction("SaveStock");
             }
 
@@ -113,6 +113,8 @@ namespace AKSoft.Controllers
         }
         public ActionResult SaveUnit()
         {
+            ViewBag.mssg = TempData["mssg"] as string;
+
             return View();
 
         }
@@ -120,6 +122,7 @@ namespace AKSoft.Controllers
 
         public ActionResult SaveUnit(UnitCode model,string name)
         {
+
             try
             {
                 TopSoft db = new TopSoft();
@@ -133,17 +136,19 @@ namespace AKSoft.Controllers
                 db.UnitCode.Add(unit);
                 db.SaveChanges();
                 int latestEmpId = unit.Serial;
-                ViewBag.Message = String.Format("Hello{0}.\\ncurrent Date and time:{1}", name, DateTime.Now.ToString());  
+
+               TempData["Al"] = unit.ArabicName;
                 return RedirectToAction("SaveUnit");
 
             }
-
+            
             catch (Exception ex)
             {
                 throw ex;
 
             }
         }
+            
         public ActionResult SaveGroup()
         {
             return View();
@@ -165,6 +170,7 @@ namespace AKSoft.Controllers
                 group.Code = model.Code;
                 db.GroupCode.Add(group);
                 db.SaveChanges();
+                TempData["Al"] = group.ArabicName;
                 int latestEmpId = group.Serial;
                 return RedirectToAction("SaveGroup");
             }
@@ -215,6 +221,7 @@ namespace AKSoft.Controllers
                 invo.UnitSerial = model.UnitSerial;
                 db.HSales.Add(invo);
                 db.SaveChanges();
+                TempData["Al"] = "";
                 int latestEmpId = invo.Serial;
                 return RedirectToAction("SaveInvoicSales");
             }
@@ -226,4 +233,3 @@ namespace AKSoft.Controllers
             }
         }
     }
-}

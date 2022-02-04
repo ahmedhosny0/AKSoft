@@ -11,9 +11,11 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <link rel="stylesheet" href="~/Content/style.css" />
+    <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
+    <script type="text/javascript" src="~/Scripts/main.js"> </script>
 </head>
-<body>
-    @using (Html.BeginForm("SaveUnit", "Product", FormMethod.Post))
+<body> 
+     @using (Html.BeginForm("SaveUnit", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -24,7 +26,7 @@
             <div class="">
                 @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
 
-                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName" } })
+                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt",@id="name", @placeholder = "ArabicName", @required = "required"} }) @*Required TextBox*@
             </div>
 
             <div class="">
@@ -42,19 +44,17 @@
             </div>
 
             <div class="">
-                <button class="save">Save</button>
+                <button class="save" >Save</button>
             </div>
         </div>
     }
-    @if (ViewBag.Message != null)
-    {
-        <script type="text/javascript">
-
-            window.onload = function () {
-                alert("@ViewBag.Message");
-            };
-        </script>
-    }
+   @if (TempData["Al"] != null)
+   {
+    <script>
+        swal("Saved successfully!", " ", "success"); // this is swal to show sweety message
+    </script>
+    <strong style="color:green">Saved successfully! </strong>@TempData["Al"] // message with attribute from database
+   }
     </body>
 </html>
 

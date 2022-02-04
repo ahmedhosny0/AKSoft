@@ -11,9 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="~/Content/style.css" />
+    <script src="~/Scripts/sweetalert.min.js"></script>
 </head>
-<body>
 
+<body>
     @using (Html.BeginForm("SaveInvoicSales", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
@@ -21,59 +22,56 @@
         <div class="Elements">
             <div>
                 <label class="Lab">Store</label>
-                @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop" })
+                @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
             </div>
             <label class="Lab">Category</label>
-            @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop" })
+            @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
             <div>
                 <label class="Lab">Product Name</label>
-                @Html.DropDownListFor(model => model.ItemSerial, ViewBag.DepartmentList4 as SelectList, "--select--", new { @class = "Txt drop" })
+                @Html.DropDownListFor(model => model.ItemSerial, ViewBag.DepartmentList4 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
             </div>
             <div>
                 <label class="Lab">Unit Name</label>
-                @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop" })
+                @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
             </div>
             <div class="">
                 @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "Lab" })
 
-                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Quantity" } })
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
             </div>
 
             <div class="">
                 @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt", @placeholder = "Price" } })
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt", @placeholder = "Price", @id = "txtSecondNo", @onkeyup = "Multiy()", @required = "required" } }) @*Multiply function in js*@
             </div>
 
             <div class="">
                 @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt", @placeholder = "Total" } })
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt", @placeholder = "Total", @id = "txtResult" } })
             </div>
             <button class="save">Save</button>
         </div>
 
     }
-    <script>
-        $(function () {
-
-            $("#quantity,#price").keyup(function (e) {
-
-                var val1 = $("#quantity").val(),
-                    val2 = $("#price").val(),
-                    result = "";
-
-                if (val1.length > 0) {
-                    result += val1;
-                }
-
-                if (val2.length > 0) {
-                    result += val2;
-                }
-
-                $("#totoal").val(result);
-
-            });
-
-        });
+    <script type="text/javascript">
+    function Multiy() {
+        var txtFirstNo = document.getElementById('txtFirstNo').value;
+        var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtFirstNo) * parseFloat(txtSecondNo);//Don't forget the captial in float
+        if (!isNaN(result)) {
+            document.getElementById('txtResult').value = result;
+        }
+    }
     </script>
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("Saved successfully!", " ", "success");
+        </script>
+    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    }
+
+
+  
 </body>
 </html>

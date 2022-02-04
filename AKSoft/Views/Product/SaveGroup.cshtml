@@ -16,7 +16,7 @@
         <div class="">
             @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
 
-            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName" } })
+            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
         </div>
 
         <div class="">
@@ -37,5 +37,12 @@
             <button class="save">Save</button>
         </div>
     </div>
+}
+@if (TempData["Al"] != null)
+{
+    <script>
+            swal("Saved successfully!"," ", "success");
+    </script>
+    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
 

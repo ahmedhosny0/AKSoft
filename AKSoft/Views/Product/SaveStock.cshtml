@@ -3,11 +3,20 @@
     ViewBag.Title = "SaveStock";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" href="~/Content/style.css" />
+<!DOCTYPE html>
 
-@using (Html.BeginForm("SaveStock", "Product", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/main.js"> </script>
+</head>
+<body>
+    @using (Html.BeginForm("SaveStock", "Product", FormMethod.Post))
+    {
+@Html.AntiForgeryToken()
 
     <div class="Elements">
         <h4>ProductModel</h4>
@@ -16,7 +25,7 @@
         <div class="">
             @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
 
-            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName" } })
+            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
         </div>
 
         <div class="">
@@ -62,11 +71,12 @@
         </div>
         <button class="save">Save</button>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "SaveStock")
-</div>
-
-
-
+    }
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("Saved successfully!", " ", "success");
+        </script>
+    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    }</body>
+</html>
