@@ -270,6 +270,13 @@
     <Content Include="Views\Product\SaveGroup.cshtml" />
     <Content Include="Views\Product\SaveInvoicSales.cshtml" />
     <Content Include="Views\Product\index.cshtml" />
+    <Content Include="Views\EditorDelete\Doc.cshtml" />
+    <Content Include="Views\Product\Doc.cshtml" />
+    <Content Include="Views\Product\d.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\DisplayCategories.cshtml" />
+    <Content Include="Views\Product\EditCat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
