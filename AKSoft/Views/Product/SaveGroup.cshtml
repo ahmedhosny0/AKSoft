@@ -3,14 +3,20 @@
 @{
     ViewBag.Title = "SaveGroup";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}<script src="~/Scripts/sweetalert.min.js"></script>
+<h4>ProductModel</h4>
+@if (TempData["Al"] != null)
+{
+    <script>
+        swal("Saved successfully!", " ", "success");
+    </script>
+    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-
 @using (Html.BeginForm("SaveGroup", "Product", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="Elements">
-        <h4>ProductModel</h4>
         <hr />
 
         <div class="">
@@ -37,12 +43,5 @@
             <button class="save">Save</button>
         </div>
     </div>
-}
-@if (TempData["Al"] != null)
-{
-    <script>
-            swal("Saved successfully!"," ", "success");
-    </script>
-    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
 

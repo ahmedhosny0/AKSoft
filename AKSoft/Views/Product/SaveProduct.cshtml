@@ -16,12 +16,20 @@
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
 </head>
 <body>
+    <h4>ProductModel</h4>
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("Saved successfully!", " ", "success");
+        </script>
+        <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    }
     @using (Html.BeginForm("SaveProduct", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
         <div class="Elements">
-            <h4>ProductModel</h4>
+ 
             <hr />
 
             <div class="">
@@ -67,12 +75,6 @@
             </div>
         </div>
     }
-    @if (TempData["Al"] != null)
-    {
-        <script>
-            swal("Saved successfully!", " ", "success");
-        </script>
-    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
-    }
+
 </body>
 </html>

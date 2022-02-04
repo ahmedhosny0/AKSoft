@@ -15,6 +15,15 @@
 </head>
 
 <body>
+    <br />
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("Saved successfully!", " ", "success");
+        </script>
+        <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    }
+
     @using (Html.BeginForm("SaveInvoicSales", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
@@ -62,16 +71,6 @@
             document.getElementById('txtResult').value = result;
         }
     }
-    </script>
-    @if (TempData["Al"] != null)
-    {
-        <script>
-            swal("Saved successfully!", " ", "success");
-        </script>
-    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
-    }
-
-
-  
+    </script> 
 </body>
 </html>
