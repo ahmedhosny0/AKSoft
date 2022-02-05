@@ -1,0 +1,116 @@
+﻿@model ItemCode
+@{
+    ViewBag.Title = "EditItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditItem</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Serial)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Serial)
+                @Html.ValidationMessageFor(model => model.Serial)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArabicName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArabicName)
+                @Html.ValidationMessageFor(model => model.ArabicName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EnglishName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EnglishName)
+                @Html.ValidationMessageFor(model => model.EnglishName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DescName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DescName)
+                @Html.ValidationMessageFor(model => model.DescName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StoreID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StoreID)
+                @Html.ValidationMessageFor(model => model.StoreID)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SerialGroup, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SerialGroup)
+                @Html.ValidationMessageFor(model => model.SerialGroup)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Unit1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Unit1)
+                @Html.ValidationMessageFor(model => model.Unit1)
+            </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PricePurchase1Unit1, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PricePurchase1Unit1)
+                    @Html.ValidationMessageFor(model => model.PricePurchase1Unit1)
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PriceSale1Unit1, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PriceSale1Unit1)
+                    @Html.ValidationMessageFor(model => model.PriceSale1Unit1)
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Counts, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Counts)
+                    @Html.ValidationMessageFor(model => model.Counts)
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "DisplayItems")
+</div>
+
+
+
+

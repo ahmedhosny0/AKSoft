@@ -1,6 +1,6 @@
 ﻿@model HSales
 @{
-    ViewBag.Title = "SaveInvoicSales";
+    ViewBag.Title = "SaveInvoiceSales";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
@@ -24,7 +24,7 @@
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
 
-    @using (Html.BeginForm("SaveInvoicSales", "Product", FormMethod.Post))
+    @using (Html.BeginForm("SaveInvoiceSales", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -59,6 +59,8 @@
                 @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt", @placeholder = "Total", @id = "txtResult" } })
             </div>
             <button class="save">Save</button>
+            @Html.ActionLink("Show All", "DisplayInvoiceSales", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
+
         </div>
 
     }
