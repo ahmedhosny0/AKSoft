@@ -3,7 +3,7 @@
     ViewBag.Title = "DisplayCategories";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<a href="@Url.Action("SaveGroup","Product")">Add Group</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th>ID</th>
@@ -30,6 +30,4 @@
         </tr>
     }
 </table>
-
-<a href="@Url.Action("SaveGroup","Product")">Add Product</a>
 

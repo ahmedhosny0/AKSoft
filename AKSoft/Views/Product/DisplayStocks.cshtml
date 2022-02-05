@@ -5,6 +5,7 @@
 }
 
 <h2>DisplayStocks</h2>
+<a href="@Url.Action("SaveStock","Product")">Add Stock</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th>ID</th>
@@ -12,12 +13,12 @@
         <th>EnglishName</th>
         <th>DescName</th>
         <th>Description</th>
-        <th>Store</th>
-        <th>Group</th>
-        <th>Unit</th>
-        <th>Purchase Price</th>
-        <th>Sale Price</th>
-        <th>Quantity</th>
+        <th>Address</th>
+        <th>NumberOfLeans</th>
+        <th>StoreKeeper</th>
+        <th>Phone1</th>
+        <th>Phone2</th>
+        <th>Phone3</th>
         <th></th>
 
     </tr>
@@ -43,9 +44,6 @@
         </tr>
     }
 </table>
-
-<a href="@Url.Action("SaveProduct","Product")">Add Product</a>
-
 
 
 
