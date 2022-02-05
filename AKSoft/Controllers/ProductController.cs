@@ -377,6 +377,7 @@ public class ProductController : Controller
 
     //
     // POST: /Product/Edit/5
+    
     [HttpPost]
     public ActionResult EditCat(GroupCode productModel)
     {
@@ -435,7 +436,7 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,[PriceSale1Unit1],[Counts] FROM ItemCode";
+            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,PriceSale1Unit1,Counts FROM ItemCode";
             SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
             sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
             sqlDa.Fill(dtblProduct);
@@ -447,11 +448,11 @@ public class ProductController : Controller
             productModel.EnglishName = dtblProduct.Rows[0][2].ToString();
             productModel.DescName = dtblProduct.Rows[0][3].ToString();
             productModel.Description = dtblProduct.Rows[0][4].ToString();
-            productModel.StoreID = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
-            productModel.SerialGroup = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
-            productModel.PricePurchase1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
-            productModel.PriceSale1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
-            productModel.Counts = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+            productModel.StoreID = Convert.ToInt32(dtblProduct.Rows[0][5].ToString());
+            productModel.SerialGroup = Convert.ToInt32(dtblProduct.Rows[0][6].ToString());
+            productModel.PricePurchase1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][7].ToString());
+            productModel.PriceSale1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][8].ToString());
+            productModel.Counts = Convert.ToInt32(dtblProduct.Rows[0][9].ToString());
 
 
             return View(productModel);
@@ -512,7 +513,22 @@ public class ProductController : Controller
         }
         return RedirectToAction("DisplayInvoiceSales");
     }
+
+
+    [HttpGet]
+    public ActionResult DisplayStocks()
+    {
+        DataTable dtblProduct = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description,[Address],[NumberOfLeans],[Phone1],[Phone2],[Phone3],[StoreKeeper] FROM StoreCode ", sqlCon);
+            sqlDa.Fill(dtblProduct);
+        }
+        return View(dtblProduct);
+    }
 }
+   
 
 
 
