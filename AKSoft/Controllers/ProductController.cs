@@ -26,7 +26,7 @@ public class ProductController : Controller
         return View();
 
     }
-    public ActionResult SaveInvoicSales()
+    public ActionResult SaveInvoiceSales()
     {
         TopSoft db = new TopSoft();
         List<UnitCode> list1 = db.UnitCode.ToList();
@@ -189,7 +189,7 @@ public class ProductController : Controller
 
     [HttpPost]
 
-    public ActionResult SaveInvoicSales(HSales model)
+    public ActionResult SaveInvoiceSales(HSales model)
     {
         try
         {
@@ -228,7 +228,7 @@ public class ProductController : Controller
             db.SaveChanges();
             TempData["Al"] = "";
             int latestEmpId = invo.Serial;
-            return RedirectToAction("SaveInvoicSales");
+            return RedirectToAction("SaveInvoiceSales");
         }
 
         catch (Exception ex)
@@ -393,6 +393,124 @@ public class ProductController : Controller
            sqlCmd.ExecuteNonQuery();
         }
         return RedirectToAction("DisplayCategories");
+    }
+
+    // Edit Items and Display them
+    [HttpGet]
+    public ActionResult DisplayItems()
+    {
+        DataTable dtblProduct = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,[PriceSale1Unit1],[Counts] FROM ItemCode", sqlCon);
+            sqlDa.Fill(dtblProduct);
+        }
+        return View(dtblProduct);
+    }
+
+    [HttpGet]
+    public ActionResult CreateProduct()
+    {
+        return View(new GroupCode());
+    }
+    [HttpGet]
+    public ActionResult DeleteItem(int? id)
+    {
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            string query = "DELETE FROM ItemCode WHere Serial = @Serial";
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@Serial", id);
+            sqlCmd.ExecuteNonQuery();
+        }
+        return RedirectToAction("DisplayItems");
+    }
+    //---
+    public ActionResult EditItem(int? id)
+    {
+        ItemCode productModel = new ItemCode();
+        DataTable dtblProduct = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,[PriceSale1Unit1],[Counts] FROM ItemCode";
+            SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
+            sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
+            sqlDa.Fill(dtblProduct);
+        }
+        if (dtblProduct.Rows.Count == 1)
+        {
+            productModel.Serial = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+            productModel.ArabicName = dtblProduct.Rows[0][1].ToString();
+            productModel.EnglishName = dtblProduct.Rows[0][2].ToString();
+            productModel.DescName = dtblProduct.Rows[0][3].ToString();
+            productModel.Description = dtblProduct.Rows[0][4].ToString();
+            productModel.StoreID = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+            productModel.SerialGroup = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+            productModel.PricePurchase1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+            productModel.PriceSale1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+            productModel.Counts = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+
+
+            return View(productModel);
+        }
+        else
+            return RedirectToAction("DisplayItems");
+    }
+
+    //
+    // POST: /Product/Edit/5
+    [HttpPost]
+    public ActionResult EditItem(GroupCode productModel)
+    {
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            string query = "UPDATE GroupCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description   WHere Serial = @pr";
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@pr", productModel.Serial);
+            sqlCmd.Parameters.AddWithValue("@ArabicName", productModel.ArabicName);
+            sqlCmd.Parameters.AddWithValue("@EnglishName", productModel.EnglishName);
+            sqlCmd.Parameters.AddWithValue("@DescName", productModel.DescName);
+            sqlCmd.Parameters.AddWithValue("@Description", productModel.Description);
+            sqlCmd.ExecuteNonQuery();
+        }
+        return RedirectToAction("DisplayItems");
+    }
+
+    // Edit and Display Invoice Sales
+    [HttpGet]
+    public ActionResult DisplayInvoiceSales()
+    {
+        DataTable dtblProduct = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial, StoreSerial, ItemSerial, UnitSerial,GroupSerial, Quantity,Price,Total FROM Hsales", sqlCon);
+            sqlDa.Fill(dtblProduct);
+        }
+        return View(dtblProduct);
+    }
+
+    [HttpGet]
+    public ActionResult CreateInvoice()
+    {
+        return View(new GroupCode());
+    }
+    [HttpGet]
+    public ActionResult DeleteInSales(int? id)
+    {
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            string query = "DELETE FROM Hsales WHere Serial = @Serial";
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@Serial", id);
+            sqlCmd.ExecuteNonQuery();
+        }
+        return RedirectToAction("DisplayInvoiceSales");
     }
 }
 

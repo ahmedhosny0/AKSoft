@@ -268,7 +268,7 @@
     <Content Include="Views\Product\SaveStock.cshtml" />
     <Content Include="Views\Product\SaveUnit.cshtml" />
     <Content Include="Views\Product\SaveGroup.cshtml" />
-    <Content Include="Views\Product\SaveInvoicSales.cshtml" />
+    <Content Include="Views\Product\SaveInvoiceSales.cshtml" />
     <Content Include="Views\Product\index.cshtml" />
     <Content Include="Views\EditorDelete\Doc.cshtml" />
     <Content Include="Views\Product\Doc.cshtml" />
@@ -277,6 +277,10 @@
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\DisplayCategories.cshtml" />
     <Content Include="Views\Product\EditCat.cshtml" />
+    <Content Include="Views\Product\EditItem.cshtml" />
+    <Content Include="Views\Product\DisplayItems.cshtml" />
+    <Content Include="Views\Product\DisplayInvoiceSales.cshtml" />
+    <Content Include="Views\Product\EditInSales.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
