@@ -3,7 +3,14 @@
     ViewBag.Title = "EditUnit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<<<<<<< HEAD
 <h2>EditUnit</h2>
+=======
+
+<h2>EditUnit</h2>
+<h2>Edit</h2>
+
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -11,6 +18,7 @@
     <div class="form-horizontal">
         <h4>Product</h4>
         <hr />
+<<<<<<< HEAD
         <div class="">
             @Html.LabelFor(model => model.ID, htmlAttributes: new { @class = "Lab" })
 
@@ -35,6 +43,49 @@
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
         </div>
+=======
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Serial)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Serial)
+                @Html.ValidationMessageFor(model => model.Serial)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArabicName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArabicName)
+                @Html.ValidationMessageFor(model => model.ArabicName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EnglishName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EnglishName)
+                @Html.ValidationMessageFor(model => model.EnglishName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DescName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DescName)
+                @Html.ValidationMessageFor(model => model.DescName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

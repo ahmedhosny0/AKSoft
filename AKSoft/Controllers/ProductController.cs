@@ -400,6 +400,11 @@ public class ProductController : Controller
         }
         return RedirectToAction("DisplayCategories");
     }
+<<<<<<< HEAD
+    // Units Action Delete Edit
+    [HttpGet]
+    public ActionResult DisplayUnits()
+=======
 
     // Units Action Delete Edit
     [HttpGet]
@@ -419,24 +424,37 @@ public class ProductController : Controller
     // Edit Items and Display them
     [HttpGet]
     public ActionResult DisplayItems()
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
     {
         DataTable dtblProduct = new DataTable();
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description FROM UnitCode", sqlCon);
+=======
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
             SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,[PriceSale1Unit1],[Counts] FROM ItemCode", sqlCon);
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
             sqlDa.Fill(dtblProduct);
         }
         return View(dtblProduct);
     }
 
     [HttpGet]
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
     public ActionResult CreateUnit()
     {
         return View(new UnitCode());
     }
     public ActionResult DeleteUnit(int? id)
+<<<<<<< HEAD
     {
                 using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
@@ -448,21 +466,37 @@ public class ProductController : Controller
         }
         return RedirectToAction("DisplayUnits");
     }
+=======
+=======
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
     public ActionResult CreateProduct()
     {
         return View(new GroupCode());
     }
     [HttpGet]
     public ActionResult DeleteItem(int? id)
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
     {
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
+<<<<<<< HEAD
+            string query = "DELETE FROM UnitCode WHere Serial = @Serial";
+=======
             string query = "DELETE FROM ItemCode WHere Serial = @Serial";
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
             sqlCmd.Parameters.AddWithValue("@Serial", id);
             sqlCmd.ExecuteNonQuery();
         }
+<<<<<<< HEAD
+        return RedirectToAction("DisplayUnits");
+    }
+    // Edit Categories
+    public ActionResult EditUnit(int? id)
+    {
+        UnitCode productModel = new UnitCode();
+=======
         return RedirectToAction("DisplayItems");
     }
     // Edit Categories
@@ -495,11 +529,16 @@ public class ProductController : Controller
     public ActionResult EditItem(int? id)
     {
         ItemCode productModel = new ItemCode();
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
         DataTable dtblProduct = new DataTable();
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
+<<<<<<< HEAD
+            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description FROM UnitCode Where Serial = @Serial";
+=======
             string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,PriceSale1Unit1,Counts FROM ItemCode";
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
             SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
             sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
             sqlDa.Fill(dtblProduct);
@@ -511,6 +550,12 @@ public class ProductController : Controller
             productModel.EnglishName = dtblProduct.Rows[0][2].ToString();
             productModel.DescName = dtblProduct.Rows[0][3].ToString();
             productModel.Description = dtblProduct.Rows[0][4].ToString();
+<<<<<<< HEAD
+            return View(productModel);
+        }
+        else
+            return RedirectToAction("DisplayUnits");
+=======
             productModel.StoreID = Convert.ToInt32(dtblProduct.Rows[0][5].ToString());
             productModel.SerialGroup = Convert.ToInt32(dtblProduct.Rows[0][6].ToString());
             productModel.PricePurchase1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][7].ToString());
@@ -520,12 +565,14 @@ public class ProductController : Controller
         }
         else
             return RedirectToAction("DisplayItems");
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
     }
 
 
     //
     // POST: /Product/Edit/5
     [HttpPost]
+<<<<<<< HEAD
  
     public ActionResult EditUnit(UnitCode productModel)
     {
@@ -548,15 +595,30 @@ public class ProductController : Controller
  /*
     public ActionResult EditItem(GroupCode productModel)
 
+=======
+<<<<<<< HEAD
+    public ActionResult EditUnit(UnitCode productModel)
+=======
+    public ActionResult EditItem(GroupCode productModel)
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
     {
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
+<<<<<<< HEAD
  
             string query = "UPDATE UnitCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description   WHere Serial = @pr";
  
             string query = "UPDATE GroupCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description   WHere Serial = @pr";
 
+=======
+<<<<<<< HEAD
+            string query = "UPDATE UnitCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description   WHere Serial = @pr";
+=======
+            string query = "UPDATE GroupCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description   WHere Serial = @pr";
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
             sqlCmd.Parameters.AddWithValue("@pr", productModel.Serial);
             sqlCmd.Parameters.AddWithValue("@ArabicName", productModel.ArabicName);
@@ -565,10 +627,16 @@ public class ProductController : Controller
             sqlCmd.Parameters.AddWithValue("@Description", productModel.Description);
             sqlCmd.ExecuteNonQuery();
         }
+<<<<<<< HEAD
  
 
         return RedirectToAction("DisplayUnits");
  
+=======
+<<<<<<< HEAD
+        return RedirectToAction("DisplayUnits");
+=======
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
         return RedirectToAction("DisplayItems");
     }
     */
@@ -617,6 +685,7 @@ public class ProductController : Controller
             sqlDa.Fill(dtblProduct);
         }
         return View(dtblProduct);
+<<<<<<< HEAD
 
     }
     // Stock Edit
@@ -689,6 +758,9 @@ public class ProductController : Controller
             sqlCmd.ExecuteNonQuery();
         }
         return RedirectToAction("DisplayStocks");
+=======
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
     }
 }
    

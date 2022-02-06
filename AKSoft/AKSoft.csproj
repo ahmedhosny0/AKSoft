@@ -283,17 +283,28 @@
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\DisplayCategories.cshtml" />
     <Content Include="Views\Product\EditCat.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Product\DisplayUnits.cshtml" />
     <Content Include="Views\Product\EditUnit.cshtml" />
+=======
+<<<<<<< HEAD
+    <Content Include="Views\Product\DisplayUnits.cshtml" />
+    <Content Include="Views\Product\EditUnit.cshtml" />
+=======
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
     <Content Include="Views\Product\EditItem.cshtml" />
     <Content Include="Views\Product\DisplayItems.cshtml" />
     <Content Include="Views\Product\DisplayInvoiceSales.cshtml" />
     <Content Include="Views\Product\EditInSales.cshtml" />
     <Content Include="Views\Product\DisplayStocks.cshtml" />
     <Content Include="Views\Product\EditStock.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Product\Home.cshtml" />
     <Content Include="Views\Product\Login.cshtml" />
     <Content Include="Views\Product\Start.cshtml" />
+=======
+>>>>>>> d809e53e94133f3bb75f129407f6a0c9306b1614
+>>>>>>> f0ad5a7a632f735d62b9701ad5bee2ab8826a617
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
