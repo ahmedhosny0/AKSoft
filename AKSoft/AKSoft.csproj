@@ -211,13 +211,16 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\styl.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\back.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\DBModel.edmx">
@@ -238,9 +241,12 @@
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.singlePageNav.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -249,6 +255,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\typed.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -269,20 +277,23 @@
     <Content Include="Views\Product\SaveUnit.cshtml" />
     <Content Include="Views\Product\SaveGroup.cshtml" />
     <Content Include="Views\Product\SaveInvoiceSales.cshtml" />
-    <Content Include="Views\Product\index.cshtml" />
     <Content Include="Views\EditorDelete\Doc.cshtml" />
     <Content Include="Views\Product\Doc.cshtml" />
-    <Content Include="Views\Product\d.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\DisplayCategories.cshtml" />
     <Content Include="Views\Product\EditCat.cshtml" />
+    <Content Include="Views\Product\DisplayUnits.cshtml" />
+    <Content Include="Views\Product\EditUnit.cshtml" />
     <Content Include="Views\Product\EditItem.cshtml" />
     <Content Include="Views\Product\DisplayItems.cshtml" />
     <Content Include="Views\Product\DisplayInvoiceSales.cshtml" />
     <Content Include="Views\Product\EditInSales.cshtml" />
     <Content Include="Views\Product\DisplayStocks.cshtml" />
     <Content Include="Views\Product\EditStock.cshtml" />
+    <Content Include="Views\Product\Home.cshtml" />
+    <Content Include="Views\Product\Login.cshtml" />
+    <Content Include="Views\Product\Start.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

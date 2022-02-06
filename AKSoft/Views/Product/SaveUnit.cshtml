@@ -1,16 +1,15 @@
 ﻿@model UnitCode
-
+<link rel="stylesheet" href="~/Content/styl.css" />
 @{
     ViewBag.Title = "SaveUnit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link rel="stylesheet" href="~/Content/style.css" />
+    <link rel="stylesheet" href="~/Content/styl.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
 </head>
@@ -52,6 +51,7 @@
 
             <div class="">
                 <button class="save" >Save</button>
+                @Html.ActionLink("Show All", "DisplayUnits", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
             </div>
         </div>
     }

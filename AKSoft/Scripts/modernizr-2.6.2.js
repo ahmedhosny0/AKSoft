@@ -310,7 +310,7 @@ window.Modernizr = (function( window, document, undefined ) {
      * setCss applies given styles to the Modernizr DOM node.
      */
     function setCss( str ) {
-        mStyle.cssText = str;
+        mstyl.cssText = str;
     }
 
     /**
@@ -914,7 +914,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 if ( bool ) {
 
                     inputElem.value         = smile;
-                    inputElem.style.cssText = 'position:absolute;visibility:hidden;';
+                    inputElem.styl.cssText = 'position:absolute;visibility:hidden;';
 
                     if ( /^range$/.test(inputElemType) && inputElem.style.WebkitAppearance !== undefined ) {
 
