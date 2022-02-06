@@ -1,0 +1,84 @@
+﻿@model StoreCode
+@{
+    ViewBag.Title = "SaveStock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/Content/styl.css" />
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/main.js"> </script>
+</head>
+<body>
+    <h4>ProductModel</h4>
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("Saved successfully!", " ", "success");
+        </script>
+        <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    }
+    @using (Html.BeginForm("SaveStock", "Product", FormMethod.Post))
+    {
+@Html.AntiForgeryToken()
+
+    <div class="Elements">
+        <hr />
+
+        <div class="">
+            @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
+
+            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.AreaStock, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.AreaStock, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.NumberOfLeans, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.NumberOfLeans, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.StoreKeeper, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.StoreKeeper, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.Phone1, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.Phone1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.Phone2, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.Phone2, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.Phone3, htmlAttributes: new { @class = "Lab" })
+            @Html.EditorFor(model => model.Phone3, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </div>
+        <button class="save">Save</button>
+        @Html.ActionLink("Show All", "DisplayStocks", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
+    </div>
+    }
+</body>
+</html>
