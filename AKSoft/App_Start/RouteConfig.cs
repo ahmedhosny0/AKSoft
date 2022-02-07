@@ -16,7 +16,11 @@ namespace AKSoft
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
+<<<<<<< HEAD
                 defaults: new { controller = "Product", action = "Home", id = UrlParameter.Optional }
+=======
+                defaults: new { controller = "Product", action = "Start", id = UrlParameter.Optional }
+>>>>>>> 694e4ae47ce3c58ec8d8d1adbd4f14409b0a9950
             );
         }
     }

@@ -6,6 +6,7 @@
     <title>@ViewBag.Title </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+<<<<<<< HEAD
     <link rel="stylesheet" href="~/Content/style.css" />
 <style>
 
@@ -13,7 +14,16 @@
 </head>
 
 <body>
+=======
+    <link rel="stylesheet" href="~/Content/styl.css" />
 
+<style>
+
+</style>
+</head>
+>>>>>>> 694e4ae47ce3c58ec8d8d1adbd4f14409b0a9950
+
+<body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "SaveStock", "Product", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Home", "Product", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

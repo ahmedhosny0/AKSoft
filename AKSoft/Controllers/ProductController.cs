@@ -12,7 +12,15 @@ using System.Web.Mvc;
 public class ProductController : Controller
 {
     //  GET: Test
+<<<<<<< HEAD
     public ActionResult c()
+=======
+    public ActionResult Start()
+    {
+        return View();
+    }
+    public ActionResult Login()
+>>>>>>> 694e4ae47ce3c58ec8d8d1adbd4f14409b0a9950
     {
         return View();
     }
@@ -646,7 +654,7 @@ public class ProductController : Controller
         else
             return RedirectToAction("DisplayStocks");
     }
-    //
+   
     // POST: /Product/Edit/5
     [HttpPost]
 
