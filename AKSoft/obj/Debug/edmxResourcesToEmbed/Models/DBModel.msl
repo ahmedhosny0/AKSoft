@@ -98,19 +98,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Table">
-      <EntityTypeMapping TypeName="TopSoftModel.Table">
-        <MappingFragment StoreEntitySet="Table">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="RePassword" ColumnName="RePassword" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="UnitCode">
       <EntityTypeMapping TypeName="TopSoftModel.UnitCode">
         <MappingFragment StoreEntitySet="UnitCode">
@@ -137,18 +124,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="RptSales">
-      <EntityTypeMapping TypeName="TopSoftModel.RptSales">
-        <MappingFragment StoreEntitySet="RptSales">
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="ItCode" ColumnName="ItCode" />
-          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-          <ScalarProperty Name="StCode" ColumnName="StCode" />
-          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
-          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="price" ColumnName="price" />
+    <EntitySetMapping Name="HPurchase">
+      <EntityTypeMapping TypeName="TopSoftModel.HPurchase">
+        <MappingFragment StoreEntitySet="HPurchase">
+          <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
+          <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
+          <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
           <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
+          <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
+          <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
+          <ScalarProperty Name="Factor" ColumnName="Factor" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -11,6 +11,10 @@ using System.Web.Mvc;
 
 public class ProductController : Controller
 {
+    public ActionResult Home()
+    {
+        return View();
+    }
     //  GET: Test
     public ActionResult Start()
     {
@@ -48,6 +52,177 @@ public class ProductController : Controller
         return View();
 
     }
+        [HttpPost]
+    public ActionResult SaveInvoiceSales(HSales model)
+    {
+        try
+        {
+            TopSoft db = new TopSoft();
+            HSales invo = new HSales();
+            List<UnitCode> list1 = db.UnitCode.ToList();
+            ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+            List<StoreCode> list2 = db.StoreCode.ToList();
+            ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+            List<GroupCode> list3 = db.GroupCode.ToList();
+            ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
+            List<ItemCode> list4 = db.ItemCode.ToList();
+            ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
+            invo.BranchCode = model.BranchCode;
+            invo.Code = model.Code;
+            invo.CurrencyCode = model.CurrencyCode;
+            invo.Date = model.Date;
+            invo.DealerCode = model.DealerCode;
+            invo.Discount = model.Discount;
+            invo.DiscValue = model.DiscValue;
+            invo.Factor = model.Factor;
+            invo.FirstPayment = model.FirstPayment;
+            invo.GroupSerial = model.GroupSerial;
+            invo.ID = model.ID;
+            invo.ItemSerial = model.ItemSerial;
+            invo.Paid = model.Paid;
+            invo.Price = model.Price;
+            invo.Quantity = model.Quantity;
+            invo.RegionCode = model.RegionCode;
+            invo.StoreSerial = model.StoreSerial;
+            invo.Tax = model.Tax;
+            invo.Total = model.Total;
+            invo.TotalAfterDisc = model.TotalAfterDisc;
+            invo.UnitSerial = model.UnitSerial;
+            db.HSales.Add(invo);
+            db.SaveChanges();
+            TempData["Al"] = "";
+            int latestEmpId = invo.Serial;
+            return RedirectToAction("SaveInvoiceSales");
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+
+        }
+    }
+
+    //----
+    [HttpGet]
+    public ActionResult DisplayInvoiceSales()
+    {
+        DataTable dtblProduct = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial, StoreSerial, ItemSerial, UnitSerial,GroupSerial, Quantity,Price,Total FROM Hsales", sqlCon);
+            sqlDa.Fill(dtblProduct);
+        }
+        return View(dtblProduct);
+    }
+    [HttpGet]
+    public ActionResult DeleteInSales(int? id)
+    {
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            string query = "DELETE FROM Hsales WHere Serial = @Serial";
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@Serial", id);
+            sqlCmd.ExecuteNonQuery();
+        }
+        return RedirectToAction("DisplayInvoiceSales");
+    }
+
+   
+    // Purchase 
+
+    public ActionResult SaveInvoicePurchase()
+    {
+        TopSoft db = new TopSoft();
+        List<UnitCode> list1 = db.UnitCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        List<StoreCode> list2 = db.StoreCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+        List<GroupCode> list3 = db.GroupCode.ToList();
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
+        List<ItemCode> list4 = db.ItemCode.ToList();
+        ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
+        return View();
+
+    }
+    [HttpPost]
+
+    public ActionResult SaveInvoicePurchase(HPurchase model)
+    {
+        try
+        {
+            TopSoft db = new TopSoft();
+            HPurchase invo2 = new HPurchase();
+            List<UnitCode> list1 = db.UnitCode.ToList();
+            ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+            List<StoreCode> list2 = db.StoreCode.ToList();
+            ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+            List<GroupCode> list3 = db.GroupCode.ToList();
+            ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
+            List<ItemCode> list4 = db.ItemCode.ToList();
+            ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
+            invo2.BranchCode = model.BranchCode;
+            invo2.Code = model.Code;
+            invo2.CurrencyCode = model.CurrencyCode;
+            invo2.Date = model.Date;
+            invo2.DealerCode = model.DealerCode;
+            invo2.Discount = model.Discount;
+            invo2.DiscValue = model.DiscValue;
+            invo2.Factor = model.Factor;
+            invo2.GroupSerial = model.GroupSerial;
+            invo2.ID = model.ID;
+            invo2.ItemSerial = model.ItemSerial;
+            invo2.Price = model.Price;
+            invo2.Quantity = model.Quantity;
+            invo2.RegionCode = model.RegionCode;
+            invo2.StoreSerial = model.StoreSerial;
+            invo2.Tax = model.Tax;
+            invo2.Total = model.Total;
+            invo2.TotalAfterDisc = model.TotalAfterDisc;
+            invo2.UnitSerial = model.UnitSerial;
+            db.HPurchase.Add(invo2);
+            db.SaveChanges();
+            TempData["Al"] = "";
+            int latestEmpId = invo2.Serial;
+            return RedirectToAction("SaveInvoicePurchase");
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+
+        }
+    }
+    [HttpGet]
+    public ActionResult DisplayInvoicePurchase()
+    {
+        DataTable dtblProduct = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial, StoreSerial, ItemSerial, UnitSerial,GroupSerial, Quantity,Price,Total FROM HPurchase", sqlCon);
+            sqlDa.Fill(dtblProduct);
+        }
+        return View(dtblProduct);
+    }
+
+    [HttpGet]
+    public ActionResult DeleteInPurchase(int? id)
+    {
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            string query = "DELETE FROM HPurchase WHere Serial = @Serial";
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@Serial", id);
+            sqlCmd.ExecuteNonQuery();
+        }
+        return RedirectToAction("DisplayInvoicePurchase");
+    }
+
+    // Product
+
     [HttpPost]
 
     public ActionResult SaveProduct(ItemCode model)
@@ -63,6 +238,7 @@ public class ProductController : Controller
             ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
             ItemCode product = new ItemCode();
             product.StoreID = model.StoreID;
+            product.SerialGroup = model.SerialGroup;
             product.Unit1 = model.Unit1;
             product.ArabicName = model.ArabicName;
             product.EnglishName = model.EnglishName;
@@ -197,59 +373,9 @@ public class ProductController : Controller
 
     [HttpPost]
 
-    public ActionResult SaveInvoiceSales(HSales model)
-    {
-        try
-        {
-            TopSoft db = new TopSoft();
-            HSales invo = new HSales();
-            List<UnitCode> list1 = db.UnitCode.ToList();
-            ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-            List<StoreCode> list2 = db.StoreCode.ToList();
-            ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
-            List<GroupCode> list3 = db.GroupCode.ToList();
-            ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
-            List<GroupCode> list4 = db.GroupCode.ToList();
-            ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
-            invo.BranchCode = model.BranchCode;
-            invo.Code = model.Code;
-            invo.CurrencyCode = model.CurrencyCode;
-            invo.Date = model.Date;
-            invo.DealerCode = model.DealerCode;
-            invo.Discount = model.Discount;
-            invo.DiscValue = model.DiscValue;
-            invo.Factor = model.Factor;
-            invo.FirstPayment = model.FirstPayment;
-            invo.GroupSerial = model.GroupSerial;
-            invo.ID = model.ID;
-            invo.ItemSerial = model.ItemSerial;
-            invo.Paid = model.Paid;
-            invo.Price = model.Price;
-            invo.Quantity = model.Quantity;
-            invo.RegionCode = model.RegionCode;
-            invo.StoreSerial = model.StoreSerial;
-            invo.Tax = model.Tax;
-            invo.Total = model.Total;
-            invo.TotalAfterDisc = model.TotalAfterDisc;
-            invo.UnitSerial = model.UnitSerial;
-            db.HSales.Add(invo);
-            db.SaveChanges();
-            TempData["Al"] = "";
-            int latestEmpId = invo.Serial;
-            return RedirectToAction("SaveInvoiceSales");
-        }
-
-        catch (Exception ex)
-        {
-            throw ex;
-
-        }
-    }
+   
     //---------------------------------------------------------------------
-    public ActionResult Home()
-    {
-        return View();
-    }
+
     public ActionResult Edit(int? id)
     {
         using (TopSoft db = new TopSoft())
@@ -545,66 +671,6 @@ public class ProductController : Controller
         return RedirectToAction("DisplayUnits");
      
     }
- /*
-    public ActionResult EditItem(GroupCode productModel)
-
-    {
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
-        {
-            sqlCon.Open();
- 
-            string query = "UPDATE UnitCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description   WHere Serial = @pr";
- 
-            string query = "UPDATE GroupCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description   WHere Serial = @pr";
-
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@pr", productModel.Serial);
-            sqlCmd.Parameters.AddWithValue("@ArabicName", productModel.ArabicName);
-            sqlCmd.Parameters.AddWithValue("@EnglishName", productModel.EnglishName);
-            sqlCmd.Parameters.AddWithValue("@DescName", productModel.DescName);
-            sqlCmd.Parameters.AddWithValue("@Description", productModel.Description);
-            sqlCmd.ExecuteNonQuery();
-        }
- 
-
-        return RedirectToAction("DisplayUnits");
- 
-        return RedirectToAction("DisplayItems");
-    }
-    */
-    // Edit and Display Invoice Sales
-    [HttpGet]
-    public ActionResult DisplayInvoiceSales()
-    {
-        DataTable dtblProduct = new DataTable();
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
-        {
-            sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial, StoreSerial, ItemSerial, UnitSerial,GroupSerial, Quantity,Price,Total FROM Hsales", sqlCon);
-            sqlDa.Fill(dtblProduct);
-        }
-        return View(dtblProduct);
-    }
-
-    [HttpGet]
-    public ActionResult CreateInvoice()
-    {
-        return View(new GroupCode());
-    }
-    [HttpGet]
-    public ActionResult DeleteInSales(int? id)
-    {
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
-        {
-            sqlCon.Open();
-            string query = "DELETE FROM Hsales WHere Serial = @Serial";
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@Serial", id);
-            sqlCmd.ExecuteNonQuery();
-        }
-        return RedirectToAction("DisplayInvoiceSales");
-    }
-
 
     [HttpGet]
     public ActionResult DisplayStocks()
@@ -689,6 +755,23 @@ public class ProductController : Controller
             sqlCmd.ExecuteNonQuery();
         }
         return RedirectToAction("DisplayStocks");
+    }
+
+    public ActionResult CashExchange()
+    {
+        return View();
+    }
+    public ActionResult ReceiveCash()
+    {
+        return View();
+    }
+    public ActionResult SaveCustomer()
+    {
+        return View();
+    }
+    public ActionResult SaveSupplier()
+    {
+        return View();
     }
 }
    

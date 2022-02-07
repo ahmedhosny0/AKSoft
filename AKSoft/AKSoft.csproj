@@ -161,6 +161,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,6 +183,9 @@
     <Compile Include="Models\GroupCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HPurchase.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HSales.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -189,16 +193,10 @@
     <Compile Include="Models\ItemCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RptSales.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\StoreCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Table.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitCode.cs">
@@ -294,6 +292,22 @@
     <Content Include="Views\Product\Home.cshtml" />
     <Content Include="Views\Product\Login.cshtml" />
     <Content Include="Views\Product\Start.cshtml" />
+    <Content Include="Views\Reports\CustomerAccount.cshtml" />
+    <Content Include="Views\Reports\CustomersData.cshtml" />
+    <Content Include="Views\Reports\DailyPurchases.cshtml" />
+    <Content Include="Views\Reports\DailySales.cshtml" />
+    <Content Include="Views\Reports\ItemsBalance.cshtml" />
+    <Content Include="Views\Reports\ItemsState.cshtml" />
+    <Content Include="Views\Reports\ProfitofItems.cshtml" />
+    <Content Include="Views\Reports\StocksState.cshtml" />
+    <Content Include="Views\Reports\SupplierAccount.cshtml" />
+    <Content Include="Views\Product\SaveInvoicePurchase.cshtml" />
+    <Content Include="Views\Product\DisplayInvoicePurchase.cshtml" />
+    <Content Include="Views\Product\EditInPurchase.cshtml" />
+    <Content Include="Views\Product\SaveCustomer.cshtml" />
+    <Content Include="Views\Product\CashExchange.cshtml" />
+    <Content Include="Views\Product\ReceiveCash.cshtml" />
+    <Content Include="Views\Product\SaveSupplier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

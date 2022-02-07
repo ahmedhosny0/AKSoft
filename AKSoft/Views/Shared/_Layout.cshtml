@@ -6,11 +6,55 @@
     <title>@ViewBag.Title </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/main.js"></script>
     <link rel="stylesheet" href="~/Content/styl.css" />
 
-<style>
+    <style>
+        .dropbtn {
+            background-color: #3498DB;
+            padding: 6px;
+             font-size: 18px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top:9px;
+        }
 
-</style>
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #2980B9;
+            }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -31,7 +75,20 @@
                     <li><a href="/Product/SaveUnit">Unit</a></li>
                     <li><a href="/Product/SaveProduct">Product</a></li>
                     <li><a href="/Product/SaveInvoiceSales">Sales</a></li>
-                    <li><a href="/Product/Reports">Reports</a></li>
+                    <li><a href="/Product/SaveInvoicePurchase">Purchase</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn">Reports</button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="/Reports/DailySales">DailySales</a>
+                                <a href="/Reports/ItemsBalance">ItemsBalance</a>
+                                <a href="/Reports/ItemsState">ItemsState</a>
+                                <a href="/Reports/ProfitofItems">ProfitofItems</a>
+                                <a href="/Reports/StocksState">StocksState</a>
+                                <a href="/Reports/DailyPurchases">DailyPurchases</a>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -48,5 +105,27 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+    </script>
+
 </body>
 </html>
