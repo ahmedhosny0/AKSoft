@@ -51,11 +51,19 @@ public class ProductController : Controller
             }  
         } 
     //  GET: Test
+<<<<<<< HEAD
+    public ActionResult c()
+=======
     public ActionResult Start()
     {
         return View();
     }
+<<<<<<< HEAD
     public ActionResult LoginUser()
+=======
+    public ActionResult Login()
+>>>>>>> 694e4ae47ce3c58ec8d8d1adbd4f14409b0a9950
+>>>>>>> 13436864b10986426a4cd2aa939020e2d66e6f30
     {
         return View();
     }
@@ -790,7 +798,7 @@ public class ProductController : Controller
         else
             return RedirectToAction("DisplayStocks");
     }
-    //
+   
     // POST: /Product/Edit/5
     [HttpPost]
 

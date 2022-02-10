@@ -53,6 +53,8 @@ D:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.dll
 D:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.pdb
 D:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
+=======
 E:\AKSoft\AKSoft\bin\AKSoft.dll.config
 E:\AKSoft\AKSoft\bin\AKSoft.dll
 E:\AKSoft\AKSoft\bin\AKSoft.pdb
@@ -107,6 +109,9 @@ E:\AKSoft\AKSoft\bin\Microsoft.Owin.Security.Twitter.xml
 E:\AKSoft\AKSoft\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\AKSoft\AKSoft\obj\Debug\AKSoft.dll
 E:\AKSoft\AKSoft\obj\Debug\AKSoft.pdb
+<<<<<<< HEAD
+>>>>>>> 694e4ae47ce3c58ec8d8d1adbd4f14409b0a9950
+=======
 D:\vb\AKSoft\AKSoft\bin\AKSoft.dll.config
 D:\vb\AKSoft\AKSoft\bin\AKSoft.dll
 D:\vb\AKSoft\AKSoft\bin\AKSoft.pdb
@@ -162,6 +167,7 @@ D:\vb\AKSoft\AKSoft\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\vb\AKSoft\AKSoft\obj\Debug\AKSoft.dll
 D:\vb\AKSoft\AKSoft\obj\Debug\AKSoft.pdb
 E:\AKSoft\AKSoft\obj\Debug\AKSoft.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 F:\ahmed1\AKSoft\AKSoft\bin\AKSoft.dll.config
 F:\ahmed1\AKSoft\AKSoft\bin\AKSoft.dll
 F:\ahmed1\AKSoft\AKSoft\bin\AKSoft.pdb
@@ -217,3 +223,6 @@ F:\ahmed1\AKSoft\AKSoft\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\ahmed1\AKSoft\AKSoft\obj\Debug\AKSoft.dll
 F:\ahmed1\AKSoft\AKSoft\obj\Debug\AKSoft.pdb
 F:\ahmed1\AKSoft\AKSoft\obj\Debug\AKSoft.csprojResolveAssemblyReference.cache
+=======
+>>>>>>> 1747ee71924083af6f5ae2af0ae32b03c3da95db
+>>>>>>> 13436864b10986426a4cd2aa939020e2d66e6f30

@@ -293,8 +293,14 @@
     <Content Include="Views\Product\DisplayStocks.cshtml" />
     <Content Include="Views\Product\EditStock.cshtml" />
     <Content Include="Views\Product\Home.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Product\c.cshtml" />
+=======
     <Content Include="Views\Product\Login.cshtml" />
     <Content Include="Views\Product\Start.cshtml" />
+<<<<<<< HEAD
+>>>>>>> 694e4ae47ce3c58ec8d8d1adbd4f14409b0a9950
+=======
     <Content Include="Views\Reports\CustomerAccount.cshtml" />
     <Content Include="Views\Reports\CustomersData.cshtml" />
     <Content Include="Views\Reports\DailyPurchases.cshtml" />
@@ -311,8 +317,12 @@
     <Content Include="Views\Product\CashExchange.cshtml" />
     <Content Include="Views\Product\ReceiveCash.cshtml" />
     <Content Include="Views\Product\SaveSupplier.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Product\LoginUser.cshtml" />
     <Content Include="Views\Product\Loginr.cshtml" />
+=======
+>>>>>>> 1747ee71924083af6f5ae2af0ae32b03c3da95db
+>>>>>>> 13436864b10986426a4cd2aa939020e2d66e6f30
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
