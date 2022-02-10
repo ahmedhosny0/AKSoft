@@ -43,14 +43,21 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select ArabicName,sum(Q1-Q2)Balance from ItemCode left join (select ItemSerial,sum(Quantity) Q1 from hpurchase group by ItemSerial) HPurchas on HPurchas.ItemSerial=ItemCode.Serial  left join (select ItemSerial,sum(Quantity) Q2 from hsales group by ItemSerial)HSale on HSale.ItemSerial=ItemCode.Serial group by ArabicName", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("  Select ItemName ,UnitName,case When (sum(HpurchaseQuantity)-sum(HSale.Quantity))is null then sum(HpurchaseQuantity) else (sum(HpurchaseQuantity)-sum(HSale.Quantity)) end Counts  from itemcard left join (select itemserial,sum(quantity)Quantity from HSales group by itemserial) HSale on HSale.ItemSerial =ItemCard.ItemCode  Group by itemname,unitname", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);
     }
     public ActionResult ItemsState()
     {
-        return View();
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("  Select ItemName ,UnitName,case When (sum(HpurchaseQuantity)-sum(HSale.Quantity))is null then sum(HpurchaseQuantity) else (sum(HpurchaseQuantity)-sum(HSale.Quantity)) end Counts  from itemcard left join (select itemserial,sum(quantity)Quantity from HSales group by itemserial) HSale on HSale.ItemSerial =ItemCard.ItemCode  Group by itemname,unitname", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
     }
     [HttpGet]
     public ActionResult DailySales()

@@ -7,7 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
     using System;
     using System.Collections.Generic;
     
@@ -39,3 +38,4 @@
         public virtual StoreCode StoreCode { get; set; }
         public virtual UnitCode UnitCode { get; set; }
     }
+

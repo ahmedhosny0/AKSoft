@@ -15,14 +15,88 @@ public class ProductController : Controller
     {
         return View();
     }
+    public ActionResult Login()  
+        {  
+            return View();  
+        }  
+  
+        [HttpPost]  
+        [ValidateAntiForgeryToken]  
+        public ActionResult Login(UserProfile objUser)   
+        {  
+            if (ModelState.IsValid)   
+            {  
+                using(TopSoft db = new TopSoft())  
+                {  
+                    var obj = db.UserProfile.Where(a => a.UserName.Equals(objUser.UserName) && a.Password.Equals(objUser.Password)).FirstOrDefault();  
+                    if (obj != null)  
+                    {  
+                        Session["UserID"] = obj.UserId.ToString();  
+                        Session["UserName"] = obj.UserName.ToString();  
+                        return RedirectToAction("Home");  
+                    }  
+                }  
+            }  
+            return View(objUser);  
+        }  
+  
+        public ActionResult UserDashBoard()  
+        {  
+            if (Session["UserID"] != null)  
+            {  
+                return View();  
+            } else  
+            {  
+                return RedirectToAction("Login");  
+            }  
+        } 
     //  GET: Test
     public ActionResult Start()
     {
         return View();
     }
-    public ActionResult Login()
+    public ActionResult LoginUser()
     {
         return View();
+    }
+    [HttpPost]
+    public JsonResult LoginUser(UserInfo model)
+    {
+        TopSoft db = new TopSoft();
+
+        UserInfo user = db.UserInfo.SingleOrDefault(x => x.Email == model.Email && x.Password == model.Password);
+        string result = "fail";
+        if (user != null)
+        {
+
+            Session["UserId"] = user.Id;
+            Session["UserName"] = user.Email;
+            if (user.Id == 3)
+            {
+                result = "GeneralUser";
+
+            }
+            else if (user.Id == 1)
+            {
+                result = "Admin";
+
+            }
+
+        }
+
+
+        return Json(result, JsonRequestBehavior.AllowGet);
+    }
+
+
+    public ActionResult Logout()
+    {
+
+        Session.Clear();
+        Session.Abandon();
+
+        return RedirectToAction("Login");
+
     }
     public ActionResult SaveProduct()
     {

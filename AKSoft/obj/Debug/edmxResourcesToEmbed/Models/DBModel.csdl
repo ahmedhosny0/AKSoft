@@ -133,6 +133,7 @@
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="RePassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="Int32" />
   </EntityType>
   <Association Name="FK_ItemCode_GroupCode">
     <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
@@ -265,6 +266,7 @@
       <End Role="ItemCode" EntitySet="ItemCode" />
       <End Role="HSales" EntitySet="HSales" />
     </AssociationSet>
+    <EntitySet Name="UserProfile" EntityType="TopSoftModel.UserProfile" />
   </EntityContainer>
   <EntityType Name="HPurchase">
     <Key>
@@ -365,4 +367,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
 </Schema>
