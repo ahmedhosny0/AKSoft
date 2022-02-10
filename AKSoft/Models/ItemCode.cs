@@ -7,11 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
     using System;
     using System.Collections.Generic;
     
     public partial class ItemCode
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ItemCode()
+        {
+            this.HPurchase = new HashSet<HPurchase>();
+            this.HSales = new HashSet<HSales>();
+        }
+    
         public int Serial { get; set; }
         public Nullable<int> ID { get; set; }
         public Nullable<int> Code { get; set; }
@@ -33,4 +41,9 @@
         public virtual GroupCode GroupCode { get; set; }
         public virtual StoreCode StoreCode { get; set; }
         public virtual UnitCode UnitCode { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HPurchase> HPurchase { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HSales> HSales { get; set; }
     }
+

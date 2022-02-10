@@ -30,9 +30,8 @@ namespace AKSoft.Models
         public virtual DbSet<ItemCode> ItemCode { get; set; }
         public virtual DbSet<StoreCode> StoreCode { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Table> Table { get; set; }
         public virtual DbSet<UnitCode> UnitCode { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
-        public virtual DbSet<RptSales> RptSales { get; set; }
+        public virtual DbSet<HPurchase> HPurchase { get; set; }
     }
 }

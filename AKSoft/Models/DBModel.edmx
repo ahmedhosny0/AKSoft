@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TopSoftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TopSoftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="GroupCode">
           <Key>
             <PropertyRef Name="Serial" />
@@ -17,6 +17,31 @@
           <Property Name="DescName" Type="nvarchar" MaxLength="150" />
           <Property Name="Description" Type="nvarchar" MaxLength="150" />
           <Property Name="ColorName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HPurchase">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="BranchCode" Type="int" />
+          <Property Name="Code" Type="int" />
+          <Property Name="Date" Type="smalldatetime" />
+          <Property Name="CurrencyCode" Type="int" />
+          <Property Name="Factor" Type="float" />
+          <Property Name="StoreSerial" Type="int" />
+          <Property Name="DealerCode" Type="int" />
+          <Property Name="RegionCode" Type="int" />
+          <Property Name="ItemSerial" Type="int" />
+          <Property Name="UnitSerial" Type="int" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="Tax" Type="float" />
+          <Property Name="Total" Type="float" />
+          <Property Name="TotalAfterDisc" Type="float" />
+          <Property Name="DiscValue" Type="float" />
+          <Property Name="GroupSerial" Type="int" />
         </EntityType>
         <EntityType Name="HSales">
           <Key>
@@ -97,18 +122,6 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="Password" Type="nvarchar" MaxLength="100" />
-          <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
-        </EntityType>
         <EntityType Name="UnitCode">
           <Key>
             <PropertyRef Name="Serial" />
@@ -133,29 +146,62 @@
           <Property Name="Password" Type="nvarchar" MaxLength="100" />
           <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.RptSales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="RptSales">
-          <Key>
-            <PropertyRef Name="Code" />
-          </Key>
-          <Property Name="Code" Type="int" Nullable="false" />
-          <Property Name="ItCode" Type="int" />
-          <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
-          <Property Name="StCode" Type="int" />
-          <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
-          <Property Name="UnitName" Type="nvarchar" MaxLength="150" />
-          <Property Name="Quantity" Type="float" />
-          <Property Name="price" Type="float" />
-          <Property Name="Total" Type="float" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="StoreState">
-          <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
-          <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
-          <Property Name="StoreKeeper" Type="nvarchar" MaxLength="150" />
-        </EntityType>-->
+        <Association Name="FK__HPurchase__Group__0E6E26BF">
+          <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HPurchase">
+              <PropertyRef Name="GroupSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HPurchase__ItemS__114A936A">
+          <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HPurchase">
+              <PropertyRef Name="ItemSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HPurchase__Store__0F624AF8">
+          <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StoreCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HPurchase">
+              <PropertyRef Name="StoreSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HPurchase__UnitS__10566F31">
+          <End Role="UnitCode" Type="Self.UnitCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HPurchase">
+              <PropertyRef Name="UnitSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemCode_GroupCode">
           <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
           <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="*" />
@@ -206,6 +252,20 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="itemSerial">
+          <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="ItemSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="StoreSerial">
           <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -236,26 +296,29 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
         </Association>
         <EntityContainer Name="TopSoftModelStoreContainer">
           <EntitySet Name="GroupCode" EntityType="Self.GroupCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HPurchase" EntityType="Self.HPurchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HSales" EntityType="Self.HSales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemCode" EntityType="Self.ItemCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StoreCode" EntityType="Self.StoreCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RptSales" EntityType="Self.RptSales" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RptSales].[Code] AS [Code], 
-    [RptSales].[ItCode] AS [ItCode], 
-    [RptSales].[ItemName] AS [ItemName], 
-    [RptSales].[StCode] AS [StCode], 
-    [RptSales].[StoreName] AS [StoreName], 
-    [RptSales].[UnitName] AS [UnitName], 
-    [RptSales].[Quantity] AS [Quantity], 
-    [RptSales].[price] AS [price], 
-    [RptSales].[Total] AS [Total]
-    FROM [dbo].[RptSales] AS [RptSales]</DefiningQuery>
-          </EntitySet>
+          <AssociationSet Name="FK__HPurchase__Group__0E6E26BF" Association="Self.FK__HPurchase__Group__0E6E26BF">
+            <End Role="GroupCode" EntitySet="GroupCode" />
+            <End Role="HPurchase" EntitySet="HPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HPurchase__ItemS__114A936A" Association="Self.FK__HPurchase__ItemS__114A936A">
+            <End Role="ItemCode" EntitySet="ItemCode" />
+            <End Role="HPurchase" EntitySet="HPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HPurchase__Store__0F624AF8" Association="Self.FK__HPurchase__Store__0F624AF8">
+            <End Role="StoreCode" EntitySet="StoreCode" />
+            <End Role="HPurchase" EntitySet="HPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HPurchase__UnitS__10566F31" Association="Self.FK__HPurchase__UnitS__10566F31">
+            <End Role="UnitCode" EntitySet="UnitCode" />
+            <End Role="HPurchase" EntitySet="HPurchase" />
+          </AssociationSet>
           <AssociationSet Name="FK_ItemCode_GroupCode" Association="Self.FK_ItemCode_GroupCode">
             <End Role="GroupCode" EntitySet="GroupCode" />
             <End Role="ItemCode" EntitySet="ItemCode" />
@@ -272,6 +335,10 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
             <End Role="GroupCode" EntitySet="GroupCode" />
             <End Role="HSales" EntitySet="HSales" />
           </AssociationSet>
+          <AssociationSet Name="itemSerial" Association="Self.itemSerial">
+            <End Role="ItemCode" EntitySet="ItemCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
           <AssociationSet Name="StoreSerial" Association="Self.StoreSerial">
             <End Role="StoreCode" EntitySet="StoreCode" />
             <End Role="HSales" EntitySet="HSales" />
@@ -281,8 +348,7 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
             <End Role="HSales" EntitySet="HSales" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TopSoftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -300,6 +366,7 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
           <Property Name="ColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_GroupCode" FromRole="GroupCode" ToRole="ItemCode" />
           <NavigationProperty Name="HSales" Relationship="Self.GroupSerial" FromRole="GroupCode" ToRole="HSales" />
+          <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Group__06CD04F7" FromRole="GroupCode" ToRole="HPurchase" />
         </EntityType>
         <EntityType Name="HSales">
           <Key>
@@ -330,6 +397,7 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
           <NavigationProperty Name="GroupCode" Relationship="Self.GroupSerial" FromRole="HSales" ToRole="GroupCode" />
           <NavigationProperty Name="StoreCode" Relationship="Self.StoreSerial" FromRole="HSales" ToRole="StoreCode" />
           <NavigationProperty Name="UnitCode" Relationship="Self.UnitSerial" FromRole="HSales" ToRole="UnitCode" />
+          <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.itemSerial" FromRole="HSales" ToRole="ItemCode" />
         </EntityType>
         <EntityType Name="ItemCode">
           <Key>
@@ -355,6 +423,8 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
           <NavigationProperty Name="GroupCode" Relationship="Self.FK_ItemCode_GroupCode" FromRole="ItemCode" ToRole="GroupCode" />
           <NavigationProperty Name="StoreCode" Relationship="Self.FK_ItemCode_StoreCode" FromRole="ItemCode" ToRole="StoreCode" />
           <NavigationProperty Name="UnitCode" Relationship="Self.FK_ItemCode_UnitCode" FromRole="ItemCode" ToRole="UnitCode" />
+          <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__ItemS__09A971A2" FromRole="ItemCode" ToRole="HPurchase" />
+          <NavigationProperty Name="HSales" Relationship="TopSoftModel.itemSerial" FromRole="ItemCode" ToRole="HSales" />
         </EntityType>
         <EntityType Name="StoreCode">
           <Key>
@@ -377,6 +447,7 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
           <Property Name="AreaStock" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HSales" Relationship="Self.StoreSerial" FromRole="StoreCode" ToRole="HSales" />
           <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_StoreCode" FromRole="StoreCode" ToRole="ItemCode" />
+          <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Store__07C12930" FromRole="StoreCode" ToRole="HPurchase" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -387,18 +458,6 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="RePassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="UnitCode">
           <Key>
@@ -413,6 +472,7 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
           <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HSales" Relationship="Self.UnitSerial" FromRole="UnitCode" ToRole="HSales" />
           <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_UnitCode" FromRole="UnitCode" ToRole="ItemCode" />
+          <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__UnitS__08B54D69" FromRole="UnitCode" ToRole="HPurchase" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -425,20 +485,6 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="RePassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="RptSales">
-          <Key>
-            <PropertyRef Name="Code" />
-          </Key>
-          <Property Name="Code" Type="Int32" Nullable="false" />
-          <Property Name="ItCode" Type="Int32" />
-          <Property Name="ItemName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="StCode" Type="Int32" />
-          <Property Name="StoreName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="UnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Quantity" Type="Double" />
-          <Property Name="price" Type="Double" />
-          <Property Name="Total" Type="Double" />
         </EntityType>
         <Association Name="FK_ItemCode_GroupCode">
           <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
@@ -524,10 +570,8 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
           <EntitySet Name="ItemCode" EntityType="Self.ItemCode" />
           <EntitySet Name="StoreCode" EntityType="Self.StoreCode" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Table" EntityType="Self.Table" />
           <EntitySet Name="UnitCode" EntityType="Self.UnitCode" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
-          <EntitySet Name="RptSales" EntityType="Self.RptSales" />
           <AssociationSet Name="FK_ItemCode_GroupCode" Association="Self.FK_ItemCode_GroupCode">
             <End Role="GroupCode" EntitySet="GroupCode" />
             <End Role="ItemCode" EntitySet="ItemCode" />
@@ -552,7 +596,127 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
             <End Role="UnitCode" EntitySet="UnitCode" />
             <End Role="ItemCode" EntitySet="ItemCode" />
           </AssociationSet>
+          <EntitySet Name="HPurchase" EntityType="TopSoftModel.HPurchase" />
+          <AssociationSet Name="FK__HPurchase__Group__06CD04F7" Association="TopSoftModel.FK__HPurchase__Group__06CD04F7">
+            <End Role="GroupCode" EntitySet="GroupCode" />
+            <End Role="HPurchase" EntitySet="HPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HPurchase__ItemS__09A971A2" Association="TopSoftModel.FK__HPurchase__ItemS__09A971A2">
+            <End Role="ItemCode" EntitySet="ItemCode" />
+            <End Role="HPurchase" EntitySet="HPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HPurchase__Store__07C12930" Association="TopSoftModel.FK__HPurchase__Store__07C12930">
+            <End Role="StoreCode" EntitySet="StoreCode" />
+            <End Role="HPurchase" EntitySet="HPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HPurchase__UnitS__08B54D69" Association="TopSoftModel.FK__HPurchase__UnitS__08B54D69">
+            <End Role="UnitCode" EntitySet="UnitCode" />
+            <End Role="HPurchase" EntitySet="HPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="itemSerial" Association="TopSoftModel.itemSerial">
+            <End Role="ItemCode" EntitySet="ItemCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="HPurchase">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="BranchCode" Type="Int32" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="CurrencyCode" Type="Int32" />
+          <Property Name="Factor" Type="Double" />
+          <Property Name="StoreSerial" Type="Int32" />
+          <Property Name="DealerCode" Type="Int32" />
+          <Property Name="RegionCode" Type="Int32" />
+          <Property Name="ItemSerial" Type="Int32" />
+          <Property Name="UnitSerial" Type="Int32" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="Tax" Type="Double" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="TotalAfterDisc" Type="Double" />
+          <Property Name="DiscValue" Type="Double" />
+          <Property Name="GroupSerial" Type="Int32" />
+          <NavigationProperty Name="GroupCode" Relationship="TopSoftModel.FK__HPurchase__Group__06CD04F7" FromRole="HPurchase" ToRole="GroupCode" />
+          <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.FK__HPurchase__ItemS__09A971A2" FromRole="HPurchase" ToRole="ItemCode" />
+          <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__HPurchase__Store__07C12930" FromRole="HPurchase" ToRole="StoreCode" />
+          <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.FK__HPurchase__UnitS__08B54D69" FromRole="HPurchase" ToRole="UnitCode" />
+        </EntityType>
+        <Association Name="FK__HPurchase__Group__06CD04F7">
+          <End Type="TopSoftModel.GroupCode" Role="GroupCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HPurchase">
+              <PropertyRef Name="GroupSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HPurchase__ItemS__09A971A2">
+          <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HPurchase">
+              <PropertyRef Name="ItemSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HPurchase__Store__07C12930">
+          <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StoreCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HPurchase">
+              <PropertyRef Name="StoreSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HPurchase__UnitS__08B54D69">
+          <End Type="TopSoftModel.UnitCode" Role="UnitCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HPurchase">
+              <PropertyRef Name="UnitSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="itemSerial">
+          <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="ItemSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -656,19 +820,6 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Table">
-            <EntityTypeMapping TypeName="TopSoftModel.Table">
-              <MappingFragment StoreEntitySet="Table">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="RePassword" ColumnName="RePassword" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UnitCode">
             <EntityTypeMapping TypeName="TopSoftModel.UnitCode">
               <MappingFragment StoreEntitySet="UnitCode">
@@ -695,18 +846,29 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RptSales">
-            <EntityTypeMapping TypeName="TopSoftModel.RptSales">
-              <MappingFragment StoreEntitySet="RptSales">
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="ItCode" ColumnName="ItCode" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="StCode" ColumnName="StCode" />
-                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="price" ColumnName="price" />
+          <EntitySetMapping Name="HPurchase">
+            <EntityTypeMapping TypeName="TopSoftModel.HPurchase">
+              <MappingFragment StoreEntitySet="HPurchase">
+                <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
+                <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
+                <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
+                <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

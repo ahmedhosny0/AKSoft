@@ -1,0 +1,42 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "DisplayInvoiceSales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Display Invoice Purchase</h2>
+
+<a href="@Url.Action("SaveInvoicePurchase", "Product")">Add Invoice Purchase</a>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Store</th>
+        <th>Item</th>
+        <th>Unit</th>
+        <th>Group</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th></th>
+
+    </tr>
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td>@Model.Rows[i][7]</td>
+            <td>
+                <a href="@Url.Action("EditInPurchase", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
+                <a href="@Url.Action("DeleteInPurchase", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+

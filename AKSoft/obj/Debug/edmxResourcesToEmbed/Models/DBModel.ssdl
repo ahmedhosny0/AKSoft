@@ -13,6 +13,31 @@
     <Property Name="Description" Type="nvarchar" MaxLength="150" />
     <Property Name="ColorName" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="HPurchase">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" />
+    <Property Name="BranchCode" Type="int" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Date" Type="smalldatetime" />
+    <Property Name="CurrencyCode" Type="int" />
+    <Property Name="Factor" Type="float" />
+    <Property Name="StoreSerial" Type="int" />
+    <Property Name="DealerCode" Type="int" />
+    <Property Name="RegionCode" Type="int" />
+    <Property Name="ItemSerial" Type="int" />
+    <Property Name="UnitSerial" Type="int" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="Price" Type="float" />
+    <Property Name="Discount" Type="float" />
+    <Property Name="Tax" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="TotalAfterDisc" Type="float" />
+    <Property Name="DiscValue" Type="float" />
+    <Property Name="GroupSerial" Type="int" />
+  </EntityType>
   <EntityType Name="HSales">
     <Key>
       <PropertyRef Name="Serial" />
@@ -92,18 +117,6 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <EntityType Name="Table">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-    <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
-    <Property Name="Email" Type="nvarchar" MaxLength="100" />
-    <Property Name="Password" Type="nvarchar" MaxLength="100" />
-    <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
-  </EntityType>
   <EntityType Name="UnitCode">
     <Key>
       <PropertyRef Name="Serial" />
@@ -128,29 +141,62 @@
     <Property Name="Password" Type="nvarchar" MaxLength="100" />
     <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.RptSales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="RptSales">
-    <Key>
-      <PropertyRef Name="Code" />
-    </Key>
-    <Property Name="Code" Type="int" Nullable="false" />
-    <Property Name="ItCode" Type="int" />
-    <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
-    <Property Name="StCode" Type="int" />
-    <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
-    <Property Name="UnitName" Type="nvarchar" MaxLength="150" />
-    <Property Name="Quantity" Type="float" />
-    <Property Name="price" Type="float" />
-    <Property Name="Total" Type="float" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="StoreState">
-          <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
-          <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
-          <Property Name="StoreKeeper" Type="nvarchar" MaxLength="150" />
-        </EntityType>-->
+  <Association Name="FK__HPurchase__Group__0E6E26BF">
+    <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="GroupSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HPurchase__ItemS__114A936A">
+    <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="ItemSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HPurchase__Store__0F624AF8">
+    <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="StoreSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HPurchase__UnitS__10566F31">
+    <End Role="UnitCode" Type="Self.UnitCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="UnitSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ItemCode_GroupCode">
     <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
     <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="*" />
@@ -201,6 +247,20 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="itemSerial">
+    <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HSales">
+        <PropertyRef Name="ItemSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="StoreSerial">
     <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -231,26 +291,29 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
   </Association>
   <EntityContainer Name="TopSoftModelStoreContainer">
     <EntitySet Name="GroupCode" EntityType="Self.GroupCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HPurchase" EntityType="Self.HPurchase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HSales" EntityType="Self.HSales" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemCode" EntityType="Self.ItemCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StoreCode" EntityType="Self.StoreCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="RptSales" EntityType="Self.RptSales" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [RptSales].[Code] AS [Code], 
-    [RptSales].[ItCode] AS [ItCode], 
-    [RptSales].[ItemName] AS [ItemName], 
-    [RptSales].[StCode] AS [StCode], 
-    [RptSales].[StoreName] AS [StoreName], 
-    [RptSales].[UnitName] AS [UnitName], 
-    [RptSales].[Quantity] AS [Quantity], 
-    [RptSales].[price] AS [price], 
-    [RptSales].[Total] AS [Total]
-    FROM [dbo].[RptSales] AS [RptSales]</DefiningQuery>
-    </EntitySet>
+    <AssociationSet Name="FK__HPurchase__Group__0E6E26BF" Association="Self.FK__HPurchase__Group__0E6E26BF">
+      <End Role="GroupCode" EntitySet="GroupCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HPurchase__ItemS__114A936A" Association="Self.FK__HPurchase__ItemS__114A936A">
+      <End Role="ItemCode" EntitySet="ItemCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HPurchase__Store__0F624AF8" Association="Self.FK__HPurchase__Store__0F624AF8">
+      <End Role="StoreCode" EntitySet="StoreCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HPurchase__UnitS__10566F31" Association="Self.FK__HPurchase__UnitS__10566F31">
+      <End Role="UnitCode" EntitySet="UnitCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
     <AssociationSet Name="FK_ItemCode_GroupCode" Association="Self.FK_ItemCode_GroupCode">
       <End Role="GroupCode" EntitySet="GroupCode" />
       <End Role="ItemCode" EntitySet="ItemCode" />
@@ -265,6 +328,10 @@ warning 6013: The table/view 'TopSoft.dbo.StoreState' does not have a primary ke
     </AssociationSet>
     <AssociationSet Name="GroupSerial" Association="Self.GroupSerial">
       <End Role="GroupCode" EntitySet="GroupCode" />
+      <End Role="HSales" EntitySet="HSales" />
+    </AssociationSet>
+    <AssociationSet Name="itemSerial" Association="Self.itemSerial">
+      <End Role="ItemCode" EntitySet="ItemCode" />
       <End Role="HSales" EntitySet="HSales" />
     </AssociationSet>
     <AssociationSet Name="StoreSerial" Association="Self.StoreSerial">

@@ -7,6 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
     using System;
     using System.Collections.Generic;
     
@@ -17,6 +18,7 @@
         {
             this.HSales = new HashSet<HSales>();
             this.ItemCode = new HashSet<ItemCode>();
+            this.HPurchase = new HashSet<HPurchase>();
         }
     
         public int Serial { get; set; }
@@ -39,5 +41,6 @@
         public virtual ICollection<HSales> HSales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemCode> ItemCode { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HPurchase> HPurchase { get; set; }
     }
-
