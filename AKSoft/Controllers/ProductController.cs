@@ -22,16 +22,11 @@ public class ProductController : Controller
   
         [HttpPost]  
         [ValidateAntiForgeryToken]  
-<<<<<<< HEAD
         public ActionResult Login(UserInfo objUser)   
-=======
-        public ActionResult Login(UserProfile objUser)   
->>>>>>> 0333acec75ef48b8c830a6eb92b7410c80044a5e
         {  
             if (ModelState.IsValid)   
             {  
                 using(TopSoft db = new TopSoft())  
-<<<<<<< HEAD
                 {
                     var obj = db.UserInfo.Where(a => a.Email.Equals(objUser.Email) && a.Password.Equals(objUser.Password)).FirstOrDefault();
                     string result = "fail";
@@ -50,15 +45,6 @@ public class ProductController : Controller
                         //    result = "Admin";
 
                         //}
-=======
-                {  
-                    var obj = db.UserProfile.Where(a => a.UserName.Equals(objUser.UserName) && a.Password.Equals(objUser.Password)).FirstOrDefault();  
-                    if (obj != null)  
-                    {  
-                        Session["UserID"] = obj.UserId.ToString();  
-                        Session["UserName"] = obj.UserName.ToString();  
-                        return RedirectToAction("Home");  
->>>>>>> 0333acec75ef48b8c830a6eb92b7410c80044a5e
                     }  
                 }  
             }  
@@ -76,23 +62,11 @@ public class ProductController : Controller
             }  
         } 
     //  GET: Test
-<<<<<<< HEAD
-    public ActionResult c()
-=======
     public ActionResult Start()
     {
         return View();
     }
-<<<<<<< HEAD
     public ActionResult LoginUser()
-=======
-<<<<<<< HEAD
-    public ActionResult LoginUser()
-=======
-    public ActionResult Login()
->>>>>>> 694e4ae47ce3c58ec8d8d1adbd4f14409b0a9950
->>>>>>> 13436864b10986426a4cd2aa939020e2d66e6f30
->>>>>>> 0333acec75ef48b8c830a6eb92b7410c80044a5e
     {
         return View();
     }
@@ -108,20 +82,12 @@ public class ProductController : Controller
 
             Session["UserId"] = user.Id;
             Session["UserName"] = user.Email;
-<<<<<<< HEAD
             if (user.Role == 3)
-=======
-            if (user.Id == 3)
->>>>>>> 0333acec75ef48b8c830a6eb92b7410c80044a5e
             {
                 result = "GeneralUser";
 
             }
-<<<<<<< HEAD
             else if (user.Role == 1)
-=======
-            else if (user.Id == 1)
->>>>>>> 0333acec75ef48b8c830a6eb92b7410c80044a5e
             {
                 result = "Admin";
 
@@ -143,12 +109,9 @@ public class ProductController : Controller
         return RedirectToAction("Login");
 
     }
-<<<<<<< HEAD
 
 
    
-=======
->>>>>>> 0333acec75ef48b8c830a6eb92b7410c80044a5e
     public ActionResult SaveProduct()
     {
         TopSoft db = new TopSoft();
@@ -841,7 +804,7 @@ public class ProductController : Controller
         else
             return RedirectToAction("DisplayStocks");
     }
-   
+    //
     // POST: /Product/Edit/5
     [HttpPost]
 
