@@ -3,7 +3,22 @@
     ViewBag.Title = "DisplayItems";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/sweetalert.min.js"></script>
+@if (TempData["Al"] != null)
+{
+    <script>
+        swal("Deleted!", "Item has been deleted.", "success");
+    </script>
+    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 
+}
+@if (TempData["A"] != null)
+{
+    <script>
+        swal("Oops...", "Something went wrong!Not Allowed", "error");
+    </script>
+    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
 <h2>DisplayItems</h2>
 <a href="@Url.Action("SaveProduct","Product")">Add Product</a>
 <table class="table table-bordered table-striped">

@@ -3,6 +3,21 @@
     ViewBag.Title = "DisplayCategories";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/sweetalert.min.js"></script>
+@if (TempData["Al"] != null)
+{
+    <script>
+        swal("Deleted!", "Item has been deleted.", "success");
+    </script>
+    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
+@if (TempData["A"] != null)
+{
+    <script>
+        swal("Oops...", "Something went wrong!Not Allowed", "error");
+    </script>
+    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
 <a href="@Url.Action("SaveGroup","Product")">Add Group</a>
 <table class="table table-bordered table-striped">
     <tr>

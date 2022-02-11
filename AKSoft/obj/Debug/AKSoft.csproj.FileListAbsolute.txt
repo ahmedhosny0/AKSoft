@@ -52,7 +52,6 @@ D:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.Twitter.xml
 D:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.dll
 D:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.pdb
-D:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.csprojResolveAssemblyReference.cache
 E:\AKSoft\AKSoft\bin\AKSoft.dll.config
 E:\AKSoft\AKSoft\bin\AKSoft.dll
 E:\AKSoft\AKSoft\bin\AKSoft.pdb

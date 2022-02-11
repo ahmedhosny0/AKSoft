@@ -24,19 +24,31 @@ public class ProductController : Controller
   
         [HttpPost]  
         [ValidateAntiForgeryToken]  
-        public ActionResult Login(UserInfo objUser)   
-        {  
-            if (ModelState.IsValid)   
-            {  
-                using(TopSoft db = new TopSoft())  
+        public ActionResult Login(UserInfo objUser)
+    {
+        try
+        {
+            if (ModelState.IsValid)
+            {
+
+                using (TopSoft db = new TopSoft())
                 {
                     var obj = db.UserInfo.Where(a => a.Email.Equals(objUser.Email) && a.Password.Equals(objUser.Password)).FirstOrDefault();
                     string result = "fail";
-                    if (obj != null)  
-                    {  
-                        Session["UserID"] = obj.Id.ToString();  
-                        Session["UserName"] = obj.Email.ToString();  
+                    if (obj != null)
+                    {
+                        Session["UserID"] = obj.Id.ToString();
+                        Session["UserName"] = obj.Email.ToString();
                         return RedirectToAction("Home");
+                    }
+                }
+            }
+        }
+
+        catch
+        {
+            TempData["A"] = "s";
+        }
                         //if (user.RoleId == 3)
                         //{
                         //    result = "GeneralUser";
@@ -47,9 +59,7 @@ public class ProductController : Controller
                         //    result = "Admin";
 
                         //}
-                    }  
-                }  
-            }  
+                    
             return View(objUser);  
         }  
   
@@ -208,13 +218,21 @@ public class ProductController : Controller
     [HttpGet]
     public ActionResult DeleteInSales(int? id)
     {
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        try
         {
-            sqlCon.Open();
-            string query = "DELETE FROM Hsales WHere Serial = @Serial";
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@Serial", id);
-            sqlCmd.ExecuteNonQuery();
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string query = "DELETE FROM Hsales WHere Serial = @Serial";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@Serial", id);
+                sqlCmd.ExecuteNonQuery();
+                TempData["Al"] = "";
+            }
+        }
+        catch
+        {
+            TempData["A"] = "s";
         }
         return RedirectToAction("DisplayInvoiceSales");
     }
@@ -300,13 +318,21 @@ public class ProductController : Controller
     [HttpGet]
     public ActionResult DeleteInPurchase(int? id)
     {
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        try
         {
-            sqlCon.Open();
-            string query = "DELETE FROM HPurchase WHere Serial = @Serial";
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@Serial", id);
-            sqlCmd.ExecuteNonQuery();
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string query = "DELETE FROM HPurchase WHere Serial = @Serial";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@Serial", id);
+                sqlCmd.ExecuteNonQuery();
+                TempData["Al"] = "";
+            }
+        }
+        catch
+        {
+            TempData["A"] = "s";
         }
         return RedirectToAction("DisplayInvoicePurchase");
     }
@@ -530,6 +556,7 @@ public class ProductController : Controller
                 GroupCode group = db.GroupCode.Where(x => x.Serial == id).FirstOrDefault();
                 db.GroupCode.Remove(group);
                 db.SaveChanges();
+                TempData["Al"] = "";
             }
 
             return RedirectToAction("d");
@@ -543,12 +570,19 @@ public class ProductController : Controller
     [HttpGet]
     public ActionResult DisplayCategories()
     {
-        DataTable dtblProduct = new DataTable();
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            DataTable dtblProduct = new DataTable();
+            try
+            {
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description FROM GroupCode", sqlCon);
+                sqlDa.Fill(dtblProduct);
+            }
+        }
+        catch
         {
-            sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description FROM GroupCode", sqlCon);
-            sqlDa.Fill(dtblProduct);
+            TempData["A"] = "s";
         }
         return View(dtblProduct);
     }
@@ -560,13 +594,21 @@ public class ProductController : Controller
     }
     public ActionResult DeleteCat(int? id)
     {
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        try
         {
-            sqlCon.Open();
-            string query = "DELETE FROM GroupCode WHere Serial = @Serial";
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@Serial", id);
-            sqlCmd.ExecuteNonQuery();
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string query = "DELETE FROM GroupCode WHere Serial = @Serial";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@Serial", id);
+                sqlCmd.ExecuteNonQuery();
+                TempData["Al"] = "";
+            }
+        }
+        catch
+        {
+            TempData["A"] = "s";
         }
         return RedirectToAction("DisplayCategories");
     }
@@ -613,6 +655,7 @@ public class ProductController : Controller
             sqlCmd.Parameters.AddWithValue("@DescName", productModel.DescName);
           sqlCmd.Parameters.AddWithValue("@Description", productModel.Description);
            sqlCmd.ExecuteNonQuery();
+           TempData["Al"] = "";
         }
         return RedirectToAction("DisplayCategories");
     }
@@ -654,13 +697,21 @@ public class ProductController : Controller
     }
     public ActionResult DeleteUnit(int? id)
     {
-                using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        try
         {
-            sqlCon.Open();
-            string query = "DELETE FROM UnitCode WHere Serial = @Serial";
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@Serial", id);
-            sqlCmd.ExecuteNonQuery();
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string query = "DELETE FROM UnitCode WHere Serial = @Serial";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@Serial", id);
+                sqlCmd.ExecuteNonQuery();
+                TempData["Al"] = "";
+            }
+        }
+        catch
+        {
+            TempData["A"] = "s";
         }
         return RedirectToAction("DisplayUnits");
     }
@@ -671,13 +722,21 @@ public class ProductController : Controller
     [HttpGet]
     public ActionResult DeleteItem(int? id)
     {
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        try
         {
-            sqlCon.Open();
-            string query = "DELETE FROM ItemCode WHere Serial = @Serial";
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@Serial", id);
-            sqlCmd.ExecuteNonQuery();
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string query = "DELETE FROM ItemCode WHere Serial = @Serial";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@Serial", id);
+                sqlCmd.ExecuteNonQuery();
+                TempData["Al"] = "";
+            }
+        }
+        catch
+        {
+            TempData["A"] = "s";
         }
         return RedirectToAction("DisplayItems");
     }
@@ -710,32 +769,34 @@ public class ProductController : Controller
     //---
     public ActionResult EditItem(int? id)
     {
+
         ItemCode productModel = new ItemCode();
         DataTable dtblProduct = new DataTable();
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
-        {
-            sqlCon.Open();
-            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,PriceSale1Unit1,Counts FROM ItemCode";
-            SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
-            sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
-            sqlDa.Fill(dtblProduct);
-        }
-        if (dtblProduct.Rows.Count == 1)
-        {
-            productModel.Serial = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
-            productModel.ArabicName = dtblProduct.Rows[0][1].ToString();
-            productModel.EnglishName = dtblProduct.Rows[0][2].ToString();
-            productModel.DescName = dtblProduct.Rows[0][3].ToString();
-            productModel.Description = dtblProduct.Rows[0][4].ToString();
-            productModel.StoreID = Convert.ToInt32(dtblProduct.Rows[0][5].ToString());
-            productModel.SerialGroup = Convert.ToInt32(dtblProduct.Rows[0][6].ToString());
-            productModel.PricePurchase1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][7].ToString());
-            productModel.PriceSale1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][8].ToString());
-            productModel.Counts = Convert.ToInt32(dtblProduct.Rows[0][9].ToString());
-            return View(productModel);
-        }
-        else
-            return RedirectToAction("DisplayItems");
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,PriceSale1Unit1,Counts FROM ItemCode";
+                SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
+                sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
+                sqlDa.Fill(dtblProduct);
+            }
+            if (dtblProduct.Rows.Count == 1)
+            {
+                productModel.Serial = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+                productModel.ArabicName = dtblProduct.Rows[0][1].ToString();
+                productModel.EnglishName = dtblProduct.Rows[0][2].ToString();
+                productModel.DescName = dtblProduct.Rows[0][3].ToString();
+                productModel.Description = dtblProduct.Rows[0][4].ToString();
+                productModel.StoreID = Convert.ToInt32(dtblProduct.Rows[0][5].ToString());
+                productModel.SerialGroup = Convert.ToInt32(dtblProduct.Rows[0][6].ToString());
+                productModel.PricePurchase1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][7].ToString());
+                productModel.PriceSale1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][8].ToString());
+                productModel.Counts = Convert.ToInt32(dtblProduct.Rows[0][9].ToString());
+                return View(productModel);
+            }
+            else
+                return RedirectToAction("DisplayItems");
+
     }
 
 
@@ -745,18 +806,26 @@ public class ProductController : Controller
  
     public ActionResult EditUnit(UnitCode productModel)
     {
-         using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        try
         {
-            sqlCon.Open();
- 
-            string query = "UPDATE UnitCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description   WHere Serial = @pr";
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@pr", productModel.Serial);
-            sqlCmd.Parameters.AddWithValue("@ArabicName", productModel.ArabicName);
-            sqlCmd.Parameters.AddWithValue("@EnglishName", productModel.EnglishName);
-            sqlCmd.Parameters.AddWithValue("@DescName", productModel.DescName);
-            sqlCmd.Parameters.AddWithValue("@Description", productModel.Description);
-            sqlCmd.ExecuteNonQuery();
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+
+                string query = "UPDATE UnitCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description   WHere Serial = @pr";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@pr", productModel.Serial);
+                sqlCmd.Parameters.AddWithValue("@ArabicName", productModel.ArabicName);
+                sqlCmd.Parameters.AddWithValue("@EnglishName", productModel.EnglishName);
+                sqlCmd.Parameters.AddWithValue("@DescName", productModel.DescName);
+                sqlCmd.Parameters.AddWithValue("@Description", productModel.Description);
+                sqlCmd.ExecuteNonQuery();
+                TempData["As"] = "";
+            }
+        }
+        catch
+        {
+            TempData["A"] = 1;
         }
         return RedirectToAction("DisplayUnits");
      
@@ -780,6 +849,7 @@ public class ProductController : Controller
     {
         StoreCode productModel = new StoreCode();
         DataTable dtblProduct = new DataTable();
+        
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
@@ -812,23 +882,31 @@ public class ProductController : Controller
 
     public ActionResult EditStock(StoreCode productModel)
     {
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        try
         {
-            sqlCon.Open();
-            string query = "UPDATE StoreCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description ,Address=@Address,StoreKeeper=@StoreKeeper,NumberOfLeans=@NumberOfLeans, Phone1=@Phone1,Phone2=@Phone2, Phone3=@Phone3  WHere Serial = @pr";
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@pr", productModel.Serial);
-            sqlCmd.Parameters.AddWithValue("@ArabicName", productModel.ArabicName);
-            sqlCmd.Parameters.AddWithValue("@EnglishName", productModel.EnglishName);
-            sqlCmd.Parameters.AddWithValue("@DescName", productModel.DescName);
-            sqlCmd.Parameters.AddWithValue("@Description", productModel.Description);
-            sqlCmd.Parameters.AddWithValue("@Address", productModel.Address);
-             sqlCmd.Parameters.AddWithValue("@NumberOfLeans", productModel.NumberOfLeans);
-             sqlCmd.Parameters.AddWithValue("@StoreKeeper", productModel.StoreKeeper);
-            sqlCmd.Parameters.AddWithValue("@Phone1", productModel.Phone1);
-            sqlCmd.Parameters.AddWithValue("@Phone2", productModel.Phone2);
-            sqlCmd.Parameters.AddWithValue("@Phone3", productModel.Phone3);
-            sqlCmd.ExecuteNonQuery();
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string query = "UPDATE StoreCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description ,Address=@Address,StoreKeeper=@StoreKeeper,NumberOfLeans=@NumberOfLeans, Phone1=@Phone1,Phone2=@Phone2, Phone3=@Phone3  WHere Serial = @pr";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@pr", productModel.Serial);
+                sqlCmd.Parameters.AddWithValue("@ArabicName", productModel.ArabicName);
+                sqlCmd.Parameters.AddWithValue("@EnglishName", productModel.EnglishName);
+                sqlCmd.Parameters.AddWithValue("@DescName", productModel.DescName);
+                sqlCmd.Parameters.AddWithValue("@Description", productModel.Description);
+                sqlCmd.Parameters.AddWithValue("@Address", productModel.Address);
+                sqlCmd.Parameters.AddWithValue("@NumberOfLeans", productModel.NumberOfLeans);
+                sqlCmd.Parameters.AddWithValue("@StoreKeeper", productModel.StoreKeeper);
+                sqlCmd.Parameters.AddWithValue("@Phone1", productModel.Phone1);
+                sqlCmd.Parameters.AddWithValue("@Phone2", productModel.Phone2);
+                sqlCmd.Parameters.AddWithValue("@Phone3", productModel.Phone3);
+                sqlCmd.ExecuteNonQuery();
+                TempData["Al"] = "";
+            }
+        }
+        catch
+        {
+            TempData["A"] = "s";
         }
         return RedirectToAction("DisplayStocks");
 
@@ -836,14 +914,23 @@ public class ProductController : Controller
     [HttpGet]
     public ActionResult DeleteStock(int? id)
     {
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        try
         {
-            sqlCon.Open();
-            string query = "DELETE FROM StoreCode WHere Serial = @Serial";
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@Serial", id);
-            sqlCmd.ExecuteNonQuery();
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string query = "DELETE FROM StoreCode WHere Serial = @Serial";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@Serial", id);
+                sqlCmd.ExecuteNonQuery();
+                TempData["Al"] = "";
+            }
         }
+        catch
+        {
+            TempData["A"] = "s";
+        }
+
         return RedirectToAction("DisplayStocks");
     }
 

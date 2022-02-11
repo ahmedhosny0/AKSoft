@@ -281,7 +281,6 @@
     <Content Include="Views\EditorDelete\Doc.cshtml" />
     <Content Include="Views\Product\Doc.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\DisplayCategories.cshtml" />
     <Content Include="Views\Product\EditCat.cshtml" />
     <Content Include="Views\Product\DisplayUnits.cshtml" />
