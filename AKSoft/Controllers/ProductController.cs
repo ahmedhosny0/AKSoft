@@ -665,6 +665,8 @@ public class ProductController : Controller
     [HttpPost]
     public ActionResult EditCat(GroupCode productModel)
     {
+        try
+        {
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
@@ -676,7 +678,12 @@ public class ProductController : Controller
             sqlCmd.Parameters.AddWithValue("@DescName", productModel.DescName);
           sqlCmd.Parameters.AddWithValue("@Description", productModel.Description);
            sqlCmd.ExecuteNonQuery();
-           TempData["Al"] = "";
+            TempData["As"] = "";
+            }
+        }
+        catch
+        {
+            TempData["A"] = 1;
         }
         return RedirectToAction("DisplayCategories");
     }
@@ -926,12 +933,12 @@ public class ProductController : Controller
                 sqlCmd.Parameters.AddWithValue("@Phone2", productModel.Phone2);
                 sqlCmd.Parameters.AddWithValue("@Phone3", productModel.Phone3);
                 sqlCmd.ExecuteNonQuery();
-                TempData["Al"] = "";
+                TempData["As"] = "";
             }
         }
         catch
         {
-            TempData["A"] = "s";
+            TempData["A"] = 1;
         }
         return RedirectToAction("DisplayStocks");
 
