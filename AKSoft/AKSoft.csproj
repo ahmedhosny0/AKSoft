@@ -205,6 +205,9 @@
     <Compile Include="Models\UserInfo.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserProfile.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -308,6 +311,8 @@
     <Content Include="Views\Product\CashExchange.cshtml" />
     <Content Include="Views\Product\ReceiveCash.cshtml" />
     <Content Include="Views\Product\SaveSupplier.cshtml" />
+    <Content Include="Views\Product\LoginUser.cshtml" />
+    <Content Include="Views\Product\Loginr.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

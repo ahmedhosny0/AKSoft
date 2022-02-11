@@ -9,6 +9,7 @@
 <table class="table table-bordered table-striped">
     <tr>
         <th>Item Name</th>
+        <th>Unit Name</th>
         <th>Balance</th>
         <th></th>
     </tr>
@@ -18,6 +19,7 @@
         <tr>
             <td>@Model.Rows[i][0]</td>
             <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
             <td>
                 <a href="@Url.Action("EditUnit", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
                 <a href="@Url.Action("DeleteUnit", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>

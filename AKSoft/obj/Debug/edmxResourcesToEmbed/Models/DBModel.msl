@@ -114,6 +114,7 @@
     <EntitySetMapping Name="UserInfo">
       <EntityTypeMapping TypeName="TopSoftModel.UserInfo">
         <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="Role" ColumnName="Role" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
@@ -147,6 +148,16 @@
           <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfile">
+      <EntityTypeMapping TypeName="TopSoftModel.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

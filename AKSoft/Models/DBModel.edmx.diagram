@@ -24,6 +24,7 @@
         <AssociationConnector Association="TopSoftModel.FK__HPurchase__Store__07C12930" />
         <AssociationConnector Association="TopSoftModel.FK__HPurchase__UnitS__08B54D69" />
         <AssociationConnector Association="TopSoftModel.itemSerial" />
+        <EntityTypeShape EntityType="TopSoftModel.UserProfile" Width="1.5" PointX="8.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -145,6 +145,16 @@
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" />
           <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
+          <Property Name="Role" Type="int" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <Association Name="FK__HPurchase__Group__0E6E26BF">
           <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
@@ -303,6 +313,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__HPurchase__Group__0E6E26BF" Association="Self.FK__HPurchase__Group__0E6E26BF">
             <End Role="GroupCode" EntitySet="GroupCode" />
             <End Role="HPurchase" EntitySet="HPurchase" />
@@ -485,6 +496,7 @@
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="RePassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="Int32" />
         </EntityType>
         <Association Name="FK_ItemCode_GroupCode">
           <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
@@ -617,6 +629,7 @@
             <End Role="ItemCode" EntitySet="ItemCode" />
             <End Role="HSales" EntitySet="HSales" />
           </AssociationSet>
+          <EntitySet Name="UserProfile" EntityType="TopSoftModel.UserProfile" />
         </EntityContainer>
         <EntityType Name="HPurchase">
           <Key>
@@ -717,6 +730,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -836,6 +858,7 @@
           <EntitySetMapping Name="UserInfo">
             <EntityTypeMapping TypeName="TopSoftModel.UserInfo">
               <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
@@ -869,6 +892,16 @@
                 <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Serial" ColumnName="Serial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfile">
+            <EntityTypeMapping TypeName="TopSoftModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
