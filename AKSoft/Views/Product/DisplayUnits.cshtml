@@ -9,21 +9,21 @@
     <script>
         swal("Deleted!", "Item has been deleted.", "success");
     </script>
-    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+   // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
 @if (TempData["As"] !=null)
 {
     <script>
         swal("Modified Successfully!", " ", "success");
     </script>
-    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+   // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
 @if (TempData["A"] != null)
 {
     <script>
         swal("Oops...", "Something went wrong!Not Allowed", "error");
     </script>
-    <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
 <h2>DisplayUnits</h2>
 <a href="@Url.Action("SaveUnit","Product")">Add Unit</a>

@@ -16,6 +16,37 @@ public class ProductController : Controller
     {
         return View();
     }
+    public ActionResult AddUser()
+    {
+        return View();
+    }
+    [HttpPost]
+
+    public ActionResult AddUser(UserInfo model)
+    {
+        try
+        {
+            TopSoft db = new TopSoft();
+            UserInfo group = new UserInfo();
+            group.FirstName = model.FirstName;
+            group.MiddleName = model.MiddleName;
+            group.LastName = model.LastName;
+            group.Email = model.Email;
+            group.Password = model.Password;
+            group.RePassword = model.RePassword;
+            db.UserInfo.Add(group);
+            db.SaveChanges();
+            TempData["Al"] = "";
+            int latestEmpId = group.Id;
+            return RedirectToAction("AddUser");
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+
+        }
+    }
     // Ahmed AKSoft
     public ActionResult Login()  
         {  
@@ -26,8 +57,8 @@ public class ProductController : Controller
         [ValidateAntiForgeryToken]  
         public ActionResult Login(UserInfo objUser)
     {
-        try
-        {
+ 
+
             if (ModelState.IsValid)
             {
 
@@ -39,26 +70,18 @@ public class ProductController : Controller
                     {
                         Session["UserID"] = obj.Id.ToString();
                         Session["UserName"] = obj.Email.ToString();
+
+
                         return RedirectToAction("Home");
                     }
+                    else
+                    {
+                        ViewBag.Message = "UserName or password is wrong";
+                        return View();
+                    }
                 }
-            }
-        }
-
-        catch
-        {
-            TempData["A"] = "s";
-        }
-                        //if (user.RoleId == 3)
-                        //{
-                        //    result = "GeneralUser";
-
-                        //}
-                        //else if (user.RoleId == 1)
-                        //{
-                        //    result = "Admin";
-
-                        //}
+            
+           }
                     
             return View(objUser);  
         }  
@@ -78,10 +101,8 @@ public class ProductController : Controller
     {
         return View();
     }
-    public ActionResult LoginUser()
-    {
-        return View();
-    }
+
+    /*
     [HttpPost]
     public JsonResult LoginUser(UserInfo model)
     {
@@ -123,7 +144,7 @@ public class ProductController : Controller
     }
 
 
-   
+   */
     public ActionResult SaveProduct()
     {
         TopSoft db = new TopSoft();
@@ -847,34 +868,38 @@ public class ProductController : Controller
     // Stock Edit
     public ActionResult EditStock(int? id)
     {
+
         StoreCode productModel = new StoreCode();
         DataTable dtblProduct = new DataTable();
-        
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
-            sqlCon.Open();
-            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,[Address],[NumberOfLeans],[StoreKeeper],[Phone1],[Phone2],[Phone3] FROM StoreCode Where Serial =@Serial";
-            SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
-            sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
-            sqlDa.Fill(dtblProduct);
-        }
-        if (dtblProduct.Rows.Count == 1)
-        {
-            productModel.Serial = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
-            productModel.ArabicName = dtblProduct.Rows[0][1].ToString();
-            productModel.EnglishName = dtblProduct.Rows[0][2].ToString();
-            productModel.DescName = dtblProduct.Rows[0][3].ToString();
-            productModel.Description = dtblProduct.Rows[0][4].ToString();
-            productModel.Address = dtblProduct.Rows[0][5].ToString();
-            productModel.NumberOfLeans = Convert.ToInt32(dtblProduct.Rows[0][6].ToString());
-            productModel.StoreKeeper = dtblProduct.Rows[0][7].ToString();
-            productModel.Phone1 = dtblProduct.Rows[0][8].ToString();
-            productModel.Phone2 = dtblProduct.Rows[0][9].ToString();
-            productModel.Phone3 = dtblProduct.Rows[0][10].ToString();
-            return View(productModel);
-        }
-        else
-            return RedirectToAction("DisplayStocks");
+           
+                sqlCon.Open();
+                string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,[Address],[NumberOfLeans],[StoreKeeper],[Phone1],[Phone2],[Phone3] FROM StoreCode Where Serial =@Serial";
+                SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
+                sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
+                sqlDa.Fill(dtblProduct);
+            }
+
+            if (dtblProduct.Rows.Count == 1)
+            {
+                productModel.Serial = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+                productModel.ArabicName = dtblProduct.Rows[0][1].ToString();
+                productModel.EnglishName = dtblProduct.Rows[0][2].ToString();
+                productModel.DescName = dtblProduct.Rows[0][3].ToString();
+                productModel.Description = dtblProduct.Rows[0][4].ToString();
+                productModel.Address = dtblProduct.Rows[0][5].ToString();
+                productModel.NumberOfLeans = Convert.ToInt32(dtblProduct.Rows[0][6].ToString());
+                productModel.StoreKeeper = dtblProduct.Rows[0][7].ToString();
+                productModel.Phone1 = dtblProduct.Rows[0][8].ToString();
+                productModel.Phone2 = dtblProduct.Rows[0][9].ToString();
+                productModel.Phone3 = dtblProduct.Rows[0][10].ToString();
+                return View(productModel);
+            }
+            else
+                return RedirectToAction("DisplayStocks");
+        
+
     }
     //
     // POST: /Product/Edit/5

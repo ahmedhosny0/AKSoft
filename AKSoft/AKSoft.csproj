@@ -310,7 +310,7 @@
     <Content Include="Views\Product\CashExchange.cshtml" />
     <Content Include="Views\Product\ReceiveCash.cshtml" />
     <Content Include="Views\Product\SaveSupplier.cshtml" />
-    <Content Include="Views\Product\LoginUser.cshtml" />
+    <Content Include="Views\Product\AddUser.cshtml" />
     <Content Include="Views\Product\Loginr.cshtml" />
   </ItemGroup>
   <ItemGroup>
