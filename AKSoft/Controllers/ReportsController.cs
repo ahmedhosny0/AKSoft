@@ -21,7 +21,7 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("Select StoreName, ItemName, StoreKeeper from StoreState", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("Select ArabicName,Address,NumberOfLeans,StoreKeeper,AreaStock,Phone1 from StoreCode", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);
@@ -43,7 +43,7 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("  Select ItemName ,UnitName,case When (sum(HpurchaseQuantity)-sum(HSale.Quantity))is null then sum(HpurchaseQuantity) else (sum(HpurchaseQuantity)-sum(HSale.Quantity)) end Counts  from itemcard left join (select itemserial,sum(quantity)Quantity from HSales group by itemserial) HSale on HSale.ItemSerial =ItemCard.ItemCode  Group by itemname,unitname", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select storecode.ArabicName,ItemCode.arabicname Name,UnitCode.ArabicName ,sum(s.a) from itemcode left join (select itemserial, sum(case when type =1 then (Quantity) else (Quantity)*-1  end) a from ( select ItemSerial,HPurchase.Quantity,1 as type from HPurchase union select ItemSerial,Quantity,0 as type from HSales ) ss group by ItemSerial)s on s.ItemSerial = itemcode.serial left join StoreCode on StoreCode.serial =ItemCode.StoreID left join UnitCode on UnitCode.serial =ItemCode.Unit1 group by Itemcode.ArabicName,storecode.ArabicName,UnitCode.ArabicName", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);
@@ -54,7 +54,7 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("  Select ItemName ,UnitName,case When (sum(HpurchaseQuantity)-sum(HSale.Quantity))is null then sum(HpurchaseQuantity) else (sum(HpurchaseQuantity)-sum(HSale.Quantity)) end Counts  from itemcard left join (select itemserial,sum(quantity)Quantity from HSales group by itemserial) HSale on HSale.ItemSerial =ItemCard.ItemCode  Group by itemname,unitname", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select distinct ItemName,StoreName,GroupName,UnitName from ItemCard", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);
@@ -78,7 +78,7 @@ public class ReportsController : Controller
         using(SqlConnection sqlCon=new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("Select StoreCode.ArabicName Store,ItemCode.ArabicName,UnitCode.ArabicName Unit,(hpurchase.Quantity) Q,Price, sum(Total)  from ItemCode left join HPurchase on HPurchase.ItemSerial =ItemCode.Serial left join UnitCode on UnitCode.Serial =ItemCode.Unit1 left join StoreCode on StoreCode.Serial =ItemCode.StoreID group by ItemCode.ArabicName,price,StoreCode.ArabicName,UnitCode.ArabicName,hpurchase.Quantity", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select StoreName,ItemName,UnitName,HpurchaseQuantity,HpurchasePrice,HpurchaseTotal from RptPurchase", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);

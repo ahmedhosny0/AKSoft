@@ -28,13 +28,14 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="Elements">
-            <div>
-                <label class="Lab">Store</label>
-                @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
-            </div>
-            <label class="Lab">Category</label>
-            @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+    <ul class="Elements">
+            <li class="gs">
+                    <label class="Lab">Store</label>
+                    @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+                <label class="Lab">Category</label>
+                @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+            </li>
+            
             <div>
                 <label class="Lab">Product Name</label>
                 @Html.DropDownListFor(model => model.ItemSerial, ViewBag.DepartmentList4 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
@@ -61,18 +62,19 @@
             <button class="save">Save</button>
             @Html.ActionLink("Show All", "DisplayInvoiceSales", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
 
-        </div>
+    </ul>
+
 
     }
     <script type="text/javascript">
-    function Multiy() {
-        var txtFirstNo = document.getElementById('txtFirstNo').value;
-        var txtSecondNo = document.getElementById('txtSecondNo').value;
-        var result = parseFloat(txtFirstNo) * parseFloat(txtSecondNo);//Don't forget the captial in float
-        if (!isNaN(result)) {
-            document.getElementById('txtResult').value = result;
+        function Multiy() {
+            var txtFirstNo = document.getElementById('txtFirstNo').value;
+            var txtSecondNo = document.getElementById('txtSecondNo').value;
+            var result = parseFloat(txtFirstNo) * parseFloat(txtSecondNo);//Don't forget the captial in float
+            if (!isNaN(result)) {
+                document.getElementById('txtResult').value = result;
+            }
         }
-    }
-    </script> 
+    </script>
 </body>
 </html>

@@ -215,4 +215,3 @@ F:\ahmed1\AKSoft\AKSoft\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\ahmed1\AKSoft\AKSoft\obj\Debug\AKSoft.dll
 F:\ahmed1\AKSoft\AKSoft\obj\Debug\AKSoft.pdb
 F:\ahmed1\AKSoft\AKSoft\obj\Debug\AKSoft.csprojResolveAssemblyReference.cache
-D:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.csprojResolveAssemblyReference.cache
