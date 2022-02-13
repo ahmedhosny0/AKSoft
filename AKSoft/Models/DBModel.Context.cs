@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AKSoft.Models
+namespace AOne.Models
 {
     using System;
     using System.Data.Entity;

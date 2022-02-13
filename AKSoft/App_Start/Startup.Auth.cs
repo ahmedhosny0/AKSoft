@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using AKSoft.Models;
+using AOne.Models;
 
-namespace AKSoft
+namespace AOne
 {
     public partial class Startup
     {

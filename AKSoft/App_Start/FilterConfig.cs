@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace AKSoft
+namespace AOne
 {
     public class FilterConfig
     {

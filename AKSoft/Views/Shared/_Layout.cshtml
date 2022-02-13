@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model UserInfo
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -70,6 +71,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                   
+                    <li> @Html.LabelFor(model => model.Email, htmlAttributes: new {@class="save" })</li>
                     <li><a href="/Product/SaveStock">Stores</a></li>
                     <li><a href="/Product/SaveGroup">Category</a></li>
                     <li><a href="/Product/SaveUnit">Unit</a></li>
@@ -98,7 +101,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Ahmed Hosny Ahmed Khairy (AKSoft)</p>
+            <p>&copy; @DateTime.Now.Year - Ahmed Hosny Ahmed Khairy (AOne)</p>
         </footer>
     </div>
 
