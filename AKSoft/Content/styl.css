@@ -111,13 +111,14 @@ body {
     width: 710px;
 }
 .Elements{
-   background-color: yellow; 
+   background-color: #e5e5e5; 
   list-style-type: none;
-  text-align: center;
   margin: 0;
-  padding: 0;
+ padding: 20px;
 }
-.Elements li{ display:inline-block}
+.invo{    border: solid;
+    padding: 20px;}
+
 .Lab
 {
             clear: both;
