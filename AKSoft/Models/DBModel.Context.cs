@@ -33,5 +33,6 @@ namespace AKSoft.Models
         public virtual DbSet<UnitCode> UnitCode { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
         public virtual DbSet<HPurchase> HPurchase { get; set; }
+        public virtual DbSet<UserProfile> UserProfile { get; set; }
     }
 }

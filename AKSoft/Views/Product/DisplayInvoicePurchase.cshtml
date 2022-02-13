@@ -5,7 +5,28 @@
 }
 
 <h2>Display Invoice Purchase</h2>
-
+<script src="~/Scripts/sweetalert.min.js"></script>
+@if (TempData["Al"] != null)
+{
+    <script>
+        swal("Deleted!", "Item has been deleted.", "success");
+    </script>
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
+@if (TempData["As"] != null)
+{
+    <script>
+        swal("Modified Successfully!", " ", "success");
+    </script>
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
+@if (TempData["A"] != null)
+{
+    <script>
+        swal("Oops...", "Something went wrong!Not Allowed", "error");
+    </script>
+    //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
 <a href="@Url.Action("SaveInvoicePurchase", "Product")">Add Invoice Purchase</a>
 <table class="table table-bordered table-striped">
     <tr>

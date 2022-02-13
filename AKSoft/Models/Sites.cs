@@ -7,19 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
+namespace AKSoft.Models
+{
     using System;
     using System.Collections.Generic;
     
-    public partial class UserInfo
+    public partial class Sites
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string RePassword { get; set; }
-        public Nullable<int> Role { get; set; }
+        public int SiteId { get; set; }
+        public Nullable<int> EmployeeId { get; set; }
+        public string SiteName { get; set; }
     }
-
+}

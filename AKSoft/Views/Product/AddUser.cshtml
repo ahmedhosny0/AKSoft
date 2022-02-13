@@ -1,43 +1,20 @@
 ﻿@model UserInfo
 @{
     Layout = null;
-}
-<title>Login</title>
-<script src="~/Scripts/sweetalert.min.js"></script>
-@if (TempData["Al"] == null)
-{
-    <script>
-        swal("Saved successfully!", " ", "success");
-    </script>
-   // <strong style="color:green">Saved successfully! </strong>@TempData["Al"] //Display Word (Successful Done) + name
-}
-@if (TempData["A"] != null)
-{
-    <script>
-        swal("Modified Successfully!", " ", "success");
-    </script>
-   //  <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
-}
-@if (TempData["A"] == null)
-{
-    <script>
-        swal("Modified Successfully!", " ", "success");
-    </script>
-   // <strong style="color:green">Savedg successfully! </strong>@TempData["Al"]
+
 }
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Add User</title>
     <link rel="stylesheet" href="~/Content/styl.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
-    <script src="~/Scripts/jquery.js"></script>
-    <script src="~/Scripts/custom.js"></script>
 
-        <style > body {
+    <style>
+        body {
             margin: 0;
             color: #6a6f8c;
             background: #c8c8c8;
@@ -229,26 +206,19 @@
     </style>
 </head>
 <body class="b">
-   
     <script src="~/Scripts/sweetalert.min.js"></script>
     @if (TempData["Al"] != null)
     {
         <script>
-
-            swal("Oops...", "Something went wrong! ", "error");
+            swal("Created User successfully!", " ", "success");
         </script>
-       // <strong style="color:green">Saved successfully! </strong>@TempData["Al"] //Display Word (Successful Done) + name
+        // <strong style="color:green">Saved successfully! </strong>@TempData["Al"] //Display Word (Successful Done) + name
     }
-    <div class="preloader">
-        <div class="sk-spinner sk-spinner-wave">
-            <div class="sk-rect1"></div>
-            <div class="sk-rect2"></div>
-            <div class="sk-rect3"></div>
-            <div class="sk-rect4"></div>
-            <div class="sk-rect5"></div>
-        </div>
-    </div>
-    @using (Html.BeginForm("Login", "Product", FormMethod.Post))
+    <a href="@Url.Action("Home","Product")">
+        <input type="submit" class="save" value="Home">
+    </a>
+    
+    @using (Html.BeginForm("AddUser", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken() // this is for prevent CSRF attack
         if (@ViewBag.Message != null)
@@ -258,77 +228,51 @@
             </div>
         }
 
-                <hr />
-                <div class="login-wrap">
-                    <div class="login-html">
-
-
-                        <div class="login-form">
-
-                                <div class="group">
-                                    <label for="user" class="label">Username</label>
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input" ,@required="required"} })
-                                </div>
-                                <div class="group">
-                                    <label for="pass" class="label">Password</label>
-                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input",@type="password",@required="required" } })
-                                </div>
-                                @*<div class="group">
-                                    <input id="check" type="checkbox" class="check" checked>
-                                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
-                                </div>*@
-                                <div class="group">
-                                    <a href="@Url.Action("Home","Product")">
-                                        <input type="submit" class="button" value="Sign In">
-
-                                    </a>
-                                </div>
-                                <div class="hr"></div>
-                                <div class="foot-lnk">
-                                    <a href="#forgot">Forgot Password?</a>
-                                </div>
+        <hr />
+        <div class="login-wrap">
+            <div class="login-html">
+                    <div class="login-form">
+                        <div class="group">
+                            <label for="user" class="label">FirstName</label>
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "input", @required = "required" } })
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">MiddleName</label>
+                            @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "input",  @required = "required" } })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">LastName</label>
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "input", @required = "required" } })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Username</label>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input", @required = "required" } })
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input", @type = "password", @required = "required" } })
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Re Password</label>
+                            @Html.EditorFor(model => model.RePassword, new { htmlAttributes = new { @class = "input", @type = "password", @required = "required" } })
+                        </div>
+                        @*<div class="group">
+                    <input id="check" type="checkbox" class="check" checked>
+                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                </div>*@
+                        <div class="group">
+                            <a href="@Url.Action("AddUser","Product")">    
+                                <input type="submit" class="button" value="Add User">
+                    
+                         </a>
                             </div>
-                        </div>
-                        <div>
-                        </div>
-                    </div>
 
-
-                }
-     <script>
-
-    var LoginUser = function () {
-        debugger
-        var data = $("#myForm").serialize();
-
-        $.ajax({
-            type: "Post",
-            url: "/Test/LoginUser",
-            data: data,
-            success: function (response) {
-                debugger
-                if (response == "fail") {
-
-                    window.location.href = "/Test/Login";
-                }
-                else if (response == "Admin") {
-
-                    window.location.href = "/Test/Admin";
-                }
-                else {
-
-                    window.location.href = "/Test/Index";
-                }
-            }
-
-
-
-        })
-
+</div>
+            </div>
+            </div>
 
 
     }
 
-    </script>
 </body>
 </html>
