@@ -1,0 +1,75 @@
+﻿@model UnitCode
+@{
+    ViewBag.Title = "Save Town";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>A</title>
+    <link rel="stylesheet" href="~/Content/styl.css" />
+    <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
+    <script type="text/javascript" src="~/Scripts/main.js"> </script>
+    <style>
+        .Elements {
+            background-color: #e5e5e5;
+            list-style-type: none;
+            border: ridge 1px;
+            margin: 0;
+            padding: 8px;
+        }
+
+        .head {
+            background-color: #3577ff;
+            width: 40%;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 class="head">Add Town</h1>
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("Saved successfully!", " ", "success");
+        </script>
+        <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    }
+    @using (Html.BeginForm("SaveTown", "Product", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="Elements">
+
+            <li class="">
+                <label class="Lab">ArabicName</label>
+                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+            </li>
+
+            <li class="">
+                <label class="Lab">EnglishName</label>
+                @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
+            </li>
+
+            <li class="">
+                <label class="Lab">DescName</label>
+                @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
+            </li>
+            <li class="">
+                <label class="Lab">Notes</label>
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+            </li>
+
+            <li class="">
+                <button class="save">Save</button>
+                @Html.ActionLink("Show All", "DisplayUnits", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
+            </li>
+        </ul>
+    }
+</body>
+</html>
+
+
+

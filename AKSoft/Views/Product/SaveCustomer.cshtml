@@ -1,22 +1,34 @@
-﻿@model ItemCode
-<link rel="stylesheet" href="~/Content/styl.css" />
-
+﻿@model CustomerCode
 @{
-    ViewBag.Title = "SaveProduct";
+    ViewBag.Title = "SaveCustomer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link rel="stylesheet" href="~/Content/styl.css" />
+    <title>SaveCustomer</title>
+    <link rel="stylesheet" href="~/Css/style.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
+    <style>
+        .Elements {
+            background-color: #e5e5e5;
+            list-style-type: none;
+            border: ridge 1px;
+            margin: 0;
+            padding: 15px;
+        }
+
+        .head {
+            background-color: #3577ff;
+            width: 40%;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h4>ProductModel</h4>
+    <h1 class="head">SaveCustomer</h1>
     @if (TempData["Al"] != null)
     {
         <script>
@@ -24,57 +36,65 @@
         </script>
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
-    @using (Html.BeginForm("SaveProduct", "Product", FormMethod.Post))
+    @using (Html.BeginForm("SaveCustomer", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
-        <div class="Elements">
- 
-            <hr />
+    <ul class="Elements">
 
-            <div class="">
-                @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
+        <li class="">
+            <label class="Lab">ArabicName</label>
+            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+        </li>
 
-                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
-            </div>
+        <li class="">
+            <label class="Lab">EnglishName</label>
+            @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
+        </li>
 
-            <div class="">
-                @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
-            </div>
-
-            <div class="">
-                @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
-            </div>
-            <div class="">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
-            </div>
-            <label class="Lab">Stock</label>
-            @Html.DropDownListFor(model => model.StoreID, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
-            <br /> <label class="Lab">Unit</label>
-            @Html.DropDownListFor(model => model.Unit1, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
-            <br /> <label class="Lab">Category</label>
-            @Html.DropDownListFor(model => model.SerialGroup, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
-            <div class="">
-                <label class="Lab">Purchase price</label>
-                @Html.EditorFor(model => model.PricePurchase1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
-            </div>
-            <div class="">
-                <label class="Lab">Sales price</label>
-                @Html.EditorFor(model => model.PriceSale1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "", @required = "required" } })
-            </div>
-            @*<div class="">
-                <label class="Lab">Quantity</label>
-                @Html.EditorFor(model => model.Counts, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
-            </div>*@
-            <br />
-            <div class="">
-                <button class="save">Save</button>
-                @Html.ActionLink("Show All", "DisplayItems", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
-            </div>
-        </div>
+        <li class="">
+            <label class="Lab">DescName</label>
+            @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
+        </li>
+        <li class="">
+            <label class="Lab">Notes</label>
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li class="">
+            <label class="Lab">Address1</label>
+            @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li class="">
+            <label class="Lab">Address2</label>
+            @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li class="">
+            <label class="Lab">Telephone1</label>
+            @Html.EditorFor(model => model.Telephone1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            <label class="Lab">Telephone2</label>
+            @Html.EditorFor(model => model.Telephone2, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            <label class="Lab">Telephone3</label>
+            @Html.EditorFor(model => model.Telephone3, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li class="">
+            <label class="Lab">Country</label>
+            @Html.DropDownListFor(model => model.CountrySerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+            <label class="Lab">Town</label>
+            @Html.DropDownListFor(model => model.TownSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+        </li>
+        <li class="">
+            <label class="Lab">E-mail</label>
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li class="">
+            <label class="Lab">Website</label>
+            @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li class="">
+            <button class="save">Save</button>
+            @Html.ActionLink("Show All", "DisplayItems", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
+        </li>
+    </ul>
     }
 
 </body>

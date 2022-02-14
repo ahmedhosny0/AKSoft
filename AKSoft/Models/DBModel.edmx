@@ -5,6 +5,39 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TopSoftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CountryCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="int" />
+          <Property Name="Id" Type="int" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="CustomerCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="int" />
+          <Property Name="Id" Type="int" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="150" />
+          <Property Name="Telephone1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountrySerial" Type="int" />
+          <Property Name="TownSerial" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="30" />
+        </EntityType>
         <EntityType Name="GroupCode">
           <Key>
             <PropertyRef Name="Serial" />
@@ -112,6 +145,27 @@
           <Property Name="Phone4" Type="nvarchar" MaxLength="20" />
           <Property Name="AreaStock" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="SupplierCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="int" />
+          <Property Name="Id" Type="int" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="150" />
+          <Property Name="Telephone1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountrySerial" Type="int" />
+          <Property Name="TownSerial" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="30" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -121,6 +175,18 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TownCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="int" />
+          <Property Name="Id" Type="int" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="UnitCode">
           <Key>
@@ -147,15 +213,34 @@
           <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
           <Property Name="Role" Type="int" />
         </EntityType>
-        <EntityType Name="UserProfile">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="50" />
-          <Property Name="Password" Type="varchar" MaxLength="50" />
-          <Property Name="IsActive" Type="bit" />
-        </EntityType>
+        <Association Name="FK__CustomerC__TownS__671F4F74">
+          <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomerCode" Type="Self.CustomerCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="CustomerCode">
+              <PropertyRef Name="TownSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Websi__662B2B3B">
+          <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomerCode" Type="Self.CustomerCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="CustomerCode">
+              <PropertyRef Name="CountrySerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__HPurchase__Group__0E6E26BF">
           <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -209,6 +294,34 @@
             </Principal>
             <Dependent Role="HPurchase">
               <PropertyRef Name="UnitSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierC__TownS__6AEFE058">
+          <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SupplierCode" Type="Self.SupplierCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="SupplierCode">
+              <PropertyRef Name="TownSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierC__Websi__69FBBC1F">
+          <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SupplierCode" Type="Self.SupplierCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="SupplierCode">
+              <PropertyRef Name="CountrySerial" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -305,15 +418,26 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TopSoftModelStoreContainer">
+          <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerCode" EntityType="Self.CustomerCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupCode" EntityType="Self.GroupCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HPurchase" EntityType="Self.HPurchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HSales" EntityType="Self.HSales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemCode" EntityType="Self.ItemCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StoreCode" EntityType="Self.StoreCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierCode" EntityType="Self.SupplierCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TownCode" EntityType="Self.TownCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CustomerC__TownS__671F4F74" Association="Self.FK__CustomerC__TownS__671F4F74">
+            <End Role="TownCode" EntitySet="TownCode" />
+            <End Role="CustomerCode" EntitySet="CustomerCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Websi__662B2B3B" Association="Self.FK__CustomerC__Websi__662B2B3B">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="CustomerCode" EntitySet="CustomerCode" />
+          </AssociationSet>
           <AssociationSet Name="FK__HPurchase__Group__0E6E26BF" Association="Self.FK__HPurchase__Group__0E6E26BF">
             <End Role="GroupCode" EntitySet="GroupCode" />
             <End Role="HPurchase" EntitySet="HPurchase" />
@@ -329,6 +453,14 @@
           <AssociationSet Name="FK__HPurchase__UnitS__10566F31" Association="Self.FK__HPurchase__UnitS__10566F31">
             <End Role="UnitCode" EntitySet="UnitCode" />
             <End Role="HPurchase" EntitySet="HPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierC__TownS__6AEFE058" Association="Self.FK__SupplierC__TownS__6AEFE058">
+            <End Role="TownCode" EntitySet="TownCode" />
+            <End Role="SupplierCode" EntitySet="SupplierCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierC__Websi__69FBBC1F" Association="Self.FK__SupplierC__Websi__69FBBC1F">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="SupplierCode" EntitySet="SupplierCode" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemCode_GroupCode" Association="Self.FK_ItemCode_GroupCode">
             <End Role="GroupCode" EntitySet="GroupCode" />
@@ -464,7 +596,6 @@
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -630,6 +761,26 @@
             <End Role="HSales" EntitySet="HSales" />
           </AssociationSet>
           <EntitySet Name="UserProfile" EntityType="TopSoftModel.UserProfile" />
+          <EntitySet Name="CountryCode" EntityType="TopSoftModel.CountryCode" />
+          <EntitySet Name="CustomerCode" EntityType="TopSoftModel.CustomerCode" />
+          <EntitySet Name="SupplierCode" EntityType="TopSoftModel.SupplierCode" />
+          <EntitySet Name="TownCode" EntityType="TopSoftModel.TownCode" />
+          <AssociationSet Name="FK__CustomerC__Websi__662B2B3B" Association="TopSoftModel.FK__CustomerC__Websi__662B2B3B">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="CustomerCode" EntitySet="CustomerCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierC__Websi__69FBBC1F" Association="TopSoftModel.FK__SupplierC__Websi__69FBBC1F">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="SupplierCode" EntitySet="SupplierCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__TownS__671F4F74" Association="TopSoftModel.FK__CustomerC__TownS__671F4F74">
+            <End Role="TownCode" EntitySet="TownCode" />
+            <End Role="CustomerCode" EntitySet="CustomerCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierC__TownS__6AEFE058" Association="TopSoftModel.FK__SupplierC__TownS__6AEFE058">
+            <End Role="TownCode" EntitySet="TownCode" />
+            <End Role="SupplierCode" EntitySet="SupplierCode" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="HPurchase">
           <Key>
@@ -739,6 +890,136 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="CountryCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="Id" Type="Int32" />
+          <Property Name="ArabicName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CustomerCode" Relationship="TopSoftModel.FK__CustomerC__Websi__662B2B3B" FromRole="CountryCode" ToRole="CustomerCode" />
+          <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="CountryCode" ToRole="SupplierCode" />
+        </EntityType>
+        <EntityType Name="CustomerCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="Id" Type="Int32" />
+          <Property Name="ArabicName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountrySerial" Type="Int32" />
+          <Property Name="TownSerial" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__CustomerC__Websi__662B2B3B" FromRole="CustomerCode" ToRole="CountryCode" />
+          <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__CustomerC__TownS__671F4F74" FromRole="CustomerCode" ToRole="TownCode" />
+        </EntityType>
+        <EntityType Name="SupplierCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="Id" Type="Int32" />
+          <Property Name="ArabicName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountrySerial" Type="Int32" />
+          <Property Name="TownSerial" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="SupplierCode" ToRole="CountryCode" />
+          <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__SupplierC__TownS__6AEFE058" FromRole="SupplierCode" ToRole="TownCode" />
+        </EntityType>
+        <EntityType Name="TownCode">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="Id" Type="Int32" />
+          <Property Name="ArabicName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CustomerCode" Relationship="TopSoftModel.FK__CustomerC__TownS__671F4F74" FromRole="TownCode" ToRole="CustomerCode" />
+          <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__SupplierC__TownS__6AEFE058" FromRole="TownCode" ToRole="SupplierCode" />
+        </EntityType>
+        <Association Name="FK__CustomerC__Websi__662B2B3B">
+          <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.CustomerCode" Role="CustomerCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="CustomerCode">
+              <PropertyRef Name="CountrySerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierC__Websi__69FBBC1F">
+          <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.SupplierCode" Role="SupplierCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="SupplierCode">
+              <PropertyRef Name="CountrySerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__TownS__671F4F74">
+          <End Type="TopSoftModel.TownCode" Role="TownCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.CustomerCode" Role="CustomerCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="CustomerCode">
+              <PropertyRef Name="TownSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierC__TownS__6AEFE058">
+          <End Type="TopSoftModel.TownCode" Role="TownCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.SupplierCode" Role="SupplierCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="SupplierCode">
+              <PropertyRef Name="TownSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -834,7 +1115,6 @@
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="TopSoftModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
@@ -895,13 +1175,73 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserProfile">
-            <EntityTypeMapping TypeName="TopSoftModel.UserProfile">
-              <MappingFragment StoreEntitySet="UserProfile">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <EntitySetMapping Name="CountryCode">
+            <EntityTypeMapping TypeName="TopSoftModel.CountryCode">
+              <MappingFragment StoreEntitySet="CountryCode">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerCode">
+            <EntityTypeMapping TypeName="TopSoftModel.CustomerCode">
+              <MappingFragment StoreEntitySet="CustomerCode">
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+                <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+                <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+                <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+                <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierCode">
+            <EntityTypeMapping TypeName="TopSoftModel.SupplierCode">
+              <MappingFragment StoreEntitySet="SupplierCode">
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+                <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+                <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+                <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+                <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TownCode">
+            <EntityTypeMapping TypeName="TopSoftModel.TownCode">
+              <MappingFragment StoreEntitySet="TownCode">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

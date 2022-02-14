@@ -38,4 +38,3 @@
         public virtual StoreCode StoreCode { get; set; }
         public virtual UnitCode UnitCode { get; set; }
     }
-

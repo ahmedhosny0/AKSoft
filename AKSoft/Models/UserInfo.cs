@@ -22,4 +22,3 @@
         public string RePassword { get; set; }
         public Nullable<int> Role { get; set; }
     }
-

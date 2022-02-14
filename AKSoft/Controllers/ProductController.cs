@@ -974,127 +974,181 @@ public class ProductController : Controller
     {
         return View();
     }
-    public ActionResult SaveCustomer()
-    {
-        return View();
-    }
+    //Supplier
     public ActionResult SaveSupplier()
     {
+        TopSoft db = new TopSoft();
+        List<TownCode> list1 = db.TownCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        List<CountryCode> list2 = db.CountryCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
         return View();
     }
+    [HttpPost]
+    public ActionResult SaveSupplier(SupplierCode model)
+    {
+        try
+        {
+            TopSoft db = new TopSoft();
+            List<TownCode> list1 = db.TownCode.ToList();
+            ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+            List<CountryCode> list2 = db.CountryCode.ToList();
+            ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+            SupplierCode product = new SupplierCode();
+            product.Serial = model.Serial;
+            product.Id = model.Id;
+            product.Code = model.Code;
+            product.ArabicName = model.ArabicName;
+            product.EnglishName = model.EnglishName;
+            product.DescName = model.DescName;
+            product.Description = model.Description;
+            product.Address1 = model.Address1;
+            product.Address2 = model.Address2;
+            product.Telephone1 = model.Telephone1;
+            product.Telephone2 = model.Telephone2;
+            product.Telephone3 = model.Telephone3;
+            product.CountrySerial = model.CountrySerial;
+            product.TownSerial = model.TownSerial;
+            product.Email = model.Email;
+            product.Website = model.Website;
+            db.SupplierCode.Add(product);
+            db.SaveChanges();
+            int latestEmpId = product.Serial;
+            TempData["Al"] = product.ArabicName;
+            return RedirectToAction("SaveSupplier");
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+
+        }
+    }
+    // end Suppplier
+    // Customer
+
+    public ActionResult SaveCustomer()
+    {
+        TopSoft db = new TopSoft();
+        List<TownCode> list1 = db.TownCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        List<CountryCode> list2 = db.CountryCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+        return View();
+    }
+            [HttpPost]
+    public ActionResult SaveCustomer(CustomerCode model)
+    {
+        try
+        {
+            TopSoft db = new TopSoft();
+            List<TownCode> list1 = db.TownCode.ToList();
+            ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+            List<CountryCode> list2 = db.CountryCode.ToList();
+            ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+            CustomerCode product = new CustomerCode();
+            product.Serial = model.Serial;
+            product.Id = model.Id;
+            product.Code = model.Code;
+            product.ArabicName = model.ArabicName;
+            product.EnglishName = model.EnglishName;
+            product.DescName = model.DescName;
+            product.Description = model.Description;
+            product.Address1 = model.Address1;
+            product.Address2 = model.Address2;
+            product.Telephone1 = model.Telephone1;
+            product.Telephone2 = model.Telephone2;
+            product.Telephone3 = model.Telephone3;
+            product.CountrySerial = model.CountrySerial;
+            product.TownSerial = model.TownSerial;
+            product.Email = model.Email;
+            product.Website = model.Website;
+            db.CustomerCode.Add(product);
+            db.SaveChanges();
+            int latestEmpId = product.Serial;
+            TempData["Al"] = product.ArabicName;
+            return RedirectToAction("SaveCustomer");
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+
+        }
+    }
+    //end Customer
+    // Country
+
+    public ActionResult SaveCountry()
+    {
+        return View();
+    }
+            [HttpPost]
+    public ActionResult SaveCountry(UnitCode model, string name)
+    {
+        try
+        {
+            TopSoft db = new TopSoft();
+            CountryCode unit = new CountryCode();
+            unit.ArabicName = model.ArabicName;
+            unit.EnglishName = model.EnglishName;
+            unit.DescName = model.DescName;
+            unit.Notes = model.Description;
+            unit.Id = model.ID;
+            unit.Code = model.Code;
+            db.CountryCode.Add(unit);
+            db.SaveChanges();
+            int latestEmpId = unit.Serial;
+
+            TempData["Al"] = unit.ArabicName;
+            return RedirectToAction("SaveCountry");
+
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+
+        }
+    }
+    //end Country
+
+    // Town
+    public ActionResult SaveTown()
+    {
+        return View();
+    }
+            [HttpPost]
+    public ActionResult SaveTown(UnitCode model, string name)
+    {
+     try
+        {
+            TopSoft db = new TopSoft();
+            TownCode unit = new TownCode();
+            unit.ArabicName = model.ArabicName;
+            unit.EnglishName = model.EnglishName;
+            unit.DescName = model.DescName;
+            unit.Notes = model.Description;
+            unit.Id = model.ID;
+            unit.Code = model.Code;
+            db.TownCode.Add(unit);
+            db.SaveChanges();
+            int latestEmpId = unit.Serial;
+
+            TempData["Al"] = unit.ArabicName;
+            return RedirectToAction("SaveTown");
+
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+
+        }
+}
+   
+    //end Town
 }
    
 
-
-
-
-
-
-
-
-
-
-
-//         public ActionResult Doc()
-//        {
-//        //    TopSoft db = new TopSoft();
-//            //List<GroupCode> listEmp = db.GroupCode.Select(x => new GroupCode { ArabicName = x.ArabicName, EnglishName = x.EnglishName, DescName = x.DescName, Description = x.Description }).ToList();
-////
-//         //   ViewBag.EmployeeList = listEmp;
-
-//            return View();
-//        }
-//        [HttpPost]
-//        public ActionResult Doc(GroupCode model)
-//        {
-//            try
-//            {
-//                TopSoft db = new TopSoft();
-//          //      List<Department> list = db.Department.ToList();
-//            //    ViewBag.DepartmentList = new SelectList(list, "DepartmentId", "DepartmentName");
-
-//                if (model.Serial > 0)
-//                {
-//                    //update
-//                    GroupCode group = db.GroupCode.SingleOrDefault(x => x.Serial == model.Serial && x.IsDeleted == false);
-
-//                group.ArabicName = model.ArabicName;
-//                group.EnglishName = model.EnglishName;
-//                group.DescName = model.DescName;
-//                group.Description = model.Description;
-//                group.ID = model.ID;
-//                group.Code = model.Code;
-//                db.GroupCode.Add(group);
-//                    db.SaveChanges();
-
-
-//                }
-//                else
-//                {
-//                    //Insert
-//                    GroupCode group = new GroupCode();
-//                group.ArabicName = model.ArabicName;
-//                group.EnglishName = model.EnglishName;
-//                group.DescName = model.DescName;
-//                group.Description = model.Description;
-//                group.ID = model.ID;
-//                group.Code = model.Code;
-//                db.GroupCode.Add(group);
-//                    group.IsDeleted = false;
-//                    db.GroupCode.Add(group);
-//                    db.SaveChanges();
-
-//                }
-//                return View(model);
-
-//            }
-//            catch (Exception ex)
-//            {
-
-//                throw ex;
-//            }
-
-//        }
-/*
-        public ActionResult AddEditEmployee(int Serial)
-        {
-            TopSoft db = new TopSoft();
-            //List<Department> list = db.Department.ToList();
-            //ViewBag.DepartmentList = new SelectList(list, "DepartmentId", "DepartmentName");
-
-            GroupCode model = new GroupCode();
-
-            if (Serial > 0)
-            {
-
-                GroupCode group = db.GroupCode.SingleOrDefault(x => x.Serial == Serial && x.IsDeleted == false);
-                model.ArabicName = group.ArabicName;
-                model.EnglishName = group.EnglishName;
-                model.DescName = group.DescName;
-                model.Description = group.Description;
-                model.ID = group.ID;
-                model.Code = group.Code;
-                db.GroupCode.Add(group);
-            }
-            return PartialView("Partial2", model);
-        }
-        public JsonResult DeleteEmployee(int Serial)
-        {
-            TopSoft db = new TopSoft();
-
-            bool result = false;
-            GroupCode group = db.GroupCode.SingleOrDefault(x => x.IsDeleted == false && x.Serial == Serial);
-            if (group != null)
-            {
-                group.IsDeleted = true;
-                db.SaveChanges();
-                result = true;
-            }
-
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-
-    }
-
-    */
 

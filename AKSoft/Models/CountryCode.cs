@@ -10,37 +10,25 @@
     using System;
     using System.Collections.Generic;
     
-    public partial class StoreCode
+    public partial class CountryCode
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public StoreCode()
+        public CountryCode()
         {
-            this.HSales = new HashSet<HSales>();
-            this.ItemCode = new HashSet<ItemCode>();
-            this.HPurchase = new HashSet<HPurchase>();
+            this.CustomerCode = new HashSet<CustomerCode>();
+            this.SupplierCode = new HashSet<SupplierCode>();
         }
     
         public int Serial { get; set; }
-        public Nullable<int> ID { get; set; }
         public Nullable<int> Code { get; set; }
+        public Nullable<int> Id { get; set; }
         public string ArabicName { get; set; }
         public string EnglishName { get; set; }
         public string DescName { get; set; }
-        public string Address { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> NumberOfLeans { get; set; }
-        public string Phone1 { get; set; }
-        public string StoreKeeper { get; set; }
-        public string Phone2 { get; set; }
-        public string Phone3 { get; set; }
-        public string Phone4 { get; set; }
-        public string AreaStock { get; set; }
+        public string Notes { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HSales> HSales { get; set; }
+        public virtual ICollection<CustomerCode> CustomerCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemCode> ItemCode { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HPurchase> HPurchase { get; set; }
-    
-}
+        public virtual ICollection<SupplierCode> SupplierCode { get; set; }
+    }

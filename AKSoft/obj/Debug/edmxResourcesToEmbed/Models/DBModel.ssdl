@@ -1,5 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TopSoftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CountryCode">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Id" Type="int" />
+    <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="CustomerCode">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Id" Type="int" />
+    <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="150" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="150" />
+    <Property Name="Telephone1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountrySerial" Type="int" />
+    <Property Name="TownSerial" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" MaxLength="30" />
+  </EntityType>
   <EntityType Name="GroupCode">
     <Key>
       <PropertyRef Name="Serial" />
@@ -107,6 +140,27 @@
     <Property Name="Phone4" Type="nvarchar" MaxLength="20" />
     <Property Name="AreaStock" Type="nvarchar" MaxLength="20" />
   </EntityType>
+  <EntityType Name="SupplierCode">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Id" Type="int" />
+    <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="150" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="150" />
+    <Property Name="Telephone1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountrySerial" Type="int" />
+    <Property Name="TownSerial" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" MaxLength="30" />
+  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -116,6 +170,18 @@
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TownCode">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Id" Type="int" />
+    <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="UnitCode">
     <Key>
@@ -142,15 +208,34 @@
     <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
     <Property Name="Role" Type="int" />
   </EntityType>
-  <EntityType Name="UserProfile">
-    <Key>
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserName" Type="varchar" MaxLength="50" />
-    <Property Name="Password" Type="varchar" MaxLength="50" />
-    <Property Name="IsActive" Type="bit" />
-  </EntityType>
+  <Association Name="FK__CustomerC__TownS__671F4F74">
+    <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerCode" Type="Self.CustomerCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="CustomerCode">
+        <PropertyRef Name="TownSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CustomerC__Websi__662B2B3B">
+    <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerCode" Type="Self.CustomerCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="CustomerCode">
+        <PropertyRef Name="CountrySerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__HPurchase__Group__0E6E26BF">
     <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -204,6 +289,34 @@
       </Principal>
       <Dependent Role="HPurchase">
         <PropertyRef Name="UnitSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SupplierC__TownS__6AEFE058">
+    <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SupplierCode" Type="Self.SupplierCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="SupplierCode">
+        <PropertyRef Name="TownSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SupplierC__Websi__69FBBC1F">
+    <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SupplierCode" Type="Self.SupplierCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="SupplierCode">
+        <PropertyRef Name="CountrySerial" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -300,15 +413,26 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="TopSoftModelStoreContainer">
+    <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerCode" EntityType="Self.CustomerCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GroupCode" EntityType="Self.GroupCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HPurchase" EntityType="Self.HPurchase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HSales" EntityType="Self.HSales" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemCode" EntityType="Self.ItemCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StoreCode" EntityType="Self.StoreCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupplierCode" EntityType="Self.SupplierCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TownCode" EntityType="Self.TownCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CustomerC__TownS__671F4F74" Association="Self.FK__CustomerC__TownS__671F4F74">
+      <End Role="TownCode" EntitySet="TownCode" />
+      <End Role="CustomerCode" EntitySet="CustomerCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CustomerC__Websi__662B2B3B" Association="Self.FK__CustomerC__Websi__662B2B3B">
+      <End Role="CountryCode" EntitySet="CountryCode" />
+      <End Role="CustomerCode" EntitySet="CustomerCode" />
+    </AssociationSet>
     <AssociationSet Name="FK__HPurchase__Group__0E6E26BF" Association="Self.FK__HPurchase__Group__0E6E26BF">
       <End Role="GroupCode" EntitySet="GroupCode" />
       <End Role="HPurchase" EntitySet="HPurchase" />
@@ -324,6 +448,14 @@
     <AssociationSet Name="FK__HPurchase__UnitS__10566F31" Association="Self.FK__HPurchase__UnitS__10566F31">
       <End Role="UnitCode" EntitySet="UnitCode" />
       <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SupplierC__TownS__6AEFE058" Association="Self.FK__SupplierC__TownS__6AEFE058">
+      <End Role="TownCode" EntitySet="TownCode" />
+      <End Role="SupplierCode" EntitySet="SupplierCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SupplierC__Websi__69FBBC1F" Association="Self.FK__SupplierC__Websi__69FBBC1F">
+      <End Role="CountryCode" EntitySet="CountryCode" />
+      <End Role="SupplierCode" EntitySet="SupplierCode" />
     </AssociationSet>
     <AssociationSet Name="FK_ItemCode_GroupCode" Association="Self.FK_ItemCode_GroupCode">
       <End Role="GroupCode" EntitySet="GroupCode" />
