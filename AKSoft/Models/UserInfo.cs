@@ -10,7 +10,6 @@
 
     using System;
     using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
     
     public partial class UserInfo
     {
@@ -18,11 +17,8 @@ using System.ComponentModel.DataAnnotations;
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        [Required(ErrorMessage = "Required")]
         public string Email { get; set; }
         public string Password { get; set; }
-        [Required (ErrorMessage="Required.")]
-        [Compare ("Password",ErrorMessage="Passwords Don't Match.")]
         public string RePassword { get; set; }
         public Nullable<int> Role { get; set; }
     }

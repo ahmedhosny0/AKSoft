@@ -4,7 +4,7 @@
     ViewBag.Title = "SaveGroup";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }<script src="~/Scripts/sweetalert.min.js"></script>
-<h1>Add Group</h1>
+<h1 class="head">Add Group</h1>
 @if (TempData["Al"] != null)
 {
     <script>
@@ -12,12 +12,27 @@
     </script>
     <strong style="color:green">Saved successfully! </strong>@TempData["Al"] //Display Word (Successful Done) + name
 }
+<style>
+    .Elements {
+        background-color: #e5e5e5;
+        list-style-type: none;
+        border: ridge 1px;
+        margin: 0;
+        padding: 8px;
+    }
+            .head
+        {
+               background-color: #3577ff;
+    width: 40%;
+    color: white
+        }
+</style>
+
 @using (Html.BeginForm("SaveGroup", "Product", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <form>
         <div class="Elements">
-            <hr />
 
             <div class="">
                 @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })

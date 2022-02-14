@@ -75,7 +75,7 @@ public class ReportsController : Controller
     public ActionResult DailyPurchases()
     {
         DataTable dt = new DataTable();
-        using(SqlConnection sqlCon=new SqlConnection(connectionString))
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
             SqlDataAdapter sqlDa = new SqlDataAdapter("select StoreName,ItemName,UnitName,HpurchaseQuantity,HpurchasePrice,HpurchaseTotal from RptPurchase", sqlCon);

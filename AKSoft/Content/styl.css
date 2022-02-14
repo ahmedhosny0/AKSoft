@@ -84,20 +84,6 @@ body {
     font:400px;
     background-color:green;
 }
-#Content2
-{
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color: #fff;
-    border:solid;
-}
-#ContentPlaceHolder2
-{
-
-    height:500px;
-}
 .content
 {
     height:500px;
@@ -113,11 +99,14 @@ body {
 .Elements{
    background-color: #e5e5e5; 
   list-style-type: none;
+  border:solid;
   margin: 0;
- padding: 20px;
+ padding: 15px;
 }
-.invo{    border: solid;
-    padding: 20px;}
+/*.invs{   border:ridge 1px;
+    }
+.inva{   border:ridge 1px;
+    }*/
 
 .Lab
 {
@@ -125,10 +114,16 @@ body {
             display: inline-block;
             height: 26px;
             margin: 0% 0% 1% 6%;
-            width:12%;
+            width:11%;
             font-size: 14px;
             color: #333;
 }
+        .head
+        {
+                background-color: #0067f5;
+    width: 40%;
+    color: white
+        }
 .Txt{
   display: inline-block;
     width: 50%;

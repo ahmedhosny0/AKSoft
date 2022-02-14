@@ -1,4 +1,4 @@
-﻿using AOne.Models;
+﻿using AKSoft.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -47,7 +47,7 @@ public class ProductController : Controller
 
         }
     }
-    // Ahmed AOne
+    // Ahmed AKSoft
     public ActionResult Login()  
         {  
             return View();  

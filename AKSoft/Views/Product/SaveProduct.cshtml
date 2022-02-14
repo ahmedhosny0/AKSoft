@@ -1,5 +1,5 @@
 ﻿@model ItemCode
-<link rel="stylesheet" href="~/Content/styl.css" />
+
 
 @{
     ViewBag.Title = "SaveProduct";
@@ -14,9 +14,34 @@
     <link rel="stylesheet" href="~/Content/styl.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
+    <style>
+        .Elements {
+            background-color: #e5e5e5;
+            list-style-type: none;
+            border: ridge 1px;
+            margin: 0;
+            padding: 8px;
+        }
+        .dr
+{
+            clear: both;
+            display: inline-block;
+            height: 26px;
+            margin: 0% 0% 1% 6%;
+            width:7%;
+            font-size: 14px;
+            color: #333;
+}
+                .head
+        {
+                background-color: #3577ff;
+    width: 40%;
+    color: white
+        }
+    </style>
 </head>
 <body>
-    <h1>Add Product</h1>
+    <h1 class="head">Add Product</h1>
     @if (TempData["Al"] != null)
     {
         <script>
@@ -28,35 +53,34 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="Elements">
- 
-            <hr />
-
-            <div class="">
+        <ul class="Elements">
+            <li>
+                <label class="Lab dr">Stock</label>
+                @Html.DropDownListFor(model => model.StoreID, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+                <label class="Lab dr">Unit</label>
+                @Html.DropDownListFor(model => model.Unit1, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+                <label class="Lab dr">Category</label>
+                @Html.DropDownListFor(model => model.SerialGroup, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+            </li>
+            <li class="">
                 @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
 
                 @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
-            </div>
+            </li>
 
-            <div class="">
+            <li class="">
                 @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
                 @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
-            </div>
+            </li>
 
-            <div class="">
+            <li class="">
                 @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
                 @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
-            </div>
-            <div class="">
+            </li>
+            <li class="">
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
-            </div>
-            <label class="Lab">Stock</label>
-            @Html.DropDownListFor(model => model.StoreID, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
-            <br /> <label class="Lab">Unit</label>
-            @Html.DropDownListFor(model => model.Unit1, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
-            <br /> <label class="Lab">Category</label>
-            @Html.DropDownListFor(model => model.SerialGroup, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+            </li>
             <div class="">
                 <label class="Lab">Purchase price</label>
                 @Html.EditorFor(model => model.PricePurchase1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
@@ -74,7 +98,7 @@
                 <button class="save">Save</button>
                 @Html.ActionLink("Show All", "DisplayItems", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
             </div>
-        </div>
+        </ul>
     }
 
 </body>

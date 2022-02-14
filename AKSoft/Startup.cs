@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(AOne.Startup))]
-namespace AOne
+[assembly: OwinStartupAttribute(typeof(AKSoft.Startup))]
+namespace AKSoft
 {
     public partial class Startup
     {

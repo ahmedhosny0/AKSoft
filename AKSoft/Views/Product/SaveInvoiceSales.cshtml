@@ -12,8 +12,22 @@
     <title></title>
     <link rel="stylesheet" href="~/Content/styl.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>
+<style>
+.Elements{
+   background-color: #e5e5e5; 
+  list-style-type: none;
+  border:ridge 1px;
+  margin: 0;
+ padding: 15px;
+}
+        .head
+        {
+                 background-color: #3577ff;
+    width: 40%;
+    color: white
+        }
+</style>
 </head>
-
 <body>
     <br />
     @if (TempData["Al"] != null)
@@ -27,8 +41,8 @@
     @using (Html.BeginForm("SaveInvoiceSales", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-    <h1>Invoice Sales</h1>
-    <ul class="Elements invo">
+    <h1 class="head">Invoice Sales</h1>
+    <ul class="Elements">
             <li class="gs">
                     <label class="Lab">Store</label>
                     @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@

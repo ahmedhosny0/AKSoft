@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using AOne.Models;
+using AKSoft.Models;
 
-namespace AOne
+namespace AKSoft
 {
     public class EmailService : IIdentityMessageService
     {

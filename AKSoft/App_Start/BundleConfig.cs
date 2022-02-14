@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace AOne
+namespace AKSoft
 {
     public class BundleConfig
     {
