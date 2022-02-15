@@ -1,4 +1,4 @@
-﻿@model CustomerCode
+﻿@model AKSoft.Models.CustomerCode
 @{
     ViewBag.Title = "SaveCustomer";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -92,7 +92,7 @@
         </li>
         <li class="">
             <button class="save">Save</button>
-            @Html.ActionLink("Show All", "DisplayItems", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
+            @Html.ActionLink("Show All", "DisplayCustomers", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
         </li>
     </ul>
     }

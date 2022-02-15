@@ -1,4 +1,4 @@
-﻿@model UnitCode
+﻿@model AKSoft.Models.CountryCode
 @{
     ViewBag.Title = "Save Country";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -59,12 +59,12 @@
             </li>
             <li class="">
                 <label class="Lab">Notes</label>
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+                @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
             </li>
 
             <li class="">
                 <button class="save">Save</button>
-                @Html.ActionLink("Show All", "DisplayUnits", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
+                @Html.ActionLink("Show All", "DisplayCountries", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
             </li>
         </ul>
     }

@@ -324,9 +324,16 @@
     <Content Include="Views\Product\LoginUser.cshtml" />
     <Content Include="Views\Product\SaveCountry.cshtml" />
     <Content Include="Views\Product\SaveTown.cshtml" />
+    <Content Include="Views\Product\DisplayTowns.cshtml" />
+    <Content Include="Views\Product\EditTown.cshtml" />
+    <Content Include="Views\Product\DisplayCountries.cshtml" />
+    <Content Include="Views\Product\EditCountry.cshtml" />
+    <Content Include="Views\Product\DisplayCustomers.cshtml" />
+    <Content Include="Views\Product\DisplaySuppliers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

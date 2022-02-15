@@ -1,6 +1,6 @@
-﻿@model SupplierCode
+﻿@model AKSoft.Models.SupplierCode
 @{
-    ViewBag.Title = "Save Supllier";
+    ViewBag.Title = "Save Supplier";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
@@ -92,7 +92,7 @@
             </li>
             <li class="">
                 <button class="save">Save</button>
-                @Html.ActionLink("Show All", "DisplayItems", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
+                @Html.ActionLink("Show All", "DisplaySuppliers", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
             </li>
         </ul>
     }

@@ -70,6 +70,7 @@
     <Property Name="TotalAfterDisc" Type="float" />
     <Property Name="DiscValue" Type="float" />
     <Property Name="GroupSerial" Type="int" />
+    <Property Name="SupplierSerial" Type="int" />
   </EntityType>
   <EntityType Name="HSales">
     <Key>
@@ -97,6 +98,7 @@
     <Property Name="TotalAfterDisc" Type="float" />
     <Property Name="DiscValue" Type="float" />
     <Property Name="GroupSerial" Type="int" />
+    <Property Name="CustomerSerial" Type="int" />
   </EntityType>
   <EntityType Name="ItemCode">
     <Key>
@@ -160,16 +162,6 @@
     <Property Name="TownSerial" Type="int" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Website" Type="nvarchar" MaxLength="30" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="TownCode">
     <Key>
@@ -236,7 +228,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HPurchase__Group__0E6E26BF">
+  <Association Name="FK__HPurchase__Group__1975C517">
     <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -250,7 +242,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HPurchase__ItemS__114A936A">
+  <Association Name="FK__HPurchase__ItemS__1C5231C2">
     <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -264,7 +256,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HPurchase__Store__0F624AF8">
+  <Association Name="FK__HPurchase__Store__1A69E950">
     <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -278,7 +270,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HPurchase__UnitS__10566F31">
+  <Association Name="FK__HPurchase__Suppl__1D4655FB">
+    <End Role="SupplierCode" Type="Self.SupplierCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="SupplierSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HPurchase__UnitS__1B5E0D89">
     <End Role="UnitCode" Type="Self.UnitCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -289,6 +295,20 @@
       </Principal>
       <Dependent Role="HPurchase">
         <PropertyRef Name="UnitSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HSales__Customer__23F3538A">
+    <End Role="CustomerCode" Type="Self.CustomerCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HSales">
+        <PropertyRef Name="CustomerSerial" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -421,7 +441,6 @@
     <EntitySet Name="ItemCode" EntityType="Self.ItemCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StoreCode" EntityType="Self.StoreCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SupplierCode" EntityType="Self.SupplierCode" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TownCode" EntityType="Self.TownCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
@@ -433,21 +452,29 @@
       <End Role="CountryCode" EntitySet="CountryCode" />
       <End Role="CustomerCode" EntitySet="CustomerCode" />
     </AssociationSet>
-    <AssociationSet Name="FK__HPurchase__Group__0E6E26BF" Association="Self.FK__HPurchase__Group__0E6E26BF">
+    <AssociationSet Name="FK__HPurchase__Group__1975C517" Association="Self.FK__HPurchase__Group__1975C517">
       <End Role="GroupCode" EntitySet="GroupCode" />
       <End Role="HPurchase" EntitySet="HPurchase" />
     </AssociationSet>
-    <AssociationSet Name="FK__HPurchase__ItemS__114A936A" Association="Self.FK__HPurchase__ItemS__114A936A">
+    <AssociationSet Name="FK__HPurchase__ItemS__1C5231C2" Association="Self.FK__HPurchase__ItemS__1C5231C2">
       <End Role="ItemCode" EntitySet="ItemCode" />
       <End Role="HPurchase" EntitySet="HPurchase" />
     </AssociationSet>
-    <AssociationSet Name="FK__HPurchase__Store__0F624AF8" Association="Self.FK__HPurchase__Store__0F624AF8">
+    <AssociationSet Name="FK__HPurchase__Store__1A69E950" Association="Self.FK__HPurchase__Store__1A69E950">
       <End Role="StoreCode" EntitySet="StoreCode" />
       <End Role="HPurchase" EntitySet="HPurchase" />
     </AssociationSet>
-    <AssociationSet Name="FK__HPurchase__UnitS__10566F31" Association="Self.FK__HPurchase__UnitS__10566F31">
+    <AssociationSet Name="FK__HPurchase__Suppl__1D4655FB" Association="Self.FK__HPurchase__Suppl__1D4655FB">
+      <End Role="SupplierCode" EntitySet="SupplierCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HPurchase__UnitS__1B5E0D89" Association="Self.FK__HPurchase__UnitS__1B5E0D89">
       <End Role="UnitCode" EntitySet="UnitCode" />
       <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HSales__Customer__23F3538A" Association="Self.FK__HSales__Customer__23F3538A">
+      <End Role="CustomerCode" EntitySet="CustomerCode" />
+      <End Role="HSales" EntitySet="HSales" />
     </AssociationSet>
     <AssociationSet Name="FK__SupplierC__TownS__6AEFE058" Association="Self.FK__SupplierC__TownS__6AEFE058">
       <End Role="TownCode" EntitySet="TownCode" />

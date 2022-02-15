@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+namespace AKSoft.Models
+{
     using System;
     using System.Collections.Generic;
     
@@ -32,3 +34,4 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierCode> SupplierCode { get; set; }
     }
+}

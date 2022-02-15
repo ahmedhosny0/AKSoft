@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+namespace AKSoft.Models
+{
     using System;
     using System.Collections.Generic;
     
@@ -32,9 +34,12 @@
         public Nullable<double> TotalAfterDisc { get; set; }
         public Nullable<double> DiscValue { get; set; }
         public Nullable<int> GroupSerial { get; set; }
+        public Nullable<int> SupplierSerial { get; set; }
     
         public virtual GroupCode GroupCode { get; set; }
         public virtual ItemCode ItemCode { get; set; }
         public virtual StoreCode StoreCode { get; set; }
+        public virtual SupplierCode SupplierCode { get; set; }
         public virtual UnitCode UnitCode { get; set; }
     }
+}

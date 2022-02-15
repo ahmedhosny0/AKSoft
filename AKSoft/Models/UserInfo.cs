@@ -7,7 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
+namespace AKSoft.Models
+{
     using System;
     using System.Collections.Generic;
     
@@ -22,3 +23,4 @@
         public string RePassword { get; set; }
         public Nullable<int> Role { get; set; }
     }
+}

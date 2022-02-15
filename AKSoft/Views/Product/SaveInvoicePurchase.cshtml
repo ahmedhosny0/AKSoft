@@ -1,4 +1,4 @@
-﻿@model HPurchase
+﻿@model AKSoft.Models.HPurchase
 @{
     ViewBag.Title = "SaveInvoicePurchase";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -49,6 +49,8 @@
             @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
             <label class="Lab">Category</label>
             @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+            <label class="Lab">Supplier</label>
+            @Html.DropDownListFor(model => model.SupplierSerial, ViewBag.DepartmentList5 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
         </li>
 
         <li>

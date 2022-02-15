@@ -1,10 +1,8 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "DisplayInvoiceSales";
+    ViewBag.Title = "Display Suppliers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Display Invoice Purchase</h2>
 <script src="~/Scripts/sweetalert.min.js"></script>
 @if (TempData["Al"] != null)
 {
@@ -27,21 +25,27 @@
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<a href="@Url.Action("SaveInvoicePurchase", "Product")">Add Invoice Purchase</a>
+<h2>Display Suppliers</h2>
+<a href="@Url.Action("SaveSupplier","Product")">Add Supplier</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th>ID</th>
-        <th>Store</th>
-        <th>Item</th>
-        <th>Unit</th>
-        <th>Group</th>
-        <th>Supplier</th>        
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Total</th>
-        <th></th>
+        <th>ArabicName</th>
+        <th>EnglishName</th>
+        <th>DescName</th>
+        <th>Description</th>
+        <th>Address1</th>
+        <th>Address2</th>
+        <th>Tel1</th>
+        <th>Tel2</th>
+        <th>Tel3</th>
+        <th>Country</th>
+        <th>Town</th>
+        <th>E-mail</th>
+        <th>Website</th>
 
     </tr>
+
     @for (int i = 0; i < Model.Rows.Count; i++)
     {
         <tr>
@@ -54,9 +58,14 @@
             <td>@Model.Rows[i][6]</td>
             <td>@Model.Rows[i][7]</td>
             <td>@Model.Rows[i][8]</td>
+            <td>@Model.Rows[i][9]</td>
+            <td>@Model.Rows[i][10]</td>
+            <td>@Model.Rows[i][11]</td>
+            <td>@Model.Rows[i][12]</td>
+            <td>@Model.Rows[i][13]</td>
             <td>
-                <a href="@Url.Action("EditInPurchase", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
-                <a href="@Url.Action("DeleteInPurchase", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
+                <a href="@Url.Action("EditSupplier", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
+                <a href="@Url.Action("DeleteSupplier", "Product", new { @id = @Model.Rows[i][0] })">Delete</a>
             </td>
         </tr>
     }

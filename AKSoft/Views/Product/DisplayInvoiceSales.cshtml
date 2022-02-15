@@ -35,6 +35,7 @@
         <th>Item</th>
         <th>Unit</th>
         <th>Group</th>
+        <th>Customer</th>
         <th>Quantity</th>
         <th>Price</th>
         <th>Total</th>
@@ -52,6 +53,7 @@
             <td>@Model.Rows[i][5]</td>
             <td>@Model.Rows[i][6]</td>
             <td>@Model.Rows[i][7]</td>
+            <td>@Model.Rows[i][8]</td>
             <td>
                 <a href="@Url.Action("EditInSales", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
                 <a href="@Url.Action("DeleteInSales", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>

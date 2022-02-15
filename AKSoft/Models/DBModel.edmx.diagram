@@ -4,27 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4502b58353344a8c8393873c0fc0929f" Name="Diagram1">
+      <Diagram DiagramId="4502b58353344a8c8393873c0fc0929f" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="TopSoftModel.GroupCode" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TopSoftModel.HSales" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TopSoftModel.ItemCode" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TopSoftModel.StoreCode" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TopSoftModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TopSoftModel.UnitCode" Width="1.5" PointX="3.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TopSoftModel.UserInfo" Width="1.5" PointX="7.75" PointY="3.25" IsExpanded="true" />
         <AssociationConnector Association="TopSoftModel.FK_ItemCode_GroupCode" ManuallyRouted="false" />
-        <AssociationConnector Association="TopSoftModel.GroupSerial" ManuallyRouted="false" />
-        <AssociationConnector Association="TopSoftModel.StoreSerial" ManuallyRouted="false" />
-        <AssociationConnector Association="TopSoftModel.UnitSerial" ManuallyRouted="false" />
         <AssociationConnector Association="TopSoftModel.FK_ItemCode_StoreCode" ManuallyRouted="false" />
         <AssociationConnector Association="TopSoftModel.FK_ItemCode_UnitCode" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="TopSoftModel.HPurchase" Width="1.5" PointX="11.25" PointY="5.875" />
-        <AssociationConnector Association="TopSoftModel.FK__HPurchase__Group__06CD04F7" />
-        <AssociationConnector Association="TopSoftModel.FK__HPurchase__ItemS__09A971A2" />
-        <AssociationConnector Association="TopSoftModel.FK__HPurchase__Store__07C12930" />
-        <AssociationConnector Association="TopSoftModel.FK__HPurchase__UnitS__08B54D69" />
-        <AssociationConnector Association="TopSoftModel.itemSerial" />
-        <EntityTypeShape EntityType="TopSoftModel.UserProfile" Width="1.5" PointX="8.375" PointY="6.75" />
         <EntityTypeShape EntityType="TopSoftModel.CountryCode" Width="1.5" PointX="8.375" PointY="12.75" />
         <EntityTypeShape EntityType="TopSoftModel.CustomerCode" Width="1.5" PointX="10.625" PointY="15.875" />
         <EntityTypeShape EntityType="TopSoftModel.SupplierCode" Width="1.5" PointX="13.625" PointY="15.875" />
@@ -33,7 +21,19 @@
         <AssociationConnector Association="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" />
         <AssociationConnector Association="TopSoftModel.FK__CustomerC__TownS__671F4F74" />
         <AssociationConnector Association="TopSoftModel.FK__SupplierC__TownS__6AEFE058" />
-      </Diagram>
+        <EntityTypeShape EntityType="TopSoftModel.HPurchase" Width="1.5" PointX="15.875" PointY="7.625" />
+        <AssociationConnector Association="TopSoftModel.FK__HPurchase__Group__1975C517" />
+        <AssociationConnector Association="TopSoftModel.FK__HPurchase__ItemS__1C5231C2" />
+        <AssociationConnector Association="TopSoftModel.FK__HPurchase__Store__1A69E950" />
+        <AssociationConnector Association="TopSoftModel.FK__HPurchase__Suppl__1D4655FB" />
+        <AssociationConnector Association="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89" />
+        <EntityTypeShape EntityType="TopSoftModel.HSales" Width="1.5" PointX="12.875" PointY="7.5" />
+        <AssociationConnector Association="TopSoftModel.FK__HSales__Customer__23F3538A" />
+        <AssociationConnector Association="TopSoftModel.GroupSerial" />
+        <AssociationConnector Association="TopSoftModel.itemSerial" />
+        <AssociationConnector Association="TopSoftModel.StoreSerial" />
+        <AssociationConnector Association="TopSoftModel.UnitSerial" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

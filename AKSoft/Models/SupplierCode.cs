@@ -7,11 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+namespace AKSoft.Models
+{
     using System;
     using System.Collections.Generic;
     
     public partial class SupplierCode
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SupplierCode()
+        {
+            this.HPurchase = new HashSet<HPurchase>();
+        }
+    
         public int Serial { get; set; }
         public Nullable<int> Code { get; set; }
         public Nullable<int> Id { get; set; }
@@ -31,5 +39,7 @@
     
         public virtual CountryCode CountryCode { get; set; }
         public virtual TownCode TownCode { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HPurchase> HPurchase { get; set; }
     }
-
+}

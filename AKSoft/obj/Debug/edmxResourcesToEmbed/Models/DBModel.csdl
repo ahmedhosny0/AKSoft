@@ -13,39 +13,8 @@
     <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="ColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_GroupCode" FromRole="GroupCode" ToRole="ItemCode" />
-    <NavigationProperty Name="HSales" Relationship="Self.GroupSerial" FromRole="GroupCode" ToRole="HSales" />
-    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Group__06CD04F7" FromRole="GroupCode" ToRole="HPurchase" />
-  </EntityType>
-  <EntityType Name="HSales">
-    <Key>
-      <PropertyRef Name="Serial" />
-    </Key>
-    <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ID" Type="Int32" />
-    <Property Name="BranchCode" Type="Int32" />
-    <Property Name="Code" Type="Int32" />
-    <Property Name="Date" Type="DateTime" Precision="0" />
-    <Property Name="CurrencyCode" Type="Int32" />
-    <Property Name="Factor" Type="Double" />
-    <Property Name="StoreSerial" Type="Int32" />
-    <Property Name="DealerCode" Type="Int32" />
-    <Property Name="RegionCode" Type="Int32" />
-    <Property Name="FirstPayment" Type="Double" />
-    <Property Name="Paid" Type="Double" />
-    <Property Name="ItemSerial" Type="Int32" />
-    <Property Name="UnitSerial" Type="Int32" />
-    <Property Name="Quantity" Type="Double" />
-    <Property Name="Price" Type="Double" />
-    <Property Name="Discount" Type="Double" />
-    <Property Name="Tax" Type="Double" />
-    <Property Name="Total" Type="Double" />
-    <Property Name="TotalAfterDisc" Type="Double" />
-    <Property Name="DiscValue" Type="Double" />
-    <Property Name="GroupSerial" Type="Int32" />
-    <NavigationProperty Name="GroupCode" Relationship="Self.GroupSerial" FromRole="HSales" ToRole="GroupCode" />
-    <NavigationProperty Name="StoreCode" Relationship="Self.StoreSerial" FromRole="HSales" ToRole="StoreCode" />
-    <NavigationProperty Name="UnitCode" Relationship="Self.UnitSerial" FromRole="HSales" ToRole="UnitCode" />
-    <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.itemSerial" FromRole="HSales" ToRole="ItemCode" />
+    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Group__1975C517" FromRole="GroupCode" ToRole="HPurchase" />
+    <NavigationProperty Name="HSales" Relationship="TopSoftModel.GroupSerial" FromRole="GroupCode" ToRole="HSales" />
   </EntityType>
   <EntityType Name="ItemCode">
     <Key>
@@ -71,7 +40,7 @@
     <NavigationProperty Name="GroupCode" Relationship="Self.FK_ItemCode_GroupCode" FromRole="ItemCode" ToRole="GroupCode" />
     <NavigationProperty Name="StoreCode" Relationship="Self.FK_ItemCode_StoreCode" FromRole="ItemCode" ToRole="StoreCode" />
     <NavigationProperty Name="UnitCode" Relationship="Self.FK_ItemCode_UnitCode" FromRole="ItemCode" ToRole="UnitCode" />
-    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__ItemS__09A971A2" FromRole="ItemCode" ToRole="HPurchase" />
+    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__ItemS__1C5231C2" FromRole="ItemCode" ToRole="HPurchase" />
     <NavigationProperty Name="HSales" Relationship="TopSoftModel.itemSerial" FromRole="ItemCode" ToRole="HSales" />
   </EntityType>
   <EntityType Name="StoreCode">
@@ -93,18 +62,9 @@
     <Property Name="Phone3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Phone4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="AreaStock" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="HSales" Relationship="Self.StoreSerial" FromRole="StoreCode" ToRole="HSales" />
     <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_StoreCode" FromRole="StoreCode" ToRole="ItemCode" />
-    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Store__07C12930" FromRole="StoreCode" ToRole="HPurchase" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Store__1A69E950" FromRole="StoreCode" ToRole="HPurchase" />
+    <NavigationProperty Name="HSales" Relationship="TopSoftModel.StoreSerial" FromRole="StoreCode" ToRole="HSales" />
   </EntityType>
   <EntityType Name="UnitCode">
     <Key>
@@ -117,9 +77,9 @@
     <Property Name="EnglishName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="DescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="HSales" Relationship="Self.UnitSerial" FromRole="UnitCode" ToRole="HSales" />
     <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_UnitCode" FromRole="UnitCode" ToRole="ItemCode" />
-    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__UnitS__08B54D69" FromRole="UnitCode" ToRole="HPurchase" />
+    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89" FromRole="UnitCode" ToRole="HPurchase" />
+    <NavigationProperty Name="HSales" Relationship="TopSoftModel.UnitSerial" FromRole="UnitCode" ToRole="HSales" />
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>
@@ -143,48 +103,6 @@
       </Principal>
       <Dependent Role="ItemCode">
         <PropertyRef Name="SerialGroup" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="GroupSerial">
-    <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="GroupCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HSales">
-        <PropertyRef Name="GroupSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="StoreSerial">
-    <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StoreCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HSales">
-        <PropertyRef Name="StoreSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UnitSerial">
-    <End Role="UnitCode" Type="Self.UnitCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UnitCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HSales">
-        <PropertyRef Name="UnitSerial" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -214,27 +132,13 @@
   </Association>
   <EntityContainer Name="TopSoft" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="GroupCode" EntityType="Self.GroupCode" />
-    <EntitySet Name="HSales" EntityType="Self.HSales" />
     <EntitySet Name="ItemCode" EntityType="Self.ItemCode" />
     <EntitySet Name="StoreCode" EntityType="Self.StoreCode" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="UnitCode" EntityType="Self.UnitCode" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
     <AssociationSet Name="FK_ItemCode_GroupCode" Association="Self.FK_ItemCode_GroupCode">
       <End Role="GroupCode" EntitySet="GroupCode" />
       <End Role="ItemCode" EntitySet="ItemCode" />
-    </AssociationSet>
-    <AssociationSet Name="GroupSerial" Association="Self.GroupSerial">
-      <End Role="GroupCode" EntitySet="GroupCode" />
-      <End Role="HSales" EntitySet="HSales" />
-    </AssociationSet>
-    <AssociationSet Name="StoreSerial" Association="Self.StoreSerial">
-      <End Role="StoreCode" EntitySet="StoreCode" />
-      <End Role="HSales" EntitySet="HSales" />
-    </AssociationSet>
-    <AssociationSet Name="UnitSerial" Association="Self.UnitSerial">
-      <End Role="UnitCode" EntitySet="UnitCode" />
-      <End Role="HSales" EntitySet="HSales" />
     </AssociationSet>
     <AssociationSet Name="FK_ItemCode_StoreCode" Association="Self.FK_ItemCode_StoreCode">
       <End Role="StoreCode" EntitySet="StoreCode" />
@@ -244,28 +148,6 @@
       <End Role="UnitCode" EntitySet="UnitCode" />
       <End Role="ItemCode" EntitySet="ItemCode" />
     </AssociationSet>
-    <EntitySet Name="HPurchase" EntityType="TopSoftModel.HPurchase" />
-    <AssociationSet Name="FK__HPurchase__Group__06CD04F7" Association="TopSoftModel.FK__HPurchase__Group__06CD04F7">
-      <End Role="GroupCode" EntitySet="GroupCode" />
-      <End Role="HPurchase" EntitySet="HPurchase" />
-    </AssociationSet>
-    <AssociationSet Name="FK__HPurchase__ItemS__09A971A2" Association="TopSoftModel.FK__HPurchase__ItemS__09A971A2">
-      <End Role="ItemCode" EntitySet="ItemCode" />
-      <End Role="HPurchase" EntitySet="HPurchase" />
-    </AssociationSet>
-    <AssociationSet Name="FK__HPurchase__Store__07C12930" Association="TopSoftModel.FK__HPurchase__Store__07C12930">
-      <End Role="StoreCode" EntitySet="StoreCode" />
-      <End Role="HPurchase" EntitySet="HPurchase" />
-    </AssociationSet>
-    <AssociationSet Name="FK__HPurchase__UnitS__08B54D69" Association="TopSoftModel.FK__HPurchase__UnitS__08B54D69">
-      <End Role="UnitCode" EntitySet="UnitCode" />
-      <End Role="HPurchase" EntitySet="HPurchase" />
-    </AssociationSet>
-    <AssociationSet Name="itemSerial" Association="TopSoftModel.itemSerial">
-      <End Role="ItemCode" EntitySet="ItemCode" />
-      <End Role="HSales" EntitySet="HSales" />
-    </AssociationSet>
-    <EntitySet Name="UserProfile" EntityType="TopSoftModel.UserProfile" />
     <EntitySet Name="CountryCode" EntityType="TopSoftModel.CountryCode" />
     <EntitySet Name="CustomerCode" EntityType="TopSoftModel.CustomerCode" />
     <EntitySet Name="SupplierCode" EntityType="TopSoftModel.SupplierCode" />
@@ -286,115 +168,49 @@
       <End Role="TownCode" EntitySet="TownCode" />
       <End Role="SupplierCode" EntitySet="SupplierCode" />
     </AssociationSet>
+    <EntitySet Name="HPurchase" EntityType="TopSoftModel.HPurchase" />
+    <AssociationSet Name="FK__HPurchase__Group__1975C517" Association="TopSoftModel.FK__HPurchase__Group__1975C517">
+      <End Role="GroupCode" EntitySet="GroupCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HPurchase__ItemS__1C5231C2" Association="TopSoftModel.FK__HPurchase__ItemS__1C5231C2">
+      <End Role="ItemCode" EntitySet="ItemCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HPurchase__Store__1A69E950" Association="TopSoftModel.FK__HPurchase__Store__1A69E950">
+      <End Role="StoreCode" EntitySet="StoreCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HPurchase__Suppl__1D4655FB" Association="TopSoftModel.FK__HPurchase__Suppl__1D4655FB">
+      <End Role="SupplierCode" EntitySet="SupplierCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HPurchase__UnitS__1B5E0D89" Association="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89">
+      <End Role="UnitCode" EntitySet="UnitCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
+    </AssociationSet>
+    <EntitySet Name="HSales" EntityType="TopSoftModel.HSales" />
+    <AssociationSet Name="FK__HSales__Customer__23F3538A" Association="TopSoftModel.FK__HSales__Customer__23F3538A">
+      <End Role="CustomerCode" EntitySet="CustomerCode" />
+      <End Role="HSales" EntitySet="HSales" />
+    </AssociationSet>
+    <AssociationSet Name="GroupSerial" Association="TopSoftModel.GroupSerial">
+      <End Role="GroupCode" EntitySet="GroupCode" />
+      <End Role="HSales" EntitySet="HSales" />
+    </AssociationSet>
+    <AssociationSet Name="itemSerial" Association="TopSoftModel.itemSerial">
+      <End Role="ItemCode" EntitySet="ItemCode" />
+      <End Role="HSales" EntitySet="HSales" />
+    </AssociationSet>
+    <AssociationSet Name="StoreSerial" Association="TopSoftModel.StoreSerial">
+      <End Role="StoreCode" EntitySet="StoreCode" />
+      <End Role="HSales" EntitySet="HSales" />
+    </AssociationSet>
+    <AssociationSet Name="UnitSerial" Association="TopSoftModel.UnitSerial">
+      <End Role="UnitCode" EntitySet="UnitCode" />
+      <End Role="HSales" EntitySet="HSales" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="HPurchase">
-    <Key>
-      <PropertyRef Name="Serial" />
-    </Key>
-    <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ID" Type="Int32" />
-    <Property Name="BranchCode" Type="Int32" />
-    <Property Name="Code" Type="Int32" />
-    <Property Name="Date" Type="DateTime" Precision="0" />
-    <Property Name="CurrencyCode" Type="Int32" />
-    <Property Name="Factor" Type="Double" />
-    <Property Name="StoreSerial" Type="Int32" />
-    <Property Name="DealerCode" Type="Int32" />
-    <Property Name="RegionCode" Type="Int32" />
-    <Property Name="ItemSerial" Type="Int32" />
-    <Property Name="UnitSerial" Type="Int32" />
-    <Property Name="Quantity" Type="Double" />
-    <Property Name="Price" Type="Double" />
-    <Property Name="Discount" Type="Double" />
-    <Property Name="Tax" Type="Double" />
-    <Property Name="Total" Type="Double" />
-    <Property Name="TotalAfterDisc" Type="Double" />
-    <Property Name="DiscValue" Type="Double" />
-    <Property Name="GroupSerial" Type="Int32" />
-    <NavigationProperty Name="GroupCode" Relationship="TopSoftModel.FK__HPurchase__Group__06CD04F7" FromRole="HPurchase" ToRole="GroupCode" />
-    <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.FK__HPurchase__ItemS__09A971A2" FromRole="HPurchase" ToRole="ItemCode" />
-    <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__HPurchase__Store__07C12930" FromRole="HPurchase" ToRole="StoreCode" />
-    <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.FK__HPurchase__UnitS__08B54D69" FromRole="HPurchase" ToRole="UnitCode" />
-  </EntityType>
-  <Association Name="FK__HPurchase__Group__06CD04F7">
-    <End Type="TopSoftModel.GroupCode" Role="GroupCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="GroupCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HPurchase">
-        <PropertyRef Name="GroupSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HPurchase__ItemS__09A971A2">
-    <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ItemCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HPurchase">
-        <PropertyRef Name="ItemSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HPurchase__Store__07C12930">
-    <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StoreCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HPurchase">
-        <PropertyRef Name="StoreSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HPurchase__UnitS__08B54D69">
-    <End Type="TopSoftModel.UnitCode" Role="UnitCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UnitCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HPurchase">
-        <PropertyRef Name="UnitSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="itemSerial">
-    <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ItemCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HSales">
-        <PropertyRef Name="ItemSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="UserProfile">
-    <Key>
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="IsActive" Type="Boolean" />
-  </EntityType>
   <EntityType Name="CountryCode">
     <Key>
       <PropertyRef Name="Serial" />
@@ -431,6 +247,7 @@
     <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__CustomerC__Websi__662B2B3B" FromRole="CustomerCode" ToRole="CountryCode" />
     <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__CustomerC__TownS__671F4F74" FromRole="CustomerCode" ToRole="TownCode" />
+    <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK__HSales__Customer__23F3538A" FromRole="CustomerCode" ToRole="HSales" />
   </EntityType>
   <EntityType Name="SupplierCode">
     <Key>
@@ -454,6 +271,7 @@
     <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="SupplierCode" ToRole="CountryCode" />
     <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__SupplierC__TownS__6AEFE058" FromRole="SupplierCode" ToRole="TownCode" />
+    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Suppl__1D4655FB" FromRole="SupplierCode" ToRole="HPurchase" />
   </EntityType>
   <EntityType Name="TownCode">
     <Key>
@@ -522,6 +340,210 @@
       </Principal>
       <Dependent Role="SupplierCode">
         <PropertyRef Name="TownSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HPurchase">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID" Type="Int32" />
+    <Property Name="BranchCode" Type="Int32" />
+    <Property Name="Code" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="CurrencyCode" Type="Int32" />
+    <Property Name="Factor" Type="Double" />
+    <Property Name="StoreSerial" Type="Int32" />
+    <Property Name="DealerCode" Type="Int32" />
+    <Property Name="RegionCode" Type="Int32" />
+    <Property Name="ItemSerial" Type="Int32" />
+    <Property Name="UnitSerial" Type="Int32" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Discount" Type="Double" />
+    <Property Name="Tax" Type="Double" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="TotalAfterDisc" Type="Double" />
+    <Property Name="DiscValue" Type="Double" />
+    <Property Name="GroupSerial" Type="Int32" />
+    <Property Name="SupplierSerial" Type="Int32" />
+    <NavigationProperty Name="GroupCode" Relationship="TopSoftModel.FK__HPurchase__Group__1975C517" FromRole="HPurchase" ToRole="GroupCode" />
+    <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.FK__HPurchase__ItemS__1C5231C2" FromRole="HPurchase" ToRole="ItemCode" />
+    <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__HPurchase__Store__1A69E950" FromRole="HPurchase" ToRole="StoreCode" />
+    <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__HPurchase__Suppl__1D4655FB" FromRole="HPurchase" ToRole="SupplierCode" />
+    <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89" FromRole="HPurchase" ToRole="UnitCode" />
+  </EntityType>
+  <Association Name="FK__HPurchase__Group__1975C517">
+    <End Type="TopSoftModel.GroupCode" Role="GroupCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="GroupSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HPurchase__ItemS__1C5231C2">
+    <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="ItemSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HPurchase__Store__1A69E950">
+    <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="StoreSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HPurchase__Suppl__1D4655FB">
+    <End Type="TopSoftModel.SupplierCode" Role="SupplierCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="SupplierSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HPurchase__UnitS__1B5E0D89">
+    <End Type="TopSoftModel.UnitCode" Role="UnitCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="UnitSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HSales">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID" Type="Int32" />
+    <Property Name="BranchCode" Type="Int32" />
+    <Property Name="Code" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="CurrencyCode" Type="Int32" />
+    <Property Name="Factor" Type="Double" />
+    <Property Name="StoreSerial" Type="Int32" />
+    <Property Name="DealerCode" Type="Int32" />
+    <Property Name="RegionCode" Type="Int32" />
+    <Property Name="FirstPayment" Type="Double" />
+    <Property Name="Paid" Type="Double" />
+    <Property Name="ItemSerial" Type="Int32" />
+    <Property Name="UnitSerial" Type="Int32" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Discount" Type="Double" />
+    <Property Name="Tax" Type="Double" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="TotalAfterDisc" Type="Double" />
+    <Property Name="DiscValue" Type="Double" />
+    <Property Name="GroupSerial" Type="Int32" />
+    <Property Name="CustomerSerial" Type="Int32" />
+    <NavigationProperty Name="CustomerCode" Relationship="TopSoftModel.FK__HSales__Customer__23F3538A" FromRole="HSales" ToRole="CustomerCode" />
+    <NavigationProperty Name="GroupCode" Relationship="TopSoftModel.GroupSerial" FromRole="HSales" ToRole="GroupCode" />
+    <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.itemSerial" FromRole="HSales" ToRole="ItemCode" />
+    <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.StoreSerial" FromRole="HSales" ToRole="StoreCode" />
+    <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.UnitSerial" FromRole="HSales" ToRole="UnitCode" />
+  </EntityType>
+  <Association Name="FK__HSales__Customer__23F3538A">
+    <End Type="TopSoftModel.CustomerCode" Role="CustomerCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HSales">
+        <PropertyRef Name="CustomerSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupSerial">
+    <End Type="TopSoftModel.GroupCode" Role="GroupCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HSales">
+        <PropertyRef Name="GroupSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="itemSerial">
+    <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HSales">
+        <PropertyRef Name="ItemSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StoreSerial">
+    <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HSales">
+        <PropertyRef Name="StoreSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UnitSerial">
+    <End Type="TopSoftModel.UnitCode" Role="UnitCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HSales">
+        <PropertyRef Name="UnitSerial" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

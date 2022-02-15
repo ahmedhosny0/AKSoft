@@ -26,15 +26,15 @@ namespace AKSoft.Models
         }
     
         public virtual DbSet<GroupCode> GroupCode { get; set; }
-        public virtual DbSet<HSales> HSales { get; set; }
         public virtual DbSet<ItemCode> ItemCode { get; set; }
         public virtual DbSet<StoreCode> StoreCode { get; set; }
         public virtual DbSet<UnitCode> UnitCode { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
-        public virtual DbSet<HPurchase> HPurchase { get; set; }
         public virtual DbSet<CountryCode> CountryCode { get; set; }
         public virtual DbSet<CustomerCode> CustomerCode { get; set; }
         public virtual DbSet<SupplierCode> SupplierCode { get; set; }
         public virtual DbSet<TownCode> TownCode { get; set; }
+        public virtual DbSet<HPurchase> HPurchase { get; set; }
+        public virtual DbSet<HSales> HSales { get; set; }
     }
 }

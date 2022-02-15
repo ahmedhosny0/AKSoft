@@ -1,10 +1,8 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "DisplayInvoiceSales";
+    ViewBag.Title = "Display Towns";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Display Invoice Purchase</h2>
 <script src="~/Scripts/sweetalert.min.js"></script>
 @if (TempData["Al"] != null)
 {
@@ -27,21 +25,18 @@
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<a href="@Url.Action("SaveInvoicePurchase", "Product")">Add Invoice Purchase</a>
+<h2>Display Towns</h2>
+<a href="@Url.Action("SaveTown","Product")">Add Town</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th>ID</th>
-        <th>Store</th>
-        <th>Item</th>
-        <th>Unit</th>
-        <th>Group</th>
-        <th>Supplier</th>        
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Total</th>
-        <th></th>
+        <th>ArabicName</th>
+        <th>EnglishName</th>
+        <th>DescName</th>
+        <th>Notes</th>
 
     </tr>
+
     @for (int i = 0; i < Model.Rows.Count; i++)
     {
         <tr>
@@ -50,13 +45,9 @@
             <td>@Model.Rows[i][2]</td>
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>
-            <td>@Model.Rows[i][5]</td>
-            <td>@Model.Rows[i][6]</td>
-            <td>@Model.Rows[i][7]</td>
-            <td>@Model.Rows[i][8]</td>
             <td>
-                <a href="@Url.Action("EditInPurchase", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
-                <a href="@Url.Action("DeleteInPurchase", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
+                <a href="@Url.Action("EditTown", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
+                <a href="@Url.Action("DeleteTown", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
             </td>
         </tr>
     }

@@ -67,7 +67,7 @@ public class ReportsController : Controller
         {
             sqlCon.Open();
 
-            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT ItCode,ItemName,StCode,StoreName,UnitName,Quantity,InPrice,Total from RptSales", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select ItemCode,ItemName,StoreName,UnitName,CustomerName,HsalesQuantity,ItemSales1Unit1,HsalesTotal from RptSales", sqlCon);
             sqlDa.Fill(dtblProduct);
         }
         return View(dtblProduct);
@@ -78,7 +78,7 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select StoreName,ItemName,UnitName,HpurchaseQuantity,HpurchasePrice,HpurchaseTotal from RptPurchase", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select StoreName,ItemName,UnitName,SupplierName,HpurchaseQuantity,HpurchasePrice,HpurchaseTotal from RptPurchase", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);
