@@ -330,6 +330,7 @@
     <Content Include="Views\Product\EditCountry.cshtml" />
     <Content Include="Views\Product\DisplayCustomers.cshtml" />
     <Content Include="Views\Product\DisplaySuppliers.cshtml" />
+    <Content Include="Views\Reports\SupplierData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

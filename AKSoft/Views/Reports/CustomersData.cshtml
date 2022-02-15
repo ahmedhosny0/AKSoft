@@ -1,20 +1,22 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "DisplayUnits";
+    ViewBag.Title = "Customer Data";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>DisplayUnits</h2>
-<a href="@Url.Action("SaveUnit","Product")">Add Unit</a>
+<h2>Customer Data</h2>
+<a href="@Url.Action("SaveCustomer", "Product")">Add Customer</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>ID</th>
-        <th>ArabicName</th>
-        <th>EnglishName</th>
-        <th>DescName</th>
-        <th>Description</th>
-        <th></th>
-
+        <th>Customer ID</th>
+        <th>Arabic Name</th>
+        <th>English Name</th>
+        <th>Address</th>
+        <th>TelePhone1</th>
+        <th>TelePhone2</th>
+        <th>Country</th>
+        <th>Town</th>
+        <th>E-Mail</th>
     </tr>
 
     @for (int i = 0; i < Model.Rows.Count; i++)
@@ -25,10 +27,10 @@
             <td>@Model.Rows[i][2]</td>
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>
-            <td>
-                <a href="@Url.Action("EditUnit", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
-                <a href="@Url.Action("DeleteUnit", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
-            </td>
+            <td>@Model.Rows[i][5]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td>@Model.Rows[i][7]</td>
+            <td>@Model.Rows[i][8]</td>
         </tr>
     }
 </table>

@@ -1,17 +1,30 @@
-﻿@{
-    Layout = null;
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Supplier Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>Supplier Account</h2>
+<a href="@Url.Action("SaveSupplier", "Product")">Add Supplier</a>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Supplier ID</th>
+        <th>Supplier Name</th>
+        <th>Debit</th>
+        <th>Credit</th>
+        <th>Total Purchase</th>
+    </tr>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
-    </div>
-</body>
-</html>
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+
+        </tr>
+    }
+</table>
+
+

@@ -4,7 +4,7 @@
     ViewBag.Title = "SaveGroup";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }<script src="~/Scripts/sweetalert.min.js"></script>
-<h1 class="head">Add Group</h1>
+<h1 class="head save">Add Group</h1>
 @if (TempData["Al"] != null)
 {
     <script>
@@ -23,6 +23,7 @@
             .head
         {
                background-color: #3577ff;
+                           font-size:18px;
     width: 40%;
     color: white
         }
@@ -31,35 +32,36 @@
 @using (Html.BeginForm("SaveGroup", "Product", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <form>
-        <div class="Elements">
+        <ul class="Elements">
+            <li class="">
+                  <label class="Lab">Date</label>
+                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt" } }) @*Required TextBox*@
+                </li>
+                <li class="">
+                    @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
 
-            <div class="">
-                @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
+                    @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+                </li>
 
-                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
-            </div>
+                <li class="">
+                    @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
+                    @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
+                </li>
 
-            <div class="">
-                @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
-            </div>
+                <li class="">
+                    @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
+                    @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
+                </li>
+                <li class="">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+                </li>
 
-            <div class="">
-                @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
-            </div>
-            <div class="">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
-            </div>
-
-            <div class="">
-                <button class="save">Save</button>
-                @Html.ActionLink("Show All", "DisplayCategories", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
-            </div>
-        </div>
-    </form>
+                <li class="">
+                    <button class="save">Save</button>
+                    @Html.ActionLink("Show All", "DisplayCategories", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
+                </li>
+            </ul>
 }
 
 

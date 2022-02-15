@@ -13,7 +13,25 @@ public class ReportsController : Controller
     // GET: Reports
     public ActionResult SupplierAccount()
     {
-        return View();
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select SupplierCode,SupplierName,0 Debit,0 Credit,sum(HpurchaseTotal)ToatalPurchase from RptPurchase group by SupplierName,SupplierCode", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
+    }
+    public ActionResult SupplierData()
+    {
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select SupplierCode,SupplierName,SupplierEname,SupplierAddress1,SupplierTel1,SupplierTel2,CountryName,TownName,Email from RptSuppliers", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
     }
     public ActionResult StocksState()
     {
@@ -32,7 +50,7 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select HPurchase.ItemSerial ,(hp.t-(max(HPurchase.Price) * hp.q))t from HPurchase left join (select itemSerial,sum(hsales.total)t ,sum(hsales.Quantity) q from hsales group by hsales.ItemSerial)hp on hp.ItemSerial=HPurchase.ItemSerial group by HPurchase.ItemSerial,HPurchase.Price , hp.q,hp.t", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select ItemCode.Serial ItemCode ,ItemCode.ArabicName,(hp.t-(max(HPurchase.Price) * hp.q))t from HPurchase left join ItemCode on ItemCode.Serial=HPurchase.ItemSerial left join (select itemSerial,sum(hsales.total)t ,sum(hsales.Quantity) q from hsales group by hsales.ItemSerial)hp on hp.ItemSerial=HPurchase.ItemSerial group by ItemCode.Serial,HPurchase.Price , hp.q,hp.t,ItemCode.ArabicName", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);
@@ -67,7 +85,7 @@ public class ReportsController : Controller
         {
             sqlCon.Open();
 
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select ItemCode,ItemName,StoreName,UnitName,CustomerName,HsalesQuantity,ItemSales1Unit1,HsalesTotal from RptSales", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select hsalesCode,ItemName,StoreName,UnitName,CustomerName,HsalesQuantity,ItemSales1Unit1,HsalesTotal from RptSales", sqlCon);
             sqlDa.Fill(dtblProduct);
         }
         return View(dtblProduct);
@@ -85,10 +103,24 @@ public class ReportsController : Controller
     }
     public ActionResult CustomersData()
     {
-        return View();
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select CustomerCode,CustomerName,CustomerEname,CustomerAddress1,CustomerTel1,CustomerTel2,CountryName,TownName,Email from RptCustomers", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
     }
     public ActionResult CustomerAccount()
     {
-        return View();
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select CustomerCode,CustomerName,0 Debit,0 Credit,sum(HsalesTotal)TotalSales from RptSales group by CustomerName,CustomerCode", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
     }
 }
