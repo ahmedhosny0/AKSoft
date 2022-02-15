@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/15/2022 15:02:25
+-- Date Created: 02/15/2022 16:46:53
 -- Generated from EDMX file: F:\ahmed1\AKSoft\AKSoft\Models\DBModel.edmx
 -- --------------------------------------------------
 
@@ -47,6 +47,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK__SupplierC__Websi__69FBBC1F]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SupplierCode] DROP CONSTRAINT [FK__SupplierC__Websi__69FBBC1F];
 GO
+IF OBJECT_ID(N'[dbo].[FK_GroupSerial]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK_GroupSerial];
+GO
 IF OBJECT_ID(N'[dbo].[FK_ItemCode_GroupCode]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ItemCode] DROP CONSTRAINT [FK_ItemCode_GroupCode];
 GO
@@ -55,9 +58,6 @@ IF OBJECT_ID(N'[dbo].[FK_ItemCode_StoreCode]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ItemCode_UnitCode]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ItemCode] DROP CONSTRAINT [FK_ItemCode_UnitCode];
-GO
-IF OBJECT_ID(N'[dbo].[FK_GroupSerial]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK_GroupSerial];
 GO
 IF OBJECT_ID(N'[dbo].[FK_itemSerial]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK_itemSerial];
@@ -120,7 +120,8 @@ CREATE TABLE [dbo].[GroupCode] (
     [EnglishName] nvarchar(150)  NULL,
     [DescName] nvarchar(150)  NULL,
     [Description] nvarchar(150)  NULL,
-    [ColorName] nvarchar(50)  NULL
+    [ColorName] nvarchar(50)  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
@@ -142,7 +143,8 @@ CREATE TABLE [dbo].[ItemCode] (
     [PriceSale1Unit1] float  NULL,
     [PriceSale1Unit2] float  NULL,
     [StoreID] int  NULL,
-    [Counts] float  NULL
+    [Counts] float  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
@@ -162,7 +164,8 @@ CREATE TABLE [dbo].[StoreCode] (
     [Phone2] nvarchar(20)  NULL,
     [Phone3] nvarchar(20)  NULL,
     [Phone4] nvarchar(20)  NULL,
-    [AreaStock] nvarchar(20)  NULL
+    [AreaStock] nvarchar(20)  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
@@ -174,7 +177,8 @@ CREATE TABLE [dbo].[UnitCode] (
     [ArabicName] nvarchar(150)  NULL,
     [EnglishName] nvarchar(150)  NULL,
     [DescName] nvarchar(150)  NULL,
-    [Description] nvarchar(150)  NULL
+    [Description] nvarchar(150)  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
@@ -187,7 +191,8 @@ CREATE TABLE [dbo].[UserInfo] (
     [Email] nvarchar(100)  NULL,
     [Password] nvarchar(100)  NULL,
     [RePassword] nvarchar(100)  NULL,
-    [Role] int  NULL
+    [Role] int  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
@@ -199,7 +204,8 @@ CREATE TABLE [dbo].[CountryCode] (
     [ArabicName] nvarchar(100)  NULL,
     [EnglishName] nvarchar(100)  NULL,
     [DescName] nvarchar(100)  NULL,
-    [Notes] nvarchar(150)  NULL
+    [Notes] nvarchar(150)  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
@@ -220,7 +226,8 @@ CREATE TABLE [dbo].[CustomerCode] (
     [CountrySerial] int  NULL,
     [TownSerial] int  NULL,
     [Email] nvarchar(50)  NULL,
-    [Website] nvarchar(30)  NULL
+    [Website] nvarchar(30)  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
@@ -241,7 +248,8 @@ CREATE TABLE [dbo].[SupplierCode] (
     [CountrySerial] int  NULL,
     [TownSerial] int  NULL,
     [Email] nvarchar(50)  NULL,
-    [Website] nvarchar(30)  NULL
+    [Website] nvarchar(30)  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
@@ -253,7 +261,8 @@ CREATE TABLE [dbo].[TownCode] (
     [ArabicName] nvarchar(100)  NULL,
     [EnglishName] nvarchar(100)  NULL,
     [DescName] nvarchar(100)  NULL,
-    [Notes] nvarchar(150)  NULL
+    [Notes] nvarchar(150)  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
@@ -279,7 +288,8 @@ CREATE TABLE [dbo].[HPurchase] (
     [TotalAfterDisc] float  NULL,
     [DiscValue] float  NULL,
     [GroupSerial] int  NULL,
-    [SupplierSerial] int  NULL
+    [SupplierSerial] int  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
@@ -307,7 +317,8 @@ CREATE TABLE [dbo].[HSales] (
     [TotalAfterDisc] float  NULL,
     [DiscValue] float  NULL,
     [GroupSerial] int  NULL,
-    [CustomerSerial] int  NULL
+    [CustomerSerial] int  NULL,
+    [AddUserDate] datetime  NULL
 );
 GO
 
