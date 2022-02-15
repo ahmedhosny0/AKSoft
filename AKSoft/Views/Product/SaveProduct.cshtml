@@ -55,8 +55,12 @@
         @Html.AntiForgeryToken()
 
         <ul class="Elements">
+            <li class="">
+                <label class="Lab">Date</label>
+                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt" } }) @*Required TextBox*@
+            </li>
             <li>
-                <label class="Lab dr">Stock</label>
+                <label class="Lab">Stock</label>
                 @Html.DropDownListFor(model => model.StoreID, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
                 <label class="Lab dr">Unit</label>
                 @Html.DropDownListFor(model => model.Unit1, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
@@ -67,7 +71,7 @@
                 @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
 
                 @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
-            </li>
+             </li>
 
             <li class="">
                 @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })

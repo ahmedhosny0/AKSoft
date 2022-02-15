@@ -46,6 +46,10 @@
 
     <ul class="Elements">
         <li class="gs">
+        <li class="">
+            <label class="Lab">Date</label>
+            @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt" } }) @*Required TextBox*@
+        </li>
             <label class="Lab">Store</label>
             @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
             <label class="Lab">Category</label>

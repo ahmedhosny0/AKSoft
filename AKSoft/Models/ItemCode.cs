@@ -38,6 +38,7 @@ namespace AKSoft.Models
         public Nullable<double> PriceSale1Unit2 { get; set; }
         public Nullable<int> StoreID { get; set; }
         public Nullable<double> Counts { get; set; }
+        public Nullable<System.DateTime> AddUserDate { get; set; }
     
         public virtual GroupCode GroupCode { get; set; }
         public virtual StoreCode StoreCode { get; set; }

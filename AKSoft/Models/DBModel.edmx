@@ -16,6 +16,7 @@
           <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
           <Property Name="DescName" Type="nvarchar" MaxLength="100" />
           <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <EntityType Name="CustomerCode">
           <Key>
@@ -37,6 +38,7 @@
           <Property Name="TownSerial" Type="int" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Website" Type="nvarchar" MaxLength="30" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <EntityType Name="GroupCode">
           <Key>
@@ -50,6 +52,7 @@
           <Property Name="DescName" Type="nvarchar" MaxLength="150" />
           <Property Name="Description" Type="nvarchar" MaxLength="150" />
           <Property Name="ColorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <EntityType Name="HPurchase">
           <Key>
@@ -59,7 +62,7 @@
           <Property Name="ID" Type="int" />
           <Property Name="BranchCode" Type="int" />
           <Property Name="Code" Type="int" />
-          <Property Name="Date" Type="smalldatetime" />
+          <Property Name="Date" Type="datetime" />
           <Property Name="CurrencyCode" Type="int" />
           <Property Name="Factor" Type="float" />
           <Property Name="StoreSerial" Type="int" />
@@ -76,6 +79,7 @@
           <Property Name="DiscValue" Type="float" />
           <Property Name="GroupSerial" Type="int" />
           <Property Name="SupplierSerial" Type="int" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <EntityType Name="HSales">
           <Key>
@@ -85,7 +89,7 @@
           <Property Name="ID" Type="int" />
           <Property Name="BranchCode" Type="int" />
           <Property Name="Code" Type="int" />
-          <Property Name="Date" Type="smalldatetime" />
+          <Property Name="Date" Type="datetime" />
           <Property Name="CurrencyCode" Type="int" />
           <Property Name="Factor" Type="float" />
           <Property Name="StoreSerial" Type="int" />
@@ -104,6 +108,7 @@
           <Property Name="DiscValue" Type="float" />
           <Property Name="GroupSerial" Type="int" />
           <Property Name="CustomerSerial" Type="int" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <EntityType Name="ItemCode">
           <Key>
@@ -126,6 +131,7 @@
           <Property Name="PriceSale1Unit2" Type="float" />
           <Property Name="StoreID" Type="int" />
           <Property Name="Counts" Type="float" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <EntityType Name="StoreCode">
           <Key>
@@ -146,6 +152,7 @@
           <Property Name="Phone3" Type="nvarchar" MaxLength="20" />
           <Property Name="Phone4" Type="nvarchar" MaxLength="20" />
           <Property Name="AreaStock" Type="nvarchar" MaxLength="20" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <EntityType Name="SupplierCode">
           <Key>
@@ -167,6 +174,7 @@
           <Property Name="TownSerial" Type="int" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Website" Type="nvarchar" MaxLength="30" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <EntityType Name="TownCode">
           <Key>
@@ -179,6 +187,7 @@
           <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
           <Property Name="DescName" Type="nvarchar" MaxLength="100" />
           <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <EntityType Name="UnitCode">
           <Key>
@@ -191,6 +200,7 @@
           <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
           <Property Name="DescName" Type="nvarchar" MaxLength="150" />
           <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -204,6 +214,7 @@
           <Property Name="Password" Type="nvarchar" MaxLength="100" />
           <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
           <Property Name="Role" Type="int" />
+          <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
         <Association Name="FK__CustomerC__TownS__671F4F74">
           <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
@@ -345,6 +356,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GroupSerial">
+          <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="GroupSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemCode_GroupCode">
           <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
           <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="*" />
@@ -381,21 +406,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="GroupSerial">
-          <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GroupCode">
-              <PropertyRef Name="Serial" />
-            </Principal>
-            <Dependent Role="HSales">
-              <PropertyRef Name="GroupSerial" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="itemSerial">
+        <Association Name="FK_itemSerial">
           <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -409,7 +420,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="StoreSerial">
+        <Association Name="FK_StoreSerial">
           <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -423,7 +434,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="UnitSerial">
+        <Association Name="FK_UnitSerial">
           <End Role="UnitCode" Type="Self.UnitCode" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -489,6 +500,10 @@
             <End Role="CountryCode" EntitySet="CountryCode" />
             <End Role="SupplierCode" EntitySet="SupplierCode" />
           </AssociationSet>
+          <AssociationSet Name="FK_GroupSerial" Association="Self.FK_GroupSerial">
+            <End Role="GroupCode" EntitySet="GroupCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
           <AssociationSet Name="FK_ItemCode_GroupCode" Association="Self.FK_ItemCode_GroupCode">
             <End Role="GroupCode" EntitySet="GroupCode" />
             <End Role="ItemCode" EntitySet="ItemCode" />
@@ -501,19 +516,15 @@
             <End Role="UnitCode" EntitySet="UnitCode" />
             <End Role="ItemCode" EntitySet="ItemCode" />
           </AssociationSet>
-          <AssociationSet Name="GroupSerial" Association="Self.GroupSerial">
-            <End Role="GroupCode" EntitySet="GroupCode" />
-            <End Role="HSales" EntitySet="HSales" />
-          </AssociationSet>
-          <AssociationSet Name="itemSerial" Association="Self.itemSerial">
+          <AssociationSet Name="FK_itemSerial" Association="Self.FK_itemSerial">
             <End Role="ItemCode" EntitySet="ItemCode" />
             <End Role="HSales" EntitySet="HSales" />
           </AssociationSet>
-          <AssociationSet Name="StoreSerial" Association="Self.StoreSerial">
+          <AssociationSet Name="FK_StoreSerial" Association="Self.FK_StoreSerial">
             <End Role="StoreCode" EntitySet="StoreCode" />
             <End Role="HSales" EntitySet="HSales" />
           </AssociationSet>
-          <AssociationSet Name="UnitSerial" Association="Self.UnitSerial">
+          <AssociationSet Name="FK_UnitSerial" Association="Self.FK_UnitSerial">
             <End Role="UnitCode" EntitySet="UnitCode" />
             <End Role="HSales" EntitySet="HSales" />
           </AssociationSet>
@@ -537,6 +548,7 @@
           <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_GroupCode" FromRole="GroupCode" ToRole="ItemCode" />
           <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Group__1975C517" FromRole="GroupCode" ToRole="HPurchase" />
           <NavigationProperty Name="HSales" Relationship="TopSoftModel.GroupSerial" FromRole="GroupCode" ToRole="HSales" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ItemCode">
           <Key>
@@ -564,6 +576,7 @@
           <NavigationProperty Name="UnitCode" Relationship="Self.FK_ItemCode_UnitCode" FromRole="ItemCode" ToRole="UnitCode" />
           <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__ItemS__1C5231C2" FromRole="ItemCode" ToRole="HPurchase" />
           <NavigationProperty Name="HSales" Relationship="TopSoftModel.itemSerial" FromRole="ItemCode" ToRole="HSales" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="StoreCode">
           <Key>
@@ -587,6 +600,7 @@
           <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_StoreCode" FromRole="StoreCode" ToRole="ItemCode" />
           <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Store__1A69E950" FromRole="StoreCode" ToRole="HPurchase" />
           <NavigationProperty Name="HSales" Relationship="TopSoftModel.StoreSerial" FromRole="StoreCode" ToRole="HSales" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="UnitCode">
           <Key>
@@ -602,6 +616,7 @@
           <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_UnitCode" FromRole="UnitCode" ToRole="ItemCode" />
           <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89" FromRole="UnitCode" ToRole="HPurchase" />
           <NavigationProperty Name="HSales" Relationship="TopSoftModel.UnitSerial" FromRole="UnitCode" ToRole="HSales" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -615,6 +630,7 @@
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="RePassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="Int32" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_ItemCode_GroupCode">
           <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
@@ -746,6 +762,7 @@
           <Property Name="Notes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CustomerCode" Relationship="TopSoftModel.FK__CustomerC__Websi__662B2B3B" FromRole="CountryCode" ToRole="CustomerCode" />
           <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="CountryCode" ToRole="SupplierCode" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="CustomerCode">
           <Key>
@@ -770,6 +787,7 @@
           <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__CustomerC__Websi__662B2B3B" FromRole="CustomerCode" ToRole="CountryCode" />
           <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__CustomerC__TownS__671F4F74" FromRole="CustomerCode" ToRole="TownCode" />
           <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK__HSales__Customer__23F3538A" FromRole="CustomerCode" ToRole="HSales" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="SupplierCode">
           <Key>
@@ -794,6 +812,7 @@
           <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="SupplierCode" ToRole="CountryCode" />
           <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__SupplierC__TownS__6AEFE058" FromRole="SupplierCode" ToRole="TownCode" />
           <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Suppl__1D4655FB" FromRole="SupplierCode" ToRole="HPurchase" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="TownCode">
           <Key>
@@ -808,6 +827,7 @@
           <Property Name="Notes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CustomerCode" Relationship="TopSoftModel.FK__CustomerC__TownS__671F4F74" FromRole="TownCode" ToRole="CustomerCode" />
           <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__SupplierC__TownS__6AEFE058" FromRole="TownCode" ToRole="SupplierCode" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK__CustomerC__Websi__662B2B3B">
           <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1">
@@ -873,7 +893,7 @@
           <Property Name="ID" Type="Int32" />
           <Property Name="BranchCode" Type="Int32" />
           <Property Name="Code" Type="Int32" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="CurrencyCode" Type="Int32" />
           <Property Name="Factor" Type="Double" />
           <Property Name="StoreSerial" Type="Int32" />
@@ -895,6 +915,7 @@
           <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__HPurchase__Store__1A69E950" FromRole="HPurchase" ToRole="StoreCode" />
           <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__HPurchase__Suppl__1D4655FB" FromRole="HPurchase" ToRole="SupplierCode" />
           <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89" FromRole="HPurchase" ToRole="UnitCode" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK__HPurchase__Group__1975C517">
           <End Type="TopSoftModel.GroupCode" Role="GroupCode" Multiplicity="0..1">
@@ -974,7 +995,7 @@
           <Property Name="ID" Type="Int32" />
           <Property Name="BranchCode" Type="Int32" />
           <Property Name="Code" Type="Int32" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="CurrencyCode" Type="Int32" />
           <Property Name="Factor" Type="Double" />
           <Property Name="StoreSerial" Type="Int32" />
@@ -998,6 +1019,7 @@
           <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.itemSerial" FromRole="HSales" ToRole="ItemCode" />
           <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.StoreSerial" FromRole="HSales" ToRole="StoreCode" />
           <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.UnitSerial" FromRole="HSales" ToRole="UnitCode" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK__HSales__Customer__23F3538A">
           <End Type="TopSoftModel.CustomerCode" Role="CustomerCode" Multiplicity="0..1">
@@ -1078,7 +1100,8 @@
     <EntitySetMapping Name="GroupCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.GroupCode)">
         <MappingFragment StoreEntitySet="GroupCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
@@ -1092,7 +1115,8 @@
     <EntitySetMapping Name="ItemCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.ItemCode)">
         <MappingFragment StoreEntitySet="ItemCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
@@ -1115,7 +1139,8 @@
     <EntitySetMapping Name="StoreCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.StoreCode)">
         <MappingFragment StoreEntitySet="StoreCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
@@ -1136,7 +1161,8 @@
     <EntitySetMapping Name="UnitCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UnitCode)">
         <MappingFragment StoreEntitySet="UnitCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
@@ -1149,7 +1175,8 @@
     <EntitySetMapping Name="UserInfo">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UserInfo)">
         <MappingFragment StoreEntitySet="UserInfo">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -1163,7 +1190,8 @@
     <EntitySetMapping Name="CountryCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.CountryCode)">
         <MappingFragment StoreEntitySet="CountryCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
@@ -1176,7 +1204,8 @@
     <EntitySetMapping Name="CustomerCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.CustomerCode)">
         <MappingFragment StoreEntitySet="CustomerCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
@@ -1198,7 +1227,8 @@
     <EntitySetMapping Name="SupplierCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.SupplierCode)">
         <MappingFragment StoreEntitySet="SupplierCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
@@ -1220,7 +1250,8 @@
     <EntitySetMapping Name="TownCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.TownCode)">
         <MappingFragment StoreEntitySet="TownCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
@@ -1230,62 +1261,64 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <EntitySetMapping Name="HPurchase">
-            <EntityTypeMapping TypeName="TopSoftModel.HPurchase">
-              <MappingFragment StoreEntitySet="HPurchase">
-                <ScalarProperty Name="SupplierSerial" ColumnName="SupplierSerial" />
-                <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
-                <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
-                <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Tax" ColumnName="Tax" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
-                <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
-                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
-                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
-                <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
-                <ScalarProperty Name="Factor" ColumnName="Factor" />
-                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+    <EntitySetMapping Name="HPurchase">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.HPurchase)">
+        <MappingFragment StoreEntitySet="HPurchase">
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
                 <ScalarProperty Name="Serial" ColumnName="Serial" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HSales">
-            <EntityTypeMapping TypeName="TopSoftModel.HSales">
-              <MappingFragment StoreEntitySet="HSales">
-                <ScalarProperty Name="CustomerSerial" ColumnName="CustomerSerial" />
-                <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
-                <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
-                <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Tax" ColumnName="Tax" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
-                <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
-                <ScalarProperty Name="Paid" ColumnName="Paid" />
-                <ScalarProperty Name="FirstPayment" ColumnName="FirstPayment" />
-                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
-                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
-                <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
-                <ScalarProperty Name="Factor" ColumnName="Factor" />
-                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Factor" ColumnName="Factor" />
+          <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+          <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
+          <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
+          <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
+          <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
+          <ScalarProperty Name="SupplierSerial" ColumnName="SupplierSerial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HSales">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.HSales)">
+        <MappingFragment StoreEntitySet="HSales">
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
                 <ScalarProperty Name="Serial" ColumnName="Serial" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Factor" ColumnName="Factor" />
+          <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+          <ScalarProperty Name="FirstPayment" ColumnName="FirstPayment" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
+          <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
+          <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
+          <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
+          <ScalarProperty Name="CustomerSerial" ColumnName="CustomerSerial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

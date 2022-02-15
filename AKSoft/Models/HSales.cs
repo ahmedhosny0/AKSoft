@@ -37,6 +37,7 @@ namespace AKSoft.Models
         public Nullable<double> DiscValue { get; set; }
         public Nullable<int> GroupSerial { get; set; }
         public Nullable<int> CustomerSerial { get; set; }
+        public Nullable<System.DateTime> AddUserDate { get; set; }
     
         public virtual CustomerCode CustomerCode { get; set; }
         public virtual GroupCode GroupCode { get; set; }

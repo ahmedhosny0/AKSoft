@@ -46,6 +46,10 @@
     <ul class="Elements">
        <br />
         <li class="">
+            <label class="Lab">Date</label>
+            @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt" } }) @*Required TextBox*@
+        </li>
+        <li class="">
             @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
 
             @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@

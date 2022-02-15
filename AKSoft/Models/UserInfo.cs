@@ -22,5 +22,6 @@ namespace AKSoft.Models
         public string Password { get; set; }
         public string RePassword { get; set; }
         public Nullable<int> Role { get; set; }
+        public Nullable<System.DateTime> AddUserDate { get; set; }
     }
 }

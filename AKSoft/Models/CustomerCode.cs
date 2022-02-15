@@ -36,6 +36,7 @@ namespace AKSoft.Models
         public Nullable<int> TownSerial { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
+        public Nullable<System.DateTime> AddUserDate { get; set; }
     
         public virtual CountryCode CountryCode { get; set; }
         public virtual TownCode TownCode { get; set; }

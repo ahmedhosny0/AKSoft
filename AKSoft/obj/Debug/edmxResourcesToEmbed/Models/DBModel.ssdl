@@ -11,6 +11,7 @@
     <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
     <Property Name="DescName" Type="nvarchar" MaxLength="100" />
     <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="CustomerCode">
     <Key>
@@ -32,6 +33,7 @@
     <Property Name="TownSerial" Type="int" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Website" Type="nvarchar" MaxLength="30" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="GroupCode">
     <Key>
@@ -45,6 +47,7 @@
     <Property Name="DescName" Type="nvarchar" MaxLength="150" />
     <Property Name="Description" Type="nvarchar" MaxLength="150" />
     <Property Name="ColorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="HPurchase">
     <Key>
@@ -54,7 +57,7 @@
     <Property Name="ID" Type="int" />
     <Property Name="BranchCode" Type="int" />
     <Property Name="Code" Type="int" />
-    <Property Name="Date" Type="smalldatetime" />
+    <Property Name="Date" Type="datetime" />
     <Property Name="CurrencyCode" Type="int" />
     <Property Name="Factor" Type="float" />
     <Property Name="StoreSerial" Type="int" />
@@ -71,6 +74,7 @@
     <Property Name="DiscValue" Type="float" />
     <Property Name="GroupSerial" Type="int" />
     <Property Name="SupplierSerial" Type="int" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="HSales">
     <Key>
@@ -80,7 +84,7 @@
     <Property Name="ID" Type="int" />
     <Property Name="BranchCode" Type="int" />
     <Property Name="Code" Type="int" />
-    <Property Name="Date" Type="smalldatetime" />
+    <Property Name="Date" Type="datetime" />
     <Property Name="CurrencyCode" Type="int" />
     <Property Name="Factor" Type="float" />
     <Property Name="StoreSerial" Type="int" />
@@ -99,6 +103,7 @@
     <Property Name="DiscValue" Type="float" />
     <Property Name="GroupSerial" Type="int" />
     <Property Name="CustomerSerial" Type="int" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="ItemCode">
     <Key>
@@ -121,6 +126,7 @@
     <Property Name="PriceSale1Unit2" Type="float" />
     <Property Name="StoreID" Type="int" />
     <Property Name="Counts" Type="float" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="StoreCode">
     <Key>
@@ -141,6 +147,7 @@
     <Property Name="Phone3" Type="nvarchar" MaxLength="20" />
     <Property Name="Phone4" Type="nvarchar" MaxLength="20" />
     <Property Name="AreaStock" Type="nvarchar" MaxLength="20" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="SupplierCode">
     <Key>
@@ -162,6 +169,7 @@
     <Property Name="TownSerial" Type="int" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Website" Type="nvarchar" MaxLength="30" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="TownCode">
     <Key>
@@ -174,6 +182,7 @@
     <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
     <Property Name="DescName" Type="nvarchar" MaxLength="100" />
     <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="UnitCode">
     <Key>
@@ -186,6 +195,7 @@
     <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
     <Property Name="DescName" Type="nvarchar" MaxLength="150" />
     <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>
@@ -199,6 +209,7 @@
     <Property Name="Password" Type="nvarchar" MaxLength="100" />
     <Property Name="RePassword" Type="nvarchar" MaxLength="100" />
     <Property Name="Role" Type="int" />
+    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <Association Name="FK__CustomerC__TownS__671F4F74">
     <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
@@ -340,6 +351,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_GroupSerial">
+    <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HSales">
+        <PropertyRef Name="GroupSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ItemCode_GroupCode">
     <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
     <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="*" />
@@ -376,21 +401,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="GroupSerial">
-    <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="GroupCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HSales">
-        <PropertyRef Name="GroupSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="itemSerial">
+  <Association Name="FK_itemSerial">
     <End Role="ItemCode" Type="Self.ItemCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -404,7 +415,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="StoreSerial">
+  <Association Name="FK_StoreSerial">
     <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -418,7 +429,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="UnitSerial">
+  <Association Name="FK_UnitSerial">
     <End Role="UnitCode" Type="Self.UnitCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -484,6 +495,10 @@
       <End Role="CountryCode" EntitySet="CountryCode" />
       <End Role="SupplierCode" EntitySet="SupplierCode" />
     </AssociationSet>
+    <AssociationSet Name="FK_GroupSerial" Association="Self.FK_GroupSerial">
+      <End Role="GroupCode" EntitySet="GroupCode" />
+      <End Role="HSales" EntitySet="HSales" />
+    </AssociationSet>
     <AssociationSet Name="FK_ItemCode_GroupCode" Association="Self.FK_ItemCode_GroupCode">
       <End Role="GroupCode" EntitySet="GroupCode" />
       <End Role="ItemCode" EntitySet="ItemCode" />
@@ -496,19 +511,15 @@
       <End Role="UnitCode" EntitySet="UnitCode" />
       <End Role="ItemCode" EntitySet="ItemCode" />
     </AssociationSet>
-    <AssociationSet Name="GroupSerial" Association="Self.GroupSerial">
-      <End Role="GroupCode" EntitySet="GroupCode" />
-      <End Role="HSales" EntitySet="HSales" />
-    </AssociationSet>
-    <AssociationSet Name="itemSerial" Association="Self.itemSerial">
+    <AssociationSet Name="FK_itemSerial" Association="Self.FK_itemSerial">
       <End Role="ItemCode" EntitySet="ItemCode" />
       <End Role="HSales" EntitySet="HSales" />
     </AssociationSet>
-    <AssociationSet Name="StoreSerial" Association="Self.StoreSerial">
+    <AssociationSet Name="FK_StoreSerial" Association="Self.FK_StoreSerial">
       <End Role="StoreCode" EntitySet="StoreCode" />
       <End Role="HSales" EntitySet="HSales" />
     </AssociationSet>
-    <AssociationSet Name="UnitSerial" Association="Self.UnitSerial">
+    <AssociationSet Name="FK_UnitSerial" Association="Self.FK_UnitSerial">
       <End Role="UnitCode" EntitySet="UnitCode" />
       <End Role="HSales" EntitySet="HSales" />
     </AssociationSet>

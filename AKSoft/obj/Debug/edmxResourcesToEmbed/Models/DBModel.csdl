@@ -15,6 +15,7 @@
     <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_GroupCode" FromRole="GroupCode" ToRole="ItemCode" />
     <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Group__1975C517" FromRole="GroupCode" ToRole="HPurchase" />
     <NavigationProperty Name="HSales" Relationship="TopSoftModel.GroupSerial" FromRole="GroupCode" ToRole="HSales" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ItemCode">
     <Key>
@@ -42,6 +43,7 @@
     <NavigationProperty Name="UnitCode" Relationship="Self.FK_ItemCode_UnitCode" FromRole="ItemCode" ToRole="UnitCode" />
     <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__ItemS__1C5231C2" FromRole="ItemCode" ToRole="HPurchase" />
     <NavigationProperty Name="HSales" Relationship="TopSoftModel.itemSerial" FromRole="ItemCode" ToRole="HSales" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="StoreCode">
     <Key>
@@ -65,6 +67,7 @@
     <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_StoreCode" FromRole="StoreCode" ToRole="ItemCode" />
     <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Store__1A69E950" FromRole="StoreCode" ToRole="HPurchase" />
     <NavigationProperty Name="HSales" Relationship="TopSoftModel.StoreSerial" FromRole="StoreCode" ToRole="HSales" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="UnitCode">
     <Key>
@@ -80,6 +83,7 @@
     <NavigationProperty Name="ItemCode" Relationship="Self.FK_ItemCode_UnitCode" FromRole="UnitCode" ToRole="ItemCode" />
     <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89" FromRole="UnitCode" ToRole="HPurchase" />
     <NavigationProperty Name="HSales" Relationship="TopSoftModel.UnitSerial" FromRole="UnitCode" ToRole="HSales" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>
@@ -93,6 +97,7 @@
     <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="RePassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Role" Type="Int32" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <Association Name="FK_ItemCode_GroupCode">
     <End Role="GroupCode" Type="Self.GroupCode" Multiplicity="0..1" />
@@ -224,6 +229,7 @@
     <Property Name="Notes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CustomerCode" Relationship="TopSoftModel.FK__CustomerC__Websi__662B2B3B" FromRole="CountryCode" ToRole="CustomerCode" />
     <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="CountryCode" ToRole="SupplierCode" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="CustomerCode">
     <Key>
@@ -248,6 +254,7 @@
     <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__CustomerC__Websi__662B2B3B" FromRole="CustomerCode" ToRole="CountryCode" />
     <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__CustomerC__TownS__671F4F74" FromRole="CustomerCode" ToRole="TownCode" />
     <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK__HSales__Customer__23F3538A" FromRole="CustomerCode" ToRole="HSales" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="SupplierCode">
     <Key>
@@ -272,6 +279,7 @@
     <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="SupplierCode" ToRole="CountryCode" />
     <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__SupplierC__TownS__6AEFE058" FromRole="SupplierCode" ToRole="TownCode" />
     <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Suppl__1D4655FB" FromRole="SupplierCode" ToRole="HPurchase" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="TownCode">
     <Key>
@@ -286,6 +294,7 @@
     <Property Name="Notes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CustomerCode" Relationship="TopSoftModel.FK__CustomerC__TownS__671F4F74" FromRole="TownCode" ToRole="CustomerCode" />
     <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__SupplierC__TownS__6AEFE058" FromRole="TownCode" ToRole="SupplierCode" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <Association Name="FK__CustomerC__Websi__662B2B3B">
     <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1">
@@ -351,7 +360,7 @@
     <Property Name="ID" Type="Int32" />
     <Property Name="BranchCode" Type="Int32" />
     <Property Name="Code" Type="Int32" />
-    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
     <Property Name="CurrencyCode" Type="Int32" />
     <Property Name="Factor" Type="Double" />
     <Property Name="StoreSerial" Type="Int32" />
@@ -373,6 +382,7 @@
     <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__HPurchase__Store__1A69E950" FromRole="HPurchase" ToRole="StoreCode" />
     <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__HPurchase__Suppl__1D4655FB" FromRole="HPurchase" ToRole="SupplierCode" />
     <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89" FromRole="HPurchase" ToRole="UnitCode" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <Association Name="FK__HPurchase__Group__1975C517">
     <End Type="TopSoftModel.GroupCode" Role="GroupCode" Multiplicity="0..1">
@@ -452,7 +462,7 @@
     <Property Name="ID" Type="Int32" />
     <Property Name="BranchCode" Type="Int32" />
     <Property Name="Code" Type="Int32" />
-    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
     <Property Name="CurrencyCode" Type="Int32" />
     <Property Name="Factor" Type="Double" />
     <Property Name="StoreSerial" Type="Int32" />
@@ -476,6 +486,7 @@
     <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.itemSerial" FromRole="HSales" ToRole="ItemCode" />
     <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.StoreSerial" FromRole="HSales" ToRole="StoreCode" />
     <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.UnitSerial" FromRole="HSales" ToRole="UnitCode" />
+    <Property Name="AddUserDate" Type="DateTime" Precision="3" />
   </EntityType>
   <Association Name="FK__HSales__Customer__23F3538A">
     <End Type="TopSoftModel.CustomerCode" Role="CustomerCode" Multiplicity="0..1">

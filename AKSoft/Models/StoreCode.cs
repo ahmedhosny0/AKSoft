@@ -37,6 +37,7 @@ namespace AKSoft.Models
         public string Phone3 { get; set; }
         public string Phone4 { get; set; }
         public string AreaStock { get; set; }
+        public Nullable<System.DateTime> AddUserDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemCode> ItemCode { get; set; }

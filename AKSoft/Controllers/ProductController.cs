@@ -34,6 +34,7 @@ using System.Web.Mvc;
                 group.Email = model.Email;
                 group.Password = model.Password;
                 group.RePassword = model.RePassword;
+                group.AddUserDate = model.AddUserDate;
                 db.UserInfo.Add(group);
                 db.SaveChanges();
                 TempData["Al"] = "";
@@ -215,6 +216,7 @@ using System.Web.Mvc;
                 invo.TotalAfterDisc = model.TotalAfterDisc;
                 invo.UnitSerial = model.UnitSerial;
                 invo.CustomerSerial = model.CustomerSerial;
+                invo.AddUserDate = model.AddUserDate;
                 db.HSales.Add(invo);
                 db.SaveChanges();
                 TempData["Al"] = "";
@@ -322,6 +324,7 @@ using System.Web.Mvc;
                 invo2.TotalAfterDisc = model.TotalAfterDisc;
                 invo2.UnitSerial = model.UnitSerial;
                 invo2.SupplierSerial = model.SupplierSerial;
+                invo2.AddUserDate = model.AddUserDate;
                 db.HPurchase.Add(invo2);
                 db.SaveChanges();
                 TempData["Al"] = "";
@@ -342,7 +345,7 @@ using System.Web.Mvc;
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial, StoreSerial, ItemSerial, UnitSerial,GroupSerial,SupplierSerial, Quantity,Price,Total FROM HPurchase", sqlCon);
+                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial, StoreSerial, ItemSerial, UnitSerial,GroupSerial,SupplierSerial, Quantity,Price,Total,AddUserDate FROM HPurchase", sqlCon);
                 sqlDa.Fill(dtblProduct);
             }
             return View(dtblProduct);
@@ -396,6 +399,7 @@ using System.Web.Mvc;
                 product.Description = model.Description;
                 product.PricePurchase1Unit1 = model.PricePurchase1Unit1;
                 product.PriceSale1Unit1 = model.PriceSale1Unit1;
+                product.AddUserDate = model.AddUserDate;
                 db.ItemCode.Add(product);
                 db.SaveChanges();
                 int latestEmpId = product.Serial;
@@ -435,6 +439,7 @@ using System.Web.Mvc;
                 stock.Phone3 = model.Phone3;
                 stock.Phone4 = model.Phone4;
                 stock.StoreKeeper = model.StoreKeeper;
+                stock.AddUserDate = model.AddUserDate;
                 db.StoreCode.Add(stock);
                 db.SaveChanges();
                 int latestEmpId = stock.Serial;
@@ -470,6 +475,7 @@ using System.Web.Mvc;
                 unit.Description = model.Description;
                 unit.ID = model.ID;
                 unit.Code = model.Code;
+                unit.AddUserDate = model.AddUserDate;
                 db.UnitCode.Add(unit);
                 db.SaveChanges();
                 int latestEmpId = unit.Serial;
@@ -505,6 +511,7 @@ using System.Web.Mvc;
                 group.Description = model.Description;
                 group.ID = model.ID;
                 group.Code = model.Code;
+                group.AddUserDate = model.AddUserDate;
                 db.GroupCode.Add(group);
                 db.SaveChanges();
                 TempData["Al"] = group.ArabicName;
@@ -609,7 +616,7 @@ using System.Web.Mvc;
                 using (SqlConnection sqlCon = new SqlConnection(connectionString))
                 {
                     sqlCon.Open();
-                    SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description FROM GroupCode", sqlCon);
+                    SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description,AddUserDate,AddUserDate FROM GroupCode", sqlCon);
                     sqlDa.Fill(dtblProduct);
                 }
             }
@@ -709,7 +716,7 @@ using System.Web.Mvc;
             {
                 sqlCon.Open();
 
-                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description FROM UnitCode", sqlCon);
+                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description,AddUserDate FROM UnitCode", sqlCon);
                 sqlDa.Fill(dtblProduct);
             }
             return View(dtblProduct);
@@ -724,7 +731,7 @@ using System.Web.Mvc;
             {
                 sqlCon.Open();
 
-                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,[PriceSale1Unit1],[Counts] FROM ItemCode", sqlCon);
+                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,[PriceSale1Unit1],[Counts],AddUserDate FROM ItemCode", sqlCon);
                 sqlDa.Fill(dtblProduct);
             }
             return View(dtblProduct);
@@ -815,7 +822,7 @@ using System.Web.Mvc;
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,PriceSale1Unit1,Counts FROM ItemCode";
+                string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,StoreID,SerialGroup,Unit1,PricePurchase1Unit1,PriceSale1Unit1,Counts,AddUserDate FROM ItemCode";
                 SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
                 sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
                 sqlDa.Fill(dtblProduct);
@@ -878,7 +885,7 @@ using System.Web.Mvc;
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description,[Address],[NumberOfLeans],[StoreKeeper],[Phone1],[Phone2],[Phone3] FROM StoreCode ", sqlCon);
+                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Description,[Address],[NumberOfLeans],[StoreKeeper],[Phone1],[Phone2],[Phone3],AddUserDate FROM StoreCode ", sqlCon);
                 sqlDa.Fill(dtblProduct);
             }
             return View(dtblProduct);
@@ -894,7 +901,7 @@ using System.Web.Mvc;
             {
 
                 sqlCon.Open();
-                string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,[Address],[NumberOfLeans],[StoreKeeper],[Phone1],[Phone2],[Phone3] FROM StoreCode Where Serial =@Serial";
+                string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,[Address],[NumberOfLeans],[StoreKeeper],[Phone1],[Phone2],[Phone3],AddUserDate FROM StoreCode Where Serial =@Serial";
                 SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
                 sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
                 sqlDa.Fill(dtblProduct);
@@ -1023,6 +1030,7 @@ using System.Web.Mvc;
                 product.TownSerial = model.TownSerial;
                 product.Email = model.Email;
                 product.Website = model.Website;
+                product.AddUserDate = model.AddUserDate;
                 db.SupplierCode.Add(product);
                 db.SaveChanges();
                 int latestEmpId = product.Serial;
@@ -1043,7 +1051,7 @@ using System.Web.Mvc;
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,[ArabicName] ,[EnglishName],[DescName] ,[Description] ,[Address1],[Address2],[Telephone1] ,[Telephone2] ,[Telephone3],[CountrySerial],[TownSerial],[Email],[Website] from SupplierCode", sqlCon);
+                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,[ArabicName] ,[EnglishName],[DescName] ,[Description] ,[Address1],[Address2],[Telephone1] ,[Telephone2] ,[Telephone3],[CountrySerial],[TownSerial],[Email],[Website],AddUserDate from SupplierCode", sqlCon);
                 sqlDa.Fill(dtblProduct);
             }
             return View(dtblProduct);
@@ -1109,6 +1117,7 @@ using System.Web.Mvc;
                 product.TownSerial = model.TownSerial;
                 product.Email = model.Email;
                 product.Website = model.Website;
+                product.AddUserDate = model.AddUserDate;
                 db.CustomerCode.Add(product);
                 db.SaveChanges();
                 int latestEmpId = product.Serial;
@@ -1130,7 +1139,7 @@ using System.Web.Mvc;
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,[ArabicName] ,[EnglishName],[DescName] ,[Description] ,[Address1],[Address2],[Telephone1] ,[Telephone2] ,[Telephone3],[CountrySerial],[TownSerial],[Email],[Website] from CustomerCode", sqlCon);
+                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,[ArabicName] ,[EnglishName],[DescName] ,[Description] ,[Address1],[Address2],[Telephone1] ,[Telephone2] ,[Telephone3],[CountrySerial],[TownSerial],[Email],[Website] ,AddUserDate from CustomerCode", sqlCon);
                 sqlDa.Fill(dtblProduct);
             }
             return View(dtblProduct);
@@ -1177,6 +1186,7 @@ using System.Web.Mvc;
                 unit.Notes = model.Description;
                 unit.Id = model.ID;
                 unit.Code = model.Code;
+                unit.AddUserDate = model.AddUserDate;
                 db.CountryCode.Add(unit);
                 db.SaveChanges();
                 int latestEmpId = unit.Serial;
@@ -1200,7 +1210,7 @@ using System.Web.Mvc;
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Notes from CountryCode", sqlCon);
+                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Notes,AddUserDate from CountryCode", sqlCon);
                 sqlDa.Fill(dtblProduct);
             }
             return View(dtblProduct);
@@ -1234,7 +1244,7 @@ using System.Web.Mvc;
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes FROM CountryCode Where Serial = @Serial";
+                string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes  ,AddUserDate FROM CountryCode Where Serial = @Serial";
                 SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
                 sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
                 sqlDa.Fill(dtblProduct);
@@ -1300,6 +1310,7 @@ using System.Web.Mvc;
                 unit.Notes = model.Notes;
                 unit.Id = model.Id;
                 unit.Code = model.Code;
+                unit.AddUserDate = model.AddUserDate;
                 db.TownCode.Add(unit);
                 db.SaveChanges();
                 int latestEmpId = unit.Serial;
@@ -1321,7 +1332,7 @@ using System.Web.Mvc;
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Notes from TownCode", sqlCon);
+                SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Notes,AddUserDate from TownCode", sqlCon);
                 sqlDa.Fill(dtblProduct);
             }
             return View(dtblProduct);
@@ -1355,7 +1366,7 @@ using System.Web.Mvc;
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes FROM TownCode Where Serial = @Serial";
+                string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes ,AddUserDate FROM TownCode Where Serial = @Serial";
                 SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
                 sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
                 sqlDa.Fill(dtblProduct);

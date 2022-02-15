@@ -43,7 +43,10 @@
         @Html.AntiForgeryToken()
 
         <div class="Elements">
- 
+            <div class="">
+                <label class="Lab">Date</label>
+                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt" } }) @*Required TextBox*@
+            </div>
             <div class="">
                 @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
 
