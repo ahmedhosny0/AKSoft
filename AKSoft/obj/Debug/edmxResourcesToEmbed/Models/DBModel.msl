@@ -4,7 +4,6 @@
     <EntitySetMapping Name="GroupCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.GroupCode)">
         <MappingFragment StoreEntitySet="GroupCode">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
@@ -13,13 +12,13 @@
           <ScalarProperty Name="DescName" ColumnName="DescName" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ItemCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.ItemCode)">
         <MappingFragment StoreEntitySet="ItemCode">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
@@ -37,13 +36,13 @@
           <ScalarProperty Name="PriceSale1Unit2" ColumnName="PriceSale1Unit2" />
           <ScalarProperty Name="StoreID" ColumnName="StoreID" />
           <ScalarProperty Name="Counts" ColumnName="Counts" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="StoreCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.StoreCode)">
         <MappingFragment StoreEntitySet="StoreCode">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
@@ -59,13 +58,13 @@
           <ScalarProperty Name="Phone3" ColumnName="Phone3" />
           <ScalarProperty Name="Phone4" ColumnName="Phone4" />
           <ScalarProperty Name="AreaStock" ColumnName="AreaStock" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UnitCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UnitCode)">
         <MappingFragment StoreEntitySet="UnitCode">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
@@ -73,13 +72,13 @@
           <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
           <ScalarProperty Name="DescName" ColumnName="DescName" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserInfo">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UserInfo)">
         <MappingFragment StoreEntitySet="UserInfo">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
@@ -88,13 +87,13 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="RePassword" ColumnName="RePassword" />
           <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CountryCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.CountryCode)">
         <MappingFragment StoreEntitySet="CountryCode">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -102,13 +101,13 @@
           <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
           <ScalarProperty Name="DescName" ColumnName="DescName" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CustomerCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.CustomerCode)">
         <MappingFragment StoreEntitySet="CustomerCode">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -125,13 +124,13 @@
           <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SupplierCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.SupplierCode)">
         <MappingFragment StoreEntitySet="SupplierCode">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -148,13 +147,13 @@
           <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TownCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.TownCode)">
         <MappingFragment StoreEntitySet="TownCode">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -162,13 +161,13 @@
           <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
           <ScalarProperty Name="DescName" ColumnName="DescName" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="HPurchase">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.HPurchase)">
         <MappingFragment StoreEntitySet="HPurchase">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
@@ -190,13 +189,13 @@
           <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
           <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
           <ScalarProperty Name="SupplierSerial" ColumnName="SupplierSerial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="HSales">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.HSales)">
         <MappingFragment StoreEntitySet="HSales">
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
@@ -220,6 +219,7 @@
           <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
           <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
           <ScalarProperty Name="CustomerSerial" ColumnName="CustomerSerial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
