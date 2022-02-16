@@ -248,6 +248,10 @@
       <End Role="TownCode" EntitySet="TownCode" />
       <End Role="DealerCode" EntitySet="DealerCode" />
     </AssociationSet>
+    <AssociationSet Name="FK__HSales__DealerCo__5DB5E0CB" Association="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB">
+      <End Role="DealerCode" EntitySet="DealerCode" />
+      <End Role="HSales" EntitySet="HSales" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="CountryCode">
     <Key>
@@ -522,6 +526,7 @@
     <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.StoreSerial" FromRole="HSales" ToRole="StoreCode" />
     <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.UnitSerial" FromRole="HSales" ToRole="UnitCode" />
     <Property Name="AddUserDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DealerCode1" Relationship="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB" FromRole="HSales" ToRole="DealerCode" />
   </EntityType>
   <Association Name="FK__HSales__Customer__23F3538A">
     <End Type="TopSoftModel.CustomerCode" Role="CustomerCode" Multiplicity="0..1">
@@ -700,6 +705,7 @@
     <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__DealerCod__Websi__1EC48A19" FromRole="DealerCode" ToRole="CountryCode" />
     <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__DealerCod__TownS__1FB8AE52" FromRole="DealerCode" ToRole="TownCode" />
     <Property Name="AddUserDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB" FromRole="DealerCode" ToRole="HSales" />
   </EntityType>
   <Association Name="FK__DealerCod__Websi__1EC48A19">
     <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1">
@@ -726,6 +732,18 @@
       </Principal>
       <Dependent Role="DealerCode">
         <PropertyRef Name="TownSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HSales__DealerCo__5DB5E0CB">
+    <End Type="TopSoftModel.DealerCode" Role="DealerCode" Multiplicity="0..1" />
+    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DealerCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HSales">
+        <PropertyRef Name="DealerCode" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

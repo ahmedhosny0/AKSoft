@@ -273,6 +273,14 @@
                                     <label for="pass" class="label">Password</label>
                                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input",@type="password",@required="required" } })
                                 </div>
+                            <div class="group">
+                                <label class="Lab">Branch</label>
+                                @Html.DropDownListFor(model => model.BranchSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "input",@style="color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
+                            </div>
+                            <div class="group">
+                                <label class="Lab">Sector</label>
+                                @Html.DropDownListFor(model => model.SectorSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "input",@style="color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
+                            </div>
                                 @*<div class="group">
                                     <input id="check" type="checkbox" class="check" checked>
                                     <label for="check"><span class="icon"></span> Keep me Signed in</label>

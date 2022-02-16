@@ -51,6 +51,11 @@ public class ProductController : Controller
     // Ahmed AKSoft
     public ActionResult Login()
     {
+        TopSoft db = new TopSoft();
+        List<BranchCode> list1 = db.BranchCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        List<SectorCode> list2 = db.SectorCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
         return View();
     }
 
@@ -60,8 +65,6 @@ public class ProductController : Controller
     {
 
 
-        if (ModelState.IsValid)
-        {
 
             using (TopSoft db = new TopSoft())
             {
@@ -77,14 +80,12 @@ public class ProductController : Controller
                 }
                 else
                 {
-                    ViewBag.Message = "UserName or password is wrong";
+                    ModelState.AddModelError("", "InVaild");
+                 //   ViewBag.Message = "UserName or password is wrong";
                     return View();
                 }
             }
 
-        }
-
-        return View(objUser);
     }
 
     public ActionResult UserDashBoard()
@@ -174,6 +175,8 @@ public class ProductController : Controller
         ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
         List<CustomerCode> list5 = db.CustomerCode.ToList();
         ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
+        List<DealerCode> list6 = db.DealerCode.ToList();
+        ViewBag.DepartmentList6 = new SelectList(list6, "Serial", "ArabicName");
         return View();
 
     }
@@ -194,6 +197,8 @@ public class ProductController : Controller
             ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
             List<CustomerCode> list5 = db.CustomerCode.ToList();
             ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
+            List<DealerCode> list6 = db.DealerCode.ToList();
+            ViewBag.DepartmentList6 = new SelectList(list5, "Serial", "ArabicName");
             invo.BranchCode = model.BranchCode;
             invo.Code = model.Code;
             invo.CurrencyCode = model.CurrencyCode;
@@ -1131,6 +1136,7 @@ public class ProductController : Controller
 
         }
     }
+
     [HttpGet]
     public ActionResult DisplayDealers()
     {
@@ -1138,7 +1144,7 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,[ArabicName] ,[EnglishName],[DescName] ,[Description] ,[Address1],[Address2],[Telephone1] ,[Telephone2] ,[Telephone3],[CountrySerial],[TownSerial],[Email],[Website],AddUserDate from DealerCode", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,[ArabicName] ,[EnglishName],[DescName] ,[Description] ,[Address1],[Address2],[Telephone1] ,[Telephone2] ,[Telephone3],[CountrySerial],[TownSerial],[Email],[Website] ,AddUserDate from DealerCode", sqlCon);
             sqlDa.Fill(dtblProduct);
         }
         return View(dtblProduct);
@@ -1331,7 +1337,7 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes  ,AddUserDate FROM CountryCode Where Serial = @Serial";
+            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes FROM CountryCode Where Serial = @Serial";
             SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
             sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
             sqlDa.Fill(dtblProduct);
@@ -1453,7 +1459,7 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes ,AddUserDate FROM TownCode Where Serial = @Serial";
+            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes  FROM TownCode Where Serial = @Serial";
             SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
             sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
             sqlDa.Fill(dtblProduct);
@@ -1536,7 +1542,7 @@ public class ProductController : Controller
         }
     }
     [HttpGet]
-    public ActionResult DisplayBranchs()
+    public ActionResult DisplayBranches()
     {
         DataTable dtblProduct = new DataTable();
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
@@ -1567,7 +1573,7 @@ public class ProductController : Controller
         {
             TempData["A"] = "s";
         }
-        return RedirectToAction("DisplayBranchs");
+        return RedirectToAction("DisplayBranches");
     }
     public ActionResult EditBranch(int? id)
     {
@@ -1576,7 +1582,7 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes ,AddUserDate FROM BranchCode Where Serial = @Serial";
+            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes  FROM BranchCode Where Serial = @Serial";
             SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
             sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
             sqlDa.Fill(dtblProduct);
@@ -1591,7 +1597,7 @@ public class ProductController : Controller
             return View(productModel);
         }
         else
-            return RedirectToAction("DisplayUnits");
+            return RedirectToAction("DisplayBranches");
 
     }
     [HttpPost]
@@ -1619,7 +1625,7 @@ public class ProductController : Controller
         {
             TempData["A"] = 1;
         }
-        return RedirectToAction("DisplayBranchs");
+        return RedirectToAction("DisplayBranches");
 
     }
     //End Branch
@@ -1698,7 +1704,7 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes ,AddUserDate FROM SectorCode Where Serial = @Serial";
+            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes FROM SectorCode Where Serial = @Serial";
             SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
             sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
             sqlDa.Fill(dtblProduct);

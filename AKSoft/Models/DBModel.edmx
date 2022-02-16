@@ -54,8 +54,6 @@
           <Property Name="Website" Type="nvarchar" MaxLength="30" />
           <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DealerCode">
           <Key>
             <PropertyRef Name="Serial" />
@@ -312,21 +310,7 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DealerCod__TownS__1FB8AE52">
-          <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="DealerCode" Type="Self.DealerCode" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TownCode">
-              <PropertyRef Name="Serial" />
-            </Principal>
-            <Dependent Role="DealerCode">
-              <PropertyRef Name="TownSerial" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DealerCod__Websi__1EC48A19">
+        <Association Name="FK__DealerCod__AddUs__5AD97420">
           <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -337,6 +321,20 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
             </Principal>
             <Dependent Role="DealerCode">
               <PropertyRef Name="CountrySerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DealerCod__TownS__5BCD9859">
+          <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DealerCode" Type="Self.DealerCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="DealerCode">
+              <PropertyRef Name="TownSerial" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -421,6 +419,18 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
             </Principal>
             <Dependent Role="HSales">
               <PropertyRef Name="CustomerSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HSales__DealerCo__5DB5E0CB">
+          <End Role="DealerCode" Type="Self.DealerCode" Multiplicity="0..1" />
+          <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealerCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="DealerCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -586,6 +596,7 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
           <EntitySet Name="BranchCode" EntityType="Self.BranchCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerCode" EntityType="Self.CustomerCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealerCode" EntityType="Self.DealerCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupCode" EntityType="Self.GroupCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HPurchase" EntityType="Self.HPurchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HSales" EntityType="Self.HSales" Schema="dbo" store:Type="Tables" />
@@ -596,27 +607,6 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
           <EntitySet Name="TownCode" EntityType="Self.TownCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DealerCode" EntityType="Self.DealerCode" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [DealerCode].[Serial] AS [Serial], 
-    [DealerCode].[Code] AS [Code], 
-    [DealerCode].[Id] AS [Id], 
-    [DealerCode].[ArabicName] AS [ArabicName], 
-    [DealerCode].[EnglishName] AS [EnglishName], 
-    [DealerCode].[DescName] AS [DescName], 
-    [DealerCode].[Description] AS [Description], 
-    [DealerCode].[Address1] AS [Address1], 
-    [DealerCode].[Address2] AS [Address2], 
-    [DealerCode].[Telephone1] AS [Telephone1], 
-    [DealerCode].[Telephone2] AS [Telephone2], 
-    [DealerCode].[Telephone3] AS [Telephone3], 
-    [DealerCode].[CountrySerial] AS [CountrySerial], 
-    [DealerCode].[TownSerial] AS [TownSerial], 
-    [DealerCode].[Email] AS [Email], 
-    [DealerCode].[Website] AS [Website], 
-    [DealerCode].[AddUserDate] AS [AddUserDate]
-    FROM [dbo].[DealerCode] AS [DealerCode]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__BranchCod__UserI__3A6CA48E" Association="Self.FK__BranchCod__UserI__3A6CA48E">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="BranchCode" EntitySet="BranchCode" />
@@ -629,12 +619,12 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
             <End Role="CountryCode" EntitySet="CountryCode" />
             <End Role="CustomerCode" EntitySet="CustomerCode" />
           </AssociationSet>
-          <AssociationSet Name="FK__DealerCod__TownS__1FB8AE52" Association="Self.FK__DealerCod__TownS__1FB8AE52">
-            <End Role="TownCode" EntitySet="TownCode" />
+          <AssociationSet Name="FK__DealerCod__AddUs__5AD97420" Association="Self.FK__DealerCod__AddUs__5AD97420">
+            <End Role="CountryCode" EntitySet="CountryCode" />
             <End Role="DealerCode" EntitySet="DealerCode" />
           </AssociationSet>
-          <AssociationSet Name="FK__DealerCod__Websi__1EC48A19" Association="Self.FK__DealerCod__Websi__1EC48A19">
-            <End Role="CountryCode" EntitySet="CountryCode" />
+          <AssociationSet Name="FK__DealerCod__TownS__5BCD9859" Association="Self.FK__DealerCod__TownS__5BCD9859">
+            <End Role="TownCode" EntitySet="TownCode" />
             <End Role="DealerCode" EntitySet="DealerCode" />
           </AssociationSet>
           <AssociationSet Name="FK__HPurchase__Group__1975C517" Association="Self.FK__HPurchase__Group__1975C517">
@@ -659,6 +649,10 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
           </AssociationSet>
           <AssociationSet Name="FK__HSales__Customer__23F3538A" Association="Self.FK__HSales__Customer__23F3538A">
             <End Role="CustomerCode" EntitySet="CustomerCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HSales__DealerCo__5DB5E0CB" Association="Self.FK__HSales__DealerCo__5DB5E0CB">
+            <End Role="DealerCode" EntitySet="DealerCode" />
             <End Role="HSales" EntitySet="HSales" />
           </AssociationSet>
           <AssociationSet Name="FK__SectorCod__UserI__3D491139" Association="Self.FK__SectorCod__UserI__3D491139">
@@ -962,6 +956,10 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
             <End Role="TownCode" EntitySet="TownCode" />
             <End Role="DealerCode" EntitySet="DealerCode" />
           </AssociationSet>
+          <AssociationSet Name="FK__HSales__DealerCo__5DB5E0CB" Association="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB">
+            <End Role="DealerCode" EntitySet="DealerCode" />
+            <End Role="HSales" EntitySet="HSales" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="CountryCode">
           <Key>
@@ -1236,6 +1234,7 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
           <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.StoreSerial" FromRole="HSales" ToRole="StoreCode" />
           <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.UnitSerial" FromRole="HSales" ToRole="UnitCode" />
           <Property Name="AddUserDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DealerCode1" Relationship="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB" FromRole="HSales" ToRole="DealerCode" />
         </EntityType>
         <Association Name="FK__HSales__Customer__23F3538A">
           <End Type="TopSoftModel.CustomerCode" Role="CustomerCode" Multiplicity="0..1">
@@ -1414,6 +1413,7 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
           <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__DealerCod__Websi__1EC48A19" FromRole="DealerCode" ToRole="CountryCode" />
           <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__DealerCod__TownS__1FB8AE52" FromRole="DealerCode" ToRole="TownCode" />
           <Property Name="AddUserDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB" FromRole="DealerCode" ToRole="HSales" />
         </EntityType>
         <Association Name="FK__DealerCod__Websi__1EC48A19">
           <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1">
@@ -1440,6 +1440,18 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
             </Principal>
             <Dependent Role="DealerCode">
               <PropertyRef Name="TownSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HSales__DealerCo__5DB5E0CB">
+          <End Type="TopSoftModel.DealerCode" Role="DealerCode" Multiplicity="0..1" />
+          <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealerCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HSales">
+              <PropertyRef Name="DealerCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1527,9 +1539,7 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
     <EntitySetMapping Name="UserInfo">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UserInfo)">
         <MappingFragment StoreEntitySet="UserInfo">
-          <ScalarProperty Name="SectorSerial" ColumnName="SectorSerial" />
-                <ScalarProperty Name="BranchSerial" ColumnName="BranchSerial" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -1538,6 +1548,8 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
           <ScalarProperty Name="RePassword" ColumnName="RePassword" />
           <ScalarProperty Name="Role" ColumnName="Role" />
           <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="BranchSerial" ColumnName="BranchSerial" />
+          <ScalarProperty Name="SectorSerial" ColumnName="SectorSerial" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1673,59 +1685,59 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <EntitySetMapping Name="BranchCode">
-            <EntityTypeMapping TypeName="TopSoftModel.BranchCode">
-              <MappingFragment StoreEntitySet="BranchCode">
-                <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="DescName" ColumnName="DescName" />
-                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Serial" ColumnName="Serial" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SectorCode">
-            <EntityTypeMapping TypeName="TopSoftModel.SectorCode">
-              <MappingFragment StoreEntitySet="SectorCode">
-                <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="DescName" ColumnName="DescName" />
-                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Serial" ColumnName="Serial" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DealerCode">
-            <EntityTypeMapping TypeName="TopSoftModel.DealerCode">
-              <MappingFragment StoreEntitySet="DealerCode">
-                <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
-                <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
-                <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
-                <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
-                <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address1" ColumnName="Address1" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="DescName" ColumnName="DescName" />
-                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Serial" ColumnName="Serial" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+    <EntitySetMapping Name="BranchCode">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.BranchCode)">
+        <MappingFragment StoreEntitySet="BranchCode">
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SectorCode">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.SectorCode)">
+        <MappingFragment StoreEntitySet="SectorCode">
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DealerCode">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.DealerCode)">
+        <MappingFragment StoreEntitySet="DealerCode">
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+          <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

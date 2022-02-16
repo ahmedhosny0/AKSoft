@@ -42,6 +42,7 @@
         <EntityTypeShape EntityType="TopSoftModel.DealerCode" Width="1.5" PointX="10.625" PointY="10.125" />
         <AssociationConnector Association="TopSoftModel.FK__DealerCod__Websi__1EC48A19" />
         <AssociationConnector Association="TopSoftModel.FK__DealerCod__TownS__1FB8AE52" />
+        <AssociationConnector Association="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

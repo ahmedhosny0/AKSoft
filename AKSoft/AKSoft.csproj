@@ -345,7 +345,10 @@
     <Content Include="Views\Product\SaveBranch.cshtml" />
     <Content Include="Views\Product\SaveDealer.cshtml" />
     <Content Include="Views\Product\DisplaySectors.cshtml" />
-    <Content Include="Views\Product\DisplayBranchs.cshtml" />
+    <Content Include="Views\Product\DisplayBranches.cshtml" />
+    <Content Include="Views\Product\DisplayDealers.cshtml" />
+    <Content Include="Views\Product\EditBranch.cshtml" />
+    <Content Include="Views\Product\EditSector.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

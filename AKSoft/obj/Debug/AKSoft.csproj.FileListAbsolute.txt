@@ -105,6 +105,5 @@ D:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.OAuth.xml
 D:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.Google.xml
 D:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.Twitter.xml
 D:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.csprojResolveAssemblyReference.cache
 D:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.dll
 D:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.pdb

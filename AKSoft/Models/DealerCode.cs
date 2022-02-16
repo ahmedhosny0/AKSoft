@@ -14,6 +14,12 @@ namespace AKSoft.Models
     
     public partial class DealerCode
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DealerCode()
+        {
+            this.HSales = new HashSet<HSales>();
+        }
+    
         public int Serial { get; set; }
         public Nullable<int> Code { get; set; }
         public Nullable<int> Id { get; set; }
@@ -34,5 +40,7 @@ namespace AKSoft.Models
     
         public virtual CountryCode CountryCode { get; set; }
         public virtual TownCode TownCode { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HSales> HSales { get; set; }
     }
 }
