@@ -79,6 +79,8 @@
     <EntitySetMapping Name="UserInfo">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UserInfo)">
         <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="SectorSerial" ColumnName="SectorSerial" />
+          <ScalarProperty Name="BranchSerial" ColumnName="BranchSerial" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
@@ -220,6 +222,59 @@
           <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
           <ScalarProperty Name="CustomerSerial" ColumnName="CustomerSerial" />
           <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BranchCode">
+      <EntityTypeMapping TypeName="TopSoftModel.BranchCode">
+        <MappingFragment StoreEntitySet="BranchCode">
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SectorCode">
+      <EntityTypeMapping TypeName="TopSoftModel.SectorCode">
+        <MappingFragment StoreEntitySet="SectorCode">
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DealerCode">
+      <EntityTypeMapping TypeName="TopSoftModel.DealerCode">
+        <MappingFragment StoreEntitySet="DealerCode">
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+          <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+          <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

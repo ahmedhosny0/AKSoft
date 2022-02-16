@@ -165,6 +165,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BranchCode.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CountryCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -186,6 +189,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DealerCode.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GroupCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -197,6 +203,9 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ItemCode.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SectorCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StoreCode.cs">
@@ -332,6 +341,11 @@
     <Content Include="Views\Product\DisplayCustomers.cshtml" />
     <Content Include="Views\Product\DisplaySuppliers.cshtml" />
     <Content Include="Views\Reports\SupplierData.cshtml" />
+    <Content Include="Views\Product\SaveSector.cshtml" />
+    <Content Include="Views\Product\SaveBranch.cshtml" />
+    <Content Include="Views\Product\SaveDealer.cshtml" />
+    <Content Include="Views\Product\DisplaySectors.cshtml" />
+    <Content Include="Views\Product\DisplayBranchs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -48,7 +48,7 @@
         <li class="gs">
         <li class="">
             <label class="Lab">Date</label>
-            @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt" } }) @*Required TextBox*@
+            @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
         </li>
             <label class="Lab">Store</label>
             @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
@@ -80,7 +80,7 @@
         </li>
         <li>
             <button class="save">Save</button>
-            @Html.ActionLink("Show All", "DisplayInvoicePurchase", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
+            <a href="@Url.Action("DisplayInvoicePurchase", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
         </li>
     </ul>
 

@@ -1,6 +1,6 @@
-﻿@model AKSoft.Models.TownCode
+﻿@model AKSoft.Models.BranchCode
 @{
-    ViewBag.Title = "Save Town";
+    ViewBag.Title = "Save Branch";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
@@ -24,13 +24,13 @@
             background-color: #3577ff;
             width: 40%;
             color: white;
-            font-size:18px;
+            font-size: 18px;
         }
     </style>
 
 </head>
 <body>
-    <h1 class="head save">Add Town</h1>
+    <h1 class="head save">Add Branch</h1>
     @if (TempData["Al"] != null)
     {
         <script>
@@ -38,7 +38,7 @@
         </script>
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
-    @using (Html.BeginForm("SaveTown", "Product", FormMethod.Post))
+    @using (Html.BeginForm("SaveBranch", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -68,7 +68,7 @@
 
             <li class="">
                 <button class="save">Save</button>
-                <a href="@Url.Action("DisplayTowns", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+                <a href="@Url.Action("DisplayBranches", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
             </li>
         </ul>
     }

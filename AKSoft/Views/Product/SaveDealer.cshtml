@@ -1,13 +1,13 @@
-﻿@model AKSoft.Models.SupplierCode
+﻿@model AKSoft.Models.DealerCode
 @{
-    ViewBag.Title = "Save Supplier";
+    ViewBag.Title = "SaveDealer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>SaveCustomer</title>
+    <title>SaveDealer</title>
     <link rel="stylesheet" href="~/Css/style.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
@@ -24,12 +24,12 @@
             background-color: #3577ff;
             width: 40%;
             color: white;
-            font-size:18px;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
-    <h1 class="head save">Save Supplier</h1>
+    <h1 class="head save">SaveDealer</h1>
     @if (TempData["Al"] != null)
     {
         <script>
@@ -37,7 +37,7 @@
         </script>
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
-    @using (Html.BeginForm("SaveSupplier", "Product", FormMethod.Post))
+    @using (Html.BeginForm("SaveDealer", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -96,8 +96,8 @@
             </li>
             <li class="">
                 <button class="save">Save</button>
-                <a href="@Url.Action("DisplaySuppliers", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
-                        </li>
+                <a href="@Url.Action("DisplayDealers", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+            </li>
         </ul>
     }
 

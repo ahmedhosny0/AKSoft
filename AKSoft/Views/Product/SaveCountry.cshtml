@@ -45,7 +45,7 @@
         <ul class="Elements">
             <li class="">
                 <label class="Lab">Date</label>
-                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt" } }) @*Required TextBox*@
+                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
             </li>
             <li class="">
                 <label class="Lab">ArabicName</label>
@@ -68,7 +68,7 @@
 
             <li class="">
                 <button class="save">Save</button>
-                @Html.ActionLink("Show All", "DisplayCountries", "", new { htmlAttributes = new { @class = "save", @type = "button" } })
+                <a href="@Url.Action("DisplayCountries", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
             </li>
         </ul>
     }

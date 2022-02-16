@@ -199,16 +199,16 @@ body {
 }
 .back
 {
-      background-color: #f5a500;
-      font-size:12px;
+   background-color: #0bf765;
+   font-size:12px;
   border: 1px solid #ddd;
   color: white;
   cursor: pointer;
   font-weight:bold;
-      padding: 15px 30px;
-      font-size:18px;
-        border-radius: 15px;
-        width:110px;
+  padding: 9px 15px;
+  font-size:18px;
+  border-radius: 15px;
+  width:110px;
 }
 
 

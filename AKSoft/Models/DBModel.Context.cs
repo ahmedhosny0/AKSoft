@@ -36,5 +36,8 @@ namespace AKSoft.Models
         public virtual DbSet<TownCode> TownCode { get; set; }
         public virtual DbSet<HPurchase> HPurchase { get; set; }
         public virtual DbSet<HSales> HSales { get; set; }
+        public virtual DbSet<BranchCode> BranchCode { get; set; }
+        public virtual DbSet<SectorCode> SectorCode { get; set; }
+        public virtual DbSet<DealerCode> DealerCode { get; set; }
     }
 }

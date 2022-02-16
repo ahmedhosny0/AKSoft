@@ -14,6 +14,13 @@ namespace AKSoft.Models
     
     public partial class UserInfo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserInfo()
+        {
+            this.BranchCode = new HashSet<BranchCode>();
+            this.SectorCode = new HashSet<SectorCode>();
+        }
+    
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -23,5 +30,14 @@ namespace AKSoft.Models
         public string RePassword { get; set; }
         public Nullable<int> Role { get; set; }
         public Nullable<System.DateTime> AddUserDate { get; set; }
+        public Nullable<int> BranchSerial { get; set; }
+        public Nullable<int> SectorSerial { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BranchCode> BranchCode { get; set; }
+        public virtual BranchCode BranchCode1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SectorCode> SectorCode { get; set; }
+        public virtual SectorCode SectorCode1 { get; set; }
     }
 }
