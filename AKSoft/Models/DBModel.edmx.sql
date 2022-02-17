@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/15/2022 16:46:53
--- Generated from EDMX file: F:\ahmed1\AKSoft\AKSoft\Models\DBModel.edmx
+-- Date Created: 02/16/2022 22:26:49
+-- Generated from EDMX file: D:\My-Git\AKSoft\AKSoft\Models\DBModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,20 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK__BranchCod__UserI__3A6CA48E]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[BranchCode] DROP CONSTRAINT [FK__BranchCod__UserI__3A6CA48E];
+GO
 IF OBJECT_ID(N'[dbo].[FK__CustomerC__TownS__671F4F74]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CustomerCode] DROP CONSTRAINT [FK__CustomerC__TownS__671F4F74];
 GO
 IF OBJECT_ID(N'[dbo].[FK__CustomerC__Websi__662B2B3B]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CustomerCode] DROP CONSTRAINT [FK__CustomerC__Websi__662B2B3B];
+GO
+IF OBJECT_ID(N'[TopSoftModelStoreContainer].[FK__DealerCod__AddUs__542C7691]', 'F') IS NOT NULL
+    ALTER TABLE [TopSoftModelStoreContainer].[DealerCode] DROP CONSTRAINT [FK__DealerCod__AddUs__542C7691];
+GO
+IF OBJECT_ID(N'[TopSoftModelStoreContainer].[FK__DealerCod__TownS__55209ACA]', 'F') IS NOT NULL
+    ALTER TABLE [TopSoftModelStoreContainer].[DealerCode] DROP CONSTRAINT [FK__DealerCod__TownS__55209ACA];
 GO
 IF OBJECT_ID(N'[dbo].[FK__HPurchase__Group__1975C517]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__Group__1975C517];
@@ -41,11 +50,20 @@ GO
 IF OBJECT_ID(N'[dbo].[FK__HSales__Customer__23F3538A]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK__HSales__Customer__23F3538A];
 GO
+IF OBJECT_ID(N'[dbo].[FK__SectorCod__UserI__3D491139]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SectorCode] DROP CONSTRAINT [FK__SectorCod__UserI__3D491139];
+GO
 IF OBJECT_ID(N'[dbo].[FK__SupplierC__TownS__6AEFE058]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SupplierCode] DROP CONSTRAINT [FK__SupplierC__TownS__6AEFE058];
 GO
 IF OBJECT_ID(N'[dbo].[FK__SupplierC__Websi__69FBBC1F]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SupplierCode] DROP CONSTRAINT [FK__SupplierC__Websi__69FBBC1F];
+GO
+IF OBJECT_ID(N'[dbo].[FK__UserInfo__Branch__420DC656]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserInfo] DROP CONSTRAINT [FK__UserInfo__Branch__420DC656];
+GO
+IF OBJECT_ID(N'[dbo].[FK__UserInfo__Sector__4301EA8F]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserInfo] DROP CONSTRAINT [FK__UserInfo__Sector__4301EA8F];
 GO
 IF OBJECT_ID(N'[dbo].[FK_GroupSerial]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK_GroupSerial];
@@ -73,6 +91,9 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[BranchCode]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BranchCode];
+GO
 IF OBJECT_ID(N'[dbo].[CountryCode]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CountryCode];
 GO
@@ -91,6 +112,9 @@ GO
 IF OBJECT_ID(N'[dbo].[ItemCode]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ItemCode];
 GO
+IF OBJECT_ID(N'[dbo].[SectorCode]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SectorCode];
+GO
 IF OBJECT_ID(N'[dbo].[StoreCode]', 'U') IS NOT NULL
     DROP TABLE [dbo].[StoreCode];
 GO
@@ -105,6 +129,9 @@ IF OBJECT_ID(N'[dbo].[UnitCode]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[UserInfo]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserInfo];
+GO
+IF OBJECT_ID(N'[TopSoftModelStoreContainer].[DealerCode]', 'U') IS NOT NULL
+    DROP TABLE [TopSoftModelStoreContainer].[DealerCode];
 GO
 
 -- --------------------------------------------------
@@ -192,7 +219,9 @@ CREATE TABLE [dbo].[UserInfo] (
     [Password] nvarchar(100)  NULL,
     [RePassword] nvarchar(100)  NULL,
     [Role] int  NULL,
-    [AddUserDate] datetime  NULL
+    [AddUserDate] datetime  NULL,
+    [BranchSerial] int  NULL,
+    [SectorSerial] int  NULL
 );
 GO
 
@@ -322,6 +351,56 @@ CREATE TABLE [dbo].[HSales] (
 );
 GO
 
+-- Creating table 'BranchCode'
+CREATE TABLE [dbo].[BranchCode] (
+    [Serial] int IDENTITY(1,1) NOT NULL,
+    [Code] int  NULL,
+    [Id] int  NULL,
+    [ArabicName] nvarchar(100)  NULL,
+    [EnglishName] nvarchar(100)  NULL,
+    [DescName] nvarchar(100)  NULL,
+    [Notes] nvarchar(150)  NULL,
+    [UserId] int  NULL,
+    [AddUserDate] datetime  NULL
+);
+GO
+
+-- Creating table 'SectorCode'
+CREATE TABLE [dbo].[SectorCode] (
+    [Serial] int IDENTITY(1,1) NOT NULL,
+    [Code] int  NULL,
+    [Id] int  NULL,
+    [ArabicName] nvarchar(100)  NULL,
+    [EnglishName] nvarchar(100)  NULL,
+    [DescName] nvarchar(100)  NULL,
+    [Notes] nvarchar(150)  NULL,
+    [UserId] int  NULL,
+    [AddUserDate] datetime  NULL
+);
+GO
+
+-- Creating table 'DealerCode'
+CREATE TABLE [dbo].[DealerCode] (
+    [Serial] int IDENTITY(1,1) NOT NULL,
+    [Code] int  NULL,
+    [Id] int  NULL,
+    [ArabicName] nvarchar(100)  NULL,
+    [EnglishName] nvarchar(100)  NULL,
+    [DescName] nvarchar(100)  NULL,
+    [Description] nvarchar(150)  NULL,
+    [Address1] nvarchar(150)  NULL,
+    [Address2] nvarchar(150)  NULL,
+    [Telephone1] nvarchar(50)  NULL,
+    [Telephone2] nvarchar(50)  NULL,
+    [Telephone3] nvarchar(50)  NULL,
+    [CountrySerial] int  NULL,
+    [TownSerial] int  NULL,
+    [Email] nvarchar(50)  NULL,
+    [Website] nvarchar(30)  NULL,
+    [AddUserDate] datetime  NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -389,6 +468,24 @@ GO
 -- Creating primary key on [Serial] in table 'HSales'
 ALTER TABLE [dbo].[HSales]
 ADD CONSTRAINT [PK_HSales]
+    PRIMARY KEY CLUSTERED ([Serial] ASC);
+GO
+
+-- Creating primary key on [Serial] in table 'BranchCode'
+ALTER TABLE [dbo].[BranchCode]
+ADD CONSTRAINT [PK_BranchCode]
+    PRIMARY KEY CLUSTERED ([Serial] ASC);
+GO
+
+-- Creating primary key on [Serial] in table 'SectorCode'
+ALTER TABLE [dbo].[SectorCode]
+ADD CONSTRAINT [PK_SectorCode]
+    PRIMARY KEY CLUSTERED ([Serial] ASC);
+GO
+
+-- Creating primary key on [Serial] in table 'DealerCode'
+ALTER TABLE [dbo].[DealerCode]
+ADD CONSTRAINT [PK_DealerCode]
     PRIMARY KEY CLUSTERED ([Serial] ASC);
 GO
 
@@ -649,6 +746,96 @@ GO
 CREATE INDEX [IX_FK_UnitSerial]
 ON [dbo].[HSales]
     ([UnitSerial]);
+GO
+
+-- Creating foreign key on [UserId] in table 'BranchCode'
+ALTER TABLE [dbo].[BranchCode]
+ADD CONSTRAINT [FK__BranchCod__UserI__3A6CA48E]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[UserInfo]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK__BranchCod__UserI__3A6CA48E'
+CREATE INDEX [IX_FK__BranchCod__UserI__3A6CA48E]
+ON [dbo].[BranchCode]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [BranchSerial] in table 'UserInfo'
+ALTER TABLE [dbo].[UserInfo]
+ADD CONSTRAINT [FK__UserInfo__Branch__420DC656]
+    FOREIGN KEY ([BranchSerial])
+    REFERENCES [dbo].[BranchCode]
+        ([Serial])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK__UserInfo__Branch__420DC656'
+CREATE INDEX [IX_FK__UserInfo__Branch__420DC656]
+ON [dbo].[UserInfo]
+    ([BranchSerial]);
+GO
+
+-- Creating foreign key on [UserId] in table 'SectorCode'
+ALTER TABLE [dbo].[SectorCode]
+ADD CONSTRAINT [FK__SectorCod__UserI__3D491139]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[UserInfo]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK__SectorCod__UserI__3D491139'
+CREATE INDEX [IX_FK__SectorCod__UserI__3D491139]
+ON [dbo].[SectorCode]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [SectorSerial] in table 'UserInfo'
+ALTER TABLE [dbo].[UserInfo]
+ADD CONSTRAINT [FK__UserInfo__Sector__4301EA8F]
+    FOREIGN KEY ([SectorSerial])
+    REFERENCES [dbo].[SectorCode]
+        ([Serial])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK__UserInfo__Sector__4301EA8F'
+CREATE INDEX [IX_FK__UserInfo__Sector__4301EA8F]
+ON [dbo].[UserInfo]
+    ([SectorSerial]);
+GO
+
+-- Creating foreign key on [CountrySerial] in table 'DealerCode'
+ALTER TABLE [dbo].[DealerCode]
+ADD CONSTRAINT [FK__DealerCod__Websi__1EC48A19]
+    FOREIGN KEY ([CountrySerial])
+    REFERENCES [dbo].[CountryCode]
+        ([Serial])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK__DealerCod__Websi__1EC48A19'
+CREATE INDEX [IX_FK__DealerCod__Websi__1EC48A19]
+ON [dbo].[DealerCode]
+    ([CountrySerial]);
+GO
+
+-- Creating foreign key on [TownSerial] in table 'DealerCode'
+ALTER TABLE [dbo].[DealerCode]
+ADD CONSTRAINT [FK__DealerCod__TownS__1FB8AE52]
+    FOREIGN KEY ([TownSerial])
+    REFERENCES [dbo].[TownCode]
+        ([Serial])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK__DealerCod__TownS__1FB8AE52'
+CREATE INDEX [IX_FK__DealerCod__TownS__1FB8AE52]
+ON [dbo].[DealerCode]
+    ([TownSerial]);
 GO
 
 -- --------------------------------------------------

@@ -43,45 +43,47 @@
     {
         @Html.AntiForgeryToken()
     <h1 class="head save">Invoice Sales</h1>
-    <ul class="Elements">
-        <li class="gs">
-        <li class="">
-            <label class="Lab">Date</label>
-            @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
-        </li>
-                    <label class="Lab">Store</label>
-                    @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
-                <label class="Lab">Category</label>
-                @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
-                <label class="Lab">Customer</label>
-                @Html.DropDownListFor(model => model.CustomerSerial, ViewBag.DepartmentList5 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+    <ul class="Elements gs">
+            <li class="">
+                <label class="Lab">Date</label>
+                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
             </li>
-            
+       <li>
+            <label class="Lab">Store</label>
+            @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+            <label class="Lab">Category</label>
+            @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+            <label class="Lab">Customer</label>
+            @Html.DropDownListFor(model => model.CustomerSerial, ViewBag.DepartmentList5 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+            </li>
+
             <li>
                 <label class="Lab">Product Name</label>
                 @Html.DropDownListFor(model => model.ItemSerial, ViewBag.DepartmentList4 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
 
                 <label class="Lab">Unit Name</label>
                 @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+                <label class="Lab">Dealer Name</label>
+                @Html.DropDownListFor(model => model.DealerCode, ViewBag.DepartmentList6 as SelectList, "--select--", new { @class = "Txt drop" })
             </li>
-              <li>
-                  @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "Lab" })
+            <li>
+                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "Lab" })
 
-                  @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
-              </li>
-        <li>
-            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "Lab" })
-            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt", @placeholder = "Price", @id = "txtSecondNo", @onkeyup = "Multiy()", @required = "required" } }) @*Multiply function in js*@
-        </li>
-    <li>
-        @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "Lab" })
-        @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt", @placeholder = "Total", @id = "txtResult" } })
-    </li>
-<li>
-    <button class="save">Save</button>
-    <a href="@Url.Action("DisplayInvoiceSales", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
-</li>
-           
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
+            </li>
+            <li>
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "Lab" })
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt", @placeholder = "Price", @id = "txtSecondNo", @onkeyup = "Multiy()", @required = "required" } }) @*Multiply function in js*@
+            </li>
+            <li>
+                @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "Lab" })
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt", @placeholder = "Total", @id = "txtResult" } })
+            </li>
+            <li>
+                <button class="save">Save</button>
+                <a href="@Url.Action("DisplayInvoiceSales", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+            </li>
+
 
     </ul>
 

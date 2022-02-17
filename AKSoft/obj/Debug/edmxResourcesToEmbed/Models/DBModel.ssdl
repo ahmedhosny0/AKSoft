@@ -49,8 +49,6 @@
     <Property Name="Website" Type="nvarchar" MaxLength="30" />
     <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="DealerCode">
     <Key>
       <PropertyRef Name="Serial" />
@@ -307,21 +305,7 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__DealerCod__TownS__1FB8AE52">
-    <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="DealerCode" Type="Self.DealerCode" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TownCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="DealerCode">
-        <PropertyRef Name="TownSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__DealerCod__Websi__1EC48A19">
+  <Association Name="FK__DealerCod__AddUs__5AD97420">
     <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -332,6 +316,20 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
       </Principal>
       <Dependent Role="DealerCode">
         <PropertyRef Name="CountrySerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DealerCod__TownS__5BCD9859">
+    <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DealerCode" Type="Self.DealerCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="DealerCode">
+        <PropertyRef Name="TownSerial" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -416,6 +414,18 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
       </Principal>
       <Dependent Role="HSales">
         <PropertyRef Name="CustomerSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HSales__DealerCo__5DB5E0CB">
+    <End Role="DealerCode" Type="Self.DealerCode" Multiplicity="0..1" />
+    <End Role="HSales" Type="Self.HSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DealerCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HSales">
+        <PropertyRef Name="DealerCode" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -581,6 +591,7 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
     <EntitySet Name="BranchCode" EntityType="Self.BranchCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CustomerCode" EntityType="Self.CustomerCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DealerCode" EntityType="Self.DealerCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GroupCode" EntityType="Self.GroupCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HPurchase" EntityType="Self.HPurchase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HSales" EntityType="Self.HSales" Schema="dbo" store:Type="Tables" />
@@ -591,27 +602,6 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
     <EntitySet Name="TownCode" EntityType="Self.TownCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DealerCode" EntityType="Self.DealerCode" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [DealerCode].[Serial] AS [Serial], 
-    [DealerCode].[Code] AS [Code], 
-    [DealerCode].[Id] AS [Id], 
-    [DealerCode].[ArabicName] AS [ArabicName], 
-    [DealerCode].[EnglishName] AS [EnglishName], 
-    [DealerCode].[DescName] AS [DescName], 
-    [DealerCode].[Description] AS [Description], 
-    [DealerCode].[Address1] AS [Address1], 
-    [DealerCode].[Address2] AS [Address2], 
-    [DealerCode].[Telephone1] AS [Telephone1], 
-    [DealerCode].[Telephone2] AS [Telephone2], 
-    [DealerCode].[Telephone3] AS [Telephone3], 
-    [DealerCode].[CountrySerial] AS [CountrySerial], 
-    [DealerCode].[TownSerial] AS [TownSerial], 
-    [DealerCode].[Email] AS [Email], 
-    [DealerCode].[Website] AS [Website], 
-    [DealerCode].[AddUserDate] AS [AddUserDate]
-    FROM [dbo].[DealerCode] AS [DealerCode]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK__BranchCod__UserI__3A6CA48E" Association="Self.FK__BranchCod__UserI__3A6CA48E">
       <End Role="UserInfo" EntitySet="UserInfo" />
       <End Role="BranchCode" EntitySet="BranchCode" />
@@ -624,12 +614,12 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
       <End Role="CountryCode" EntitySet="CountryCode" />
       <End Role="CustomerCode" EntitySet="CustomerCode" />
     </AssociationSet>
-    <AssociationSet Name="FK__DealerCod__TownS__1FB8AE52" Association="Self.FK__DealerCod__TownS__1FB8AE52">
-      <End Role="TownCode" EntitySet="TownCode" />
+    <AssociationSet Name="FK__DealerCod__AddUs__5AD97420" Association="Self.FK__DealerCod__AddUs__5AD97420">
+      <End Role="CountryCode" EntitySet="CountryCode" />
       <End Role="DealerCode" EntitySet="DealerCode" />
     </AssociationSet>
-    <AssociationSet Name="FK__DealerCod__Websi__1EC48A19" Association="Self.FK__DealerCod__Websi__1EC48A19">
-      <End Role="CountryCode" EntitySet="CountryCode" />
+    <AssociationSet Name="FK__DealerCod__TownS__5BCD9859" Association="Self.FK__DealerCod__TownS__5BCD9859">
+      <End Role="TownCode" EntitySet="TownCode" />
       <End Role="DealerCode" EntitySet="DealerCode" />
     </AssociationSet>
     <AssociationSet Name="FK__HPurchase__Group__1975C517" Association="Self.FK__HPurchase__Group__1975C517">
@@ -654,6 +644,10 @@ warning 6002: The table/view 'TopSoft.dbo.DealerCode' does not have a primary ke
     </AssociationSet>
     <AssociationSet Name="FK__HSales__Customer__23F3538A" Association="Self.FK__HSales__Customer__23F3538A">
       <End Role="CustomerCode" EntitySet="CustomerCode" />
+      <End Role="HSales" EntitySet="HSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HSales__DealerCo__5DB5E0CB" Association="Self.FK__HSales__DealerCo__5DB5E0CB">
+      <End Role="DealerCode" EntitySet="DealerCode" />
       <End Role="HSales" EntitySet="HSales" />
     </AssociationSet>
     <AssociationSet Name="FK__SectorCod__UserI__3D491139" Association="Self.FK__SectorCod__UserI__3D491139">
