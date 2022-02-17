@@ -274,11 +274,11 @@
                                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input",@type="password",@required="required" } })
                                 </div>
                             <div class="group">
-                                <label class="Lab">Branch</label>
+                                <label class="label">Branch</label>
                                 @Html.DropDownListFor(model => model.BranchSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "input",@style="color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
                             </div>
                             <div class="group">
-                                <label class="Lab">Sector</label>
+                                <label class="label">Sector</label>
                                 @Html.DropDownListFor(model => model.SectorSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "input",@style="color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
                             </div>
                                 @*<div class="group">
