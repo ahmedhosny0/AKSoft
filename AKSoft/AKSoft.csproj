@@ -349,6 +349,10 @@
     <Content Include="Views\Product\DisplayDealers.cshtml" />
     <Content Include="Views\Product\EditBranch.cshtml" />
     <Content Include="Views\Product\EditSector.cshtml" />
+    <Content Include="Views\Product\User.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\Shared\_LayoutEm.cshtml" />
+    <Content Include="Views\Product\Sales.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/main.js"></script>
+    <link rel="stylesheet" href="~/Content/styl.css" />
+
+    <style>
+        .dropbtn {
+            background-color: #3498DB;
+            padding: 6px;
+            font-size: 18px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 9px;
+        }
+
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #2980B9;
+            }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            height: 250px;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("User", "Home", "Product", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*<li>
+                        <div class="dropdown">
+                            <button onclick="myFunction2()" class="dropbtn">Definitions</button>
+                            <div id="myDropdown2" class="dropdown-content">
+                                <a href="/Product/SaveBranch">Define Branch</a>
+                                <a href="/Product/SaveSector">Define Sector</a>
+                                <a href="/Product/SaveCountry">Define Country</a>
+                                <a href="/Product/SaveTown">Define Town</a>
+                                <a href="/Product/SaveDealer">Define Dealer</a>
+                            </div>
+                        </div>
+                    </li>*@
+                                        @*<li><a href="/Product/SaveStock">Stores</a></li>
+        <li><a href="/Product/SaveGroup">Category</a></li>
+        <li><a href="/Product/SaveUnit">Unit</a></li>
+        <li><a href="/Product/SaveProduct">Product</a></li>
+        <li><a href="/Product/SaveCustomer">Customers</a></li>
+
+        <li><a href="/Product/SaveSupplier">Suppliers</a></li>
+       <li><a href="/Product/SaveInvoicePurchase">Purchase</a></li>
+                                        *@
+                    <li><a href="/Product/SaveInvoiceSales">Sales</a></li>
+
+                    @*<li>
+                        
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn">Reports</button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="/Reports/DailySales">Daily Sales</a>
+                                <a href="/Reports/ItemsBalance">Items Balance</a>
+                                <a href="/Reports/ItemsState">Items State</a>
+                                <a href="/Reports/ProfitofItems">Profit of Items</a>
+                                <a href="/Reports/StocksState">Stocks State</a>
+                                <a href="/Reports/DailyPurchases">Daily Purchases</a>
+                                <a href="/Reports/CustomersData">Customers Data</a>
+                                <a href="/Reports/CustomerAccount">Customer Account</a>
+                                <a href="/Reports/SupplierAccount">Supplier Account</a>
+                                <a href="/Reports/SupplierData">Supplier Data</a>
+                            </div>
+                        </div>
+                    </li>*@
+                 
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Ahmed Hosny Ahmed Khairy (AKSoft)</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+    function myFunction2() {
+        document.getElementById("myDropdown2").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+    </script>
+
+</body>
+</html>

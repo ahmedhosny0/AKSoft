@@ -18,5 +18,15 @@ else
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Add User", "AddUser", "Product", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log Out", "Start", "Product", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        @if (Session["UserID"] != null)
+        {
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a  href="#">Welcome :@Session["UserName"]  </a></li>
+                @*<li><a href="/Test/Logout">Logout</a></li>*@
+
+            </ul>
+
+        }
     </ul>
 }

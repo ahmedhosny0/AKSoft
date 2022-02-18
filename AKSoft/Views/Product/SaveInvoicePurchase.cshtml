@@ -1,8 +1,16 @@
 ﻿@model AKSoft.Models.HPurchase
 @{
-    ViewBag.Title = "SaveInvoicePurchase";
+if (TempData["Ag"] != null)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "SaveInvoicePurchase";
+}
+else
+{ 
+    ViewBag.Title = "SaveInvoicePurchase";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 
+}
 }
 <!DOCTYPE html>
 <html>

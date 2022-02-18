@@ -48,6 +48,14 @@ public class ProductController : Controller
 
         }
     }
+    public ActionResult User()
+    {
+        return View();
+    }
+    public ActionResult Sales()
+    {
+        return View();
+    }
     // Ahmed AKSoft
     public ActionResult Login()
     {
@@ -72,11 +80,24 @@ public class ProductController : Controller
                 string result = "fail";
                 if (obj != null)
                 {
-                    Session["UserID"] = obj.Id.ToString();
-                    Session["UserName"] = obj.Email.ToString();
+                    Session["UserID"] = obj.Id;
+                    Session["UserName"] = obj.Email;
 
+                    if (obj.Role == 1)
+                    {
+                        TempData["Ag"] = "";
+                        return RedirectToAction("Home");
+                    }
+                    if (obj.Role == 2)
+                    {
+                        return RedirectToAction("User");
+                    }
+                    if (obj.Role == 3)
+                    {
+                        return RedirectToAction("Sales");
+                    }
 
-                    return RedirectToAction("Home");
+                    return RedirectToAction("SS");
                 }
                 else
                 {

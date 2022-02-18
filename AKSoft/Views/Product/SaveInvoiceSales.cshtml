@@ -1,9 +1,17 @@
 ﻿@model AKSoft.Models.HSales
 @{
-    ViewBag.Title = "SaveInvoiceSales";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (TempData["Ag"] != null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        ViewBag.Title = "SaveInvoiceSales";
+    }
+    else
+    {
+        ViewBag.Title = "SaveInvoiceSales";
+        Layout = "~/Views/Shared/_LayoutEm.cshtml";
 
-}
+    }
+    }
 <!DOCTYPE html>
 <html>
 <head>
