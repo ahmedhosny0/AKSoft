@@ -1,3 +1,6 @@
+alter table unitcode drop column code
+alter table unitcode add code int
+
 
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure

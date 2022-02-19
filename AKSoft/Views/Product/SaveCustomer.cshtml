@@ -1,7 +1,15 @@
 ﻿@model AKSoft.Models.CustomerCode
-@{
-    ViewBag.Title = "SaveCustomer";
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Save Customer";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    ViewBag.Title = "Save Customer";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
 }
 <!DOCTYPE html>
 <html>
@@ -49,9 +57,6 @@
         <li class="">
             <label class="Lab">ArabicName</label>
             @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
-        </li>
-
-        <li class="">
             <label class="Lab">EnglishName</label>
             @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
         </li>
@@ -59,16 +64,12 @@
         <li class="">
             <label class="Lab">DescName</label>
             @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
-        </li>
-        <li class="">
             <label class="Lab">Notes</label>
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
         </li>
         <li class="">
             <label class="Lab">Address1</label>
             @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
-        </li>
-        <li class="">
             <label class="Lab">Address2</label>
             @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
         </li>

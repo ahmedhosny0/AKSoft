@@ -1,7 +1,15 @@
 ﻿@model AKSoft.Models.CountryCode
-@{
-    ViewBag.Title = "Save Country";
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Save Country";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    ViewBag.Title = "Save Country";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
 }
 <!DOCTYPE html>
 <html>

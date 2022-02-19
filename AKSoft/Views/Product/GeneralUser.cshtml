@@ -1,23 +1,24 @@
-﻿@model AKSoft.Models.UnitCode
+﻿
 @{
-    ViewBag.Title = "Home";
-
+    ViewBag.Title = "General User";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Home</title>
+    <title>User</title>
     <script src="~/Scripts/jquery.js"></script>
     <script src="~/Scripts/custom.js"></script>
     <style>
-       body {
+        body {
             background-image: url(~/img/back.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
         }
-         .ghh {
+
+        .ghh {
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -25,14 +26,14 @@
             width: 100%;
             height: 700px;
         }
-         html
-         {
-             margin:0;
-         }
+
+        html {
+            margin: 0;
+        }
     </style>
 
 </head>
-<body  >
+<body>
     <div class="preloader">
         <div class="sk-spinner sk-spinner-wave">
             <div class="sk-rect1"></div>
@@ -42,8 +43,9 @@
             <div class="sk-rect5"></div>
         </div>
     </div>
-    <div >
-        <img class="ghh"  src="~/img/back.jpg" width="4224" height="3136" style=" opacity: 0.5;"/>
+    <div>
+        <img class="ghh" src="~/img/back.jpg" width="4224" height="3136" style=" opacity: 0.5;" />
     </div>
 </body>
 </html>
+

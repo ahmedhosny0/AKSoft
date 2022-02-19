@@ -240,12 +240,12 @@
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID" Type="int" />
-    <Property Name="Code" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="150" />
     <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
     <Property Name="DescName" Type="nvarchar" MaxLength="150" />
     <Property Name="Description" Type="nvarchar" MaxLength="150" />
     <Property Name="AddUserDate" Type="datetime" />
+    <Property Name="Code" Type="int" />
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>
@@ -262,6 +262,13 @@
     <Property Name="BranchSerial" Type="int" />
     <Property Name="SectorSerial" Type="int" />
     <Property Name="AddUserDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK__BranchCod__UserI__3A6CA48E">
     <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1">
@@ -483,6 +490,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__UserInfo__Role__5EAA0504">
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__UserInfo__Sector__4301EA8F">
     <End Role="SectorCode" Type="Self.SectorCode" Multiplicity="0..1" />
     <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
@@ -602,6 +621,7 @@
     <EntitySet Name="TownCode" EntityType="Self.TownCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__BranchCod__UserI__3A6CA48E" Association="Self.FK__BranchCod__UserI__3A6CA48E">
       <End Role="UserInfo" EntitySet="UserInfo" />
       <End Role="BranchCode" EntitySet="BranchCode" />
@@ -664,6 +684,10 @@
     </AssociationSet>
     <AssociationSet Name="FK__UserInfo__Branch__420DC656" Association="Self.FK__UserInfo__Branch__420DC656">
       <End Role="BranchCode" EntitySet="BranchCode" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserInfo__Role__5EAA0504" Association="Self.FK__UserInfo__Role__5EAA0504">
+      <End Role="UserRole" EntitySet="UserRole" />
       <End Role="UserInfo" EntitySet="UserInfo" />
     </AssociationSet>
     <AssociationSet Name="FK__UserInfo__Sector__4301EA8F" Association="Self.FK__UserInfo__Sector__4301EA8F">

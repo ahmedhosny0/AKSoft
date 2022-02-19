@@ -1,14 +1,19 @@
 ﻿@model AKSoft.Models.HPurchase
-@{
-if (TempData["Ag"] != null)
+@{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "SaveInvoicePurchase";
 }
-else
+  if (Convert.ToInt32(Session["Role"]) == 2)
+  {
+      ViewBag.Title = "SaveInvoicePurchase";
+      Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+  }
+  if (Convert.ToInt32(Session["Role"]) == 4)
 { 
     ViewBag.Title = "SaveInvoicePurchase";
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
 }
 }

@@ -23,8 +23,9 @@ else
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <div class="dropdown">
-                        <button onclick="myFunction3()" class="dropbtn" style="background-color: #f15b5b;border-radius: 12px;font-family: -webkit-body;">@Session["UserName"]</button>ssss
-                        <div id="myDropdown3" class="dropdown-content" style="height:50px; background-color:#ff8e8e;">
+                        <button onclick="myFunction3()" class="dropbtn" style="background-color: #f15b5b;border-radius: 12px;font-family: -webkit-body;"> @Session["UserName"]</button><span class="save">Admin</span>
+                        <div id="myDropdown3" class="dropdown-content" style="height:90px; background-color:#ff8e8e;">
+                            @Html.ActionLink("Add User", "AddUser", "Product", routeValues: null, htmlAttributes: new { id = "registerLink" })
                 @Html.ActionLink("Log Out", "Start", "Product", routeValues: null, htmlAttributes: new { id = "loginLink" })
                 </div>
                 </div>

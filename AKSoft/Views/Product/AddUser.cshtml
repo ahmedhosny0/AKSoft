@@ -3,6 +3,28 @@
     Layout = null;
 
 }
+<script src="~/Scripts/sweetalert.min.js"></script>
+@if (TempData["Al"] == null)
+{
+    <script>
+        swal("Saved successfully!", " ", "success");
+    </script>
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"] //Display Word (Successful Done) + name
+}
+@if (TempData["Ag"] != null)
+{
+    <script>
+        swal("Modified Successfully!", " ", "success");
+    </script>
+    //  <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
+@if (TempData["Ag"] == null)
+{
+    <script>
+        swal("Modified Successfully!", " ", "success");
+    </script>
+    // <strong style="color:green">Savedg successfully! </strong>@TempData["Al"]
+}
 <!DOCTYPE html>
 
 <html>
@@ -230,7 +252,7 @@
 
         <hr />
         <div class="login-wrap">
-            <div class="login-html">
+            <div class="login-html" style="padding-top:17px ;height:120%;position:sticky" >
                     <div class="login-form">
                         <div class="group">
                             <label for="user" class="label">FirstName</label>
@@ -245,8 +267,20 @@
                             @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "input", @required = "required" } })
                         </div>
                         <div class="group">
-                            <label for="user" class="label">Username</label>
+                            <label for="user" class="label">E-mail</label>
                             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input", @required = "required" } })
+                        </div>
+                        <div class="group">
+                            <label class="label">Branch</label>
+                            @Html.DropDownListFor(model => model.BranchSerial, ViewBag.DepartmentList7 as SelectList, "--select--", new { @class = "input", @style = "color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
+                        </div>
+                        <div class="group">
+                            <label class="label">Sector</label>
+                            @Html.DropDownListFor(model => model.SectorSerial, ViewBag.DepartmentList8 as SelectList, "--select--", new { @class = "input", @style = "color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
+                        </div>
+                        <div class="group">
+                            <label class="label">Role</label>
+                            @Html.DropDownListFor(model => model.Role, ViewBag.DepartmentList9 as SelectList, "--select--", new { @class = "input", @style = "color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Password</label>

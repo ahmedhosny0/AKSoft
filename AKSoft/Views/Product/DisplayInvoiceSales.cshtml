@@ -1,7 +1,21 @@
 ﻿@model System.Data.DataTable
-@{
-    ViewBag.Title = "DisplayInvoiceSales";
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "DisplayInvoiceSales";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    ViewBag.Title = "DisplayInvoiceSales";
+    Layout = "~/Views/Shared/_LayoutEm.cshtml";
+
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    ViewBag.Title = "DisplayInvoiceSales";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
 }
 
 <h2>DisplayInvoiceSales</h2>

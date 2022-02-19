@@ -53,9 +53,6 @@
             @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
 
             @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
-        </li>
-
-        <li class="">
             @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
             @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
         </li>
@@ -71,8 +68,6 @@
         <li class="">
             @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "Lab" })
             @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
-        </li>
-        <li class="">
             @Html.LabelFor(model => model.AreaStock, htmlAttributes: new { @class = "Lab" })
             @Html.EditorFor(model => model.AreaStock, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
         </li>
@@ -87,13 +82,7 @@
         <li class="">
             @Html.LabelFor(model => model.Phone1, htmlAttributes: new { @class = "Lab" })
             @Html.EditorFor(model => model.Phone1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
-        </li>
-        <li class="">
-            @Html.LabelFor(model => model.Phone2, htmlAttributes: new { @class = "Lab" })
             @Html.EditorFor(model => model.Phone2, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
-        </li>
-        <li class="">
-            @Html.LabelFor(model => model.Phone3, htmlAttributes: new { @class = "Lab" })
             @Html.EditorFor(model => model.Phone3, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
         </li>
         <li>

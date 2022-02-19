@@ -1,17 +1,22 @@
 ﻿@model AKSoft.Models.HSales
-@{
-    if (TempData["Ag"] != null)
-    {
-        Layout = "~/Views/Shared/_Layout.cshtml";
-        ViewBag.Title = "SaveInvoiceSales";
-    }
-    else
-    {
-        ViewBag.Title = "SaveInvoiceSales";
-        Layout = "~/Views/Shared/_LayoutEm.cshtml";
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "SaveInvoiceSales";
+}
+  if (Convert.ToInt32(Session["Role"]) == 3)
+{ 
+    ViewBag.Title = "SaveInvoiceSales";
+    Layout = "~/Views/Shared/_LayoutEm.cshtml";
 
-    }
-    }
+}
+  if (Convert.ToInt32(Session["Role"]) == 4)
+  {
+      ViewBag.Title = "SaveInvoiceSales";
+      Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+  }
+}
 <!DOCTYPE html>
 <html>
 <head>

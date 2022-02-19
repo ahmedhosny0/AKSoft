@@ -1,7 +1,15 @@
 ﻿@model System.Data.DataTable
-@{
-    ViewBag.Title = "DisplayUnits";
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Display Units";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    ViewBag.Title = "Display Units";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
 }
 <script src="~/Scripts/sweetalert.min.js"></script>
 @if (TempData["Al"] != null)
@@ -25,7 +33,7 @@
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<h2>DisplayUnits</h2>
+<h2>Display Units</h2>
 <a href="@Url.Action("SaveUnit","Product")">Add Unit</a>
 <table class="table table-bordered table-striped">
     <tr>

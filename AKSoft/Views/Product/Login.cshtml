@@ -4,26 +4,19 @@
 }
 <title>Login</title>
 <script src="~/Scripts/sweetalert.min.js"></script>
-@if (TempData["Al"] == null)
+@if (TempData["Al"] != null)
 {
     <script>
-        swal("Saved successfully!", " ", "success");
+        swal("Deleted!", "Item has been deleted.", "success");
     </script>
-   // <strong style="color:green">Saved successfully! </strong>@TempData["Al"] //Display Word (Successful Done) + name
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-@if (TempData["A"] != null)
+@if (TempData["As"] != null)
 {
     <script>
         swal("Modified Successfully!", " ", "success");
     </script>
-   //  <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
-}
-@if (TempData["A"] == null)
-{
-    <script>
-        swal("Modified Successfully!", " ", "success");
-    </script>
-   // <strong style="color:green">Savedg successfully! </strong>@TempData["Al"]
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
 <!DOCTYPE html>
 
@@ -229,17 +222,7 @@
     </style>
 </head>
 <body class="b">
-   
-    <script src="~/Scripts/sweetalert.min.js"></script>
-    @if (TempData["Al"] != null)
-    {
-        <script>
-
-            swal("Oops...", "Something went wrong! ", "error");
-        </script>
-       // <strong style="color:green">Saved successfully! </strong>@TempData["Al"] //Display Word (Successful Done) + name
-    }
-    <div class="preloader">
+    @*<div class="preloader">
         <div class="sk-spinner sk-spinner-wave">
             <div class="sk-rect1"></div>
             <div class="sk-rect2"></div>
@@ -247,7 +230,8 @@
             <div class="sk-rect4"></div>
             <div class="sk-rect5"></div>
         </div>
-    </div>
+    </div>*@
+        
     @using (Html.BeginForm("Login", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken() // this is for prevent CSRF attack
@@ -275,16 +259,16 @@
                                 </div>
                             <div class="group">
                                 <label class="label">Branch</label>
-                                @Html.DropDownListFor(model => model.BranchSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "input",@style="color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
+                                @Html.DropDownListFor(model => model.BranchSerial, ViewBag.DepartmentList7 as SelectList, "--select--", new { @class = "input",@style="color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" })
                             </div>
                             <div class="group">
                                 <label class="label">Sector</label>
-                                @Html.DropDownListFor(model => model.SectorSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "input",@style="color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
+                                @Html.DropDownListFor(model => model.SectorSerial, ViewBag.DepartmentList8 as SelectList, "--select--", new { @class = "input",@style="color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) 
                             </div>
-                                @*<div class="group">
+                                <div class="group">
                                     <input id="check" type="checkbox" class="check" checked>
                                     <label for="check"><span class="icon"></span> Keep me Signed in</label>
-                                </div>*@
+                                </div>
                                 <div class="group">
                                     <a href="@Url.Action("Home","Product")">
                                         <input type="submit" class="button" value="Sign In">
@@ -303,40 +287,19 @@
 
 
                 }
-     <script>
-
-    var LoginUser = function () {
-        debugger
-        var data = $("#myForm").serialize();
-
-        $.ajax({
-            type: "Post",
-            url: "/Test/LoginUser",
-            data: data,
-            success: function (response) {
-                debugger
-                if (response == "fail") {
-
-                    window.location.href = "/Test/Login";
-                }
-                else if (response == "Admin") {
-
-                    window.location.href = "/Test/Admin";
-                }
-                else {
-
-                    window.location.href = "/Test/Index";
-                }
-            }
-
-
-
-        })
-
-
-
-    }
-
+@if (TempData["A"] != null)
+{
+    <script>
+        swal("Oops...", "Wrong Password Or User!Not Allowed", "error");
     </script>
+    //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
+@*@if (TempData["A"] == null)
+{
+    <script>
+        swal("Deleted!", "Item has been deleted.", "success");
+    </script>
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}*@
 </body>
 </html>

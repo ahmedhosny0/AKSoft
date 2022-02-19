@@ -1,7 +1,15 @@
 ﻿@model System.Data.DataTable
-@{
-    ViewBag.Title = "Display Sectors";
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Display Sectors";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    ViewBag.Title = "Display Sectors";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
 }
 <script src="~/Scripts/sweetalert.min.js"></script>
 @if (TempData["Al"] != null)

@@ -1,7 +1,15 @@
 ﻿@model AKSoft.Models.SectorCode
-@{
-    ViewBag.Title = "Save Sector";
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Save Sector";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    ViewBag.Title = "Save Sector";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
 }
 <!DOCTYPE html>
 <html>

@@ -28,7 +28,6 @@ namespace AKSoft.Models
         public virtual DbSet<GroupCode> GroupCode { get; set; }
         public virtual DbSet<ItemCode> ItemCode { get; set; }
         public virtual DbSet<StoreCode> StoreCode { get; set; }
-        public virtual DbSet<UnitCode> UnitCode { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
         public virtual DbSet<CountryCode> CountryCode { get; set; }
         public virtual DbSet<CustomerCode> CustomerCode { get; set; }
@@ -39,5 +38,7 @@ namespace AKSoft.Models
         public virtual DbSet<BranchCode> BranchCode { get; set; }
         public virtual DbSet<SectorCode> SectorCode { get; set; }
         public virtual DbSet<DealerCode> DealerCode { get; set; }
+        public virtual DbSet<UserRole> UserRole { get; set; }
+        public virtual DbSet<UnitCode> UnitCode { get; set; }
     }
 }

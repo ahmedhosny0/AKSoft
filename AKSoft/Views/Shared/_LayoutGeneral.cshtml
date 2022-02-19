@@ -67,7 +67,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Sales Man", "Sales", "Product", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("General User", "GeneralUser", "Product", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -83,16 +83,14 @@
                             </div>
                         </div>
                     </li>*@
-                                        @*<li><a href="/Product/SaveStock">Stores</a></li>
-        <li><a href="/Product/SaveGroup">Category</a></li>
-        <li><a href="/Product/SaveUnit">Unit</a></li>
-        <li><a href="/Product/SaveProduct">Product</a></li>
-        <li><a href="/Product/SaveCustomer">Customers</a></li>
-
-        <li><a href="/Product/SaveSupplier">Suppliers</a></li>
-       <li><a href="/Product/SaveInvoicePurchase">Purchase</a></li>
-                                        *@
+                    @*<li><a href="/Product/SaveStock">Stores</a></li>
+                    <li><a href="/Product/SaveGroup">Category</a></li>
+                    <li><a href="/Product/SaveUnit">Unit</a></li>*@
+                    <li><a href="/Product/SaveProduct">Product</a></li>
+                    <li><a href="/Product/SaveCustomer">Customers</a></li>
                     <li><a href="/Product/SaveInvoiceSales">Sales</a></li>
+                    <li><a href="/Product/SaveSupplier">Suppliers</a></li>
+                    <li><a href="/Product/SaveInvoicePurchase">Purchase</a></li>
 
                     @*<li>
                         
@@ -112,7 +110,6 @@
                             </div>
                         </div>
                     </li>*@
-                 
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+namespace AKSoft.Models
+{
     using System;
     using System.Collections.Generic;
     
@@ -15,13 +17,13 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserRole()
         {
-            this.SiteUser = new HashSet<SiteUser>();
+            this.UserInfo = new HashSet<UserInfo>();
         }
     
         public int RoleId { get; set; }
         public string RoleName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SiteUser> SiteUser { get; set; }
+        public virtual ICollection<UserInfo> UserInfo { get; set; }
     }
-
+}

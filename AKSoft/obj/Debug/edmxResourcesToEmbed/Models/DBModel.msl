@@ -62,20 +62,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UnitCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UnitCode)">
-        <MappingFragment StoreEntitySet="UnitCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-          <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="UserInfo">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UserInfo)">
         <MappingFragment StoreEntitySet="UserInfo">
@@ -275,6 +261,28 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Website" ColumnName="Website" />
           <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRole">
+      <EntityTypeMapping TypeName="TopSoftModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitCode">
+      <EntityTypeMapping TypeName="TopSoftModel.UnitCode">
+        <MappingFragment StoreEntitySet="UnitCode">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

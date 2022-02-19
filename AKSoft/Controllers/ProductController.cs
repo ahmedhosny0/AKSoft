@@ -11,6 +11,18 @@ using System.Web.Mvc;
 
 public class ProductController : Controller
 {
+    public ActionResult User()
+    {
+        return View();
+    }
+    public ActionResult GeneralUser()
+    {
+        return View();
+    }
+    public ActionResult Sales()
+    {
+        return View();
+    }
 
     public ActionResult Home()
     {
@@ -18,6 +30,13 @@ public class ProductController : Controller
     }
     public ActionResult AddUser()
     {
+        TopSoft db = new TopSoft();
+        List<BranchCode> list7 = db.BranchCode.ToList();
+        ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName");
+        List<SectorCode> list8 = db.SectorCode.ToList();
+        ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName");
+        List<UserRole> list9 = db.UserRole.ToList();
+        ViewBag.DepartmentList9 = new SelectList(list9, "RoleId", "RoleName");
         return View();
     }
     [HttpPost]
@@ -27,6 +46,12 @@ public class ProductController : Controller
         try
         {
             TopSoft db = new TopSoft();
+            List<BranchCode> list7 = db.BranchCode.ToList();
+            ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName");
+            List<SectorCode> list8 = db.SectorCode.ToList();
+            ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName");
+            List<UserRole> list9 = db.UserRole.ToList();
+            ViewBag.DepartmentList9 = new SelectList(list9, "RoleId", "RoleName");
             UserInfo group = new UserInfo();
             group.FirstName = model.FirstName;
             group.MiddleName = model.MiddleName;
@@ -35,6 +60,9 @@ public class ProductController : Controller
             group.Password = model.Password;
             group.RePassword = model.RePassword;
             group.AddUserDate = model.AddUserDate;
+            group.BranchSerial = model.BranchSerial;
+            group.SectorSerial = model.SectorSerial;
+            group.Role = model.Role;
             db.UserInfo.Add(group);
             db.SaveChanges();
             TempData["Al"] = "";
@@ -48,22 +76,15 @@ public class ProductController : Controller
 
         }
     }
-    public ActionResult User()
-    {
-        return View();
-    }
-    public ActionResult Sales()
-    {
-        return View();
-    }
+   
     // Ahmed AKSoft
     public ActionResult Login()
     {
         TopSoft db = new TopSoft();
-        List<BranchCode> list1 = db.BranchCode.ToList();
-        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-        List<SectorCode> list2 = db.SectorCode.ToList();
-        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+        List<BranchCode> list7 = db.BranchCode.ToList();
+        ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName");
+        List<SectorCode> list8 = db.SectorCode.ToList();
+        ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName");
         return View();
     }
 
@@ -71,42 +92,60 @@ public class ProductController : Controller
     [ValidateAntiForgeryToken]
     public ActionResult Login(UserInfo objUser)
     {
-
-
-
+        try
+        {
             using (TopSoft db = new TopSoft())
             {
-                var obj = db.UserInfo.Where(a => a.Email.Equals(objUser.Email) && a.Password.Equals(objUser.Password)).FirstOrDefault();
+                List<BranchCode> list7 = db.BranchCode.ToList();
+                ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName");
+                List<SectorCode> list8 = db.SectorCode.ToList();
+                ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName");
+                UserInfo group = new UserInfo();
+                group.BranchSerial = objUser.BranchSerial;
+                group.SectorSerial = objUser.SectorSerial;
+                var obj = db.UserInfo.Where(a => a.Email.Equals(objUser.Email) && a.Password.Equals(objUser.Password)).FirstOrDefault();// && a.BranchSerial.Equals(objUser.BranchSerial) && a.SectorSerial.Equals(objUser.SectorSerial)
                 string result = "fail";
                 if (obj != null)
                 {
                     Session["UserID"] = obj.Id;
-                    Session["UserName"] = obj.Email;
-
+                    Session["Role"] = obj.Role;
+                    Session["UserName"] = obj.FirstName + " " + obj.LastName;
+                    TempData["B"] = obj.SectorCode;
                     if (obj.Role == 1)
                     {
-                        TempData["Ag"] = "";
                         return RedirectToAction("Home");
                     }
-                    if (obj.Role == 2)
+                    else if (obj.Role == 2)
                     {
                         return RedirectToAction("User");
                     }
-                    if (obj.Role == 3)
+                    else if (obj.Role == 3)
                     {
                         return RedirectToAction("Sales");
                     }
+                    else if (obj.Role == 4)
+                    {
+                        return RedirectToAction("GeneralUser");
+                    }
 
-                    return RedirectToAction("SS");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "InVaild");
-                 //   ViewBag.Message = "UserName or password is wrong";
+                    TempData["A"] = "s";
+                    ViewBag.ErrorMessage = "sssss should not begin with Comma ','.";
+
                     return View();
                 }
             }
+        }
+        catch
+        {
+            TempData["A"] = "s";
+        }
+        
 
+        //TempData["A"] = "";   
+        return RedirectToAction("login");
     }
 
     public ActionResult UserDashBoard()
@@ -126,49 +165,7 @@ public class ProductController : Controller
         return View();
     }
 
-    /*
-    [HttpPost]
-    public JsonResult LoginUser(UserInfo model)
-    {
-        TopSoft db = new TopSoft();
-
-        UserInfo user = db.UserInfo.SingleOrDefault(x => x.Email == model.Email && x.Password == model.Password);
-        string result = "fail";
-        if (user != null)
-        {
-
-            Session["UserId"] = user.Id;
-            Session["UserName"] = user.Email;
-            if (user.Role == 3)
-            {
-                result = "GeneralUser";
-
-            }
-            else if (user.Role == 1)
-            {
-                result = "Admin";
-
-            }
-
-        }
-
-
-        return Json(result, JsonRequestBehavior.AllowGet);
-    }
-
-
-    public ActionResult Logout()
-    {
-
-        Session.Clear();
-        Session.Abandon();
-
-        return RedirectToAction("Login");
-
-    }
-
-
-   */
+    
     public ActionResult SaveProduct()
     {
         TopSoft db = new TopSoft();
@@ -552,86 +549,8 @@ public class ProductController : Controller
         }
     }
 
-
-    [HttpPost]
-
-
     //---------------------------------------------------------------------
 
-    public ActionResult Edit(int? id)
-    {
-        using (TopSoft db = new TopSoft())
-        {
-            return View(db.GroupCode.Where(x => x.Serial == id).FirstOrDefault());
-        }
-    }
-
-    [HttpPost]
-    public ActionResult Edit(int? id, GroupCode group)
-    {
-        try
-        {
-            using (TopSoft db = new TopSoft())
-            {
-                db.Entry(group).State = EntityState.Modified;
-                db.SaveChanges();
-            }
-            return RedirectToAction("d");
-        }
-        catch
-        {
-            return View();
-        }
-    }
-    public ActionResult Delete(int? id)
-    {
-        //if (id==null)
-        //{
-        //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //}
-        //TopSoft db = new TopSoft();
-        //GroupCode group = db.GroupCode.Find(id);
-        //if (group ==null)
-        //{
-        //    return HttpNotFound();
-        //}
-        //return View(group);
-        using (TopSoft db = new TopSoft())
-        {
-            return View(db.GroupCode.Where(x => x.Serial == id).FirstOrDefault());
-        }
-    }
-
-    [HttpPost]
-    public ActionResult Delete(int? id, FormCollection collection)
-    {
-        //TopSoft db = new TopSoft();
-        //GroupCode group = db.GroupCode.Find(id);
-        //db.GroupCode.Remove(group);
-        //db.SaveChanges();
-        //return RedirectToAction("d");
-
-
-
-        //                TopSoft db = new TopSoft();
-        try
-        {
-            using (TopSoft db = new TopSoft())
-            {
-
-                GroupCode group = db.GroupCode.Where(x => x.Serial == id).FirstOrDefault();
-                db.GroupCode.Remove(group);
-                db.SaveChanges();
-                TempData["Al"] = "";
-            }
-
-            return RedirectToAction("d");
-        }
-        catch
-        {
-            return View();
-        }
-    }
     string connectionString = @"Data Source = .; Initial Catalog = TopSoft; Integrated Security=True";
     [HttpGet]
     public ActionResult DisplayCategories()
@@ -845,6 +764,8 @@ public class ProductController : Controller
 
         ItemCode productModel = new ItemCode();
         DataTable dtblProduct = new DataTable();
+        try
+        { 
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
@@ -865,9 +786,14 @@ public class ProductController : Controller
             productModel.PricePurchase1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][7].ToString());
             productModel.PriceSale1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][8].ToString());
             productModel.Counts = Convert.ToInt32(dtblProduct.Rows[0][9].ToString());
+            TempData["As"] = 1;
             return View(productModel);
         }
-        else
+        }
+        catch
+        {
+            TempData["A"] = 1;
+        }
             return RedirectToAction("DisplayItems");
 
     }
@@ -923,6 +849,8 @@ public class ProductController : Controller
 
         StoreCode productModel = new StoreCode();
         DataTable dtblProduct = new DataTable();
+       try
+        {
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
 
@@ -946,9 +874,15 @@ public class ProductController : Controller
             productModel.Phone1 = dtblProduct.Rows[0][8].ToString();
             productModel.Phone2 = dtblProduct.Rows[0][9].ToString();
             productModel.Phone3 = dtblProduct.Rows[0][10].ToString();
+            TempData["As"] = "";
             return View(productModel);
+
         }
-        else
+        }
+       catch
+       {
+           TempData["A"] = 1;
+       }
             return RedirectToAction("DisplayStocks");
 
 
@@ -1009,15 +943,6 @@ public class ProductController : Controller
         }
 
         return RedirectToAction("DisplayStocks");
-    }
-
-    public ActionResult CashExchange()
-    {
-        return View();
-    }
-    public ActionResult ReceiveCash()
-    {
-        return View();
     }
     //Supplier
     public ActionResult SaveSupplier()

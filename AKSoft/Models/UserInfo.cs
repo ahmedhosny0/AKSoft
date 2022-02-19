@@ -39,5 +39,6 @@ namespace AKSoft.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SectorCode> SectorCode { get; set; }
         public virtual SectorCode SectorCode1 { get; set; }
+        public virtual UserRole UserRole { get; set; }
     }
 }

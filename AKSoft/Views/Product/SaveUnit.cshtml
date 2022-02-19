@@ -1,7 +1,15 @@
 ﻿@model AKSoft.Models.UnitCode
-@{
-    ViewBag.Title = "SaveUnit";
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Save Unit";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    ViewBag.Title = "Save Unit";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
 }
 <!DOCTYPE html>
 <html>
@@ -38,42 +46,43 @@
         </script>
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
-     @using (Html.BeginForm("SaveUnit", "Product", FormMethod.Post))
+
+            @using (Html.BeginForm("SaveUnit", "Product", FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
 
-        <div class="Elements">
-            <div class="">
-                <label class="Lab">Date</label>
-                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
-            </div>
-            <div class="">
-                @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
+                <div class="Elements">
+                    <div class="">
+                        <label class="Lab">Date</label>
+                        @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
+                    </div>
+                    <div class="">
+                        @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
 
-                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt",@id="name", @placeholder = "ArabicName", @required = "required"} }) @*Required TextBox*@
-            </div>
+                        @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt",@id="name", @placeholder = "ArabicName", @required = "required"} }) @*Required TextBox*@
+                    </div>
 
-            <div class="">
-                @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
-            </div>
+                    <div class="">
+                        @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
+                        @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
+                    </div>
 
-            <div class="">
-                @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
-            </div>
-            <div class="">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
-            </div>
+                    <div class="">
+                        @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
+                        @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
+                    </div>
+                    <div class="">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+                    </div>
 
-            <div class="">
-                <button class="save" >Save</button>
-                <a href="@Url.Action("DisplayUnits", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
-            </div>
-        </div>
+                    <div class="">
+                        <button class="save">Save</button>
+                        <a href="@Url.Action(" displayunits", "Product" )"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+                    </div>
+                </div>
     }
-    </body>
+</body>
 </html>
 
 
