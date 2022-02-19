@@ -265,24 +265,24 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserRole">
-      <EntityTypeMapping TypeName="TopSoftModel.UserRole">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UserRole)">
         <MappingFragment StoreEntitySet="UserRole">
-          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UnitCode">
-      <EntityTypeMapping TypeName="TopSoftModel.UnitCode">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UnitCode)">
         <MappingFragment StoreEntitySet="UnitCode">
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

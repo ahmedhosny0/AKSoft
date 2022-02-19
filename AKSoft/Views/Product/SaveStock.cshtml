@@ -1,7 +1,16 @@
 ﻿@model AKSoft.Models.StoreCode
-@{
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     ViewBag.Title = "SaveStock";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    ViewBag.Title = "SaveStock";
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+
+}
 }
 <!DOCTYPE html>
 
@@ -72,7 +81,7 @@
             @Html.EditorFor(model => model.AreaStock, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
         </li>
         <li class="">
-            @Html.LabelFor(model => model.NumberOfLeans, htmlAttributes: new { @class = "Lab" })
+            <label class="Lab">Workers</label>
             @Html.EditorFor(model => model.NumberOfLeans, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
         </li>
         <div class="">
@@ -87,7 +96,7 @@
         </li>
         <li>
             <button class="save">Save</button>
-            <a href="@Url.Action("DisplayStocks", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+            <a  href="@Url.Action("DisplayStocks", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
         </li>
         </ul>
     }

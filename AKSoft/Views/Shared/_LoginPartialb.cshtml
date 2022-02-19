@@ -2,18 +2,13 @@
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Display Towns";
+    ViewBag.Title = "Display Units";
 }
 if (Convert.ToInt32(Session["Role"]) == 4)
 {
-    ViewBag.Title = "Display Towns";
+    ViewBag.Title = "Display Units";
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
-}
-if (Convert.ToInt32(Session["Role"]) == 5)
-{
-    ViewBag.Title = "Display Towns";
-    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 }
 }
 <script src="~/Scripts/sweetalert.min.js"></script>
@@ -38,15 +33,16 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<h2>Display Towns</h2>
-<a href="@Url.Action("SaveTown","Product")">Add Town</a>
+<h2>Display Units</h2>
+<a href="@Url.Action("SaveUnit","Product")">Add Unit</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th>ID</th>
         <th>ArabicName</th>
         <th>EnglishName</th>
         <th>DescName</th>
-        <th>Notes</th>
+        <th>Description</th>
+        <th></th>
 
     </tr>
 
@@ -59,8 +55,8 @@ if (Convert.ToInt32(Session["Role"]) == 5)
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>
             <td>
-                <a href="@Url.Action("EditTown", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
-                <a href="@Url.Action("DeleteTown", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
+                <a href="@Url.Action("EditUnit", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
+                <a href="@Url.Action("DeleteUnit", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
             </td>
         </tr>
     }

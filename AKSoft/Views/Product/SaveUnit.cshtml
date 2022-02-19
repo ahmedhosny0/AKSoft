@@ -10,6 +10,12 @@ if (Convert.ToInt32(Session["Role"]) == 4)
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
 }
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    ViewBag.Title = "Save Unit";
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+
+}
 }
 <!DOCTYPE html>
 <html>
@@ -78,7 +84,7 @@ if (Convert.ToInt32(Session["Role"]) == 4)
 
                     <div class="">
                         <button class="save">Save</button>
-                        <a href="@Url.Action(" displayunits", "Product" )"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+                        <a href="@Url.Action("Displayunits", "Product" )"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
                     </div>
                 </div>
     }

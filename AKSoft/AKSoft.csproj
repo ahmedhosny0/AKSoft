@@ -160,6 +160,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ProController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -333,7 +334,6 @@
     <Content Include="Views\Product\Loginr.cshtml" />
     <Content Include="Views\Product\c.cshtml" />
     <Content Include="Views\Product\d.cshtml" />
-    <Content Include="Views\Product\index.cshtml" />
     <Content Include="Views\Product\LoginUser.cshtml" />
     <Content Include="Views\Product\SaveCountry.cshtml" />
     <Content Include="Views\Product\SaveTown.cshtml" />
@@ -359,6 +359,12 @@
     <Content Include="Views\Shared\_LoginPartialA.cshtml" />
     <Content Include="Views\Shared\_LayoutGeneral.cshtml" />
     <Content Include="Views\Product\GeneralUser.cshtml" />
+    <Content Include="Views\Shared\_LoginPartialb.cshtml" />
+    <Content Include="Views\Product\a.cshtml" />
+    <Content Include="Views\Product\index.cshtml" />
+    <Content Include="Views\Product\Worker.cshtml" />
+    <Content Include="Views\Shared\_LayoutWorker.cshtml" />
+    <Content Include="Views\Reports\UsersData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

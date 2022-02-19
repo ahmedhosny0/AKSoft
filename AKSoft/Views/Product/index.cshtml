@@ -1,55 +1,28 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+<h2>Employee CRUD Operations</h2>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "SaveStock", "Product", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/Product/SaveStock">Stores</a></li>
-                    <li><a href="/Product/SaveUnit">Category</a></li>
-                    <li><a href="/Product/SaveUnit">Unit</a></li>
-                    <li><a href="/Product/SaveProduct">Product</a></li>
-                    <li><a href="/Product/SaveInvoiceSales">Sales</a></li>
-                    <li><a href="/Product/Reports">Reports</a></li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
-</html>
+<a class="btn btn-success" style="margin-bottom:10px" onclick="PopupForm('@Url.Action("a", "Product")')"><i class="fa fa-plus"></i> Add New</a>
 
 
+<script>
+    var Popup;
+    function PopupForm(url) {
+        var formDiv = $('<div/>');
+        $.get(url)
+        .done(function (response) {
+            formDiv.html(response);
+
+            Popup = formDiv.dialog({
+                autoOpen: true,
+                resizable: false,
+                title: 'Fill Employee Details',
+                height: 500,
+                width: 700,
+                close: function () {
+                    Popup.dialog('destroy').remove();
+                }
+
+            });
+        });
+    }
+</script>

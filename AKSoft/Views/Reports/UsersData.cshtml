@@ -1,19 +1,21 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "Stocks State";
+    ViewBag.Title = "Users Data";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Stocks State</h2>
-<a href="@Url.Action("SaveStock", "Product")">Add Stock</a>
+<h2>Users Data</h2>
+<a href="@Url.Action("AddUser", "Product")">Add User</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>Store Name</th>
-        <th>Address</th>
-        <th>Workers</th>
-        <th>StoreKeeper</th>
-        <th>Area</th>
-        <th>Phone</th>
+        <th>User ID</th>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>E-Mail</th>
+        <th>Role</th>
+        <th>BranchName</th>
+        <th>SectorName</th>
     </tr>
 
     @for (int i = 0; i < Model.Rows.Count; i++)
@@ -25,6 +27,8 @@
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>
             <td>@Model.Rows[i][5]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td>@Model.Rows[i][7]</td>
         </tr>
     }
 </table>

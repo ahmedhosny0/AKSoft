@@ -10,6 +10,12 @@ if (Convert.ToInt32(Session["Role"]) == 4)
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
 }
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    ViewBag.Title = "Save Town";
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+
+}
 }
 <!DOCTYPE html>
 <html>

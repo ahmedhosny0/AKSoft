@@ -10,6 +10,11 @@ if (Convert.ToInt32(Session["Role"]) == 4)
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
 }
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    ViewBag.Title = "Display Stocks";
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
 }
 <script src="~/Scripts/sweetalert.min.js"></script>
 @if (TempData["Al"] != null)
@@ -43,7 +48,7 @@ if (Convert.ToInt32(Session["Role"]) == 4)
         <th>DescName</th>
         <th>Description</th>
         <th>Address</th>
-        <th>NumberOfLeans</th>
+        <th>Workers</th>
         <th>StoreKeeper</th>
         <th>Phone1</th>
         <th>Phone2</th>

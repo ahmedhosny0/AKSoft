@@ -11,7 +11,21 @@ using System.Web.Mvc;
 
 public class ProductController : Controller
 {
+    [HttpGet]
+    public ActionResult a()
+    {
+        return View();
+    }
+    public ActionResult index()
+    {
+        return View();
+    }
     public ActionResult User()
+    {
+        return View();
+    }
+
+    public ActionResult Worker()
     {
         return View();
     }
@@ -126,6 +140,10 @@ public class ProductController : Controller
                     else if (obj.Role == 4)
                     {
                         return RedirectToAction("GeneralUser");
+                    }
+                    else if (obj.Role == 5)
+                    {
+                        return RedirectToAction("Worker");
                     }
 
                 }

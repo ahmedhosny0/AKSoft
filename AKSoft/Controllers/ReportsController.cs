@@ -22,6 +22,17 @@ public class ReportsController : Controller
         }
         return View(dt);
     }
+    public ActionResult UsersData()
+    {
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("Select UserId,FirstName,MiddleName,LastName,Email,RoleName,BranchName,SectorName from RptUsers", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
+    }
     public ActionResult SupplierData()
     {
         DataTable dt = new DataTable();

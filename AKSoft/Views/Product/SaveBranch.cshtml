@@ -8,6 +8,11 @@ if (Convert.ToInt32(Session["Role"]) == 4)
 {
     ViewBag.Title = "Save Branch";
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    ViewBag.Title = "Save Branch";
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 
 }
 }

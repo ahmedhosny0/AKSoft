@@ -8,7 +8,11 @@ if (Convert.ToInt32(Session["Role"]) == 4)
 {
     ViewBag.Title = "Display Units";
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
-
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    ViewBag.Title = "Display Units";
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 }
 }
 <script src="~/Scripts/sweetalert.min.js"></script>
