@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -24,26 +23,28 @@
     <script src="~/Scripts/typed.js"></script>
     <script src="~/Scripts/wow.min.js"></script>
     <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/main.js"></script>
     <style>
-        body
-	{
- 		background: #303030;
- 		color: #ffffff;
-		font-family: 'Open Sans', sans-serif;
-		font-weight: 300;
-		overflow-x: hidden; /* prevent horizontal scrollbar from appearing 
-        background-image:url(/img/back.jpg);
-          background-position: center; /* Center the image 
-  background-repeat: no-repeat; /* Do not repeat the image 
-  background-size: cover; /* Resize the background image to cover the entire container */
-	}
-        .h{
-             font-size: 30px;
-                            float: right;
-                            color: #28a6e8;
-                            font-weight: bold;
-                            align-content: center;margin-right: 32%;
-        }
+              body {
+                  background: #303030;
+                  color: #ffffff;
+                  font-family: 'Open Sans', sans-serif;
+                  font-weight: 300;
+                  overflow-x: hidden; /* prevent horizontal scrollbar from appearing
+              background-image:url(/img/back.jpg);
+                background-position: center; /* Center the image
+        background-repeat: no-repeat; /* Do not repeat the image
+        background-size: cover; /* Resize the background image to cover the entire container */
+              }
+
+              .h {
+                  font-size: 30px;
+                  float: right;
+                  color: #28a6e8;
+                  font-weight: bold;
+                  align-content: center;
+                  margin-right: 32%;
+              }
     </style>
 </head>
 <body id="top">
@@ -109,10 +110,10 @@
     </nav>
     <!-- end navigation -->
     <!-- start home -->
-    <div >
+    <div>
         <div class="element h">
             <div class="sub-element">
-                <div >بسم الله والحمد لله والصلاة والسلام علي رسول الله</div>
+                <div>بسم الله والحمد لله والصلاة والسلام علي رسول الله</div>
             </div>
         </div>
     </div>
@@ -362,13 +363,10 @@
                         <form action="#" method="post">
                             <label>NAME</label>
                             <input name="fullname" type="text" class="form-control" id="fullname">
-
                             <label>EMAIL</label>
                             <input name="email" type="email" class="form-control" id="email">
-
                             <label>MESSAGE</label>
                             <textarea name="message" rows="4" class="form-control" id="message"></textarea>
-
                             <input type="submit" class="form-control">
                         </form>
                     </div>

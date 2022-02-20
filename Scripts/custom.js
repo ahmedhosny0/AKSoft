@@ -14,16 +14,7 @@ $(function(){
         loopCount: true,
     });
     /* end typed element */
-    var myVar;
 
-function myFunction() {
-    myVar = setTimeout(showPage, 1100);
-}
-
-function showPage() {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("myDiv").style.display = "block";
-}
     /* Smooth scroll and Scroll spy (https://github.com/ChrisWojcik/single-page-nav)    
     ---------------------------------------------------------------------------------*/ 
     $('.templatemo-nav').singlePageNav({
@@ -55,3 +46,9 @@ function showPage() {
     -----------------*/
     new WOW().init();
 });
+
+/* start preloader */
+//$(window).load(function(){
+//	$('.preloader').fadeOut(1000); // set duration in brackets    
+//});
+/* end preloader */

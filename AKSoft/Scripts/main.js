@@ -1,52 +1,33 @@
-﻿        /* When the user clicks on the button,
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
+﻿/* HTML document is loaded. DOM is ready.
+-------------------------------------------*/
+$(function(){
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
+    /* start typed element */
+    var subElementArray = $.map($('.sub-element'), function(el) { return $(el).text(); });    
+    $(".element").typed({
+        strings: subElementArray,
+        typeSpeed: 30,
+        contentType: 'html',
+        showCursor: false,
+        loop: true,
+        loopCount: true,
+    });
+ 
+        /* Hide mobile menu after clicking on a link
+        -----------------------------------------------*/
+        $('.navbar-collapse a').click(function(){
+            $(".navbar-collapse").collapse('hide');
+        });
+        /* end navigation top js */
 
-//if (TempData["Al"] != null)
-//{
-  
-//    //var name = $("name").val();
-//        swal("Saved successfully!"," ", "success");
-//}
-//function y() {
-  
-//    swal("Saved successfully!", " ", "success");
-//    //swal({
-//    //    title: "Deleted!",
-//    //    text: "Your row has been deleted.",
-//    //    type: "success",
-//    //    timer: 3000
-//    //})
-//};
-//$("#btnSave").click(function (e) {
-//    swal("Saved successfully!", " ", "success");
-//});
-//$("#sub").click(function () {
-//   // var name = $("#name").val();
-//    alert("|name");
-//    if (name != null) {
-//        swal("Saved successfully!", " ", "success");
+        $('body').bind('touchstart', function() {});
 
-//    }
-//});
-//   if (TempData["Al"] != null)
-//{
-//    swal("Saved successfully!", " ", "success");
+        /* wow
+        -----------------*/
+        new WOW().init();
+    });
 
-//}
+    /* start preloader */
+    $(window).load(function(){
+        $('.preloader').fadeOut(1000); // set duration in brackets    
+    });
