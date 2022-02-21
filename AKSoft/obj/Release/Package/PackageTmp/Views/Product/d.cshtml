@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GroupCode>
+
+@{
+    ViewBag.Title = "d";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>d</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SaveGroup")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Serial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArabicName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnglishName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ColorName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Serial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArabicName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnglishName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ColorName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

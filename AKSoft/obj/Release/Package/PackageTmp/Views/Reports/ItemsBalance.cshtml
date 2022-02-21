@@ -1,0 +1,28 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Items Balance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Items Balance</h2>
+<a href="@Url.Action("SaveProduct", "Product")">Add Product</a>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Store Name</th>
+        <th>Item Name</th>
+        <th>Unit Name</th>
+        <th>Balance</th>
+    </tr>
+
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+        </tr>
+    }
+</table>
+
+

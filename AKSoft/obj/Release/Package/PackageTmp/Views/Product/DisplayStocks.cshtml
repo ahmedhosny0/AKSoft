@@ -1,0 +1,83 @@
+﻿@model System.Data.DataTable
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Display Stocks";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    ViewBag.Title = "Display Stocks";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    ViewBag.Title = "Display Stocks";
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<script src="~/Scripts/sweetalert.min.js"></script>
+@if (TempData["Al"] != null)
+{
+    <script>
+        swal("Deleted!", "Item has been deleted.", "success");
+    </script>
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
+@if (TempData["As"] != null)
+{
+    <script>
+        swal("Modified Successfully!", " ", "success");
+    </script>
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
+@if (TempData["A"] != null)
+{
+    <script>
+        swal("Oops...", "Something went wrong!Not Allowed", "error");
+    </script>
+    //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
+<h2>DisplayStocks</h2>
+<a href="@Url.Action("SaveStock","Product")">Add Stock</a>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>ID</th>
+        <th>ArabicName</th>
+        <th>EnglishName</th>
+        <th>DescName</th>
+        <th>Description</th>
+        <th>Address</th>
+        <th>Workers</th>
+        <th>StoreKeeper</th>
+        <th>Phone1</th>
+        <th>Phone2</th>
+        <th>Phone3</th>
+        <th></th>
+
+    </tr>
+
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td>@Model.Rows[i][7]</td>
+            <td>@Model.Rows[i][8]</td>
+            <td>@Model.Rows[i][9]</td>
+            <td>@Model.Rows[i][10]</td>
+            <td>
+                <a href="@Url.Action("EditStock", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
+                <a href="@Url.Action("DeleteStock", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+

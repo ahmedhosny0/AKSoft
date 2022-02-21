@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+       
+        @if (Session["UserID"] != null)
+        {
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction3()" class="dropbtn" style="background-color: #f15b5b;border-radius: 12px;font-family: -webkit-body;">@Session["UserName"]</button>ssss
+                        <div id="myDropdown3" class="dropdown-content" style="height:50px; background-color:#ff8e8e;">
+                @Html.ActionLink("Log Out", "Start", "Product", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                </div>
+                </div>
+                </li>
+                @*<li><a style="background-color:red;font-weight:bold;" href="#">@Session["UserName"] </a></li>*@
+                @*<li><a href="/Test/Logout">Logout</a></li>*@
+
+            </ul>
+
+        }
+    </ul>
+}
+<script>
+    function myFunction3() {
+        document.getElementById("myDropdown3").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+</script>
