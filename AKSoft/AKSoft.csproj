@@ -329,7 +329,6 @@
     <Content Include="Views\Product\SaveUnit.cshtml" />
     <Content Include="Views\Product\SaveGroup.cshtml" />
     <Content Include="Views\Product\SaveInvoiceSales.cshtml" />
-    <Content Include="Views\EditorDelete\Doc.cshtml" />
     <Content Include="Views\Product\Doc.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\DisplayCategories.cshtml" />
@@ -397,10 +396,11 @@
     <Content Include="Views\Reports\UsersData.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Product\a.cshtml" />
+    <Content Include="Views\Reports\DealerAccount.cshtml" />
+    <Content Include="Views\Reports\DealerData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

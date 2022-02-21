@@ -22,6 +22,17 @@ public class ReportsController : Controller
         }
         return View(dt);
     }
+    public ActionResult DealerAccount()
+    {
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select DealerCode,DealerName,0 Debit,0 Credit,sum(HsalesTotal)ToatalSales from RptSales group by DealerName,DealerCode", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
+    }
     public ActionResult UsersData()
     {
         DataTable dt = new DataTable();
@@ -40,6 +51,17 @@ public class ReportsController : Controller
         {
             sqlCon.Open();
             SqlDataAdapter sqlDa = new SqlDataAdapter("select SupplierCode,SupplierName,SupplierEname,SupplierAddress1,SupplierTel1,SupplierTel2,CountryName,TownName,Email from RptSuppliers", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
+    }
+    public ActionResult DealerData()
+    {
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select DealerCode,DealerName,DealerEname,DealerAddress1,DealerTel1,DealerTel2,CountryName,TownName,Email from RptDealers", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);
