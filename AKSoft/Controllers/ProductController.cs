@@ -16,6 +16,10 @@ public class ProductController : Controller
     {
         return View();
     }
+    public ActionResult c()
+    {
+        return View();
+    }
     public ActionResult index()
     {
         return View();
@@ -522,7 +526,7 @@ public class ProductController : Controller
             int latestEmpId = unit.Serial;
 
             TempData["Al"] = unit.ArabicName;
-            return RedirectToAction("SaveUnit");
+            return View();
 
         }
 
