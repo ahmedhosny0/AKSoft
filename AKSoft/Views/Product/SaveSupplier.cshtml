@@ -52,7 +52,7 @@ if (Convert.ToInt32(Session["Role"]) == 4)
         <ul class="Elements">
             <li class="">
                 <label class="Lab">Date</label>
-                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
+                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "Txt drop" } }) @*Required TextBox*@
             </li>
             <li class="">
                 <label class="Lab">ArabicName</label>
