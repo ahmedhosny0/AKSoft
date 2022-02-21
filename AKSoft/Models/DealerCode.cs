@@ -18,6 +18,7 @@ namespace AKSoft.Models
         public DealerCode()
         {
             this.HSales = new HashSet<HSales>();
+            this.HPurchase = new HashSet<HPurchase>();
         }
     
         public int Serial { get; set; }
@@ -42,5 +43,7 @@ namespace AKSoft.Models
         public virtual TownCode TownCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HSales> HSales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HPurchase> HPurchase { get; set; }
     }
 }

@@ -12,23 +12,9 @@ namespace AKSoft.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RptSales
+    public partial class ItemCard
     {
-        public int hsalesCode { get; set; }
-        public Nullable<int> HsalesCode2 { get; set; }
-        public Nullable<int> HsalesCurrency { get; set; }
-        public Nullable<System.DateTime> HsalesDate { get; set; }
-        public Nullable<int> HsalesDealerCode { get; set; }
-        public Nullable<double> HsalesDiscount { get; set; }
-        public Nullable<double> HsalesDiscValue { get; set; }
-        public Nullable<double> HsalesFactor { get; set; }
-        public Nullable<double> HsalesPrice { get; set; }
-        public Nullable<double> HsalesQuantity { get; set; }
-        public Nullable<double> FirstPayment { get; set; }
-        public Nullable<double> HsalesTax { get; set; }
-        public Nullable<double> HsalesTotal { get; set; }
-        public Nullable<double> HsalesTotalAfter { get; set; }
-        public Nullable<int> ItemCode { get; set; }
+        public int ItemCode { get; set; }
         public Nullable<int> ItemCode2 { get; set; }
         public string ItemName { get; set; }
         public string ItemEName { get; set; }
@@ -68,19 +54,31 @@ namespace AKSoft.Models
         public string StorePhone3 { get; set; }
         public string StorePhone4 { get; set; }
         public string StoreKeeper { get; set; }
-        public Nullable<int> CustomerCode { get; set; }
-        public Nullable<int> CustomerCode2 { get; set; }
-        public string CustomerName { get; set; }
-        public string CustomerEName { get; set; }
-        public string CustomerDescName { get; set; }
-        public string CustomerAddress1 { get; set; }
-        public string CustomerAddress2 { get; set; }
-        public Nullable<int> DealerCode { get; set; }
-        public Nullable<int> DealerCode2 { get; set; }
-        public string DealerName { get; set; }
-        public string DealerEName { get; set; }
-        public string DealerDescName { get; set; }
-        public string DealerAddress1 { get; set; }
-        public string DealerAddress2 { get; set; }
+        public Nullable<int> HpurchaseCode { get; set; }
+        public Nullable<int> HpurchaseCode2 { get; set; }
+        public Nullable<int> HpurchaseCurrency { get; set; }
+        public Nullable<System.DateTime> HpurchaseDate { get; set; }
+        public Nullable<int> HpurchaseDealerCode { get; set; }
+        public Nullable<double> HpurchaseDiscount { get; set; }
+        public Nullable<double> HpurchaseDiscValue { get; set; }
+        public Nullable<double> HpurchaseFactor { get; set; }
+        public Nullable<double> HpurchasePrice { get; set; }
+        public Nullable<double> HpurchaseQuantity { get; set; }
+        public Nullable<double> HpurchaseTax { get; set; }
+        public Nullable<double> HpurchaseTotal { get; set; }
+        public Nullable<double> HpurchaseTotalAfter { get; set; }
+        public Nullable<int> HSalesCode { get; set; }
+        public Nullable<int> HSalesCode2 { get; set; }
+        public Nullable<int> HSalesCurrency { get; set; }
+        public Nullable<System.DateTime> HSalesDate { get; set; }
+        public Nullable<int> HSalesDealerCode { get; set; }
+        public Nullable<double> HSalesDiscount { get; set; }
+        public Nullable<double> HSalesDiscValue { get; set; }
+        public Nullable<double> HSalesFactor { get; set; }
+        public Nullable<double> HSalesPrice { get; set; }
+        public Nullable<double> HSalesQuantity { get; set; }
+        public Nullable<double> HSalesTax { get; set; }
+        public Nullable<double> HSalesTotal { get; set; }
+        public Nullable<double> HSalesTotalAfter { get; set; }
     }
 }

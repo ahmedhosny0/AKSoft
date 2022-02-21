@@ -160,3 +160,4 @@ F:\Folder\AKSoft\AKSoft\bin\Microsoft.Owin.Security.Twitter.xml
 F:\Folder\AKSoft\AKSoft\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\Folder\AKSoft\AKSoft\obj\Debug\AKSoft.dll
 F:\Folder\AKSoft\AKSoft\obj\Debug\AKSoft.pdb
+F:\Folder\AKSoft\AKSoft\obj\Debug\AKSoft.csprojResolveAssemblyReference.cache

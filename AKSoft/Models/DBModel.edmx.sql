@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/20/2022 00:22:56
--- Generated from EDMX file: D:\My-Git\AKSoft\AKSoft\Models\DBModel.edmx
+-- Date Created: 02/21/2022 16:01:17
+-- Generated from EDMX file: F:\Folder\AKSoft\AKSoft\Models\DBModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -26,11 +26,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK__CustomerC__Websi__662B2B3B]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CustomerCode] DROP CONSTRAINT [FK__CustomerC__Websi__662B2B3B];
 GO
-IF OBJECT_ID(N'[dbo].[FK__DealerCod__AddUs__5AD97420]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DealerCode] DROP CONSTRAINT [FK__DealerCod__AddUs__5AD97420];
+IF OBJECT_ID(N'[dbo].[FK__DealerCod__TownS__1FB8AE52]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DealerCode] DROP CONSTRAINT [FK__DealerCod__TownS__1FB8AE52];
 GO
-IF OBJECT_ID(N'[dbo].[FK__DealerCod__TownS__5BCD9859]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DealerCode] DROP CONSTRAINT [FK__DealerCod__TownS__5BCD9859];
+IF OBJECT_ID(N'[dbo].[FK__DealerCod__Websi__1EC48A19]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DealerCode] DROP CONSTRAINT [FK__DealerCod__Websi__1EC48A19];
+GO
+IF OBJECT_ID(N'[dbo].[FK__HPurchase__Deale__59B045BD]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__Deale__59B045BD];
 GO
 IF OBJECT_ID(N'[dbo].[FK__HPurchase__Group__1975C517]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__Group__1975C517];
@@ -49,6 +52,9 @@ IF OBJECT_ID(N'[dbo].[FK__HPurchase__UnitS__1B5E0D89]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK__HSales__Customer__23F3538A]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK__HSales__Customer__23F3538A];
+GO
+IF OBJECT_ID(N'[dbo].[FK__HSales__DealerCo__5AA469F6]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK__HSales__DealerCo__5AA469F6];
 GO
 IF OBJECT_ID(N'[dbo].[FK__HSales__DealerCo__5DB5E0CB]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK__HSales__DealerCo__5DB5E0CB];
@@ -141,6 +147,27 @@ IF OBJECT_ID(N'[dbo].[UserInfo]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[UserRole]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserRole];
+GO
+IF OBJECT_ID(N'[TopSoftModelStoreContainer].[ItemCard]', 'U') IS NOT NULL
+    DROP TABLE [TopSoftModelStoreContainer].[ItemCard];
+GO
+IF OBJECT_ID(N'[TopSoftModelStoreContainer].[RptCustomers]', 'U') IS NOT NULL
+    DROP TABLE [TopSoftModelStoreContainer].[RptCustomers];
+GO
+IF OBJECT_ID(N'[TopSoftModelStoreContainer].[RptDealers]', 'U') IS NOT NULL
+    DROP TABLE [TopSoftModelStoreContainer].[RptDealers];
+GO
+IF OBJECT_ID(N'[TopSoftModelStoreContainer].[RptPurchase]', 'U') IS NOT NULL
+    DROP TABLE [TopSoftModelStoreContainer].[RptPurchase];
+GO
+IF OBJECT_ID(N'[TopSoftModelStoreContainer].[RptSales]', 'U') IS NOT NULL
+    DROP TABLE [TopSoftModelStoreContainer].[RptSales];
+GO
+IF OBJECT_ID(N'[TopSoftModelStoreContainer].[RptSuppliers]', 'U') IS NOT NULL
+    DROP TABLE [TopSoftModelStoreContainer].[RptSuppliers];
+GO
+IF OBJECT_ID(N'[TopSoftModelStoreContainer].[RptUsers]', 'U') IS NOT NULL
+    DROP TABLE [TopSoftModelStoreContainer].[RptUsers];
 GO
 
 -- --------------------------------------------------
@@ -417,6 +444,351 @@ CREATE TABLE [dbo].[UnitCode] (
 );
 GO
 
+-- Creating table 'ItemCard'
+CREATE TABLE [dbo].[ItemCard] (
+    [ItemCode] int  NOT NULL,
+    [ItemCode2] int  NULL,
+    [ItemName] nvarchar(150)  NULL,
+    [ItemEName] nvarchar(150)  NULL,
+    [ItemDescName] nvarchar(150)  NULL,
+    [ItemDescription] nvarchar(150)  NULL,
+    [ItemPurchase1Unit1] float  NULL,
+    [ItemPurchase1Unit2] float  NULL,
+    [ItemSales1Unit1] float  NULL,
+    [ItemSales1Unit2] float  NULL,
+    [Unit1] int  NULL,
+    [Unit2] int  NULL,
+    [Unit3] int  NULL,
+    [GroupCode] int  NULL,
+    [GroupCode2] int  NULL,
+    [GroupName] nvarchar(150)  NULL,
+    [GroupEName] nvarchar(150)  NULL,
+    [GroupDescName] nvarchar(150)  NULL,
+    [GroupDescription] nvarchar(150)  NULL,
+    [GroupColorName] nvarchar(50)  NULL,
+    [UnitCode] int  NULL,
+    [UnitCode2] int  NULL,
+    [UnitName] nvarchar(150)  NULL,
+    [UnitEName] nvarchar(150)  NULL,
+    [UnitDescName] nvarchar(150)  NULL,
+    [UnitDescription] nvarchar(150)  NULL,
+    [StoreCode] int  NULL,
+    [StoreCode2] int  NULL,
+    [StoreName] nvarchar(150)  NULL,
+    [StoreEName] nvarchar(150)  NULL,
+    [StoreDescName] nvarchar(150)  NULL,
+    [StoreDescription] nvarchar(150)  NULL,
+    [StoreNumLeans] int  NULL,
+    [StoreAddress] nvarchar(150)  NULL,
+    [StoreArea] nvarchar(20)  NULL,
+    [StorePhone1] nvarchar(20)  NULL,
+    [StorePhone2] nvarchar(20)  NULL,
+    [StorePhone3] nvarchar(20)  NULL,
+    [StorePhone4] nvarchar(20)  NULL,
+    [StoreKeeper] nvarchar(150)  NULL,
+    [HpurchaseCode] int  NULL,
+    [HpurchaseCode2] int  NULL,
+    [HpurchaseCurrency] int  NULL,
+    [HpurchaseDate] datetime  NULL,
+    [HpurchaseDealerCode] int  NULL,
+    [HpurchaseDiscount] float  NULL,
+    [HpurchaseDiscValue] float  NULL,
+    [HpurchaseFactor] float  NULL,
+    [HpurchasePrice] float  NULL,
+    [HpurchaseQuantity] float  NULL,
+    [HpurchaseTax] float  NULL,
+    [HpurchaseTotal] float  NULL,
+    [HpurchaseTotalAfter] float  NULL,
+    [HSalesCode] int  NULL,
+    [HSalesCode2] int  NULL,
+    [HSalesCurrency] int  NULL,
+    [HSalesDate] datetime  NULL,
+    [HSalesDealerCode] int  NULL,
+    [HSalesDiscount] float  NULL,
+    [HSalesDiscValue] float  NULL,
+    [HSalesFactor] float  NULL,
+    [HSalesPrice] float  NULL,
+    [HSalesQuantity] float  NULL,
+    [HSalesTax] float  NULL,
+    [HSalesTotal] float  NULL,
+    [HSalesTotalAfter] float  NULL
+);
+GO
+
+-- Creating table 'RptCustomers'
+CREATE TABLE [dbo].[RptCustomers] (
+    [CustomerCode] int  NOT NULL,
+    [CustomerCode2] int  NULL,
+    [CustomerName] nvarchar(100)  NULL,
+    [CustomerEname] nvarchar(100)  NULL,
+    [CustomerAddress1] nvarchar(150)  NULL,
+    [CustomerAddress2] nvarchar(150)  NULL,
+    [CustomerTel1] nvarchar(50)  NULL,
+    [CustomerTel2] nvarchar(50)  NULL,
+    [Telephone3] nvarchar(50)  NULL,
+    [Email] nvarchar(50)  NULL,
+    [Website] nvarchar(30)  NULL,
+    [Description] nvarchar(150)  NULL,
+    [CountryCode] int  NULL,
+    [CountryCode2] int  NULL,
+    [CountryName] nvarchar(100)  NULL,
+    [CountryEName] nvarchar(100)  NULL,
+    [CountryDescName] nvarchar(100)  NULL,
+    [CountryNotes] nvarchar(150)  NULL,
+    [TownCode] int  NULL,
+    [TownCode2] int  NULL,
+    [TownName] nvarchar(100)  NULL,
+    [TownEname] nvarchar(100)  NULL,
+    [TownDescname] nvarchar(100)  NULL,
+    [Townnotes] nvarchar(150)  NULL
+);
+GO
+
+-- Creating table 'RptDealers'
+CREATE TABLE [dbo].[RptDealers] (
+    [DealerCode] int  NOT NULL,
+    [DealerCode2] int  NULL,
+    [DealerName] nvarchar(100)  NULL,
+    [DealerEname] nvarchar(100)  NULL,
+    [DealerAddress1] nvarchar(150)  NULL,
+    [DealerAddress2] nvarchar(150)  NULL,
+    [DealerTel1] nvarchar(50)  NULL,
+    [DealerTel2] nvarchar(50)  NULL,
+    [Telephone3] nvarchar(50)  NULL,
+    [Email] nvarchar(50)  NULL,
+    [Website] nvarchar(30)  NULL,
+    [Description] nvarchar(150)  NULL,
+    [CountryCode] int  NULL,
+    [CountryCode2] int  NULL,
+    [CountryName] nvarchar(100)  NULL,
+    [CountryEName] nvarchar(100)  NULL,
+    [CountryDescName] nvarchar(100)  NULL,
+    [CountryNotes] nvarchar(150)  NULL,
+    [TownCode] int  NULL,
+    [TownCode2] int  NULL,
+    [TownName] nvarchar(100)  NULL,
+    [TownEname] nvarchar(100)  NULL,
+    [TownDescname] nvarchar(100)  NULL,
+    [Townnotes] nvarchar(150)  NULL,
+    [hsalesCode] int  NULL,
+    [HsalesCode2] int  NULL,
+    [HsalesCurrency] int  NULL,
+    [HsalesDate] datetime  NULL,
+    [HsalesDealerCode] int  NULL,
+    [HsalesDiscount] float  NULL,
+    [HsalesDiscValue] float  NULL,
+    [HsalesFactor] float  NULL,
+    [HsalesPrice] float  NULL,
+    [HsalesQuantity] float  NULL,
+    [FirstPayment] float  NULL,
+    [HsalesTax] float  NULL,
+    [HsalesTotal] float  NULL,
+    [HsalesTotalAfter] float  NULL,
+    [HpurchaseCode] int  NULL,
+    [HpurchaseCode2] int  NULL,
+    [HpurchaseCurrency] int  NULL,
+    [HpurchaseDate] datetime  NULL,
+    [HpurchaseDealerCode] int  NULL,
+    [HpurchaseDiscount] float  NULL,
+    [HpurchaseDiscValue] float  NULL,
+    [HpurchaseFactor] float  NULL,
+    [HpurchasePrice] float  NULL,
+    [HpurchaseQuantity] float  NULL,
+    [HpurchaseTax] float  NULL,
+    [HpurchaseTotal] float  NULL,
+    [HpurchaseTotalAfter] float  NULL
+);
+GO
+
+-- Creating table 'RptPurchase'
+CREATE TABLE [dbo].[RptPurchase] (
+    [ItemCode] int  NULL,
+    [ItemCode2] int  NULL,
+    [ItemName] nvarchar(150)  NULL,
+    [ItemEName] nvarchar(150)  NULL,
+    [ItemDescName] nvarchar(150)  NULL,
+    [ItemDescription] nvarchar(150)  NULL,
+    [ItemPurchase1Unit1] float  NULL,
+    [ItemPurchase1Unit2] float  NULL,
+    [ItemSales1Unit1] float  NULL,
+    [ItemSales1Unit2] float  NULL,
+    [Unit1] int  NULL,
+    [Unit2] int  NULL,
+    [Unit3] int  NULL,
+    [HpurchaseCode] int  NOT NULL,
+    [HpurchaseCode2] int  NULL,
+    [HpurchaseCurrency] int  NULL,
+    [HpurchaseDate] datetime  NULL,
+    [HpurchaseDiscount] float  NULL,
+    [HpurchaseDiscValue] float  NULL,
+    [HpurchaseFactor] float  NULL,
+    [HpurchasePrice] float  NULL,
+    [HpurchaseQuantity] float  NULL,
+    [HpurchaseTax] float  NULL,
+    [HpurchaseTotal] float  NULL,
+    [HpurchaseTotalAfter] float  NULL,
+    [GroupCode] int  NULL,
+    [GroupCode2] int  NULL,
+    [GroupName] nvarchar(150)  NULL,
+    [GroupEName] nvarchar(150)  NULL,
+    [GroupDescName] nvarchar(150)  NULL,
+    [GroupDescription] nvarchar(150)  NULL,
+    [GroupColorName] nvarchar(50)  NULL,
+    [UnitCode] int  NULL,
+    [UnitCode2] int  NULL,
+    [UnitName] nvarchar(150)  NULL,
+    [UnitEName] nvarchar(150)  NULL,
+    [UnitDescName] nvarchar(150)  NULL,
+    [UnitDescription] nvarchar(150)  NULL,
+    [StoreCode] int  NULL,
+    [StoreCode2] int  NULL,
+    [StoreName] nvarchar(150)  NULL,
+    [StoreEName] nvarchar(150)  NULL,
+    [StoreDescName] nvarchar(150)  NULL,
+    [StoreDescription] nvarchar(150)  NULL,
+    [StoreNumLeans] int  NULL,
+    [StoreAddress] nvarchar(150)  NULL,
+    [StoreArea] nvarchar(20)  NULL,
+    [StorePhone1] nvarchar(20)  NULL,
+    [StorePhone2] nvarchar(20)  NULL,
+    [StorePhone3] nvarchar(20)  NULL,
+    [StorePhone4] nvarchar(20)  NULL,
+    [StoreKeeper] nvarchar(150)  NULL,
+    [SupplierCode] int  NULL,
+    [SupplierCode2] int  NULL,
+    [SupplierName] nvarchar(100)  NULL,
+    [SupplierEName] nvarchar(100)  NULL,
+    [SupplierDescName] nvarchar(100)  NULL,
+    [SupplierAddress1] nvarchar(150)  NULL,
+    [SupplierAddress2] nvarchar(150)  NULL,
+    [DealerCode] int  NULL,
+    [DealerCode2] int  NULL,
+    [DealerName] nvarchar(100)  NULL,
+    [DealerEName] nvarchar(100)  NULL,
+    [DealerDescName] nvarchar(100)  NULL,
+    [DealerAddress1] nvarchar(150)  NULL,
+    [DealerAddress2] nvarchar(150)  NULL
+);
+GO
+
+-- Creating table 'RptSales'
+CREATE TABLE [dbo].[RptSales] (
+    [hsalesCode] int  NOT NULL,
+    [HsalesCode2] int  NULL,
+    [HsalesCurrency] int  NULL,
+    [HsalesDate] datetime  NULL,
+    [HsalesDealerCode] int  NULL,
+    [HsalesDiscount] float  NULL,
+    [HsalesDiscValue] float  NULL,
+    [HsalesFactor] float  NULL,
+    [HsalesPrice] float  NULL,
+    [HsalesQuantity] float  NULL,
+    [FirstPayment] float  NULL,
+    [HsalesTax] float  NULL,
+    [HsalesTotal] float  NULL,
+    [HsalesTotalAfter] float  NULL,
+    [ItemCode] int  NULL,
+    [ItemCode2] int  NULL,
+    [ItemName] nvarchar(150)  NULL,
+    [ItemEName] nvarchar(150)  NULL,
+    [ItemDescName] nvarchar(150)  NULL,
+    [ItemDescription] nvarchar(150)  NULL,
+    [ItemPurchase1Unit1] float  NULL,
+    [ItemPurchase1Unit2] float  NULL,
+    [ItemSales1Unit1] float  NULL,
+    [ItemSales1Unit2] float  NULL,
+    [Unit1] int  NULL,
+    [Unit2] int  NULL,
+    [Unit3] int  NULL,
+    [GroupCode] int  NULL,
+    [GroupCode2] int  NULL,
+    [GroupName] nvarchar(150)  NULL,
+    [GroupEName] nvarchar(150)  NULL,
+    [GroupDescName] nvarchar(150)  NULL,
+    [GroupDescription] nvarchar(150)  NULL,
+    [GroupColorName] nvarchar(50)  NULL,
+    [UnitCode] int  NULL,
+    [UnitCode2] int  NULL,
+    [UnitName] nvarchar(150)  NULL,
+    [UnitEName] nvarchar(150)  NULL,
+    [UnitDescName] nvarchar(150)  NULL,
+    [UnitDescription] nvarchar(150)  NULL,
+    [StoreCode] int  NULL,
+    [StoreCode2] int  NULL,
+    [StoreName] nvarchar(150)  NULL,
+    [StoreEName] nvarchar(150)  NULL,
+    [StoreDescName] nvarchar(150)  NULL,
+    [StoreDescription] nvarchar(150)  NULL,
+    [StoreNumLeans] int  NULL,
+    [StoreAddress] nvarchar(150)  NULL,
+    [StoreArea] nvarchar(20)  NULL,
+    [StorePhone1] nvarchar(20)  NULL,
+    [StorePhone2] nvarchar(20)  NULL,
+    [StorePhone3] nvarchar(20)  NULL,
+    [StorePhone4] nvarchar(20)  NULL,
+    [StoreKeeper] nvarchar(150)  NULL,
+    [CustomerCode] int  NULL,
+    [CustomerCode2] int  NULL,
+    [CustomerName] nvarchar(100)  NULL,
+    [CustomerEName] nvarchar(100)  NULL,
+    [CustomerDescName] nvarchar(100)  NULL,
+    [CustomerAddress1] nvarchar(150)  NULL,
+    [CustomerAddress2] nvarchar(150)  NULL,
+    [DealerCode] int  NULL,
+    [DealerCode2] int  NULL,
+    [DealerName] nvarchar(100)  NULL,
+    [DealerEName] nvarchar(100)  NULL,
+    [DealerDescName] nvarchar(100)  NULL,
+    [DealerAddress1] nvarchar(150)  NULL,
+    [DealerAddress2] nvarchar(150)  NULL
+);
+GO
+
+-- Creating table 'RptSuppliers'
+CREATE TABLE [dbo].[RptSuppliers] (
+    [SupplierCode] int  NOT NULL,
+    [SupplierCode2] int  NULL,
+    [SupplierName] nvarchar(100)  NULL,
+    [SupplierEname] nvarchar(100)  NULL,
+    [SupplierAddress1] nvarchar(150)  NULL,
+    [SupplierAddress2] nvarchar(150)  NULL,
+    [SupplierTel1] nvarchar(50)  NULL,
+    [SupplierTel2] nvarchar(50)  NULL,
+    [Telephone3] nvarchar(50)  NULL,
+    [Email] nvarchar(50)  NULL,
+    [Website] nvarchar(30)  NULL,
+    [Description] nvarchar(150)  NULL,
+    [CountryCode] int  NULL,
+    [CountryCode2] int  NULL,
+    [CountryName] nvarchar(100)  NULL,
+    [CountryEName] nvarchar(100)  NULL,
+    [CountryDescName] nvarchar(100)  NULL,
+    [CountryNotes] nvarchar(150)  NULL,
+    [TownCode] int  NULL,
+    [TownCode2] int  NULL,
+    [TownName] nvarchar(100)  NULL,
+    [TownEname] nvarchar(100)  NULL,
+    [TownDescname] nvarchar(100)  NULL,
+    [Townnotes] nvarchar(150)  NULL
+);
+GO
+
+-- Creating table 'RptUsers'
+CREATE TABLE [dbo].[RptUsers] (
+    [UserId] int  NOT NULL,
+    [FirstName] nvarchar(100)  NULL,
+    [MiddleName] nvarchar(100)  NULL,
+    [LastName] nvarchar(100)  NULL,
+    [Email] nvarchar(100)  NULL,
+    [Password] nvarchar(100)  NULL,
+    [BranchCode] int  NULL,
+    [BranchName] nvarchar(100)  NULL,
+    [SectorCode] int  NULL,
+    [SectorName] nvarchar(100)  NULL,
+    [RoleName] nvarchar(50)  NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -509,6 +881,48 @@ GO
 ALTER TABLE [dbo].[UnitCode]
 ADD CONSTRAINT [PK_UnitCode]
     PRIMARY KEY CLUSTERED ([Serial] ASC);
+GO
+
+-- Creating primary key on [ItemCode] in table 'ItemCard'
+ALTER TABLE [dbo].[ItemCard]
+ADD CONSTRAINT [PK_ItemCard]
+    PRIMARY KEY CLUSTERED ([ItemCode] ASC);
+GO
+
+-- Creating primary key on [CustomerCode] in table 'RptCustomers'
+ALTER TABLE [dbo].[RptCustomers]
+ADD CONSTRAINT [PK_RptCustomers]
+    PRIMARY KEY CLUSTERED ([CustomerCode] ASC);
+GO
+
+-- Creating primary key on [DealerCode] in table 'RptDealers'
+ALTER TABLE [dbo].[RptDealers]
+ADD CONSTRAINT [PK_RptDealers]
+    PRIMARY KEY CLUSTERED ([DealerCode] ASC);
+GO
+
+-- Creating primary key on [HpurchaseCode] in table 'RptPurchase'
+ALTER TABLE [dbo].[RptPurchase]
+ADD CONSTRAINT [PK_RptPurchase]
+    PRIMARY KEY CLUSTERED ([HpurchaseCode] ASC);
+GO
+
+-- Creating primary key on [hsalesCode] in table 'RptSales'
+ALTER TABLE [dbo].[RptSales]
+ADD CONSTRAINT [PK_RptSales]
+    PRIMARY KEY CLUSTERED ([hsalesCode] ASC);
+GO
+
+-- Creating primary key on [SupplierCode] in table 'RptSuppliers'
+ALTER TABLE [dbo].[RptSuppliers]
+ADD CONSTRAINT [PK_RptSuppliers]
+    PRIMARY KEY CLUSTERED ([SupplierCode] ASC);
+GO
+
+-- Creating primary key on [UserId] in table 'RptUsers'
+ALTER TABLE [dbo].[RptUsers]
+ADD CONSTRAINT [PK_RptUsers]
+    PRIMARY KEY CLUSTERED ([UserId] ASC);
 GO
 
 -- --------------------------------------------------
@@ -888,6 +1302,21 @@ GO
 CREATE INDEX [IX_FK_ItemCode_UnitCode]
 ON [dbo].[ItemCode]
     ([Unit1]);
+GO
+
+-- Creating foreign key on [DealerCode] in table 'HPurchase'
+ALTER TABLE [dbo].[HPurchase]
+ADD CONSTRAINT [FK__HPurchase__Deale__59B045BD]
+    FOREIGN KEY ([DealerCode])
+    REFERENCES [dbo].[DealerCode]
+        ([Serial])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK__HPurchase__Deale__59B045BD'
+CREATE INDEX [IX_FK__HPurchase__Deale__59B045BD]
+ON [dbo].[HPurchase]
+    ([DealerCode]);
 GO
 
 -- --------------------------------------------------

@@ -42,5 +42,6 @@ namespace AKSoft.Models
         public virtual StoreCode StoreCode { get; set; }
         public virtual SupplierCode SupplierCode { get; set; }
         public virtual UnitCode UnitCode { get; set; }
+        public virtual DealerCode DealerCode1 { get; set; }
     }
 }

@@ -21,6 +21,13 @@
     <EntitySet Name="DealerCode" EntityType="TopSoftModel.Store.DealerCode" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserRole" EntityType="TopSoftModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UnitCode" EntityType="TopSoftModel.Store.UnitCode" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ItemCard" EntityType="TopSoftModel.Store.ItemCard" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RptCustomers" EntityType="TopSoftModel.Store.RptCustomers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RptDealers" EntityType="TopSoftModel.Store.RptDealers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RptPurchase" EntityType="TopSoftModel.Store.RptPurchase" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RptSales" EntityType="TopSoftModel.Store.RptSales" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RptSuppliers" EntityType="TopSoftModel.Store.RptSuppliers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RptUsers" EntityType="TopSoftModel.Store.RptUsers" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_ItemCode_GroupCode" Association="TopSoftModel.Store.FK_ItemCode_GroupCode">
       <End Role="GroupCode" EntitySet="GroupCode" />
       <End Role="ItemCode" EntitySet="ItemCode" />
@@ -120,6 +127,10 @@
     <AssociationSet Name="FK_ItemCode_UnitCode" Association="TopSoftModel.Store.FK_ItemCode_UnitCode">
       <End Role="UnitCode" EntitySet="UnitCode" />
       <End Role="ItemCode" EntitySet="ItemCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HPurchase__Deale__59B045BD" Association="TopSoftModel.Store.FK__HPurchase__Deale__59B045BD">
+      <End Role="DealerCode" EntitySet="DealerCode" />
+      <End Role="HPurchase" EntitySet="HPurchase" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="GroupCode">
@@ -391,6 +402,351 @@
     <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="150" />
     <Property Name="AddUserDate" Type="datetime" Nullable="true" />
     <Property Name="Code" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ItemCard">
+    <Key>
+      <PropertyRef Name="ItemCode" />
+    </Key>
+    <Property Name="ItemCode" Type="int" Nullable="false" />
+    <Property Name="ItemCode2" Type="int" Nullable="true" />
+    <Property Name="ItemName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemPurchase1Unit1" Type="float" Nullable="true" />
+    <Property Name="ItemPurchase1Unit2" Type="float" Nullable="true" />
+    <Property Name="ItemSales1Unit1" Type="float" Nullable="true" />
+    <Property Name="ItemSales1Unit2" Type="float" Nullable="true" />
+    <Property Name="Unit1" Type="int" Nullable="true" />
+    <Property Name="Unit2" Type="int" Nullable="true" />
+    <Property Name="Unit3" Type="int" Nullable="true" />
+    <Property Name="GroupCode" Type="int" Nullable="true" />
+    <Property Name="GroupCode2" Type="int" Nullable="true" />
+    <Property Name="GroupName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupColorName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UnitCode" Type="int" Nullable="true" />
+    <Property Name="UnitCode2" Type="int" Nullable="true" />
+    <Property Name="UnitName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="UnitEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="UnitDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="UnitDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreCode" Type="int" Nullable="true" />
+    <Property Name="StoreCode2" Type="int" Nullable="true" />
+    <Property Name="StoreName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreNumLeans" Type="int" Nullable="true" />
+    <Property Name="StoreAddress" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreArea" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone1" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone2" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone3" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone4" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StoreKeeper" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="HpurchaseCode" Type="int" Nullable="true" />
+    <Property Name="HpurchaseCode2" Type="int" Nullable="true" />
+    <Property Name="HpurchaseCurrency" Type="int" Nullable="true" />
+    <Property Name="HpurchaseDate" Type="datetime" Nullable="true" />
+    <Property Name="HpurchaseDealerCode" Type="int" Nullable="true" />
+    <Property Name="HpurchaseDiscount" Type="float" Nullable="true" />
+    <Property Name="HpurchaseDiscValue" Type="float" Nullable="true" />
+    <Property Name="HpurchaseFactor" Type="float" Nullable="true" />
+    <Property Name="HpurchasePrice" Type="float" Nullable="true" />
+    <Property Name="HpurchaseQuantity" Type="float" Nullable="true" />
+    <Property Name="HpurchaseTax" Type="float" Nullable="true" />
+    <Property Name="HpurchaseTotal" Type="float" Nullable="true" />
+    <Property Name="HpurchaseTotalAfter" Type="float" Nullable="true" />
+    <Property Name="HSalesCode" Type="int" Nullable="true" />
+    <Property Name="HSalesCode2" Type="int" Nullable="true" />
+    <Property Name="HSalesCurrency" Type="int" Nullable="true" />
+    <Property Name="HSalesDate" Type="datetime" Nullable="true" />
+    <Property Name="HSalesDealerCode" Type="int" Nullable="true" />
+    <Property Name="HSalesDiscount" Type="float" Nullable="true" />
+    <Property Name="HSalesDiscValue" Type="float" Nullable="true" />
+    <Property Name="HSalesFactor" Type="float" Nullable="true" />
+    <Property Name="HSalesPrice" Type="float" Nullable="true" />
+    <Property Name="HSalesQuantity" Type="float" Nullable="true" />
+    <Property Name="HSalesTax" Type="float" Nullable="true" />
+    <Property Name="HSalesTotal" Type="float" Nullable="true" />
+    <Property Name="HSalesTotalAfter" Type="float" Nullable="true" />
+  </EntityType>
+  <EntityType Name="RptCustomers">
+    <Key>
+      <PropertyRef Name="CustomerCode" />
+    </Key>
+    <Property Name="CustomerCode" Type="int" Nullable="false" />
+    <Property Name="CustomerCode2" Type="int" Nullable="true" />
+    <Property Name="CustomerName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CustomerEname" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CustomerAddress1" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="CustomerAddress2" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="CustomerTel1" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="CustomerTel2" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Telephone3" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="CountryCode" Type="int" Nullable="true" />
+    <Property Name="CountryCode2" Type="int" Nullable="true" />
+    <Property Name="CountryName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CountryEName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CountryDescName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CountryNotes" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="TownCode" Type="int" Nullable="true" />
+    <Property Name="TownCode2" Type="int" Nullable="true" />
+    <Property Name="TownName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="TownEname" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="TownDescname" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Townnotes" Type="nvarchar" Nullable="true" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="RptDealers">
+    <Key>
+      <PropertyRef Name="DealerCode" />
+    </Key>
+    <Property Name="DealerCode" Type="int" Nullable="false" />
+    <Property Name="DealerCode2" Type="int" Nullable="true" />
+    <Property Name="DealerName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DealerEname" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DealerAddress1" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="DealerAddress2" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="DealerTel1" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="DealerTel2" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Telephone3" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="CountryCode" Type="int" Nullable="true" />
+    <Property Name="CountryCode2" Type="int" Nullable="true" />
+    <Property Name="CountryName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CountryEName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CountryDescName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CountryNotes" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="TownCode" Type="int" Nullable="true" />
+    <Property Name="TownCode2" Type="int" Nullable="true" />
+    <Property Name="TownName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="TownEname" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="TownDescname" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Townnotes" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="hsalesCode" Type="int" Nullable="true" />
+    <Property Name="HsalesCode2" Type="int" Nullable="true" />
+    <Property Name="HsalesCurrency" Type="int" Nullable="true" />
+    <Property Name="HsalesDate" Type="datetime" Nullable="true" />
+    <Property Name="HsalesDealerCode" Type="int" Nullable="true" />
+    <Property Name="HsalesDiscount" Type="float" Nullable="true" />
+    <Property Name="HsalesDiscValue" Type="float" Nullable="true" />
+    <Property Name="HsalesFactor" Type="float" Nullable="true" />
+    <Property Name="HsalesPrice" Type="float" Nullable="true" />
+    <Property Name="HsalesQuantity" Type="float" Nullable="true" />
+    <Property Name="FirstPayment" Type="float" Nullable="true" />
+    <Property Name="HsalesTax" Type="float" Nullable="true" />
+    <Property Name="HsalesTotal" Type="float" Nullable="true" />
+    <Property Name="HsalesTotalAfter" Type="float" Nullable="true" />
+    <Property Name="HpurchaseCode" Type="int" Nullable="true" />
+    <Property Name="HpurchaseCode2" Type="int" Nullable="true" />
+    <Property Name="HpurchaseCurrency" Type="int" Nullable="true" />
+    <Property Name="HpurchaseDate" Type="datetime" Nullable="true" />
+    <Property Name="HpurchaseDealerCode" Type="int" Nullable="true" />
+    <Property Name="HpurchaseDiscount" Type="float" Nullable="true" />
+    <Property Name="HpurchaseDiscValue" Type="float" Nullable="true" />
+    <Property Name="HpurchaseFactor" Type="float" Nullable="true" />
+    <Property Name="HpurchasePrice" Type="float" Nullable="true" />
+    <Property Name="HpurchaseQuantity" Type="float" Nullable="true" />
+    <Property Name="HpurchaseTax" Type="float" Nullable="true" />
+    <Property Name="HpurchaseTotal" Type="float" Nullable="true" />
+    <Property Name="HpurchaseTotalAfter" Type="float" Nullable="true" />
+  </EntityType>
+  <EntityType Name="RptPurchase">
+    <Key>
+      <PropertyRef Name="HpurchaseCode" />
+    </Key>
+    <Property Name="ItemCode" Type="int" Nullable="true" />
+    <Property Name="ItemCode2" Type="int" Nullable="true" />
+    <Property Name="ItemName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemPurchase1Unit1" Type="float" Nullable="true" />
+    <Property Name="ItemPurchase1Unit2" Type="float" Nullable="true" />
+    <Property Name="ItemSales1Unit1" Type="float" Nullable="true" />
+    <Property Name="ItemSales1Unit2" Type="float" Nullable="true" />
+    <Property Name="Unit1" Type="int" Nullable="true" />
+    <Property Name="Unit2" Type="int" Nullable="true" />
+    <Property Name="Unit3" Type="int" Nullable="true" />
+    <Property Name="HpurchaseCode" Type="int" Nullable="false" />
+    <Property Name="HpurchaseCode2" Type="int" Nullable="true" />
+    <Property Name="HpurchaseCurrency" Type="int" Nullable="true" />
+    <Property Name="HpurchaseDate" Type="datetime" Nullable="true" />
+    <Property Name="HpurchaseDiscount" Type="float" Nullable="true" />
+    <Property Name="HpurchaseDiscValue" Type="float" Nullable="true" />
+    <Property Name="HpurchaseFactor" Type="float" Nullable="true" />
+    <Property Name="HpurchasePrice" Type="float" Nullable="true" />
+    <Property Name="HpurchaseQuantity" Type="float" Nullable="true" />
+    <Property Name="HpurchaseTax" Type="float" Nullable="true" />
+    <Property Name="HpurchaseTotal" Type="float" Nullable="true" />
+    <Property Name="HpurchaseTotalAfter" Type="float" Nullable="true" />
+    <Property Name="GroupCode" Type="int" Nullable="true" />
+    <Property Name="GroupCode2" Type="int" Nullable="true" />
+    <Property Name="GroupName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupColorName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UnitCode" Type="int" Nullable="true" />
+    <Property Name="UnitCode2" Type="int" Nullable="true" />
+    <Property Name="UnitName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="UnitEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="UnitDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="UnitDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreCode" Type="int" Nullable="true" />
+    <Property Name="StoreCode2" Type="int" Nullable="true" />
+    <Property Name="StoreName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreNumLeans" Type="int" Nullable="true" />
+    <Property Name="StoreAddress" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreArea" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone1" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone2" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone3" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone4" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StoreKeeper" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="SupplierCode" Type="int" Nullable="true" />
+    <Property Name="SupplierCode2" Type="int" Nullable="true" />
+    <Property Name="SupplierName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="SupplierEName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="SupplierDescName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="SupplierAddress1" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="SupplierAddress2" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="DealerCode" Type="int" Nullable="true" />
+    <Property Name="DealerCode2" Type="int" Nullable="true" />
+    <Property Name="DealerName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DealerEName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DealerDescName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DealerAddress1" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="DealerAddress2" Type="nvarchar" Nullable="true" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="RptSales">
+    <Key>
+      <PropertyRef Name="hsalesCode" />
+    </Key>
+    <Property Name="hsalesCode" Type="int" Nullable="false" />
+    <Property Name="HsalesCode2" Type="int" Nullable="true" />
+    <Property Name="HsalesCurrency" Type="int" Nullable="true" />
+    <Property Name="HsalesDate" Type="datetime" Nullable="true" />
+    <Property Name="HsalesDealerCode" Type="int" Nullable="true" />
+    <Property Name="HsalesDiscount" Type="float" Nullable="true" />
+    <Property Name="HsalesDiscValue" Type="float" Nullable="true" />
+    <Property Name="HsalesFactor" Type="float" Nullable="true" />
+    <Property Name="HsalesPrice" Type="float" Nullable="true" />
+    <Property Name="HsalesQuantity" Type="float" Nullable="true" />
+    <Property Name="FirstPayment" Type="float" Nullable="true" />
+    <Property Name="HsalesTax" Type="float" Nullable="true" />
+    <Property Name="HsalesTotal" Type="float" Nullable="true" />
+    <Property Name="HsalesTotalAfter" Type="float" Nullable="true" />
+    <Property Name="ItemCode" Type="int" Nullable="true" />
+    <Property Name="ItemCode2" Type="int" Nullable="true" />
+    <Property Name="ItemName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ItemPurchase1Unit1" Type="float" Nullable="true" />
+    <Property Name="ItemPurchase1Unit2" Type="float" Nullable="true" />
+    <Property Name="ItemSales1Unit1" Type="float" Nullable="true" />
+    <Property Name="ItemSales1Unit2" Type="float" Nullable="true" />
+    <Property Name="Unit1" Type="int" Nullable="true" />
+    <Property Name="Unit2" Type="int" Nullable="true" />
+    <Property Name="Unit3" Type="int" Nullable="true" />
+    <Property Name="GroupCode" Type="int" Nullable="true" />
+    <Property Name="GroupCode2" Type="int" Nullable="true" />
+    <Property Name="GroupName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="GroupColorName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UnitCode" Type="int" Nullable="true" />
+    <Property Name="UnitCode2" Type="int" Nullable="true" />
+    <Property Name="UnitName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="UnitEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="UnitDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="UnitDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreCode" Type="int" Nullable="true" />
+    <Property Name="StoreCode2" Type="int" Nullable="true" />
+    <Property Name="StoreName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreEName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreDescName" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreDescription" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreNumLeans" Type="int" Nullable="true" />
+    <Property Name="StoreAddress" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="StoreArea" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone1" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone2" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone3" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StorePhone4" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="StoreKeeper" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="CustomerCode" Type="int" Nullable="true" />
+    <Property Name="CustomerCode2" Type="int" Nullable="true" />
+    <Property Name="CustomerName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CustomerEName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CustomerDescName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CustomerAddress1" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="CustomerAddress2" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="DealerCode" Type="int" Nullable="true" />
+    <Property Name="DealerCode2" Type="int" Nullable="true" />
+    <Property Name="DealerName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DealerEName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DealerDescName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DealerAddress1" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="DealerAddress2" Type="nvarchar" Nullable="true" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="RptSuppliers">
+    <Key>
+      <PropertyRef Name="SupplierCode" />
+    </Key>
+    <Property Name="SupplierCode" Type="int" Nullable="false" />
+    <Property Name="SupplierCode2" Type="int" Nullable="true" />
+    <Property Name="SupplierName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="SupplierEname" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="SupplierAddress1" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="SupplierAddress2" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="SupplierTel1" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="SupplierTel2" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Telephone3" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="CountryCode" Type="int" Nullable="true" />
+    <Property Name="CountryCode2" Type="int" Nullable="true" />
+    <Property Name="CountryName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CountryEName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CountryDescName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CountryNotes" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="TownCode" Type="int" Nullable="true" />
+    <Property Name="TownCode2" Type="int" Nullable="true" />
+    <Property Name="TownName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="TownEname" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="TownDescname" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Townnotes" Type="nvarchar" Nullable="true" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="RptUsers">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="MiddleName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="BranchCode" Type="int" Nullable="true" />
+    <Property Name="BranchName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="SectorCode" Type="int" Nullable="true" />
+    <Property Name="SectorName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="true" MaxLength="50" />
   </EntityType>
   <Association Name="FK_ItemCode_GroupCode">
     <End Role="GroupCode" Type="TopSoftModel.Store.GroupCode" Multiplicity="0..1" />
@@ -728,6 +1084,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__HPurchase__Deale__59B045BD">
+    <End Role="DealerCode" Type="TopSoftModel.Store.DealerCode" Multiplicity="0..1" />
+    <End Role="HPurchase" Type="TopSoftModel.Store.HPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DealerCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="HPurchase">
+        <PropertyRef Name="DealerCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -962,6 +1330,17 @@
             <End Role="UnitCode" EntitySet="UnitCode" />
             <End Role="ItemCode" EntitySet="ItemCode" />
           </AssociationSet>
+          <AssociationSet Name="FK__HPurchase__Deale__59B045BD" Association="TopSoftModel.FK__HPurchase__Deale__59B045BD">
+            <End Role="DealerCode" EntitySet="DealerCode" />
+            <End Role="HPurchase" EntitySet="HPurchase" />
+          </AssociationSet>
+          <EntitySet Name="ItemCard" EntityType="TopSoftModel.ItemCard" />
+          <EntitySet Name="RptCustomers" EntityType="TopSoftModel.RptCustomers" />
+          <EntitySet Name="RptDealers" EntityType="TopSoftModel.RptDealers" />
+          <EntitySet Name="RptPurchase" EntityType="TopSoftModel.RptPurchase" />
+          <EntitySet Name="RptSales" EntityType="TopSoftModel.RptSales" />
+          <EntitySet Name="RptSuppliers" EntityType="TopSoftModel.RptSuppliers" />
+          <EntitySet Name="RptUsers" EntityType="TopSoftModel.RptUsers" />
           </EntityContainer>
         <EntityType Name="CountryCode">
           <Key>
@@ -1132,6 +1511,7 @@
           <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__HPurchase__Suppl__1D4655FB" FromRole="HPurchase" ToRole="SupplierCode" />
           <Property Name="AddUserDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89" FromRole="HPurchase" ToRole="UnitCode" />
+          <NavigationProperty Name="DealerCode1" Relationship="TopSoftModel.FK__HPurchase__Deale__59B045BD" FromRole="HPurchase" ToRole="DealerCode" />
         </EntityType>
         <Association Name="FK__HPurchase__Group__1975C517">
           <End Type="TopSoftModel.GroupCode" Role="GroupCode" Multiplicity="0..1">
@@ -1388,6 +1768,7 @@
           <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__DealerCod__TownS__1FB8AE52" FromRole="DealerCode" ToRole="TownCode" />
           <Property Name="AddUserDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB" FromRole="DealerCode" ToRole="HSales" />
+          <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Deale__59B045BD" FromRole="DealerCode" ToRole="HPurchase" />
         </EntityType>
         <Association Name="FK__DealerCod__Websi__1EC48A19">
           <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1">
@@ -1505,6 +1886,363 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__HPurchase__Deale__59B045BD">
+          <End Type="TopSoftModel.DealerCode" Role="DealerCode" Multiplicity="0..1" />
+          <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealerCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="HPurchase">
+              <PropertyRef Name="DealerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ItemCard">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+          </Key>
+          <Property Name="ItemCode" Type="Int32" Nullable="false" />
+          <Property Name="ItemCode2" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPurchase1Unit1" Type="Double" />
+          <Property Name="ItemPurchase1Unit2" Type="Double" />
+          <Property Name="ItemSales1Unit1" Type="Double" />
+          <Property Name="ItemSales1Unit2" Type="Double" />
+          <Property Name="Unit1" Type="Int32" />
+          <Property Name="Unit2" Type="Int32" />
+          <Property Name="Unit3" Type="Int32" />
+          <Property Name="GroupCode" Type="Int32" />
+          <Property Name="GroupCode2" Type="Int32" />
+          <Property Name="GroupName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitCode" Type="Int32" />
+          <Property Name="UnitCode2" Type="Int32" />
+          <Property Name="UnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreCode" Type="Int32" />
+          <Property Name="StoreCode2" Type="Int32" />
+          <Property Name="StoreName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreNumLeans" Type="Int32" />
+          <Property Name="StoreAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreArea" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StoreKeeper" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HpurchaseCode" Type="Int32" />
+          <Property Name="HpurchaseCode2" Type="Int32" />
+          <Property Name="HpurchaseCurrency" Type="Int32" />
+          <Property Name="HpurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="HpurchaseDealerCode" Type="Int32" />
+          <Property Name="HpurchaseDiscount" Type="Double" />
+          <Property Name="HpurchaseDiscValue" Type="Double" />
+          <Property Name="HpurchaseFactor" Type="Double" />
+          <Property Name="HpurchasePrice" Type="Double" />
+          <Property Name="HpurchaseQuantity" Type="Double" />
+          <Property Name="HpurchaseTax" Type="Double" />
+          <Property Name="HpurchaseTotal" Type="Double" />
+          <Property Name="HpurchaseTotalAfter" Type="Double" />
+          <Property Name="HSalesCode" Type="Int32" />
+          <Property Name="HSalesCode2" Type="Int32" />
+          <Property Name="HSalesCurrency" Type="Int32" />
+          <Property Name="HSalesDate" Type="DateTime" Precision="0" />
+          <Property Name="HSalesDealerCode" Type="Int32" />
+          <Property Name="HSalesDiscount" Type="Double" />
+          <Property Name="HSalesDiscValue" Type="Double" />
+          <Property Name="HSalesFactor" Type="Double" />
+          <Property Name="HSalesPrice" Type="Double" />
+          <Property Name="HSalesQuantity" Type="Double" />
+          <Property Name="HSalesTax" Type="Double" />
+          <Property Name="HSalesTotal" Type="Double" />
+          <Property Name="HSalesTotalAfter" Type="Double" />
+        </EntityType>
+        <EntityType Name="RptCustomers">
+          <Key>
+            <PropertyRef Name="CustomerCode" />
+          </Key>
+          <Property Name="CustomerCode" Type="Int32" Nullable="false" />
+          <Property Name="CustomerCode2" Type="Int32" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="Int32" />
+          <Property Name="CountryCode2" Type="Int32" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryEName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryDescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryNotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TownCode" Type="Int32" />
+          <Property Name="TownCode2" Type="Int32" />
+          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TownEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TownDescname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Townnotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RptDealers">
+          <Key>
+            <PropertyRef Name="DealerCode" />
+          </Key>
+          <Property Name="DealerCode" Type="Int32" Nullable="false" />
+          <Property Name="DealerCode2" Type="Int32" />
+          <Property Name="DealerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DealerEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DealerAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DealerAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DealerTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DealerTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="Int32" />
+          <Property Name="CountryCode2" Type="Int32" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryEName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryDescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryNotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TownCode" Type="Int32" />
+          <Property Name="TownCode2" Type="Int32" />
+          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TownEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TownDescname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Townnotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="hsalesCode" Type="Int32" />
+          <Property Name="HsalesCode2" Type="Int32" />
+          <Property Name="HsalesCurrency" Type="Int32" />
+          <Property Name="HsalesDate" Type="DateTime" Precision="3" />
+          <Property Name="HsalesDealerCode" Type="Int32" />
+          <Property Name="HsalesDiscount" Type="Double" />
+          <Property Name="HsalesDiscValue" Type="Double" />
+          <Property Name="HsalesFactor" Type="Double" />
+          <Property Name="HsalesPrice" Type="Double" />
+          <Property Name="HsalesQuantity" Type="Double" />
+          <Property Name="FirstPayment" Type="Double" />
+          <Property Name="HsalesTax" Type="Double" />
+          <Property Name="HsalesTotal" Type="Double" />
+          <Property Name="HsalesTotalAfter" Type="Double" />
+          <Property Name="HpurchaseCode" Type="Int32" />
+          <Property Name="HpurchaseCode2" Type="Int32" />
+          <Property Name="HpurchaseCurrency" Type="Int32" />
+          <Property Name="HpurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="HpurchaseDealerCode" Type="Int32" />
+          <Property Name="HpurchaseDiscount" Type="Double" />
+          <Property Name="HpurchaseDiscValue" Type="Double" />
+          <Property Name="HpurchaseFactor" Type="Double" />
+          <Property Name="HpurchasePrice" Type="Double" />
+          <Property Name="HpurchaseQuantity" Type="Double" />
+          <Property Name="HpurchaseTax" Type="Double" />
+          <Property Name="HpurchaseTotal" Type="Double" />
+          <Property Name="HpurchaseTotalAfter" Type="Double" />
+        </EntityType>
+        <EntityType Name="RptPurchase">
+          <Key>
+            <PropertyRef Name="HpurchaseCode" />
+          </Key>
+          <Property Name="ItemCode" Type="Int32" />
+          <Property Name="ItemCode2" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPurchase1Unit1" Type="Double" />
+          <Property Name="ItemPurchase1Unit2" Type="Double" />
+          <Property Name="ItemSales1Unit1" Type="Double" />
+          <Property Name="ItemSales1Unit2" Type="Double" />
+          <Property Name="Unit1" Type="Int32" />
+          <Property Name="Unit2" Type="Int32" />
+          <Property Name="Unit3" Type="Int32" />
+          <Property Name="HpurchaseCode" Type="Int32" Nullable="false" />
+          <Property Name="HpurchaseCode2" Type="Int32" />
+          <Property Name="HpurchaseCurrency" Type="Int32" />
+          <Property Name="HpurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="HpurchaseDiscount" Type="Double" />
+          <Property Name="HpurchaseDiscValue" Type="Double" />
+          <Property Name="HpurchaseFactor" Type="Double" />
+          <Property Name="HpurchasePrice" Type="Double" />
+          <Property Name="HpurchaseQuantity" Type="Double" />
+          <Property Name="HpurchaseTax" Type="Double" />
+          <Property Name="HpurchaseTotal" Type="Double" />
+          <Property Name="HpurchaseTotalAfter" Type="Double" />
+          <Property Name="GroupCode" Type="Int32" />
+          <Property Name="GroupCode2" Type="Int32" />
+          <Property Name="GroupName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitCode" Type="Int32" />
+          <Property Name="UnitCode2" Type="Int32" />
+          <Property Name="UnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreCode" Type="Int32" />
+          <Property Name="StoreCode2" Type="Int32" />
+          <Property Name="StoreName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreNumLeans" Type="Int32" />
+          <Property Name="StoreAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreArea" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StoreKeeper" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierCode" Type="Int32" />
+          <Property Name="SupplierCode2" Type="Int32" />
+          <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierEName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierDescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DealerCode" Type="Int32" />
+          <Property Name="DealerCode2" Type="Int32" />
+          <Property Name="DealerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DealerEName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DealerDescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DealerAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DealerAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RptSales">
+          <Key>
+            <PropertyRef Name="hsalesCode" />
+          </Key>
+          <Property Name="hsalesCode" Type="Int32" Nullable="false" />
+          <Property Name="HsalesCode2" Type="Int32" />
+          <Property Name="HsalesCurrency" Type="Int32" />
+          <Property Name="HsalesDate" Type="DateTime" Precision="3" />
+          <Property Name="HsalesDealerCode" Type="Int32" />
+          <Property Name="HsalesDiscount" Type="Double" />
+          <Property Name="HsalesDiscValue" Type="Double" />
+          <Property Name="HsalesFactor" Type="Double" />
+          <Property Name="HsalesPrice" Type="Double" />
+          <Property Name="HsalesQuantity" Type="Double" />
+          <Property Name="FirstPayment" Type="Double" />
+          <Property Name="HsalesTax" Type="Double" />
+          <Property Name="HsalesTotal" Type="Double" />
+          <Property Name="HsalesTotalAfter" Type="Double" />
+          <Property Name="ItemCode" Type="Int32" />
+          <Property Name="ItemCode2" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPurchase1Unit1" Type="Double" />
+          <Property Name="ItemPurchase1Unit2" Type="Double" />
+          <Property Name="ItemSales1Unit1" Type="Double" />
+          <Property Name="ItemSales1Unit2" Type="Double" />
+          <Property Name="Unit1" Type="Int32" />
+          <Property Name="Unit2" Type="Int32" />
+          <Property Name="Unit3" Type="Int32" />
+          <Property Name="GroupCode" Type="Int32" />
+          <Property Name="GroupCode2" Type="Int32" />
+          <Property Name="GroupName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitCode" Type="Int32" />
+          <Property Name="UnitCode2" Type="Int32" />
+          <Property Name="UnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreCode" Type="Int32" />
+          <Property Name="StoreCode2" Type="Int32" />
+          <Property Name="StoreName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreEName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreDescName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreNumLeans" Type="Int32" />
+          <Property Name="StoreAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StoreArea" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorePhone4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StoreKeeper" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerCode" Type="Int32" />
+          <Property Name="CustomerCode2" Type="Int32" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerEName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerDescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DealerCode" Type="Int32" />
+          <Property Name="DealerCode2" Type="Int32" />
+          <Property Name="DealerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DealerEName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DealerDescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DealerAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DealerAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RptSuppliers">
+          <Key>
+            <PropertyRef Name="SupplierCode" />
+          </Key>
+          <Property Name="SupplierCode" Type="Int32" Nullable="false" />
+          <Property Name="SupplierCode2" Type="Int32" />
+          <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="Int32" />
+          <Property Name="CountryCode2" Type="Int32" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryEName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryDescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryNotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TownCode" Type="Int32" />
+          <Property Name="TownCode2" Type="Int32" />
+          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TownEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TownDescname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Townnotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RptUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BranchCode" Type="Int32" />
+          <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SectorCode" Type="Int32" />
+          <Property Name="SectorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1793,6 +2531,358 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemCard">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.ItemCard)">
+        <MappingFragment StoreEntitySet="ItemCard">
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+          <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+          <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+          <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+          <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupEName" ColumnName="GroupEName" />
+          <ScalarProperty Name="GroupDescName" ColumnName="GroupDescName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+          <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitEName" ColumnName="UnitEName" />
+          <ScalarProperty Name="UnitDescName" ColumnName="UnitDescName" />
+          <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreEName" ColumnName="StoreEName" />
+          <ScalarProperty Name="StoreDescName" ColumnName="StoreDescName" />
+          <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+          <ScalarProperty Name="StoreNumLeans" ColumnName="StoreNumLeans" />
+          <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+          <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+          <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+          <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+          <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+          <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+          <ScalarProperty Name="StoreKeeper" ColumnName="StoreKeeper" />
+          <ScalarProperty Name="HpurchaseCode" ColumnName="HpurchaseCode" />
+          <ScalarProperty Name="HpurchaseCode2" ColumnName="HpurchaseCode2" />
+          <ScalarProperty Name="HpurchaseCurrency" ColumnName="HpurchaseCurrency" />
+          <ScalarProperty Name="HpurchaseDate" ColumnName="HpurchaseDate" />
+          <ScalarProperty Name="HpurchaseDealerCode" ColumnName="HpurchaseDealerCode" />
+          <ScalarProperty Name="HpurchaseDiscount" ColumnName="HpurchaseDiscount" />
+          <ScalarProperty Name="HpurchaseDiscValue" ColumnName="HpurchaseDiscValue" />
+          <ScalarProperty Name="HpurchaseFactor" ColumnName="HpurchaseFactor" />
+          <ScalarProperty Name="HpurchasePrice" ColumnName="HpurchasePrice" />
+          <ScalarProperty Name="HpurchaseQuantity" ColumnName="HpurchaseQuantity" />
+          <ScalarProperty Name="HpurchaseTax" ColumnName="HpurchaseTax" />
+          <ScalarProperty Name="HpurchaseTotal" ColumnName="HpurchaseTotal" />
+          <ScalarProperty Name="HpurchaseTotalAfter" ColumnName="HpurchaseTotalAfter" />
+          <ScalarProperty Name="HSalesCode" ColumnName="HSalesCode" />
+          <ScalarProperty Name="HSalesCode2" ColumnName="HSalesCode2" />
+          <ScalarProperty Name="HSalesCurrency" ColumnName="HSalesCurrency" />
+          <ScalarProperty Name="HSalesDate" ColumnName="HSalesDate" />
+          <ScalarProperty Name="HSalesDealerCode" ColumnName="HSalesDealerCode" />
+          <ScalarProperty Name="HSalesDiscount" ColumnName="HSalesDiscount" />
+          <ScalarProperty Name="HSalesDiscValue" ColumnName="HSalesDiscValue" />
+          <ScalarProperty Name="HSalesFactor" ColumnName="HSalesFactor" />
+          <ScalarProperty Name="HSalesPrice" ColumnName="HSalesPrice" />
+          <ScalarProperty Name="HSalesQuantity" ColumnName="HSalesQuantity" />
+          <ScalarProperty Name="HSalesTax" ColumnName="HSalesTax" />
+          <ScalarProperty Name="HSalesTotal" ColumnName="HSalesTotal" />
+          <ScalarProperty Name="HSalesTotalAfter" ColumnName="HSalesTotalAfter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RptCustomers">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.RptCustomers)">
+        <MappingFragment StoreEntitySet="RptCustomers">
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerCode2" ColumnName="CustomerCode2" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerEname" ColumnName="CustomerEname" />
+          <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
+          <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
+          <ScalarProperty Name="CustomerTel1" ColumnName="CustomerTel1" />
+          <ScalarProperty Name="CustomerTel2" ColumnName="CustomerTel2" />
+          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="CountryCode2" ColumnName="CountryCode2" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryEName" ColumnName="CountryEName" />
+          <ScalarProperty Name="CountryDescName" ColumnName="CountryDescName" />
+          <ScalarProperty Name="CountryNotes" ColumnName="CountryNotes" />
+          <ScalarProperty Name="TownCode" ColumnName="TownCode" />
+          <ScalarProperty Name="TownCode2" ColumnName="TownCode2" />
+          <ScalarProperty Name="TownName" ColumnName="TownName" />
+          <ScalarProperty Name="TownEname" ColumnName="TownEname" />
+          <ScalarProperty Name="TownDescname" ColumnName="TownDescname" />
+          <ScalarProperty Name="Townnotes" ColumnName="Townnotes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RptDealers">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.RptDealers)">
+        <MappingFragment StoreEntitySet="RptDealers">
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerEname" ColumnName="DealerEname" />
+          <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+          <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+          <ScalarProperty Name="DealerTel1" ColumnName="DealerTel1" />
+          <ScalarProperty Name="DealerTel2" ColumnName="DealerTel2" />
+          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="CountryCode2" ColumnName="CountryCode2" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryEName" ColumnName="CountryEName" />
+          <ScalarProperty Name="CountryDescName" ColumnName="CountryDescName" />
+          <ScalarProperty Name="CountryNotes" ColumnName="CountryNotes" />
+          <ScalarProperty Name="TownCode" ColumnName="TownCode" />
+          <ScalarProperty Name="TownCode2" ColumnName="TownCode2" />
+          <ScalarProperty Name="TownName" ColumnName="TownName" />
+          <ScalarProperty Name="TownEname" ColumnName="TownEname" />
+          <ScalarProperty Name="TownDescname" ColumnName="TownDescname" />
+          <ScalarProperty Name="Townnotes" ColumnName="Townnotes" />
+          <ScalarProperty Name="hsalesCode" ColumnName="hsalesCode" />
+          <ScalarProperty Name="HsalesCode2" ColumnName="HsalesCode2" />
+          <ScalarProperty Name="HsalesCurrency" ColumnName="HsalesCurrency" />
+          <ScalarProperty Name="HsalesDate" ColumnName="HsalesDate" />
+          <ScalarProperty Name="HsalesDealerCode" ColumnName="HsalesDealerCode" />
+          <ScalarProperty Name="HsalesDiscount" ColumnName="HsalesDiscount" />
+          <ScalarProperty Name="HsalesDiscValue" ColumnName="HsalesDiscValue" />
+          <ScalarProperty Name="HsalesFactor" ColumnName="HsalesFactor" />
+          <ScalarProperty Name="HsalesPrice" ColumnName="HsalesPrice" />
+          <ScalarProperty Name="HsalesQuantity" ColumnName="HsalesQuantity" />
+          <ScalarProperty Name="FirstPayment" ColumnName="FirstPayment" />
+          <ScalarProperty Name="HsalesTax" ColumnName="HsalesTax" />
+          <ScalarProperty Name="HsalesTotal" ColumnName="HsalesTotal" />
+          <ScalarProperty Name="HsalesTotalAfter" ColumnName="HsalesTotalAfter" />
+          <ScalarProperty Name="HpurchaseCode" ColumnName="HpurchaseCode" />
+          <ScalarProperty Name="HpurchaseCode2" ColumnName="HpurchaseCode2" />
+          <ScalarProperty Name="HpurchaseCurrency" ColumnName="HpurchaseCurrency" />
+          <ScalarProperty Name="HpurchaseDate" ColumnName="HpurchaseDate" />
+          <ScalarProperty Name="HpurchaseDealerCode" ColumnName="HpurchaseDealerCode" />
+          <ScalarProperty Name="HpurchaseDiscount" ColumnName="HpurchaseDiscount" />
+          <ScalarProperty Name="HpurchaseDiscValue" ColumnName="HpurchaseDiscValue" />
+          <ScalarProperty Name="HpurchaseFactor" ColumnName="HpurchaseFactor" />
+          <ScalarProperty Name="HpurchasePrice" ColumnName="HpurchasePrice" />
+          <ScalarProperty Name="HpurchaseQuantity" ColumnName="HpurchaseQuantity" />
+          <ScalarProperty Name="HpurchaseTax" ColumnName="HpurchaseTax" />
+          <ScalarProperty Name="HpurchaseTotal" ColumnName="HpurchaseTotal" />
+          <ScalarProperty Name="HpurchaseTotalAfter" ColumnName="HpurchaseTotalAfter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RptPurchase">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.RptPurchase)">
+        <MappingFragment StoreEntitySet="RptPurchase">
+          <ScalarProperty Name="HpurchaseCode" ColumnName="HpurchaseCode" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+          <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+          <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+          <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+          <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="HpurchaseCode2" ColumnName="HpurchaseCode2" />
+          <ScalarProperty Name="HpurchaseCurrency" ColumnName="HpurchaseCurrency" />
+          <ScalarProperty Name="HpurchaseDate" ColumnName="HpurchaseDate" />
+          <ScalarProperty Name="HpurchaseDiscount" ColumnName="HpurchaseDiscount" />
+          <ScalarProperty Name="HpurchaseDiscValue" ColumnName="HpurchaseDiscValue" />
+          <ScalarProperty Name="HpurchaseFactor" ColumnName="HpurchaseFactor" />
+          <ScalarProperty Name="HpurchasePrice" ColumnName="HpurchasePrice" />
+          <ScalarProperty Name="HpurchaseQuantity" ColumnName="HpurchaseQuantity" />
+          <ScalarProperty Name="HpurchaseTax" ColumnName="HpurchaseTax" />
+          <ScalarProperty Name="HpurchaseTotal" ColumnName="HpurchaseTotal" />
+          <ScalarProperty Name="HpurchaseTotalAfter" ColumnName="HpurchaseTotalAfter" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupEName" ColumnName="GroupEName" />
+          <ScalarProperty Name="GroupDescName" ColumnName="GroupDescName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+          <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitEName" ColumnName="UnitEName" />
+          <ScalarProperty Name="UnitDescName" ColumnName="UnitDescName" />
+          <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreEName" ColumnName="StoreEName" />
+          <ScalarProperty Name="StoreDescName" ColumnName="StoreDescName" />
+          <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+          <ScalarProperty Name="StoreNumLeans" ColumnName="StoreNumLeans" />
+          <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+          <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+          <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+          <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+          <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+          <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+          <ScalarProperty Name="StoreKeeper" ColumnName="StoreKeeper" />
+          <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+          <ScalarProperty Name="SupplierCode2" ColumnName="SupplierCode2" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="SupplierEName" ColumnName="SupplierEName" />
+          <ScalarProperty Name="SupplierDescName" ColumnName="SupplierDescName" />
+          <ScalarProperty Name="SupplierAddress1" ColumnName="SupplierAddress1" />
+          <ScalarProperty Name="SupplierAddress2" ColumnName="SupplierAddress2" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+          <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+          <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+          <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RptSales">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.RptSales)">
+        <MappingFragment StoreEntitySet="RptSales">
+          <ScalarProperty Name="hsalesCode" ColumnName="hsalesCode" />
+          <ScalarProperty Name="HsalesCode2" ColumnName="HsalesCode2" />
+          <ScalarProperty Name="HsalesCurrency" ColumnName="HsalesCurrency" />
+          <ScalarProperty Name="HsalesDate" ColumnName="HsalesDate" />
+          <ScalarProperty Name="HsalesDealerCode" ColumnName="HsalesDealerCode" />
+          <ScalarProperty Name="HsalesDiscount" ColumnName="HsalesDiscount" />
+          <ScalarProperty Name="HsalesDiscValue" ColumnName="HsalesDiscValue" />
+          <ScalarProperty Name="HsalesFactor" ColumnName="HsalesFactor" />
+          <ScalarProperty Name="HsalesPrice" ColumnName="HsalesPrice" />
+          <ScalarProperty Name="HsalesQuantity" ColumnName="HsalesQuantity" />
+          <ScalarProperty Name="FirstPayment" ColumnName="FirstPayment" />
+          <ScalarProperty Name="HsalesTax" ColumnName="HsalesTax" />
+          <ScalarProperty Name="HsalesTotal" ColumnName="HsalesTotal" />
+          <ScalarProperty Name="HsalesTotalAfter" ColumnName="HsalesTotalAfter" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+          <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+          <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+          <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+          <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupEName" ColumnName="GroupEName" />
+          <ScalarProperty Name="GroupDescName" ColumnName="GroupDescName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+          <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitEName" ColumnName="UnitEName" />
+          <ScalarProperty Name="UnitDescName" ColumnName="UnitDescName" />
+          <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreEName" ColumnName="StoreEName" />
+          <ScalarProperty Name="StoreDescName" ColumnName="StoreDescName" />
+          <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+          <ScalarProperty Name="StoreNumLeans" ColumnName="StoreNumLeans" />
+          <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+          <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+          <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+          <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+          <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+          <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+          <ScalarProperty Name="StoreKeeper" ColumnName="StoreKeeper" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerCode2" ColumnName="CustomerCode2" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerEName" ColumnName="CustomerEName" />
+          <ScalarProperty Name="CustomerDescName" ColumnName="CustomerDescName" />
+          <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
+          <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+          <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+          <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+          <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RptSuppliers">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.RptSuppliers)">
+        <MappingFragment StoreEntitySet="RptSuppliers">
+          <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+          <ScalarProperty Name="SupplierCode2" ColumnName="SupplierCode2" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="SupplierEname" ColumnName="SupplierEname" />
+          <ScalarProperty Name="SupplierAddress1" ColumnName="SupplierAddress1" />
+          <ScalarProperty Name="SupplierAddress2" ColumnName="SupplierAddress2" />
+          <ScalarProperty Name="SupplierTel1" ColumnName="SupplierTel1" />
+          <ScalarProperty Name="SupplierTel2" ColumnName="SupplierTel2" />
+          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="CountryCode2" ColumnName="CountryCode2" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryEName" ColumnName="CountryEName" />
+          <ScalarProperty Name="CountryDescName" ColumnName="CountryDescName" />
+          <ScalarProperty Name="CountryNotes" ColumnName="CountryNotes" />
+          <ScalarProperty Name="TownCode" ColumnName="TownCode" />
+          <ScalarProperty Name="TownCode2" ColumnName="TownCode2" />
+          <ScalarProperty Name="TownName" ColumnName="TownName" />
+          <ScalarProperty Name="TownEname" ColumnName="TownEname" />
+          <ScalarProperty Name="TownDescname" ColumnName="TownDescname" />
+          <ScalarProperty Name="Townnotes" ColumnName="Townnotes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RptUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.RptUsers)">
+        <MappingFragment StoreEntitySet="RptUsers">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="SectorCode" ColumnName="SectorCode" />
+          <ScalarProperty Name="SectorName" ColumnName="SectorName" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
