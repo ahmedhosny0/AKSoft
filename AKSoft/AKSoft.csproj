@@ -419,6 +419,10 @@
     <Content Include="Views\Product\a.cshtml" />
     <Content Include="Views\Reports\DealerAccount.cshtml" />
     <Content Include="Views\Reports\DealerData.cshtml" />
+    <Content Include="Views\Product\Test.cshtml" />
+    <Content Include="Views\Product\ConvertBetweenStocks.cshtml" />
+    <Content Include="Views\Product\SaveCurrency.cshtml" />
+    <Content Include="Views\Product\SaveSafe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

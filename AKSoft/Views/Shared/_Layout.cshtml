@@ -86,7 +86,15 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="/Product/SaveStock">Stores</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <button onclick="myFunction4()" class="dropbtn" style="background-color:#1dc181;">Stores</button>
+                            <div id="myDropdown4" class="dropdown-content"style="height: 50px;">
+                              <a href="/Product/ConvertBetweenStocks">ConvertBetweenStocks</a> 
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="/Product/SaveStock">Store</a></li>
                     <li><a href="/Product/SaveGroup">Category</a></li>
                     <li><a href="/Product/SaveUnit">Unit</a></li>
                     <li><a href="/Product/SaveProduct">Product</a></li>
@@ -110,6 +118,15 @@
                                 <a href="/Reports/SupplierData">Supplier Data</a>
                                 <a href="/Reports/DealerAccount">Dealer Account</a>
                                 <a href="/Reports/DealerData">Dealer Data</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button onclick="myFunction5()" class="dropbtn" style="background-color:#1dc181;">Accounts</button>
+                            <div id="myDropdown5" class="dropdown-content" style="height:100px">
+                                <a href="/Product/ReceiveCash">Receive Cash</a>
+                                <a href="/Product/CashExchange">CashExchange</a>
                             </div>
                         </div>
                     </li>
@@ -148,6 +165,40 @@
     }
     function myFunction2() {
         document.getElementById("myDropdown2").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+    function myFunction4() {
+        document.getElementById("myDropdown4").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+    function myFunction5() {
+        document.getElementById("myDropdown5").classList.toggle("show");
     }
 
     // Close the dropdown if the user clicks outside of it

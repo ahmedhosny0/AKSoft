@@ -10,10 +10,18 @@ using System.Web;
 using System.Web.Mvc;
 
 public class ProductController : Controller
-{
+{  
+    string connectionString = @"Data Source = .; Initial Catalog = TopSoft; Integrated Security=True";
+
+    public ActionResult Test(int? id)
+    {
+        return View();
+    }
+    
     [HttpGet]
     public ActionResult a()
     {
+
         return View();
     }
     public ActionResult c()
@@ -50,9 +58,9 @@ public class ProductController : Controller
     {
         TopSoft db = new TopSoft();
         List<BranchCode> list7 = db.BranchCode.ToList();
-        ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName");
+        ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName",1);
         List<SectorCode> list8 = db.SectorCode.ToList();
-        ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName");
+        ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName",1);
         List<UserRole> list9 = db.UserRole.ToList();
         ViewBag.DepartmentList9 = new SelectList(list9, "RoleId", "RoleName");
         return View();
@@ -100,9 +108,9 @@ public class ProductController : Controller
     {
         TopSoft db = new TopSoft();
         List<BranchCode> list7 = db.BranchCode.ToList();
-        ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName");
+        ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName",1);
         List<SectorCode> list8 = db.SectorCode.ToList();
-        ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName");
+        ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName",1);
         return View();
     }
 
@@ -192,11 +200,11 @@ public class ProductController : Controller
     {
         TopSoft db = new TopSoft();
         List<UnitCode> list1 = db.UnitCode.ToList();
-        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName",1);
         List<StoreCode> list2 = db.StoreCode.ToList();
-        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName",1);
         List<GroupCode> list3 = db.GroupCode.ToList();
-        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName",1);
         List<ItemCode> list4 = db.ItemCode.ToList();
         ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
         return View();
@@ -206,17 +214,17 @@ public class ProductController : Controller
     {
         TopSoft db = new TopSoft();
         List<UnitCode> list1 = db.UnitCode.ToList();
-        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName",1);
         List<StoreCode> list2 = db.StoreCode.ToList();
-        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName",1);
         List<GroupCode> list3 = db.GroupCode.ToList();
-        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName",1);
         List<ItemCode> list4 = db.ItemCode.ToList();
         ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
         List<CustomerCode> list5 = db.CustomerCode.ToList();
-        ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
+        ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName",1);
         List<DealerCode> list6 = db.DealerCode.ToList();
-        ViewBag.DepartmentList6 = new SelectList(list6, "Serial", "ArabicName");
+        ViewBag.DepartmentList6 = new SelectList(list6, "Serial", "ArabicName",1);
         return View();
 
     }
@@ -319,15 +327,15 @@ public class ProductController : Controller
     {
         TopSoft db = new TopSoft();
         List<UnitCode> list1 = db.UnitCode.ToList();
-        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName",1);
         List<StoreCode> list2 = db.StoreCode.ToList();
-        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName",1);
         List<GroupCode> list3 = db.GroupCode.ToList();
-        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName",1);
         List<ItemCode> list4 = db.ItemCode.ToList();
         ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
         List<SupplierCode> list5 = db.SupplierCode.ToList();
-        ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
+        ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName",1);
         return View();
 
     }
@@ -428,11 +436,11 @@ public class ProductController : Controller
         {
             TopSoft db = new TopSoft();
             List<UnitCode> list1 = db.UnitCode.ToList();
-            ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+            ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName",1);
             List<StoreCode> list2 = db.StoreCode.ToList();
-            ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+            ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName",1);
             List<GroupCode> list3 = db.GroupCode.ToList();
-            ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
+            ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName",1);
             ItemCode product = new ItemCode();
             product.StoreID = model.StoreID;
             product.SerialGroup = model.SerialGroup;
@@ -573,7 +581,6 @@ public class ProductController : Controller
 
     //---------------------------------------------------------------------
 
-    string connectionString = @"Data Source = .; Initial Catalog = TopSoft; Integrated Security=True";
     [HttpGet]
     public ActionResult DisplayCategories()
     {
@@ -1232,6 +1239,9 @@ public class ProductController : Controller
 
     public ActionResult SaveCountry()
     {
+        TopSoft db = new TopSoft();
+        List<CountryCode> list1 = db.CountryCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Code", "Code",1);
         return View();
     }
     [HttpPost]
@@ -1241,6 +1251,8 @@ public class ProductController : Controller
         {
             TopSoft db = new TopSoft();
             CountryCode unit = new CountryCode();
+            List<CountryCode> list1 = db.CountryCode.ToList();
+            ViewBag.DepartmentList1 = new SelectList(list1, "Code", "Code");
             unit.ArabicName = model.ArabicName;
             unit.EnglishName = model.EnglishName;
             unit.DescName = model.DescName;
@@ -1719,6 +1731,100 @@ public class ProductController : Controller
 
     }
     //End Sector
+    //Start ConvertBetweenStocks
+    public ActionResult ConvertBetweenStocks()
+    {
+        TopSoft db = new TopSoft();
+        List<UnitCode> list1 = db.UnitCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        List<StoreCode> list2 = db.StoreCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+        List<GroupCode> list3 = db.GroupCode.ToList();
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
+        List<ItemCode> list4 = db.ItemCode.ToList();
+        ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
+        List<SupplierCode> list5 = db.SupplierCode.ToList();
+        ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
+        List<BranchCode> list7 = db.BranchCode.ToList();
+        ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName", 1);
+        List<SectorCode> list8 = db.SectorCode.ToList();
+        ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName", 1);
+        List<UserRole> list9 = db.UserRole.ToList();
+        ViewBag.DepartmentList9 = new SelectList(list9, "RoleId", "RoleName");
+        return View();
+    }
+    //End ConvertBetweenStocks
+
+    //Start CashExchange
+    public ActionResult CashExchange()
+    {
+        TopSoft db = new TopSoft();
+        List<UnitCode> list1 = db.UnitCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        List<StoreCode> list2 = db.StoreCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+        List<GroupCode> list3 = db.GroupCode.ToList();
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
+        List<ItemCode> list4 = db.ItemCode.ToList();
+        ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
+        List<SupplierCode> list5 = db.SupplierCode.ToList();
+        ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
+        List<DealerCode> list6 = db.DealerCode.ToList();
+        ViewBag.DepartmentList6 = new SelectList(list6, "Serial", "ArabicName", 1);
+        List<BranchCode> list7 = db.BranchCode.ToList();
+        ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName", 1);
+        List<SectorCode> list8 = db.SectorCode.ToList();
+        ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName", 1);
+        List<UserRole> list9 = db.UserRole.ToList();
+        ViewBag.DepartmentList9 = new SelectList(list9, "RoleId", "RoleName");
+        return View();
+    }
+    //End CashExchange
+
+    //Start ReceiveCash
+    public ActionResult ReceiveCash()
+    {
+        TopSoft db = new TopSoft();
+        List<UnitCode> list1 = db.UnitCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        List<StoreCode> list2 = db.StoreCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+        List<GroupCode> list3 = db.GroupCode.ToList();
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
+        List<ItemCode> list4 = db.ItemCode.ToList();
+        ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
+        List<SupplierCode> list5 = db.SupplierCode.ToList();
+        ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
+        List<BranchCode> list7 = db.BranchCode.ToList();
+        ViewBag.DepartmentList7 = new SelectList(list7, "Serial", "ArabicName", 1);
+        List<SectorCode> list8 = db.SectorCode.ToList();
+        ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName", 1);
+        List<UserRole> list9 = db.UserRole.ToList();
+        ViewBag.DepartmentList9 = new SelectList(list9, "RoleId", "RoleName");
+        List<DealerCode> list6 = db.DealerCode.ToList();
+        ViewBag.DepartmentList6 = new SelectList(list6, "Serial", "ArabicName", 1);
+        return View();
+    }
+    //End ReceiveCash
+
+    //Start Save Safe
+    public ActionResult SaveSafe()
+    {
+        TopSoft db = new TopSoft();
+        return View();
+    }
+
+    //End Safe
+
+    //Start Save Currency
+    public ActionResult SaveCurrency()
+    {
+        TopSoft db = new TopSoft();
+        return View();
+    }
+
+    //End Currency
+
 }
 
 
