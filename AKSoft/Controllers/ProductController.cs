@@ -520,6 +520,15 @@ public class ProductController : Controller
 
         try
         {
+            //foreach (var item in UnitCode.cou)
+            //            {
+            //                OrderDetails orderDetails = new OrderDetails() {
+            //                    OrderID = orderID,
+            //                    ProductID = item.ProductID,
+            //                    Price = item.Price,
+            //                    Quantity = item.Quantity,
+            //                    TotalPrice = item.TotalPrice
+            //                };
             TopSoft db = new TopSoft();
             UnitCode unit = new UnitCode();
             unit.ArabicName = model.ArabicName;

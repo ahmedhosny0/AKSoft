@@ -8,6 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/main.js"></script>
     <link rel="stylesheet" href="~/Content/styl.css" />
+    <link rel="stylesheet" href="~/Content/g.css" />
 
     <style>
         .dropbtn {
@@ -56,6 +57,8 @@
         }
     </style>
 
+
+
 </head>
 
 <body>
@@ -71,6 +74,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li><a href="/Product/SaveStock">Stores</a></li>
+                    <li><a href="/Product/SaveGroup">Category</a></li>
+                    <li><a href="/Product/SaveUnit">Unit</a></li>
+                    <li><a href="/Product/SaveProduct">Product</a></li>
+                    <li>
                         <div class="dropdown">
                             <button onclick="myFunction2()" class="dropbtn">Definitions</button>
                             <div id="myDropdown2" class="dropdown-content">
@@ -81,11 +89,8 @@
                                 <a href="/Product/SaveDealer">Define Dealer</a>
                             </div>
                         </div>
-                    <li><a href="/Product/SaveStock">Stores</a></li>
-                    <li><a href="/Product/SaveGroup">Category</a></li>
-                    <li><a href="/Product/SaveUnit">Unit</a></li>
-                    <li><a href="/Product/SaveProduct">Product</a></li>
-                    @*
+                    </li>
+                     @*
                     <li><a href="/Product/SaveCustomer">Customers</a></li>
                     <li><a href="/Product/SaveInvoiceSales">Sales</a></li>
                     <li><a href="/Product/SaveSupplier">Suppliers</a></li>

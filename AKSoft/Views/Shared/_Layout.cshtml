@@ -10,16 +10,21 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-
-    <style>
-        .dropbtn {
+    <link rel="stylesheet" href="~/Content/g.css" />
+    <link rel="stylesheet" href="~/Content/Icons.css" />
+    <link rel="stylesheet" href="~/Content/fonts/css/all.min.css"><style>
+    .fa
+    {
+        display:table-cell;
+    }    
+    .dropbtn {
             background-color: #3498DB;
             padding: 6px;
-             font-size: 18px;
+            font-size: 18px;
             font-size: 16px;
             border: none;
             cursor: pointer;
-            margin-top:9px;
+            margin-top: 9px;
         }
 
             .dropbtn:hover, .dropbtn:focus {
@@ -34,7 +39,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            height:250px;
+            height: 250px;
             background-color: #f1f1f1;
             min-width: 160px;
             overflow: auto;
@@ -56,6 +61,27 @@
         .show {
             display: block;
         }
+
+        ul li:hover ul.t {
+            display: block; /* Display the dropdown */
+        }
+
+        ul li ul.t li {
+            display: block;
+        }
+
+        .t .l {
+            font-size: 20px;
+            padding: 20px;
+            margin: 10px;
+            font-family: auto;
+        }
+
+        .t {
+            display: none;
+            z-index: 1;
+            margin-left: 40px;
+        }
     </style>
 
 </head>
@@ -72,6 +98,7 @@
                 </button>
                 @Html.ActionLink("Home", "Home", "Product", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
@@ -131,10 +158,102 @@
                         </div>
                     </li>
                 </ul>
-                @Html.Partial("_LoginPartialA")
-            </div>
+
+                    @Html.Partial("_LoginPartialA")
+</div>
         </div>
     </div>
+    <div class="area"></div><nav class="main-menu" style="height:870px">
+
+        <ul style="margin-top:50px;height:100%">
+            <li class="has-subnav">
+                <a>
+                    <i class="fa fa-wrench"></i>
+                    <span class="nav-text" style="width:140px">
+                        Definitions
+                    </span>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="t">
+                    <li><a class="l" href="/Product/SaveBranch">Define Branch</a></li>
+                    <li><a class="l" href="/Product/SaveSector">Define Sector</a></li>
+                    <li><a class="l" href="/Product/SaveCountry">Define Country</a></li>
+                    <li><a class="l" href="/Product/SaveTown">Define Town</a></li>
+                    <li><a class="l" href="/Product/SaveDealer">Define Dealer</a></li>
+                </ul>
+            </li>
+            <li class="has-subnav">
+                <a href="/Product/SaveStock">
+                    <i class="fa fa-files-o"></i>
+                    <span class="nav-text">
+                        Stores
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="/Product/SaveGroup">
+                    <i class="fa fa-users"></i>
+                    <span class="nav-text">
+                        Category
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="/Product/SaveUnit">
+                    <i class="fa fa-files-o"></i>
+                    <span class="nav-text">
+                        Unit
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="/Product/SaveProduct">
+                    <i class="fa fa-files-o"></i>
+                    <span class="nav-text">
+                        Product
+                    </span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a>
+                    <i class="fa fa-wrench"></i>
+                    <span class="nav-text" style="width:140px">
+                        Reports
+                    </span>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="t">
+                    <li><a class="l" href="/Reports/DailySales">Daily Sales</a></li>
+                    <li><a class="l" href="/Reports/ItemsBalance">Items Balance</a></li>
+                    <li><a class="l" href="/Reports/ItemsState">Items State</a></li>
+                    <li><a class="l" href="/Reports/ProfitofItems">Profit of Items</a></li>
+                    <li><a class="l" href="/Reports/StocksState">Stocks State</a></li>
+                    <li><a class="l" href="/Reports/DailyPurchases">Daily Purchases</a></li>
+                    <li><a class="l" href="/Reports/CustomersData">Customers Data</a></li>
+                    <li><a class="l" href="/Reports/CustomerAccount">Customer Account</a></li>
+                    <li><a class="l" href="/Reports/SupplierAccount">Supplier Account</a></li>
+                    <li><a class="l" href="/Reports/SupplierData">Supplier Data</a></li>
+                    <li><a class="l" href="/Reports/DealerAccount">Dealer Account</a></li>
+                    <li><a class="l" href="/Reports/DealerData">Dealer Data</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="logout">
+            <li>
+                <a href="#">
+                    <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">
+                        Logout
+                    </span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -215,7 +334,12 @@
         }
     }
     </script>
-    
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/notify.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
