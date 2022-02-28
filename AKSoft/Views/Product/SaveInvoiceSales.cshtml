@@ -80,23 +80,38 @@
                 @Html.DropDownListFor(model => model.DealerCode, ViewBag.DepartmentList6 as SelectList, "--select--", new { @class = "Txt drop" })
             </li>
             <li>
-                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "Lab" })
+                <a onclick="PopupForm('@Url.Action("ItemLastSalesPrice", "Reports")')"> <label class="Lab">Quantity</label></a>
 
-                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
             </li>
             <li>
                 @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt", @placeholder = "Price", @id = "txtSecondNo", @onkeyup = "Multiy()", @required = "required" } }) @*Multiply function in js*@
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Price", @id = "txtSecondNo", @onkeyup = "Multiy()", @required = "required" } }) @*Multiply function in js*@
             </li>
-            <li>
-                @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "Lab" })
-                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt", @placeholder = "Total", @id = "txtResult" } })
-            </li>
+        <li>
+            <label class="Lab">Total Value</label>
+            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Total", @id = "txtResult", @onkeyup = "Disc()" } })
+            <label class="Lab">Discount</label>
+            @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "Disc()" } }) @*Multiply function in js*@
+            <label class="Lab">Discount Percent</label>
+            @Html.EditorFor(model => model.DiscValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "DiscountPercent", @onkeyup = "DiscountVal()" } })%
+               <label class="Lab">Tax</label>
+            @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Tax", @onkeyup = "TaxTotal()" } }) @*Multiply function in js*@
+            <label class="Lab">Tax Percent</label>
+            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "TaxPercent", @onkeyup = "TaxVal()" } })% @*Multiply function in js*@
+         </li>
+        <li>
+            <label class="Lab">Total After Dis</label>
+            @Html.EditorFor(model => model.TotalAfterDisc, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "DiscTotal" } })
+        </li>
+        <li>
+            <label class="Lab">Total After Tax</label>
+            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "taxTotal" } })
+        </li>
             <li>
                 <button class="save">Save</button>
                 <a href="@Url.Action("DisplayInvoiceSales", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
             </li>
-
 
     </ul>
 
@@ -110,6 +125,73 @@
             if (!isNaN(result)) {
                 document.getElementById('txtResult').value = result;
             }
+        }
+        function Disc() {
+            DiscountPercent();
+            var txtFirstNo = document.getElementById('txtResult').value;
+            var txtSecondNo = document.getElementById('Discount').value;
+            var result = parseFloat(txtFirstNo) - parseFloat(txtSecondNo);//Don't forget the captial in float
+            if (!isNaN(result)) {
+                document.getElementById('DiscTotal').value = result;
+            }
+
+        }
+        function TaxTotal() {
+            TaxPercent();
+            var txtFirstNo = document.getElementById('DiscTotal').value;
+            var txtSecondNo = document.getElementById('Tax').value;
+            var result = parseFloat(txtFirstNo) + parseFloat(txtSecondNo);//Don't forget the captial in float
+            if (!isNaN(result)) {
+                document.getElementById('taxTotal').value = result;
+            }
+        }
+        function DiscountPercent() {
+            var txtFirstNo = document.getElementById('Discount').value;
+            var result = parseFloat(txtFirstNo) /100;//Don't forget the captial in float
+            if (!isNaN(result)) {
+                document.getElementById('DiscountPercent').value = result;
+            }
+        }
+        function TaxPercent() {
+            var txtFirstNo = document.getElementById('Tax').value;
+            var result = parseFloat(txtFirstNo) /100;//Don't forget the captial in float
+            if (!isNaN(result)) {
+                document.getElementById('TaxPercent').value = result;
+            }
+        }
+        
+        function DiscountVal() {
+            var txtFirstNo = document.getElementById('DiscountPercent').value;
+            var result = (parseFloat(txtFirstNo)/100) *100;//Don't forget the captial in float
+            if (!isNaN(result)) {
+                document.getElementById('Discount').value = result;
+            }
+        }
+        function TaxVal() {
+            var txtFirstNo = document.getElementById('TaxPercent').value;
+            var result =( parseFloat(txtFirstNo)/100) *100;//Don't forget the captial in float
+            if (!isNaN(result)) {
+                document.getElementById('Tax').value = result;
+            }
+        }
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Item Last PurchasePrice',
+                    height: 230,
+                    width: 370,
+                    close: function () {
+                        Popup.dialog('destroy').remove()
+                    }
+
+                });
+            });
         }
     </script>
 </body>

@@ -1,0 +1,98 @@
+﻿@model AKSoft.Models.UnitCode
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Save Unit";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    ViewBag.Title = "Save Unit";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    ViewBag.Title = "Save Unit";
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+
+}
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/Content/styl.css" />
+    <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
+    <script type="text/javascript" src="~/Scripts/main.js"> </script>
+    <style>
+        .Elements {
+            background-color: #e5e5e5;
+            list-style-type: none;
+            border: ridge 1px;
+            margin: 0;
+            padding: 8px;
+        }
+
+        .head {
+            background-color: #3577ff;
+            font-size: 18px;
+            width: 40%;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 class="head save">Add Unit</h1>
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("Saved successfully!", " ", "success");
+        </script>
+        <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    }
+
+    @using (Html.BeginForm("SaveUnit", "Product", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="Elements">
+            <div class="">
+                <label class="Lab">Date</label>
+                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
+            </div>
+            <div class="">
+                @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
+
+                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+            </div>
+
+            <div class="">
+                @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
+                @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
+            </div>
+
+            <div class="">
+                @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
+                @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
+            </div>
+            <div class="">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+            </div>
+
+            <div class="">
+                <button class="save">Save</button>
+                <a href="@Url.Action("Displayunits", "Product" )"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+            </div>
+        </div>
+    }
+
+
+</body>
+</html>
+
+
+
+

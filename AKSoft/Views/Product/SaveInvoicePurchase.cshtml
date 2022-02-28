@@ -63,6 +63,9 @@
             <label class="Lab">Date</label>
             @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
         </li>
+        <li>@ViewBag.c</li>
+
+        <li><h1>@ViewBag.c </h1>
             <label class="Lab">Store</label>
             @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
             <label class="Lab">Category</label>
@@ -79,8 +82,7 @@
             @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
         </li>
         <li>
-            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "Lab" })
-
+            <a  onclick="PopupForm('@Url.Action("ItemLastPurchasePrice", "Reports")')"> <label class="Lab">Quantity</label></a>
             @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
         </li>
         <li>
@@ -107,6 +109,29 @@
             document.getElementById('txtResult').value = result;
         }
     }
-    </script> 
+            var Popup;
+       
+    function PopupForm(url) {
+        var formDiv = $('<div/>');
+        $.get(url)
+        .done(function (response) {
+            formDiv.html(response);
+
+            Popup = formDiv.dialog({
+                autoOpen: true,
+                resizable: false,
+                title: 'Item Last PurchasePrice',
+                height: 230,
+                width: 370,
+                close: function () {
+                    Popup.dialog('destroy').remove()
+                }
+
+            });
+        });
+    }
+    </script>
+
+
 </body>
 </html>

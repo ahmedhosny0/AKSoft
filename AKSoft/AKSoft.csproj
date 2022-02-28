@@ -162,6 +162,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -459,14 +460,19 @@
     <Content Include="Views\Shared\_LayoutWorker.cshtml" />
     <Content Include="Views\Reports\UsersData.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
-    <Content Include="Views\Product\a.cshtml" />
+    <Content Include="Views\Product\agg.cshtml" />
     <Content Include="Views\Reports\DealerAccount.cshtml" />
     <Content Include="Views\Reports\DealerData.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\Product\ConvertBetweenStocks.cshtml" />
     <Content Include="Views\Product\SaveCurrency.cshtml" />
     <Content Include="Views\Product\SaveSafe.cshtml" />
-    <Content Include="Views\Product\ah.cshtml" />
+    <Content Include="Views\Product\a.cshtml" />
+    <Content Include="Views\Reports\ItemsBestSeller.cshtml" />
+    <Content Include="Views\Test\AddOrder.cshtml" />
+    <Content Include="Views\Reports\ItemLastSalesPrice.cshtml" />
+    <Content Include="Views\Reports\ItemLastPurchasePrice2.cshtml" />
+    <Content Include="Views\Reports\ItemLastPurchasePrice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

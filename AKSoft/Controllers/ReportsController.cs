@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AKSoft.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,11 +7,56 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-public class ReportsController : Controller
+public class ReportsController : Controller 
 {
     string connectionString = @"Data Source = .; Initial Catalog = TopSoft; Integrated Security=True";
 
     // GET: Reports
+    // Last Pruchase Price
+    public ActionResult ItemLastPurchasePrice(HSales model,int? id)
+    {
+        TopSoft db = new TopSoft();
+        List<UnitCode> list1 = db.UnitCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName", 1);
+        List<StoreCode> list2 = db.StoreCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName", 1);
+        List<GroupCode> list3 = db.GroupCode.ToList();
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName", 1);
+        List<ItemCode> list4 = db.ItemCode.ToList();
+        ViewBag.DepartmentList4 = new SelectList(list4, "2", "2");
+        List<CustomerCode> list5 = db.CustomerCode.ToList();
+        ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName", 1);
+        List<DealerCode> list6 = db.DealerCode.ToList();
+        ViewBag.DepartmentList6 = new SelectList(list6, "2", "2", 1);
+        ViewBag.c = model.ItemCode; 
+        HSales invo = new HSales();
+        DataTable dt = new DataTable(); 
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+
+            var i =0;
+            sqlCon.Open();
+            string query = "SELECT ItemCode from rptsales Where ItemCode = 3";
+            SqlDataAdapter sqlDa2 = new SqlDataAdapter(query, sqlCon);
+            sqlDa2.SelectCommand.Parameters.AddWithValue("@Serial", i);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT R1.ItemName,UnitName,R1.HpurchasePrice,HpurchaseDate FROM RptPurchase R1 INNER JOIN (SELECT ItemCode, MAX(Hpurchasedate) AS MaxDateTime FROM RptPurchase GROUP BY ItemCode) groupR2  ON R1.ItemCode = groupR2.ItemCode  AND R1.Hpurchasedate = groupR2.MaxDateTime", sqlCon);
+            sqlDa.Fill(dt);
+
+            return View(dt);
+        }
+    }
+    // Last Sales Price
+    public ActionResult ItemLastSalesPrice()
+    {
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT R1.ItemName,UnitName,R1.HSalesPrice,HSalesDate FROM RptSales R1 INNER JOIN (SELECT ItemCode, MAX(HSalesdate) AS MaxDateTime FROM RptSales GROUP BY ItemCode) groupR2  ON R1.ItemCode = groupR2.ItemCode  AND R1.HSalesdate = groupR2.MaxDateTime", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
+    }
     public ActionResult SupplierAccount()
     {
         DataTable dt = new DataTable();
@@ -18,6 +64,18 @@ public class ReportsController : Controller
         {
             sqlCon.Open();
             SqlDataAdapter sqlDa = new SqlDataAdapter("select SupplierCode,SupplierName,0 Debit,0 Credit,sum(HpurchaseTotal)ToatalPurchase from RptPurchase group by SupplierName,SupplierCode", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
+    }
+    // Items BestSeller
+    public ActionResult ItemsBestSeller()
+    {
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select ItemCode,ItemName,StoreName,UnitName,Sum(HsalesTotal) Total from rptsales group by ItemCode,ItemName,StoreName,UnitName order by Total desc", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);

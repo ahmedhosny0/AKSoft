@@ -247,6 +247,8 @@ public class ProductController : Controller
             ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
             List<DealerCode> list6 = db.DealerCode.ToList();
             ViewBag.DepartmentList6 = new SelectList(list5, "Serial", "ArabicName");
+            ViewBag.c = new SelectList(list4, "Serial", "ArabicName");
+
             invo.BranchCode = model.BranchCode;
             invo.Code = model.Code;
             invo.CurrencyCode = model.CurrencyCode;
