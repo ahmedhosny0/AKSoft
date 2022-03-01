@@ -263,6 +263,7 @@
     <Content Include="Content\jquery.min.js" />
     <Content Include="Content\New Text Document.txt" />
     <Content Include="Content\OverlayScrollbars.min.css" />
+    <Content Include="Content\s.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\styl.css" />
     <Content Include="Content\style.css" />
@@ -452,6 +453,8 @@
     <Content Include="Views\Reports\ItemLastSalesPrice.cshtml" />
     <Content Include="Views\Reports\ItemLastPurchasePrice2.cshtml" />
     <Content Include="Views\Reports\ItemLastPurchasePrice.cshtml" />
+    <Content Include="Views\Product\AddPermission.cshtml" />
+    <Content Include="Views\Product\ExchangePermission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

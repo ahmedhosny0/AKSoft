@@ -1,20 +1,19 @@
 ﻿@model AKSoft.Models.ItemCode
+@{
+    ViewBag.Title = "تعريف صنف";
+}
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Save Product";
 }
 if (Convert.ToInt32(Session["Role"]) == 4)
 {
-    ViewBag.Title = "SaveProduct";
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
 }
 if (Convert.ToInt32(Session["Role"]) == 5)
 {
-    ViewBag.Title = "SaveProduct";
     Layout = "~/Views/Shared/_LayoutWorker.cshtml";
-
 }
 }
 <!DOCTYPE html>
@@ -22,7 +21,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title></title>
     <link rel="stylesheet" href="~/Content/styl.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
@@ -53,57 +52,57 @@ if (Convert.ToInt32(Session["Role"]) == 5)
         }
     </style>
 </head>
-<body>
-    <h1 class="head save">Add Product</h1>
-    @if (TempData["Al"] != null)
+<body><div></div>
+    <div style="direction:rtl;">
+        <h1 class="head save">إضافة صنف</h1>
+    </div>    @if (TempData["Al"] != null)
     {
         <script>
             swal("Saved successfully!", " ", "success");
         </script>
-        <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+        <strong style="color:green">تم الحفظ بنجاح! </strong>@TempData["Al"]
     }
     @using (Html.BeginForm("SaveProduct", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
-        <ul class="Elements">
+        <ul class="Elements" style="direction:rtl;">
             <li class="">
-                <label class="Lab">Date</label>
+                <label class="Lab">التاريخ</label>
                 @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
             </li>
             <li>
-                <label class="Lab">Stock</label>
+                <label class="Lab">إسم المخزن</label>
                 @Html.DropDownListFor(model => model.StoreID, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
-                <label class="Lab dr">Unit</label>
+                <label class="Lab dr">الوحدة</label>
                 @Html.DropDownListFor(model => model.Unit1, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
-                <label class="Lab dr">Category</label>
+                <label class="Lab dr">مجموعة الصنف</label>
                 @Html.DropDownListFor(model => model.SerialGroup, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
             </li>
             <li class="">
-                @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
-
+                <label class="Lab">الإسم عربي</label>
                 @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
              </li>
 
             <li class="">
-                @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
+                <label class="Lab">الإسم إنجليزي</label>
                 @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
             </li>
 
             <li class="">
-                @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
+                <label class="Lab">الإسم المختصر</label>
                 @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
             </li>
             <li class="">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
+                <label class="Lab">الوصف</label>
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
             </li>
             <div class="">
-                <label class="Lab">Purchase price</label>
+                <label class="Lab">سعر الشراء</label>
                 @Html.EditorFor(model => model.PricePurchase1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
             </div>
             <div class="">
-                <label class="Lab">Sales price</label>
+                <label class="Lab">سعر البيع</label>
                 @Html.EditorFor(model => model.PriceSale1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "", @required = "required" } })
             </div>
             @*<div class="">
@@ -112,8 +111,8 @@ if (Convert.ToInt32(Session["Role"]) == 5)
             </div>*@
             <br />
             <div class="">
-                <button class="save">Save</button>
-                <a href="@Url.Action("DisplayItems", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+                <button class="save">حفظ</button>
+                <a href="@Url.Action("DisplayItems", "Product")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
             </div>
         </ul>
     }
