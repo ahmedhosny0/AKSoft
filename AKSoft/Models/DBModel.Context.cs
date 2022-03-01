@@ -40,12 +40,5 @@ namespace AKSoft.Models
         public virtual DbSet<DealerCode> DealerCode { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<UnitCode> UnitCode { get; set; }
-        public virtual DbSet<ItemCard> ItemCard { get; set; }
-        public virtual DbSet<RptCustomers> RptCustomers { get; set; }
-        public virtual DbSet<RptDealers> RptDealers { get; set; }
-        public virtual DbSet<RptPurchase> RptPurchase { get; set; }
-        public virtual DbSet<RptSales> RptSales { get; set; }
-        public virtual DbSet<RptSuppliers> RptSuppliers { get; set; }
-        public virtual DbSet<RptUsers> RptUsers { get; set; }
     }
 }

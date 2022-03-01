@@ -272,6 +272,9 @@ public class ProductController : Controller
             invo.UnitSerial = model.UnitSerial;
             invo.CustomerSerial = model.CustomerSerial;
             invo.AddUserDate = model.AddUserDate;
+            invo.TotalAfterTax = model.TotalAfterTax;
+            invo.TaxValue = model.TaxValue;
+            invo.AddUserDate = model.AddUserDate;
             db.HSales.Add(invo);
             db.SaveChanges();
             TempData["Al"] = "";

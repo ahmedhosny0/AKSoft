@@ -89,16 +89,16 @@
                 @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Price", @id = "txtSecondNo", @onkeyup = "Multiy()", @required = "required" } }) @*Multiply function in js*@
             </li>
         <li>
-            <label class="Lab">Total Value</label>
+            <label class="Lab">Total</label>
             @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Total", @id = "txtResult", @onkeyup = "Disc()" } })
             <label class="Lab">Discount</label>
-            @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "Disc()" } }) @*Multiply function in js*@
+            @Html.EditorFor(model => model.DiscValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "Disc()" } }) @*Multiply function in js*@
             <label class="Lab">Discount Percent</label>
-            @Html.EditorFor(model => model.DiscValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "DiscountPercent", @onkeyup = "DiscountVal()" } })%
+            @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "DiscountPercent", @onkeyup = "DiscountVal()" } })%
                <label class="Lab">Tax</label>
-            @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Tax", @onkeyup = "TaxTotal()" } }) @*Multiply function in js*@
+            @Html.EditorFor(model => model.TaxValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Tax", @onkeyup = "TaxTotal()" } }) @*Multiply function in js*@
             <label class="Lab">Tax Percent</label>
-            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "TaxPercent", @onkeyup = "TaxVal()" } })% @*Multiply function in js*@
+            @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "TaxPercent", @onkeyup = "TaxVal()" } })% @*Multiply function in js*@
          </li>
         <li>
             <label class="Lab">Total After Dis</label>
@@ -106,8 +106,12 @@
         </li>
         <li>
             <label class="Lab">Total After Tax</label>
-            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "taxTotal" } })
+            @Html.EditorFor(model => model.TotalAfterTax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "taxTotal" } })
         </li>
+        @*<li>
+            <label class="Lab">Total Value</label>
+            @Html.EditorFor(model => model.TotalAfterTax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "taxTotal" } })
+        </li>*@
             <li>
                 <button class="save">Save</button>
                 <a href="@Url.Action("DisplayInvoiceSales", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
