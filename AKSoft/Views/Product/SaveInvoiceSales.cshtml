@@ -92,7 +92,7 @@
             <label class="Lab">Total Value</label>
             @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Total", @id = "txtResult", @onkeyup = "Disc()" } })
             <label class="Lab">Discount</label>
-            @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "Disc()" } }) @*Multiply function in js*@
+            @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "" } }) @*Multiply function in js*@
             <label class="Lab">Discount Percent</label>
             @Html.EditorFor(model => model.DiscValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "DiscountPercent", @onkeyup = "DiscountVal()" } })%
                <label class="Lab">Tax</label>
@@ -129,8 +129,9 @@
         function Disc() {
             DiscountPercent();
             var txtFirstNo = document.getElementById('txtResult').value;
-            var txtSecondNo = document.getElementById('Discount').value;
-            var result = parseFloat(txtFirstNo) - parseFloat(txtSecondNo);//Don't forget the captial in float
+            var txtSecondNo = document.getElementById('DiscountPercent').value;
+            var txt3 = document.getElementById('txtResult').value;
+            var result = parseFloat(txtFirstNo) - ((parseFloat(txtSecondNo)/100) *parseFloat(txtFirstNo));//Don't forget the captial in float
             if (!isNaN(result)) {
                 document.getElementById('DiscTotal').value = result;
             }
@@ -154,6 +155,7 @@
         }
         function TaxPercent() {
             var txtFirstNo = document.getElementById('Tax').value;
+
             var result = parseFloat(txtFirstNo) /100;//Don't forget the captial in float
             if (!isNaN(result)) {
                 document.getElementById('TaxPercent').value = result;
@@ -162,7 +164,8 @@
         
         function DiscountVal() {
             var txtFirstNo = document.getElementById('DiscountPercent').value;
-            var result = (parseFloat(txtFirstNo)/100) *100;//Don't forget the captial in float
+            var txtSecondNo = document.getElementById('txtResult').value;
+            var result = (parseFloat(txtFirstNo)/100) *parseFloat(txtSecondNo);//Don't forget the captial in float
             if (!isNaN(result)) {
                 document.getElementById('Discount').value = result;
             }
