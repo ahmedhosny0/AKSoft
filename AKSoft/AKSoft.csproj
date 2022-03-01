@@ -203,28 +203,7 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ItemCard.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ItemCode.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptCustomers.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptDealers.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptPurchase.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptSales.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptSuppliers.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptUsers.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SectorCode.cs">
@@ -284,6 +263,7 @@
     <Content Include="Content\jquery.min.js" />
     <Content Include="Content\New Text Document.txt" />
     <Content Include="Content\OverlayScrollbars.min.css" />
+    <Content Include="Content\s.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\styl.css" />
     <Content Include="Content\style.css" />
@@ -473,6 +453,8 @@
     <Content Include="Views\Reports\ItemLastSalesPrice.cshtml" />
     <Content Include="Views\Reports\ItemLastPurchasePrice2.cshtml" />
     <Content Include="Views\Reports\ItemLastPurchasePrice.cshtml" />
+    <Content Include="Views\Product\AddPermission.cshtml" />
+    <Content Include="Views\Product\ExchangePermission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

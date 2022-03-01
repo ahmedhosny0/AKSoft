@@ -30,7 +30,6 @@ namespace AKSoft.Models
         public string Description { get; set; }
         public Nullable<System.DateTime> AddUserDate { get; set; }
         public Nullable<int> Code { get; set; }
-        public List<UnitCode> Items { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HPurchase> HPurchase { get; set; }

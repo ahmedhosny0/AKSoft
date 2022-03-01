@@ -14,7 +14,7 @@ public ActionResult AddOrder()
         {
             return View();
         }
-
+        /*
         [HttpPost]
         public JsonResult AddOrderAndOrderDetials(UnitCode orderViewModel)
         {
@@ -36,7 +36,7 @@ public ActionResult AddOrder()
                     {
                         int orderID = db.UnitCode.Max(o => o.Serial);
 
-                        foreach (var item in orderViewModel.Items)
+                        foreach (var item in orderViewModel)
                         {
                             UnitCode orderDetails = new UnitCode()
                             {
@@ -104,6 +104,6 @@ public ActionResult AddOrder()
                 throw ex;
 
             }
-        }
+        }*/
     }
 }

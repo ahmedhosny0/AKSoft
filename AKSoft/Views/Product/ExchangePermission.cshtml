@@ -2,18 +2,24 @@
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "SaveInvoiceSales";
+    ViewBag.Title = "ExchangePermission";
 }
   if (Convert.ToInt32(Session["Role"]) == 3)
-{ 
-    ViewBag.Title = "SaveInvoiceSales";
+{
+    ViewBag.Title = "ExchangePermission";
     Layout = "~/Views/Shared/_LayoutEm.cshtml";
 
 }
   if (Convert.ToInt32(Session["Role"]) == 4)
   {
-      ViewBag.Title = "SaveInvoiceSales";
+      ViewBag.Title = "ExchangePermission";
       Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+  }
+  if (Convert.ToInt32(Session["Role"]) == 5)
+  {
+      ViewBag.Title = "ExchangePermission";
+      Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 
   }
 }
@@ -52,10 +58,10 @@
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
 
-    @using (Html.BeginForm("SaveInvoiceSales", "Product", FormMethod.Post))
+    @using (Html.BeginForm("ExchangePermission", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-    <h1 class="head save">Invoice Sales</h1>
+    <h1 class="head save">Exchange Permission</h1>
     <ul class="Elements gs">
             <li class="">
                 <label class="Lab">Date</label>
@@ -66,8 +72,8 @@
             @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
             <label class="Lab">Category</label>
             @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
-            <label class="Lab">Customer</label>
-            @Html.DropDownListFor(model => model.CustomerSerial, ViewBag.DepartmentList5 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+            @*<label class="Lab">Customer</label>
+            @Html.DropDownListFor(model => model.CustomerSerial, ViewBag.DepartmentList5 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })*@
             </li>
 
             <li>
@@ -76,8 +82,8 @@
 
                 <label class="Lab">Unit Name</label>
                 @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
-                <label class="Lab">Dealer Name</label>
-                @Html.DropDownListFor(model => model.DealerCode, ViewBag.DepartmentList6 as SelectList, "--select--", new { @class = "Txt drop" })
+                @*<label class="Lab">Dealer Name</label>
+                @Html.DropDownListFor(model => model.DealerCode, ViewBag.DepartmentList6 as SelectList, "--select--", new { @class = "Txt drop" })*@
             </li>
             <li>
                 <a onclick="PopupForm('@Url.Action("ItemLastSalesPrice", "Reports")')"> <label class="Lab">Quantity</label></a>
@@ -91,18 +97,16 @@
         <li>
             <label class="Lab">Total</label>
             @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Total", @id = "txtResult", @onkeyup = "Disc()" } })
-            <label class="Lab">Discount</label>
-<<<<<<< HEAD
-            @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "" } }) @*Multiply function in js*@
-=======
-            @Html.EditorFor(model => model.DiscValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "Disc()" } }) @*Multiply function in js*@
->>>>>>> 4e0fcb90c1034c6969a67637b43738e8636c9b7c
+        @*    <label class="Lab">Discount</label>
+    @Html.EditorFor(model => model.DiscValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "Disc()" } })
+            <label class="Lab"></label>
+
             <label class="Lab">Discount Percent</label>
             @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "DiscountPercent", @onkeyup = "DiscountVal()" } })%
                <label class="Lab">Tax</label>
-            @Html.EditorFor(model => model.TaxValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Tax", @onkeyup = "TaxTotal()" } }) @*Multiply function in js*@
+            @Html.EditorFor(model => model.TaxValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Tax", @onkeyup = "TaxTotal()" } }) 
             <label class="Lab">Tax Percent</label>
-            @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "TaxPercent", @onkeyup = "TaxVal()" } })% @*Multiply function in js*@
+            @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "TaxPercent", @onkeyup = "TaxVal()" } })% 
          </li>
         <li>
             <label class="Lab">Total After Dis</label>
@@ -112,7 +116,7 @@
             <label class="Lab">Total After Tax</label>
             @Html.EditorFor(model => model.TotalAfterTax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "taxTotal" } })
         </li>
-        @*<li>
+       <li>
             <label class="Lab">Total Value</label>
             @Html.EditorFor(model => model.TotalAfterTax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "taxTotal" } })
         </li>*@
@@ -137,9 +141,8 @@
         function Disc() {
             DiscountPercent();
             var txtFirstNo = document.getElementById('txtResult').value;
-            var txtSecondNo = document.getElementById('DiscountPercent').value;
-            var txt3 = document.getElementById('txtResult').value;
-            var result = parseFloat(txtFirstNo) - ((parseFloat(txtSecondNo)/100) *parseFloat(txtFirstNo));//Don't forget the captial in float
+            var txtSecondNo = document.getElementById('Discount').value;
+            var result = parseFloat(txtFirstNo) - parseFloat(txtSecondNo);//Don't forget the captial in float
             if (!isNaN(result)) {
                 document.getElementById('DiscTotal').value = result;
             }
@@ -163,7 +166,6 @@
         }
         function TaxPercent() {
             var txtFirstNo = document.getElementById('Tax').value;
-
             var result = parseFloat(txtFirstNo) /100;//Don't forget the captial in float
             if (!isNaN(result)) {
                 document.getElementById('TaxPercent').value = result;
@@ -172,8 +174,7 @@
         
         function DiscountVal() {
             var txtFirstNo = document.getElementById('DiscountPercent').value;
-            var txtSecondNo = document.getElementById('txtResult').value;
-            var result = (parseFloat(txtFirstNo)/100) *parseFloat(txtSecondNo);//Don't forget the captial in float
+            var result = (parseFloat(txtFirstNo)/100) *100;//Don't forget the captial in float
             if (!isNaN(result)) {
                 document.getElementById('Discount').value = result;
             }
