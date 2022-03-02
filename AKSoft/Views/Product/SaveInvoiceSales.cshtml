@@ -1,20 +1,19 @@
 ﻿@model AKSoft.Models.HSales
+@{
+    ViewBag.Title = "فاتورة مبيعات";
+}
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "SaveInvoiceSales";
 }
   if (Convert.ToInt32(Session["Role"]) == 3)
 { 
-    ViewBag.Title = "SaveInvoiceSales";
     Layout = "~/Views/Shared/_LayoutEm.cshtml";
 
 }
   if (Convert.ToInt32(Session["Role"]) == 4)
   {
-      ViewBag.Title = "SaveInvoiceSales";
       Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
-
   }
 }
 <!DOCTYPE html>
@@ -47,62 +46,62 @@
     @if (TempData["Al"] != null)
     {
         <script>
-            swal("Saved successfully!", " ", "success");
+            swal("تم الحفظ بنجاح", " ", "success");
         </script>
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
 
     @using (Html.BeginForm("SaveInvoiceSales", "Product", FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
-    <h1 class="head save">Invoice Sales</h1>
+        @Html.AntiForgeryToken()        
+        <div style="direction:rtl;">
+            <h1 class="head save">فاتورة مبيعات</h1>
+        </div>
     <ul class="Elements gs">
             <li class="">
-                <label class="Lab">Date</label>
+                <label class="Lab">التاريخ</label>
                 @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
             </li>
        <li>
-            <label class="Lab">Store</label>
+            <label class="Lab">المخزن</label>
             @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
-            <label class="Lab">Category</label>
+            <label class="Lab">مجموعة الصنف</label>
             @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
-            <label class="Lab">Customer</label>
+            <label class="Lab">العميل</label>
             @Html.DropDownListFor(model => model.CustomerSerial, ViewBag.DepartmentList5 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
             </li>
 
             <li>
-                <label class="Lab">Product Name</label>
+                <label class="Lab">الصنف</label>
                 @Html.DropDownListFor(model => model.ItemSerial, ViewBag.DepartmentList4 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
 
-                <label class="Lab">Unit Name</label>
+                <label class="Lab">الوحده</label>
                 @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
-                <label class="Lab">Dealer Name</label>
+                <label class="Lab">المندوب</label>
                 @Html.DropDownListFor(model => model.DealerCode, ViewBag.DepartmentList6 as SelectList, "--select--", new { @class = "Txt drop" })
             </li>
             <li>
-                <a onclick="PopupForm('@Url.Action("ItemLastSalesPrice", "Reports")')"> <label class="Lab">Quantity</label></a>
+                <a onclick="PopupForm('@Url.Action("ItemLastSalesPrice", "Reports")')"> <label class="Lab">الكميه</label></a>
 
                 @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
             </li>
             <li>
-                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "Lab" })
+                <label class="Lab">السعر</label>
                 @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Price", @id = "txtSecondNo", @onkeyup = "Multiy()", @required = "required" } }) @*Multiply function in js*@
             </li>
         <li>
-            <label class="Lab">Total</label>
+            <label class="Lab">الإجمالي</label>
             @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Total", @id = "txtResult", @onkeyup = "Disc()" } })
-            <label class="Lab">Discount</label>
-<<<<<<< HEAD
-            @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "" } }) @*Multiply function in js*@
-=======
-            @Html.EditorFor(model => model.DiscValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "Disc()" } }) @*Multiply function in js*@
->>>>>>> 4e0fcb90c1034c6969a67637b43738e8636c9b7c
+     @*       <label class="Lab">Discount</label>
+    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "" } })<label class="Lab"></label>
+
+            @Html.EditorFor(model => model.DiscValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "Disc()" } }) 
             <label class="Lab">Discount Percent</label>
             @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "DiscountPercent", @onkeyup = "DiscountVal()" } })%
                <label class="Lab">Tax</label>
-            @Html.EditorFor(model => model.TaxValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Tax", @onkeyup = "TaxTotal()" } }) @*Multiply function in js*@
+            @Html.EditorFor(model => model.TaxValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Tax", @onkeyup = "TaxTotal()" } }) 
             <label class="Lab">Tax Percent</label>
-            @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "TaxPercent", @onkeyup = "TaxVal()" } })% @*Multiply function in js*@
+            @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "TaxPercent", @onkeyup = "TaxVal()" } })% 
          </li>
         <li>
             <label class="Lab">Total After Dis</label>
@@ -112,13 +111,13 @@
             <label class="Lab">Total After Tax</label>
             @Html.EditorFor(model => model.TotalAfterTax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "taxTotal" } })
         </li>
-        @*<li>
+       <li>
             <label class="Lab">Total Value</label>
             @Html.EditorFor(model => model.TotalAfterTax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "taxTotal" } })
         </li>*@
             <li>
-                <button class="save">Save</button>
-                <a href="@Url.Action("DisplayInvoiceSales", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+                <button class="save">حفظ</button>
+                <a href="@Url.Action("DisplayInvoiceSales", "Product")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
             </li>
 
     </ul>

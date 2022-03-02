@@ -26,6 +26,10 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     <script src="~/Scripts/sweetalert.min.js"></script>
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
     <style>
+                .Lab
+        {
+            font-size:19px;
+        }
         .Elements {
             background-color: #e5e5e5;
             list-style-type: none;
@@ -58,7 +62,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     </div>    @if (TempData["Al"] != null)
     {
         <script>
-            swal("Saved successfully!", " ", "success");
+            swal("تم الحفظ بنجاح", " ", "success");
         </script>
         <strong style="color:green">تم الحفظ بنجاح! </strong>@TempData["Al"]
     }
@@ -67,6 +71,10 @@ if (Convert.ToInt32(Session["Role"]) == 5)
         @Html.AntiForgeryToken()
 
         <ul class="Elements" style="direction:rtl;">
+            <li class="">
+                <label class="Lab">الكود</label>
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
+            </li>
             <li class="">
                 <label class="Lab">التاريخ</label>
                 @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@

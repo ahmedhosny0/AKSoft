@@ -1,18 +1,17 @@
 ﻿@model AKSoft.Models.CountryCode
+@{    ViewBag.Title = "تعريف دولة";
+}
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Save Country";
 }
 if (Convert.ToInt32(Session["Role"]) == 4)
 {
-    ViewBag.Title = "Save Country";
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
 }
 if (Convert.ToInt32(Session["Role"]) == 5)
 {
-    ViewBag.Title = "Save Country";
     Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 
 }
@@ -44,11 +43,13 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 
 </head>
 <body>
-    <h1 class="head save">Add Country</h1>
+    <div style="direction:rtl;">
+        <h1 class="head save">تعريف دولة</h1>
+    </div>
     @if (TempData["Al"] != null)
     {
         <script>
-            swal("Saved successfully!", " ", "success");
+            swal("تم الحفظ بنجاح", " ", "success");
         </script>
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
@@ -58,31 +59,21 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 
         <ul class="Elements">
             <li class="">
-                <label class="Lab">Date</label>
-                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
+                <label class="Lab">الكود</label>
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
             </li>
             <li class="">
-                <label class="Lab">ArabicName</label>
-                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
-            </li>
-
-            <li class="">
-                <label class="Lab">EnglishName</label>
-                @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
-            </li>
-
-            <li class="">
-                <label class="Lab">DescName</label>
-                @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
+                <label class="Lab">الإسم</label>
+                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
             </li>
             <li class="">
-                <label class="Lab">Notes</label>
+                <label class="Lab">ملاحظات</label>
                 @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
             </li>
 
             <li class="">
-                <button class="save">Save</button>
-                <a href="@Url.Action("DisplayCountries", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+                <button class="save">حفظ</button>
+                <a href="@Url.Action(" displaycountries", "Product" )"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
             </li>
         </ul>
     }

@@ -38,6 +38,9 @@ namespace AKSoft.Models
         public string Phone4 { get; set; }
         public string AreaStock { get; set; }
         public Nullable<System.DateTime> AddUserDate { get; set; }
+        public Nullable<int> EmployeeSerial { get; set; }
+        public Nullable<int> CountrySerial { get; set; }
+        public Nullable<int> TownSerial { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemCode> ItemCode { get; set; }
@@ -45,5 +48,8 @@ namespace AKSoft.Models
         public virtual ICollection<HPurchase> HPurchase { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HSales> HSales { get; set; }
+        public virtual CountryCode CountryCode { get; set; }
+        public virtual Employee Employee { get; set; }
+        public virtual TownCode TownCode { get; set; }
     }
 }

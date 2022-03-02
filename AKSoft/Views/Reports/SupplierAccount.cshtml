@@ -8,11 +8,11 @@
 <a href="@Url.Action("SaveSupplier", "Product")">Add Supplier</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>Supplier ID</th>
-        <th>Supplier Name</th>
-        <th>Debit</th>
-        <th>Credit</th>
-        <th>Total Purchase</th>
+        <th>الكود</th>
+        <th>إسم المورد</th>
+        <th>مدين</th>
+        <th>دائن</th>
+        <th>إجمالي المشتريات</th>
     </tr>
 
     @for (int i = 0; i < Model.Rows.Count; i++)

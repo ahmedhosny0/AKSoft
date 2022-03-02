@@ -40,5 +40,6 @@ namespace AKSoft.Models
         public virtual DbSet<DealerCode> DealerCode { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<UnitCode> UnitCode { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
     }
 }

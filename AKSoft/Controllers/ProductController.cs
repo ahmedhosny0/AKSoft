@@ -472,6 +472,13 @@ public class ProductController : Controller
     }
     public ActionResult SaveStock()
     {
+        TopSoft db = new TopSoft();
+        List<CountryCode> list1 = db.CountryCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName", 1);
+        List<TownCode> list2 = db.TownCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName", 1);
+        List<Employee> list3 = db.Employee.ToList();
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName", 1);
         return View();
 
     }
@@ -489,7 +496,7 @@ public class ProductController : Controller
             stock.Description = model.Description;
             stock.Address = model.Address;
             stock.AreaStock = model.AreaStock;
-            stock.ID = model.ID;
+            stock.Code = model.Code;
             stock.NumberOfLeans = model.NumberOfLeans;
             stock.Phone1 = model.Phone1;
             stock.Phone2 = model.Phone2;
@@ -497,6 +504,9 @@ public class ProductController : Controller
             stock.Phone4 = model.Phone4;
             stock.StoreKeeper = model.StoreKeeper;
             stock.AddUserDate = model.AddUserDate;
+            stock.EmployeeSerial = model.EmployeeSerial;
+            stock.TownSerial = model.TownSerial;
+            stock.CountrySerial = model.CountrySerial;
             db.StoreCode.Add(stock);
             db.SaveChanges();
             int latestEmpId = stock.Serial;
@@ -1248,6 +1258,93 @@ public class ProductController : Controller
         return RedirectToAction("DisplayCustomers");
     }
     //end Customer
+    // Employee
+
+    public ActionResult SaveEmployee()
+    {
+        TopSoft db = new TopSoft();
+        List<CountryCode> list1 = db.CountryCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+        List<TownCode> list2 = db.TownCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+        return View();
+    }
+    [HttpPost]
+    public ActionResult SaveEmployee(Employee model)
+    {
+        try
+        {
+            TopSoft db = new TopSoft();
+            List<CountryCode> list1 = db.CountryCode.ToList();
+            ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
+            List<TownCode> list2 = db.TownCode.ToList();
+            ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
+            Employee product = new Employee();
+            product.Serial = model.Serial;
+            product.Code = model.Code;
+            product.ArabicName = model.ArabicName;
+            product.EnglishName = model.EnglishName;
+            product.DescName = model.DescName;
+            product.Description = model.Description;
+            product.Address1 = model.Address1;
+            product.Address2 = model.Address2;
+            product.Telephone1 = model.Telephone1;
+            product.Telephone2 = model.Telephone2;
+            product.Telephone3 = model.Telephone3;
+            product.CountrySerial = model.CountrySerial;
+            product.TownSerial = model.TownSerial;
+            product.Email = model.Email;
+            product.Website = model.Website;
+            product.AddUserDate = model.AddUserDate;
+            db.Employee.Add(product);
+            db.SaveChanges();
+            int latestEmpId = product.Serial;
+            TempData["Al"] = product.ArabicName;
+            return RedirectToAction("SaveEmployee");
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+
+        }
+    }
+
+    [HttpGet]
+    public ActionResult DisplayEmployees()
+    {
+        DataTable dtblProduct = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,[ArabicName] ,[EnglishName],[DescName] ,[Description] ,[Address1],[Address2],[Telephone1] ,[Telephone2] ,[Telephone3],[CountrySerial],[TownSerial],[Email],[Website] ,AddUserDate from Employee", sqlCon);
+            sqlDa.Fill(dtblProduct);
+        }
+        return View(dtblProduct);
+    }
+
+    [HttpGet]
+    public ActionResult DeleteEmployee(int? id)
+    {
+        try
+        {
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string query = "DELETE FROM Employee WHere Serial = @Serial";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@Serial", id);
+                sqlCmd.ExecuteNonQuery();
+                TempData["Al"] = "";
+            }
+        }
+        catch
+        {
+            TempData["A"] = "s";
+        }
+        return RedirectToAction("DisplayEmployees");
+    }
+    //end Employee
     // Country
 
     public ActionResult SaveCountry()
@@ -1920,7 +2017,8 @@ public class ProductController : Controller
         List<CustomerCode> list5 = db.CustomerCode.ToList();
         ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName", 1);
         List<DealerCode> list6 = db.DealerCode.ToList();
-        ViewBag.DepartmentList6 = new SelectList(list6, "Serial", "ArabicName", 1); return View();
+        ViewBag.DepartmentList6 = new SelectList(list6, "Serial", "ArabicName", 1);
+        return View();
     }
 
     [HttpPost]

@@ -130,7 +130,7 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("Select ArabicName,Address,NumberOfLeans,StoreKeeper,AreaStock,Phone1 from StoreCode", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("Select Code,ArabicName,Address,StoreKeeper,AreaStock,Phone1 from StoreCode", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);

@@ -1,13 +1,12 @@
 ﻿@model AKSoft.Models.StoreCode
+@{ViewBag.Title = "تعريف مخزن";}
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
-    ViewBag.Title = "SaveStock";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 if (Convert.ToInt32(Session["Role"]) == 5)
 {
-    ViewBag.Title = "SaveStock";
     Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 
 }
@@ -40,11 +39,11 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 
 </head>
 <body>
-    <h1 class="head save">Add Store</h1>
+    <h1 class="head save">تعريف مخزن</h1>
     @if (TempData["Al"] != null)
     {
         <script>
-            swal("Saved successfully!", " ", "success");
+            swal("تم الحفظ بنجاح", " ", "success");
         </script>
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
@@ -55,48 +54,42 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     <ul class="Elements">
        <br />
         <li class="">
-            <label class="Lab">Date</label>
-            @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
+            <label class="Lab">الكود</label>
+            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
         </li>
         <li class="">
-            @Html.LabelFor(model => model.ArabicName, htmlAttributes: new { @class = "Lab" })
-
-            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
-            @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "Lab" })
-            @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
-        </li>
-
-        <li class="">
-            @Html.LabelFor(model => model.DescName, htmlAttributes: new { @class = "Lab" })
-            @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
+            <label class="Lab">الإسم</label>
+            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
         </li>
         <li class="">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "Lab" })
+            <label class="Lab">ملاحظات</label>
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
         </li>
         <li class="">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "Lab" })
+            <label class="Lab">العنوان</label>
             @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
-            @Html.LabelFor(model => model.AreaStock, htmlAttributes: new { @class = "Lab" })
+            <label class="Lab">المساحه</label>
             @Html.EditorFor(model => model.AreaStock, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
         </li>
         <li class="">
-            <label class="Lab">Workers</label>
-            @Html.EditorFor(model => model.NumberOfLeans, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            <label class="Lab">الدوله</label>
+            @Html.DropDownListFor(model => model.CountrySerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+            <label class="Lab">المدينه</label>
+            @Html.DropDownListFor(model => model.TownSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
         </li>
-        <div class="">
-            @Html.LabelFor(model => model.StoreKeeper, htmlAttributes: new { @class = "Lab" })
-            @Html.EditorFor(model => model.StoreKeeper, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
-        </div>
         <li class="">
-            @Html.LabelFor(model => model.Phone1, htmlAttributes: new { @class = "Lab" })
+            <label class="Lab">أمين المخزن</label>
+            @Html.DropDownListFor(model => model.EmployeeSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+        </li>
+        <li class="">
+            <label class="Lab">تليفونات</label>
             @Html.EditorFor(model => model.Phone1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
             @Html.EditorFor(model => model.Phone2, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
             @Html.EditorFor(model => model.Phone3, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
         </li>
         <li>
-            <button class="save">Save</button>
-            <a  href="@Url.Action("DisplayStocks", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+            <button class="save">حفظ</button>
+            <a  href="@Url.Action("DisplayStocks", "Product")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
         </li>
         </ul>
     }

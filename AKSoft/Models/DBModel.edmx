@@ -76,6 +76,27 @@
           <Property Name="Website" Type="nvarchar" MaxLength="30" />
           <Property Name="AddUserDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="150" />
+          <Property Name="Telephone1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountrySerial" Type="int" />
+          <Property Name="TownSerial" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="30" />
+          <Property Name="AddUserDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="GroupCode">
           <Key>
             <PropertyRef Name="Serial" />
@@ -205,6 +226,9 @@
           <Property Name="Phone4" Type="nvarchar" MaxLength="20" />
           <Property Name="AreaStock" Type="nvarchar" MaxLength="20" />
           <Property Name="AddUserDate" Type="datetime" />
+          <Property Name="EmployeeSerial" Type="int" />
+          <Property Name="CountrySerial" Type="int" />
+          <Property Name="TownSerial" Type="int" />
         </EntityType>
         <EntityType Name="SupplierCode">
           <Key>
@@ -347,6 +371,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Employee__AddUse__7093AB15">
+          <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="CountrySerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__TownSe__7187CF4E">
+          <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="TownSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__HPurchase__Deale__59B045BD">
           <End Role="DealerCode" Type="Self.DealerCode" Multiplicity="0..1" />
           <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
@@ -478,6 +530,42 @@
             </Principal>
             <Dependent Role="SectorCode">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StoreCode__Count__7740A8A4">
+          <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1" />
+          <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="StoreCode">
+              <PropertyRef Name="CountrySerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StoreCode__Emplo__764C846B">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="StoreCode">
+              <PropertyRef Name="EmployeeSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StoreCode__TownS__7834CCDD">
+          <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1" />
+          <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="StoreCode">
+              <PropertyRef Name="TownSerial" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -642,6 +730,7 @@
           <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerCode" EntityType="Self.CustomerCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DealerCode" EntityType="Self.DealerCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupCode" EntityType="Self.GroupCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HPurchase" EntityType="Self.HPurchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HSales" EntityType="Self.HSales" Schema="dbo" store:Type="Tables" />
@@ -672,6 +761,14 @@
           <AssociationSet Name="FK__DealerCod__Websi__1EC48A19" Association="Self.FK__DealerCod__Websi__1EC48A19">
             <End Role="CountryCode" EntitySet="CountryCode" />
             <End Role="DealerCode" EntitySet="DealerCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__AddUse__7093AB15" Association="Self.FK__Employee__AddUse__7093AB15">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__TownSe__7187CF4E" Association="Self.FK__Employee__TownSe__7187CF4E">
+            <End Role="TownCode" EntitySet="TownCode" />
+            <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
           <AssociationSet Name="FK__HPurchase__Deale__59B045BD" Association="Self.FK__HPurchase__Deale__59B045BD">
             <End Role="DealerCode" EntitySet="DealerCode" />
@@ -712,6 +809,18 @@
           <AssociationSet Name="FK__SectorCod__UserI__3D491139" Association="Self.FK__SectorCod__UserI__3D491139">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="SectorCode" EntitySet="SectorCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StoreCode__Count__7740A8A4" Association="Self.FK__StoreCode__Count__7740A8A4">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="StoreCode" EntitySet="StoreCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StoreCode__Emplo__764C846B" Association="Self.FK__StoreCode__Emplo__764C846B">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="StoreCode" EntitySet="StoreCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StoreCode__TownS__7834CCDD" Association="Self.FK__StoreCode__TownS__7834CCDD">
+            <End Role="TownCode" EntitySet="TownCode" />
+            <End Role="StoreCode" EntitySet="StoreCode" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierC__TownS__6AEFE058" Association="Self.FK__SupplierC__TownS__6AEFE058">
             <End Role="TownCode" EntitySet="TownCode" />
@@ -834,6 +943,12 @@
           <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Store__1A69E950" FromRole="StoreCode" ToRole="HPurchase" />
           <NavigationProperty Name="HSales" Relationship="TopSoftModel.StoreSerial" FromRole="StoreCode" ToRole="HSales" />
           <Property Name="AddUserDate" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeSerial" Type="Int32" />
+          <Property Name="CountrySerial" Type="Int32" />
+          <Property Name="TownSerial" Type="Int32" />
+          <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__StoreCode__Count__7740A8A4" FromRole="StoreCode" ToRole="CountryCode" />
+          <NavigationProperty Name="Employee" Relationship="TopSoftModel.FK__StoreCode__Emplo__764C846B" FromRole="StoreCode" ToRole="Employee" />
+          <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__StoreCode__TownS__7834CCDD" FromRole="StoreCode" ToRole="TownCode" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -1000,6 +1115,27 @@
             <End Role="DealerCode" EntitySet="DealerCode" />
             <End Role="HPurchase" EntitySet="HPurchase" />
           </AssociationSet>
+          <EntitySet Name="Employee" EntityType="TopSoftModel.Employee" />
+          <AssociationSet Name="FK__Employee__AddUse__7093AB15" Association="TopSoftModel.FK__Employee__AddUse__7093AB15">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StoreCode__Count__7740A8A4" Association="TopSoftModel.FK__StoreCode__Count__7740A8A4">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="StoreCode" EntitySet="StoreCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__TownSe__7187CF4E" Association="TopSoftModel.FK__Employee__TownSe__7187CF4E">
+            <End Role="TownCode" EntitySet="TownCode" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StoreCode__Emplo__764C846B" Association="TopSoftModel.FK__StoreCode__Emplo__764C846B">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="StoreCode" EntitySet="StoreCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StoreCode__TownS__7834CCDD" Association="TopSoftModel.FK__StoreCode__TownS__7834CCDD">
+            <End Role="TownCode" EntitySet="TownCode" />
+            <End Role="StoreCode" EntitySet="StoreCode" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="CountryCode">
           <Key>
@@ -1016,6 +1152,8 @@
           <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="CountryCode" ToRole="SupplierCode" />
           <Property Name="AddUserDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DealerCode" Relationship="TopSoftModel.FK__DealerCod__Websi__1EC48A19" FromRole="CountryCode" ToRole="DealerCode" />
+          <NavigationProperty Name="Employee" Relationship="TopSoftModel.FK__Employee__AddUse__7093AB15" FromRole="CountryCode" ToRole="Employee" />
+          <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__StoreCode__Count__7740A8A4" FromRole="CountryCode" ToRole="StoreCode" />
         </EntityType>
         <EntityType Name="CustomerCode">
           <Key>
@@ -1082,6 +1220,8 @@
           <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__SupplierC__TownS__6AEFE058" FromRole="TownCode" ToRole="SupplierCode" />
           <Property Name="AddUserDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DealerCode" Relationship="TopSoftModel.FK__DealerCod__TownS__1FB8AE52" FromRole="TownCode" ToRole="DealerCode" />
+          <NavigationProperty Name="Employee" Relationship="TopSoftModel.FK__Employee__TownSe__7187CF4E" FromRole="TownCode" ToRole="Employee" />
+          <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__StoreCode__TownS__7834CCDD" FromRole="TownCode" ToRole="StoreCode" />
         </EntityType>
         <Association Name="FK__CustomerC__Websi__662B2B3B">
           <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1">
@@ -1559,6 +1699,94 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Serial" />
+          </Key>
+          <Property Name="Serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArabicName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountrySerial" Type="Int32" />
+          <Property Name="TownSerial" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AddUserDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__Employee__AddUse__7093AB15" FromRole="Employee" ToRole="CountryCode" />
+          <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__Employee__TownSe__7187CF4E" FromRole="Employee" ToRole="TownCode" />
+          <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__StoreCode__Emplo__764C846B" FromRole="Employee" ToRole="StoreCode" />
+        </EntityType>
+        <Association Name="FK__Employee__AddUse__7093AB15">
+          <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="CountrySerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StoreCode__Count__7740A8A4">
+          <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1" />
+          <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="StoreCode">
+              <PropertyRef Name="CountrySerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__TownSe__7187CF4E">
+          <End Type="TopSoftModel.TownCode" Role="TownCode" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TopSoftModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="TownSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StoreCode__Emplo__764C846B">
+          <End Type="TopSoftModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="StoreCode">
+              <PropertyRef Name="EmployeeSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StoreCode__TownS__7834CCDD">
+          <End Type="TopSoftModel.TownCode" Role="TownCode" Multiplicity="0..1" />
+          <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownCode">
+              <PropertyRef Name="Serial" />
+            </Principal>
+            <Dependent Role="StoreCode">
+              <PropertyRef Name="TownSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1607,7 +1835,10 @@
     <EntitySetMapping Name="StoreCode">
       <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.StoreCode)">
         <MappingFragment StoreEntitySet="StoreCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+                <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+                <ScalarProperty Name="EmployeeSerial" ColumnName="EmployeeSerial" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
@@ -1852,6 +2083,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="TopSoftModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+                <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+                <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+                <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+                <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
     </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

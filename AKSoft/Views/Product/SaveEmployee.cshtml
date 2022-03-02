@@ -1,5 +1,5 @@
 ﻿@model AKSoft.Models.CustomerCode
-@{ViewBag.Title = "تعريف عميل";}
+@{ViewBag.Title = "تعريف موظف";}
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -39,16 +39,16 @@ if (Convert.ToInt32(Session["Role"]) == 4)
 </head>
 <body>
     <div style="direction:rtl;">
-        <h1 class="head save">تعريف عميل</h1>
+        <h1 class="head save">تعريف موظف</h1>
     </div>
     @if (TempData["Al"] != null)
     {
         <script>
-            swal("Saved successfully!", " ", "success");
+            swal("الحمدلله تم الحفظ بنجاح", " ", "success");
         </script>
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
-    @using (Html.BeginForm("SaveCustomer", "Product", FormMethod.Post))
+    @using (Html.BeginForm("SaveEmployee", "Product", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 

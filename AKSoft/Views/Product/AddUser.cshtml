@@ -7,7 +7,7 @@
 @if (TempData["Al"] == null)
 {
     <script>
-        swal("Saved successfully!", " ", "success");
+        swal("تم الحفظ بنجاح", " ", "success");
     </script>
     // <strong style="color:green">Saved successfully! </strong>@TempData["Al"] //Display Word (Successful Done) + name
 }
@@ -30,7 +30,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Add User</title>
+    <title>إضافة مستخدم</title>
     <link rel="stylesheet" href="~/Content/styl.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
@@ -232,7 +232,7 @@
     @if (TempData["Al"] != null)
     {
         <script>
-            swal("Created User successfully!", " ", "success");
+            swal("تم إضافة مستخدم جديد", " ", "success");
         </script>
         // <strong style="color:green">Saved successfully! </strong>@TempData["Al"] //Display Word (Successful Done) + name
     }
@@ -255,41 +255,41 @@
             <div class="login-html" style="padding-top:17px ;height:120%;position:relative;border-radius: 15px;" >
                     <div class="login-form">
                         <div class="group">
-                            <label for="user" class="label">FirstName</label>
+                            <label for="user" class="label">الإسم الأول</label>
                             @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "input", @required = "required" } })
                         </div>
                         <div class="group">
-                            <label for="pass" class="label">MiddleName</label>
+                            <label for="pass" class="label">الإسم الأوسط</label>
                             @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "input",  @required = "required" } })
                         </div>
                         <div class="group">
-                            <label for="user" class="label">LastName</label>
+                            <label for="user" class="label">إسم العائلة</label>
                             @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "input", @required = "required" } })
                         </div>
                         <div class="group">
-                            <label for="user" class="label">E-mail</label>
+                            <label for="user" class="label">البريد الإلكتروني</label>
                             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input", @required = "required" } })
                         </div>
                         <div class="group">
-                            <label class="label">Branch</label>
+                            <label class="label">الفرع</label>
                             @Html.DropDownListFor(model => model.BranchSerial, ViewBag.DepartmentList7 as SelectList, "--select--", new { @class = "input", @style = "color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
                         </div>
                         <div class="group">
-                            <label class="label">Sector</label>
+                            <label class="label">القطاع</label>
                             @Html.DropDownListFor(model => model.SectorSerial, ViewBag.DepartmentList8 as SelectList, "--select--", new { @class = "input", @style = "color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
                         </div>
                         <div class="group">
-                            <label class="label">Role</label>
+                            <label class="label">الصلاحية</label>
                             @Html.DropDownListFor(model => model.Role, ViewBag.DepartmentList9 as SelectList, "--select--", new { @class = "input", @style = "color:black;font-size: 15px;background-color: #a7fbee;", @required = "required" }) @*Required DropDownList *@
                         </div>
                         <div class="group">
-                            <label for="pass" class="label">Password</label>
+                            <label for="pass" class="label">كلمة المرور</label>
                             @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input",id="password", @type = "password", @required = "required" } })
                             <span asp-validation-for="Password" class="text-danger"></span>
 
                          </div>
                         <div class="group">
-                            <label for="pass" class="label">Re Password</label>
+                            <label for="pass" class="label">إعادة كتابة كلمة المرور</label>
                             @Html.EditorFor(model => model.RePassword, new { htmlAttributes = new { @class = "input", @type = "password", @id = "confirm_password", @required = "required" } })
                             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             <span id='message'></span>
@@ -300,7 +300,7 @@
                 </div>*@
                         <div class="group">
                             <a href="@Url.Action("AddUser","Product")">    
-                                <input type="submit" class="button" value="Add User">
+                                <input type="submit" class="button" value="إضافة المستخدم">
                     
                          </a>
                             </div>

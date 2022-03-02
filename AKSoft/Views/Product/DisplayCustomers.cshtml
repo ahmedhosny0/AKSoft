@@ -37,21 +37,20 @@ if (Convert.ToInt32(Session["Role"]) == 4)
 <a href="@Url.Action("SaveCustomer","Product")">Add Customer</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>ID</th>
-        <th>ArabicName</th>
-        <th>EnglishName</th>
-        <th>DescName</th>
-        <th>Description</th>
-        <th>Address1</th>
-        <th>Address2</th>
-        <th>Tel1</th>
-        <th>Tel2</th>
-        <th>Tel3</th>
-        <th>Country</th>
-        <th>Town</th>
-        <th>E-mail</th>
-        <th>Website</th>
-
+        <th>الكود</th>
+        <th>الاسم عربي</th>
+        <th>الإسم إنجليزي</th>
+        <th>اللقب</th>
+        <th>الوصف/ ملاحظات</th>
+        <th>عنوان1</th>
+        <th>عنوان2</th>
+        <th>تليفون1</th>
+        <th>تليفون2</th>
+        <th>تليفون3</th>
+        <th>الدوله</th>
+        <th>المدينة</th>
+        <th>البريد الإلكتروني</th>
+        <th>الموقع</th>
     </tr>
 
     @for (int i = 0; i < Model.Rows.Count; i++)

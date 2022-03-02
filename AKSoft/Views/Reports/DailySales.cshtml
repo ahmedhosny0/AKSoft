@@ -8,14 +8,14 @@
 <a href="@Url.Action("SaveInvoiceSales", "Product")">Add Invoice</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>ID</th>
-        <th>ItemName</th>
-        <th>Store</th>
-        <th>UnitName</th>
-        <th>Customer Name</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Total</th>
+        <th>كود الصنف</th>
+        <th>الصنف</th>
+        <th>المخزن</th>
+        <th>الوحده</th>
+        <th>العميل</th>
+        <th>الكميه</th>
+        <th>سعر الوحده</th>
+        <th>الإجمالي</th>
     </tr>
 
     @for (int i = 0; i < Model.Rows.Count; i++)

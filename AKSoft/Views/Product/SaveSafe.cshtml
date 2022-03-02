@@ -56,6 +56,10 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 
         <ul class="Elements">
             <li class="">
+                <label class="Lab">الكود</label>
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
+            </li>
+            <li class="">
                 <label class="Lab">Date</label>
                 @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
             </li>
@@ -84,7 +88,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 
             <li class="">
                 <button class="save">Save</button>
-                <a href="@Url.Action("DisplayCountries", "Product")"><input style="background-color:#0bf765" class="save" value="Show ALL" /></a>
+                <a href="@Url.Action("DisplayCountries", "Product")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
             </li>
         </ul>
     }

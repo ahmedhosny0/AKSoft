@@ -71,6 +71,27 @@
     <Property Name="Website" Type="nvarchar" MaxLength="30" />
     <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="150" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="150" />
+    <Property Name="Telephone1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountrySerial" Type="int" />
+    <Property Name="TownSerial" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" MaxLength="30" />
+    <Property Name="AddUserDate" Type="datetime" />
+  </EntityType>
   <EntityType Name="GroupCode">
     <Key>
       <PropertyRef Name="Serial" />
@@ -200,6 +221,9 @@
     <Property Name="Phone4" Type="nvarchar" MaxLength="20" />
     <Property Name="AreaStock" Type="nvarchar" MaxLength="20" />
     <Property Name="AddUserDate" Type="datetime" />
+    <Property Name="EmployeeSerial" Type="int" />
+    <Property Name="CountrySerial" Type="int" />
+    <Property Name="TownSerial" Type="int" />
   </EntityType>
   <EntityType Name="SupplierCode">
     <Key>
@@ -342,6 +366,34 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Employee__AddUse__7093AB15">
+    <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="CountrySerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__TownSe__7187CF4E">
+    <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="TownSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__HPurchase__Deale__59B045BD">
     <End Role="DealerCode" Type="Self.DealerCode" Multiplicity="0..1" />
     <End Role="HPurchase" Type="Self.HPurchase" Multiplicity="*" />
@@ -473,6 +525,42 @@
       </Principal>
       <Dependent Role="SectorCode">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StoreCode__Count__7740A8A4">
+    <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1" />
+    <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="StoreCode">
+        <PropertyRef Name="CountrySerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StoreCode__Emplo__764C846B">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="StoreCode">
+        <PropertyRef Name="EmployeeSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StoreCode__TownS__7834CCDD">
+    <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1" />
+    <End Role="StoreCode" Type="Self.StoreCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownCode">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="StoreCode">
+        <PropertyRef Name="TownSerial" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -637,6 +725,7 @@
     <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CustomerCode" EntityType="Self.CustomerCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DealerCode" EntityType="Self.DealerCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GroupCode" EntityType="Self.GroupCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HPurchase" EntityType="Self.HPurchase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HSales" EntityType="Self.HSales" Schema="dbo" store:Type="Tables" />
@@ -667,6 +756,14 @@
     <AssociationSet Name="FK__DealerCod__Websi__1EC48A19" Association="Self.FK__DealerCod__Websi__1EC48A19">
       <End Role="CountryCode" EntitySet="CountryCode" />
       <End Role="DealerCode" EntitySet="DealerCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__AddUse__7093AB15" Association="Self.FK__Employee__AddUse__7093AB15">
+      <End Role="CountryCode" EntitySet="CountryCode" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__TownSe__7187CF4E" Association="Self.FK__Employee__TownSe__7187CF4E">
+      <End Role="TownCode" EntitySet="TownCode" />
+      <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
     <AssociationSet Name="FK__HPurchase__Deale__59B045BD" Association="Self.FK__HPurchase__Deale__59B045BD">
       <End Role="DealerCode" EntitySet="DealerCode" />
@@ -707,6 +804,18 @@
     <AssociationSet Name="FK__SectorCod__UserI__3D491139" Association="Self.FK__SectorCod__UserI__3D491139">
       <End Role="UserInfo" EntitySet="UserInfo" />
       <End Role="SectorCode" EntitySet="SectorCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StoreCode__Count__7740A8A4" Association="Self.FK__StoreCode__Count__7740A8A4">
+      <End Role="CountryCode" EntitySet="CountryCode" />
+      <End Role="StoreCode" EntitySet="StoreCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StoreCode__Emplo__764C846B" Association="Self.FK__StoreCode__Emplo__764C846B">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="StoreCode" EntitySet="StoreCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StoreCode__TownS__7834CCDD" Association="Self.FK__StoreCode__TownS__7834CCDD">
+      <End Role="TownCode" EntitySet="TownCode" />
+      <End Role="StoreCode" EntitySet="StoreCode" />
     </AssociationSet>
     <AssociationSet Name="FK__SupplierC__TownS__6AEFE058" Association="Self.FK__SupplierC__TownS__6AEFE058">
       <End Role="TownCode" EntitySet="TownCode" />

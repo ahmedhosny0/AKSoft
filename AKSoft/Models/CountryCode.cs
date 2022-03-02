@@ -20,6 +20,8 @@ namespace AKSoft.Models
             this.CustomerCode = new HashSet<CustomerCode>();
             this.SupplierCode = new HashSet<SupplierCode>();
             this.DealerCode = new HashSet<DealerCode>();
+            this.Employee = new HashSet<Employee>();
+            this.StoreCode = new HashSet<StoreCode>();
         }
     
         public int Serial { get; set; }
@@ -37,5 +39,9 @@ namespace AKSoft.Models
         public virtual ICollection<SupplierCode> SupplierCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DealerCode> DealerCode { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StoreCode> StoreCode { get; set; }
     }
 }

@@ -42,17 +42,14 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 <a href="@Url.Action("SaveStock","Product")">Add Stock</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>ID</th>
-        <th>ArabicName</th>
-        <th>EnglishName</th>
-        <th>DescName</th>
-        <th>Description</th>
-        <th>Address</th>
-        <th>Workers</th>
-        <th>StoreKeeper</th>
-        <th>Phone1</th>
-        <th>Phone2</th>
-        <th>Phone3</th>
+        <th>الكود</th>
+        <th>الإسم</th>
+        <th>ملاحظات</th>
+        <th>العنوان</th>
+        <th>أمين المخزن</th>
+        <th>تليفون1</th>
+        <th>تليفو2</th>
+        <th>تليفون3</th>
         <th></th>
 
     </tr>
@@ -68,9 +65,6 @@ if (Convert.ToInt32(Session["Role"]) == 5)
             <td>@Model.Rows[i][5]</td>
             <td>@Model.Rows[i][6]</td>
             <td>@Model.Rows[i][7]</td>
-            <td>@Model.Rows[i][8]</td>
-            <td>@Model.Rows[i][9]</td>
-            <td>@Model.Rows[i][10]</td>
             <td>
                 <a href="@Url.Action("EditStock", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
                 <a href="@Url.Action("DeleteStock", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>

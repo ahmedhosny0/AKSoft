@@ -193,6 +193,9 @@
     <Compile Include="Models\DealerCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GroupCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -455,6 +458,7 @@
     <Content Include="Views\Reports\ItemLastPurchasePrice.cshtml" />
     <Content Include="Views\Product\AddPermission.cshtml" />
     <Content Include="Views\Product\ExchangePermission.cshtml" />
+    <Content Include="Views\Product\SaveEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
