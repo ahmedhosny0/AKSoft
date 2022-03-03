@@ -898,7 +898,13 @@ public class ProductController : Controller
     // Stock Edit
     public ActionResult EditStock(int? id)
     {
-
+        TopSoft db = new TopSoft();
+        List<CountryCode> list1 = db.CountryCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName", 1);
+        List<TownCode> list2 = db.TownCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName", 1);
+        List<Employee> list3 = db.Employee.ToList();
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName", 1);
         StoreCode productModel = new StoreCode();
         DataTable dtblProduct = new DataTable();
        try
@@ -907,7 +913,7 @@ public class ProductController : Controller
         {
 
             sqlCon.Open();
-            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Description,[Address],[NumberOfLeans],[StoreKeeper],[Phone1],[Phone2],[Phone3],AddUserDate FROM StoreCode Where Serial =@Serial";
+            string query = "SELECT Code,ArabicName,Description,[Address],EmployeeSerial,CountrySerial,TownSerial,[Phone1],[Phone2],[Phone3],AreaStock FROM StoreCode Where Serial =@Serial";
             SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
             sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
             sqlDa.Fill(dtblProduct);
@@ -915,17 +921,17 @@ public class ProductController : Controller
 
         if (dtblProduct.Rows.Count == 1)
         {
-            productModel.Serial = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+            productModel.Code = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
             productModel.ArabicName = dtblProduct.Rows[0][1].ToString();
-            productModel.EnglishName = dtblProduct.Rows[0][2].ToString();
-            productModel.DescName = dtblProduct.Rows[0][3].ToString();
-            productModel.Description = dtblProduct.Rows[0][4].ToString();
-            productModel.Address = dtblProduct.Rows[0][5].ToString();
-            productModel.NumberOfLeans = Convert.ToInt32(dtblProduct.Rows[0][6].ToString());
-            productModel.StoreKeeper = dtblProduct.Rows[0][7].ToString();
-            productModel.Phone1 = dtblProduct.Rows[0][8].ToString();
-            productModel.Phone2 = dtblProduct.Rows[0][9].ToString();
-            productModel.Phone3 = dtblProduct.Rows[0][10].ToString();
+            productModel.Description = dtblProduct.Rows[0][2].ToString();
+            productModel.Address = dtblProduct.Rows[0][3].ToString();
+            productModel.EmployeeSerial = Convert.ToInt32(dtblProduct.Rows[0][4].ToString());
+            productModel.CountrySerial = Convert.ToInt32(dtblProduct.Rows[0][5].ToString());
+            productModel.TownSerial = Convert.ToInt32(dtblProduct.Rows[0][6].ToString());
+            productModel.Phone1 = dtblProduct.Rows[0][7].ToString();
+            productModel.Phone2 = dtblProduct.Rows[0][8].ToString();
+            productModel.Phone3 = dtblProduct.Rows[0][9].ToString();
+            productModel.AreaStock = dtblProduct.Rows[0][10].ToString();
             TempData["As"] = "";
             return View(productModel);
 
@@ -945,24 +951,31 @@ public class ProductController : Controller
 
     public ActionResult EditStock(StoreCode productModel)
     {
+        TopSoft db = new TopSoft();
+        List<CountryCode> list1 = db.CountryCode.ToList();
+        ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName", 1);
+        List<TownCode> list2 = db.TownCode.ToList();
+        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName", 1);
+        List<Employee> list3 = db.Employee.ToList();
+        ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName", 1);
         try
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                string query = "UPDATE StoreCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Description=@Description ,Address=@Address,StoreKeeper=@StoreKeeper,NumberOfLeans=@NumberOfLeans, Phone1=@Phone1,Phone2=@Phone2, Phone3=@Phone3  WHere Serial = @pr";
+                string query = "UPDATE StoreCode SET Code=@Code,ArabicName = @ArabicName ,Description=@Description ,Address=@Address,EmployeeSerial=@EmployeeSerial,CountrySerial=@CountrySerial,TownSerial=@TownSerial, Phone1=@Phone1,Phone2=@Phone2, Phone3=@Phone3,AreaStock=@AreaStock  Where Serial =@Serial";
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-                sqlCmd.Parameters.AddWithValue("@pr", productModel.Serial);
+                sqlCmd.Parameters.AddWithValue("@Code", productModel.Code);
                 sqlCmd.Parameters.AddWithValue("@ArabicName", productModel.ArabicName);
-                sqlCmd.Parameters.AddWithValue("@EnglishName", productModel.EnglishName);
-                sqlCmd.Parameters.AddWithValue("@DescName", productModel.DescName);
                 sqlCmd.Parameters.AddWithValue("@Description", productModel.Description);
                 sqlCmd.Parameters.AddWithValue("@Address", productModel.Address);
-                sqlCmd.Parameters.AddWithValue("@NumberOfLeans", productModel.NumberOfLeans);
-                sqlCmd.Parameters.AddWithValue("@StoreKeeper", productModel.StoreKeeper);
+                sqlCmd.Parameters.AddWithValue("@EmployeeSerial", productModel.EmployeeSerial);
+                sqlCmd.Parameters.AddWithValue("@CountrySerial", productModel.CountrySerial);
+                sqlCmd.Parameters.AddWithValue("@TownSerial", productModel.TownSerial);
                 sqlCmd.Parameters.AddWithValue("@Phone1", productModel.Phone1);
                 sqlCmd.Parameters.AddWithValue("@Phone2", productModel.Phone2);
                 sqlCmd.Parameters.AddWithValue("@Phone3", productModel.Phone3);
+                sqlCmd.Parameters.AddWithValue("@AreaStock", productModel.AreaStock);
                 sqlCmd.ExecuteNonQuery();
                 TempData["As"] = "";
             }
@@ -1515,7 +1528,7 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,ArabicName,EnglishName,DescName,Notes,AddUserDate from TownCode", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Code,ArabicName,EnglishNotes,AddUserDate from TownCode", sqlCon);
             sqlDa.Fill(dtblProduct);
         }
         return View(dtblProduct);
@@ -1549,18 +1562,16 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            string query = "SELECT Serial,ArabicName,EnglishName,DescName,Notes  FROM TownCode Where Serial = @Serial";
+            string query = "SELECT Code,ArabicName,Notes  FROM TownCode Where Serial = @Serial";
             SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
             sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
             sqlDa.Fill(dtblProduct);
         }
         if (dtblProduct.Rows.Count == 1)
         {
-            productModel.Serial = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+            productModel.Code = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
             productModel.ArabicName = dtblProduct.Rows[0][1].ToString();
-            productModel.EnglishName = dtblProduct.Rows[0][2].ToString();
-            productModel.DescName = dtblProduct.Rows[0][3].ToString();
-            productModel.Notes = dtblProduct.Rows[0][4].ToString();
+            productModel.Notes = dtblProduct.Rows[0][2].ToString();
             return View(productModel);
         }
         else
@@ -1577,12 +1588,10 @@ public class ProductController : Controller
             {
                 sqlCon.Open();
 
-                string query = "UPDATE TownCode SET ArabicName = @ArabicName ,EnglishName = @EnglishName ,DescName=@DescName ,Notes=@Description   WHere Serial = @pr";
+                string query = "UPDATE TownCode SET Code = @Code ,ArabicName = @ArabicName ,Notes=@Description   WHere Serial = @pr";
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-                sqlCmd.Parameters.AddWithValue("@pr", productModel.Serial);
+                sqlCmd.Parameters.AddWithValue("@Code", productModel.Code);
                 sqlCmd.Parameters.AddWithValue("@ArabicName", productModel.ArabicName);
-                sqlCmd.Parameters.AddWithValue("@EnglishName", productModel.EnglishName);
-                sqlCmd.Parameters.AddWithValue("@DescName", productModel.DescName);
                 sqlCmd.Parameters.AddWithValue("@Description", productModel.Notes);
                 sqlCmd.ExecuteNonQuery();
                 TempData["As"] = "";

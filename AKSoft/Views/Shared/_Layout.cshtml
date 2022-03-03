@@ -4,14 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title </title>
-    <script src="~/Scripts/main.js"></script>
     <link rel="stylesheet" href="~/Content/styl.css" />
-    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/Content/g.css" />
-    <link rel="stylesheet" href="~/Content/Icons.css" />
     <link rel="stylesheet" href="~/Content/fonts/css/all.min.css"><style>
     .fa
     {
@@ -167,7 +162,7 @@
             </div>
         </div>
     </div>
-    <div class="area"></div><nav class="main-menu" style="height:870px;float:right;direction:rtl;right:0;">
+    <div class="area"></div><nav class="main-menu" style="height:800px;float:right;direction:rtl;right:0;overflow:auto;">
 
         <ul style="margin-top:50px;height:100%">
             <li class="has-subnav">
@@ -249,7 +244,7 @@
                 <ul class="t">
                     <li><a class="l" href="/Reports/DailySales">الحركةاليومية للمبيعات</a></li>
                     <li><a class="l" href="/Reports/ItemsBalance">أرصدة الأصناف</a></li>
-                    <li><a class="l" href="/Reports/ItemsState">دليل الأصناف</a></li>
+                    <li><a class="l" href="/Reports/ItemsState"> كارت الصنف</a></li>
                     <li><a class="l" href="/Reports/ProfitofItems">ربحية الأصناف</a></li>
                     <li><a class="l" href="/Reports/StocksState">تقييم المخزن</a></li>
                     <li><a class="l" href="/Reports/DailyPurchases">الحركة اليومية للمشتريات</a></li>
@@ -265,7 +260,7 @@
             </li>
         </ul>
 
-        <ul class="logout">
+        @*<ul class="logout">
             <li>
                 <a href="#">
                     <i class="fa fa-power-off fa-2x"></i>
@@ -275,7 +270,7 @@
                 </a>
             </li>
 
-        </ul>
+        </ul>*@
     </nav>
     <div class="container body-content">
         @RenderBody()
@@ -284,7 +279,9 @@
             <p>&copy; @DateTime.Now.Year - أحمد حسني أحمد خيري (AKSoft)</p>
         </footer>
     </div>
-
+    <script src="~/Scripts/main.js"></script>
+    @*<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />*@
     <script>
         /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */

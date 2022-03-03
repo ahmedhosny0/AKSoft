@@ -1,38 +1,5 @@
 ﻿@model System.Data.DataTable
-@{if (Convert.ToInt32(Session["Role"]) == 1)
-{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Display Customerrs";
-}
-if (Convert.ToInt32(Session["Role"]) == 4)
-{
-    ViewBag.Title = "Display Customerrs";
-    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
-}
-}
-<script src="~/Scripts/sweetalert.min.js"></script>
-@if (TempData["Al"] != null)
-{
-    <script>
-        swal("Deleted!", "Item has been deleted.", "success");
-    </script>
-    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
-}
-@if (TempData["As"] != null)
-{
-    <script>
-        swal("Modified Successfully!", " ", "success");
-    </script>
-    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
-}
-@if (TempData["A"] != null)
-{
-    <script>
-        swal("Oops...", "Something went wrong!Not Allowed", "error");
-    </script>
-    //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
-}
 <h2>Display Customerrs</h2>
 <a href="@Url.Action("SaveCustomer","Product")">Add Customer</a>
 <table class="table table-bordered table-striped">
@@ -77,5 +44,39 @@ if (Convert.ToInt32(Session["Role"]) == 4)
         </tr>
     }
 </table>
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Display Customerrs";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    ViewBag.Title = "Display Customerrs";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
+}
+<script src="~/Scripts/sweetalert.min.js"></script>
+@if (TempData["Al"] != null)
+{
+    <script>
+        swal("Deleted!", "Item has been deleted.", "success");
+    </script>
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
+@if (TempData["As"] != null)
+{
+    <script>
+        swal("Modified Successfully!", " ", "success");
+    </script>
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
+@if (TempData["A"] != null)
+{
+    <script>
+        swal("Oops...", "Something went wrong!Not Allowed", "error");
+    </script>
+    //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+}
 
 
