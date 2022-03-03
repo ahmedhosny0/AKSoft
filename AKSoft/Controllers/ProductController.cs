@@ -1528,7 +1528,7 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Code,ArabicName,EnglishNotes,AddUserDate from TownCode", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Code,ArabicName,Notes from TownCode", sqlCon);
             sqlDa.Fill(dtblProduct);
         }
         return View(dtblProduct);
@@ -1562,14 +1562,14 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            string query = "SELECT Code,ArabicName,Notes  FROM TownCode Where Serial = @Serial";
+            string query = "SELECT Serial,ArabicName,Notes  FROM TownCode Where Serial = @Serial";
             SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
             sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
             sqlDa.Fill(dtblProduct);
         }
         if (dtblProduct.Rows.Count == 1)
         {
-            productModel.Code = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+            productModel.Serial = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
             productModel.ArabicName = dtblProduct.Rows[0][1].ToString();
             productModel.Notes = dtblProduct.Rows[0][2].ToString();
             return View(productModel);
@@ -1588,11 +1588,11 @@ public class ProductController : Controller
             {
                 sqlCon.Open();
 
-                string query = "UPDATE TownCode SET Code = @Code ,ArabicName = @ArabicName ,Notes=@Description   WHere Serial = @pr";
+                string query = "UPDATE TownCode SET ArabicName = @ArabicName ,Notes=@Description   WHere Serial = @pr";
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-                sqlCmd.Parameters.AddWithValue("@Code", productModel.Code);
+                sqlCmd.Parameters.AddWithValue("@pr", productModel.Serial);
                 sqlCmd.Parameters.AddWithValue("@ArabicName", productModel.ArabicName);
-                sqlCmd.Parameters.AddWithValue("@Description", productModel.Notes);
+                sqlCmd.Parameters.AddWithValue("@Notes", productModel.Notes);
                 sqlCmd.ExecuteNonQuery();
                 TempData["As"] = "";
             }
