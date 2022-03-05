@@ -3351,7 +3351,7 @@ jQuery.support = (function( support ) {
 	opt = select.appendChild( document.createElement("option") );
 	input = div.getElementsByTagName("input")[ 0 ];
 
-	a.styl.cssText = "top:1px;float:left;opacity:.5";
+	a.st.cssText = "top:1px;float:left;opacity:.5";
 
 	// Test setAttribute on camelCase class. If it works, we need attrFixes when doing get/setAttribute (ie6/7)
 	support.getSetAttribute = div.className !== "t";
@@ -3382,7 +3382,7 @@ jQuery.support = (function( support ) {
 
 	// Verify style float existence
 	// (IE uses styleFloat instead of cssFloat)
-	support.cssFloat = !!a.styl.cssFloat;
+	support.cssFloat = !!a.st.cssFloat;
 
 	// Check the default checkbox/radio value ("" on WebKit; "on" elsewhere)
 	support.checkOn = !!input.value;
@@ -3489,7 +3489,7 @@ jQuery.support = (function( support ) {
 		}
 
 		container = document.createElement("div");
-		container.styl.cssText = "border:0;width:0;height:0;position:absolute;top:0;left:-9999px;margin-top:1px";
+		container.st.cssText = "border:0;width:0;height:0;position:absolute;top:0;left:-9999px;margin-top:1px";
 
 		body.appendChild( container ).appendChild( div );
 
@@ -3502,7 +3502,7 @@ jQuery.support = (function( support ) {
 		// hidden; don safety goggles and see bug #4512 for more information).
 		div.innerHTML = "<table><tr><td></td><td>t</td></tr></table>";
 		tds = div.getElementsByTagName("td");
-		tds[ 0 ].styl.cssText = "padding:0;margin:0;border:0;display:none";
+		tds[ 0 ].st.cssText = "padding:0;margin:0;border:0;display:none";
 		isSupported = ( tds[ 0 ].offsetHeight === 0 );
 
 		tds[ 0 ].style.display = "";
@@ -3514,7 +3514,7 @@ jQuery.support = (function( support ) {
 
 		// Check box-sizing and margin behavior.
 		div.innerHTML = "";
-		div.styl.cssText = "box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding:1px;border:1px;display:block;width:4px;margin-top:1%;position:absolute;top:1%;";
+		div.st.cssText = "box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding:1px;border:1px;display:block;width:4px;margin-top:1%;position:absolute;top:1%;";
 
 		// Workaround failing boxSizing test due to offsetWidth returning wrong value
 		// with some non-1 values of body zoom, ticket #13543
@@ -3532,7 +3532,7 @@ jQuery.support = (function( support ) {
 			// Fails in WebKit before Feb 2011 nightlies
 			// WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
 			marginDiv = div.appendChild( document.createElement("div") );
-			marginDiv.styl.cssText = div.styl.cssText = divReset;
+			marginDiv.st.cssText = div.st.cssText = divReset;
 			marginDiv.style.marginRight = marginDiv.style.width = "0";
 			div.style.width = "1px";
 
@@ -3546,7 +3546,7 @@ jQuery.support = (function( support ) {
 			// elements when setting their display to 'inline' and giving
 			// them layout
 			div.innerHTML = "";
-			div.styl.cssText = divReset + "width:1px;padding:1px;display:inline;zoom:1";
+			div.st.cssText = divReset + "width:1px;padding:1px;display:inline;zoom:1";
 			support.inlineBlockNeedsLayout = ( div.offsetWidth === 3 );
 
 			// Support: IE6
@@ -4652,10 +4652,10 @@ if ( !jQuery.support.style ) {
 			// Return undefined in the case of empty string
 			// Note: IE uppercases css property names, but if we were to .toLowerCase()
 			// .cssText, that would destroy case senstitivity in URL's, like in "background"
-			return elem.styl.cssText || undefined;
+			return elem.st.cssText || undefined;
 		},
 		set: function( elem, value ) {
-			return ( elem.styl.cssText = value + "" );
+			return ( elem.st.cssText = value + "" );
 		}
 	};
 }

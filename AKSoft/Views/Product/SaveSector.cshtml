@@ -22,7 +22,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>A</title>
-    <link rel="stylesheet" href="~/Content/styl.css" />
+    <link rel="stylesheet" href="~/Content/st.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
     <style>
@@ -57,6 +57,10 @@ if (Convert.ToInt32(Session["Role"]) == 5)
         @Html.AntiForgeryToken()
 
         <ul class="Elements">
+            <li class="">
+                <label class="Lab">الكود</label>
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
+            </li>
             <li class="">
                 <label class="Lab">الإسم</label>
                 @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@

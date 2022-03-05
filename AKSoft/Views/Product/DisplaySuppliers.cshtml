@@ -33,12 +33,13 @@ if (Convert.ToInt32(Session["Role"]) == 4)
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
+<style>th{text-align:center;}</style>
 <h2>Display Suppliers</h2>
 <a href="@Url.Action("SaveSupplier","Product")">Add Supplier</a>
-<table class="table table-bordered table-striped">
-    <tr>
+<table class="table table-bordered table-striped" style="float:right;">
+    <tr >
         <th>الكود</th>
-        <th>الاسم عربي</th>
+        <th >الاسم عربي</th>
         <th>الإسم إنجليزي</th>
         <th>اللقب</th>
         <th>الوصف/ ملاحظات</th>
@@ -49,7 +50,7 @@ if (Convert.ToInt32(Session["Role"]) == 4)
         <th>تليفون3</th>
         <th>الدوله</th>
         <th>المدينة</th>
-        <th>البريد الإلكتروني</th>
+        <th >البريد الإلكتروني</th>
         <th>الموقع</th>
     </tr>
 

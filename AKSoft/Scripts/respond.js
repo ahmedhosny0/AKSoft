@@ -24,7 +24,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
       div      = doc.createElement('div');
   
   div.id = 'mq-test-1';
-  div.styl.cssText = "position:absolute;top:-100em";
+  div.st.cssText = "position:absolute;top:-100em";
   fakeBody.style.background = "none";
   fakeBody.appendChild(div);
   
@@ -187,7 +187,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 				body = doc.body,
 				fakeUsed = false;
 									
-			div.styl.cssText = "position:absolute;font-size:1em;width:1em";
+			div.st.cssText = "position:absolute;font-size:1em;width:1em";
 					
 			if( !body ){
 				body = fakeUsed = doc.createElement( "body" );

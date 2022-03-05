@@ -9,9 +9,13 @@
     @Html.AntiForgeryToken()
 
     <ul class="Elements">
-        <li class="">
+        <li style="display:none">
+            <label class="Lab">السريال</label>
+            @Html.EditorFor(model => model.Serial, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "" } }) @*Required TextBox*@
+        </li>
+        <li>
             <label class="Lab">الكود</label>
-            @Html.EditorFor(model => model.Serial, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "" } }) @*Required TextBox*@
         </li>
         <li class="">
             <label class="Lab">الإسم</label>
@@ -23,8 +27,7 @@
         </li>
 
         <li class="">
-            <button class="save">حفظ</button>
-            <a href="@Url.Action("DisplayTowns", "Product")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
+            <button class="save">تعديل</button>
         </li>
     </ul>
 }

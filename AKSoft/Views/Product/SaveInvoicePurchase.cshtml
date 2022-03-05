@@ -22,30 +22,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="~/Content/styl.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>
-    <style>
-        .Elements {
-            background-color: #e5e5e5;
-            list-style-type: none;
-            border: ridge 1px;
-            margin: 0;
-            padding: 15px;
-        }
-                .head
-        {
-                background-color: #3577ff;
-                            font-size:18px;
-    width: 40%;
-    color: white
-        }
-    </style>
+
+    <title></title>
 </head>
 
 <body>
     <div style="direction:rtl;">
-        <h1 class="head save">فاتورة مشتريات</h1>
+        <h1 class="head">فاتورة مشتريات</h1>
     </div>
     @if (TempData["Al"] != null)
     {
@@ -62,7 +46,7 @@
     <ul class="Elements">
         <li class="gs">
             <label class="Lab">التاريخ</label>
-            @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
+           @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
         </li>
         <li>
             <label class="Lab">المخزن</label>
@@ -82,7 +66,7 @@
         </li>
         <li>
             <a onclick="PopupForm('@Url.Action("ItemLastPurchasePrice", "Reports")')"> <label class="Lab">الكميه</label></a>
-            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
+            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
         </li>
         <li>
             <label class="Lab">السعر</label>
@@ -90,7 +74,7 @@
         </li>
         <li>
             <label class="Lab">الإجمالي</label>
-            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt", @placeholder = "Total", @id = "txtResult" } })
+            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Total", @id = "txtResult" } })
         </li>
         <li>
             <button class="save">حفظ</button>

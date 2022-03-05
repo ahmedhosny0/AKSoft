@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/AKSoft.dll">
-      <publishTime>02/21/2022 02:54:46</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>02/02/2022 23:05:14</publishTime>
@@ -91,97 +91,97 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/02/2022 23:05:14</publishTime>
     </File>
     <File Include="Content/animate.min.css">
-      <publishTime>02/20/2022 23:43:26</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>02/20/2022 23:43:26</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>02/20/2022 23:43:26</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/font-awesome.min.css">
-      <publishTime>02/20/2022 23:43:26</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>02/21/2022 01:42:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/st.css">
-      <publishTime>02/20/2022 23:50:29</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/styl.css">
-      <publishTime>02/20/2022 23:43:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/style.css">
-      <publishTime>02/20/2022 23:43:28</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/accordion.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/all.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/autocomplete.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/base.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/button.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/core.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/datepicker.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/dialog.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/draggable.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/jquery-ui.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/jquery-ui.min.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/menu.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/progressbar.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/resizable.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/selectable.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/selectmenu.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/slider.css">
-      <publishTime>02/21/2022 01:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/sortable.css">
-      <publishTime>02/21/2022 01:34:11</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/spinner.css">
-      <publishTime>02/21/2022 01:34:11</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/tabs.css">
-      <publishTime>02/21/2022 01:34:11</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/theme.css">
-      <publishTime>02/21/2022 01:34:11</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/themes/base/tooltip.css">
-      <publishTime>02/21/2022 01:34:11</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>02/12/2022 00:20:36</publishTime>
+      <publishTime>12/02/2022 00:20:36</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
       <publishTime>02/02/2022 23:05:10</publishTime>
@@ -196,292 +196,292 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/02/2022 23:05:08</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>02/14/2022 18:28:44</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="img/back.jpg">
-      <publishTime>02/06/2022 00:39:04</publishTime>
+      <publishTime>06/02/2022 00:39:04</publishTime>
     </File>
     <File Include="Models/DBModel.edmx.diagram">
-      <publishTime>02/19/2022 16:19:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Models/DBModel.edmx.sql">
-      <publishTime>02/20/2022 00:23:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>02/02/2022 23:05:24</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>02/21/2022 00:41:18</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>02/21/2022 00:41:19</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/custom.js">
-      <publishTime>02/21/2022 00:05:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.js">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.map">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery-1.12.4.js">
-      <publishTime>02/21/2022 00:41:22</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery-1.12.4.min.js">
-      <publishTime>02/21/2022 00:41:22</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery-1.12.4.min.map">
-      <publishTime>02/21/2022 00:41:22</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery-ui-1.12.1.js">
-      <publishTime>02/21/2022 00:41:22</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery-ui-1.12.1.min.js">
-      <publishTime>02/21/2022 00:41:22</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery.js">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery.singlePageNav.min.js">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>02/21/2022 00:41:20</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
-      <publishTime>02/21/2022 00:41:20</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.js">
-      <publishTime>02/21/2022 00:41:21</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
-      <publishTime>02/21/2022 00:41:21</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/main.js">
-      <publishTime>02/21/2022 00:02:04</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.6.2.js">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/notify.min.js">
-      <publishTime>02/21/2022 00:41:22</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/respond.js">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/respond.min.js">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/sweetalert.min.js">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/typed.js">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/wow.min.js">
-      <publishTime>02/20/2022 23:07:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/EditorDelete/Doc.cshtml">
-      <publishTime>02/04/2022 06:54:04</publishTime>
+      <publishTime>04/02/2022 06:54:04</publishTime>
     </File>
     <File Include="Views/Product/a.cshtml">
-      <publishTime>02/21/2022 01:50:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/AddUser.cshtml">
-      <publishTime>02/20/2022 00:19:02</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/c.cshtml">
-      <publishTime>02/21/2022 01:18:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/CashExchange.cshtml">
-      <publishTime>02/14/2022 22:43:46</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/d.cshtml">
-      <publishTime>02/05/2022 10:39:20</publishTime>
+      <publishTime>05/02/2022 10:39:20</publishTime>
     </File>
     <File Include="Views/Product/DisplayBranches.cshtml">
-      <publishTime>02/19/2022 23:53:45</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplayCategories.cshtml">
-      <publishTime>02/19/2022 23:53:49</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplayCountries.cshtml">
-      <publishTime>02/19/2022 23:53:49</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplayCustomers.cshtml">
-      <publishTime>02/19/2022 13:35:45</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplayDealers.cshtml">
-      <publishTime>02/19/2022 23:53:49</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplayInvoicePurchase.cshtml">
-      <publishTime>02/19/2022 13:36:39</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplayInvoiceSales.cshtml">
-      <publishTime>02/19/2022 13:37:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplayItems.cshtml">
-      <publishTime>02/19/2022 23:52:53</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplaySectors.cshtml">
-      <publishTime>02/19/2022 23:52:55</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplayStocks.cshtml">
-      <publishTime>02/20/2022 00:48:12</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplaySuppliers.cshtml">
-      <publishTime>02/19/2022 13:35:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplayTowns.cshtml">
-      <publishTime>02/19/2022 23:52:55</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/DisplayUnits.cshtml">
-      <publishTime>02/19/2022 23:52:55</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/Doc.cshtml">
-      <publishTime>02/07/2022 07:19:24</publishTime>
+      <publishTime>07/02/2022 07:19:24</publishTime>
     </File>
     <File Include="Views/Product/Edit.cshtml">
-      <publishTime>02/14/2022 23:25:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/EditBranch.cshtml">
-      <publishTime>02/16/2022 23:23:26</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/EditCat.cshtml">
-      <publishTime>02/14/2022 23:25:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/EditCountry.cshtml">
-      <publishTime>02/15/2022 00:43:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/EditInPurchase.cshtml">
-      <publishTime>02/14/2022 23:25:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/EditInSales.cshtml">
-      <publishTime>02/14/2022 23:25:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/EditItem.cshtml">
-      <publishTime>02/14/2022 23:25:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/EditSector.cshtml">
-      <publishTime>02/16/2022 23:25:59</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/EditStock.cshtml">
-      <publishTime>02/14/2022 23:25:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/EditTown.cshtml">
-      <publishTime>02/15/2022 00:35:32</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/EditUnit.cshtml">
-      <publishTime>02/14/2022 23:25:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/GeneralUser.cshtml">
-      <publishTime>02/21/2022 00:10:33</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/Home.cshtml">
-      <publishTime>02/21/2022 00:04:27</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/index.cshtml">
-      <publishTime>02/19/2022 23:12:25</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/Login.cshtml">
-      <publishTime>02/21/2022 01:43:13</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/Loginr.cshtml">
-      <publishTime>02/14/2022 23:25:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/LoginUser.cshtml">
-      <publishTime>02/14/2022 23:25:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/ReceiveCash.cshtml">
-      <publishTime>02/14/2022 23:25:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/Sales.cshtml">
-      <publishTime>02/21/2022 00:09:13</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveBranch.cshtml">
-      <publishTime>02/19/2022 23:52:55</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveCountry.cshtml">
-      <publishTime>02/19/2022 23:52:55</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveCustomer.cshtml">
-      <publishTime>02/21/2022 02:21:43</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveDealer.cshtml">
-      <publishTime>02/21/2022 02:24:18</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveGroup.cshtml">
-      <publishTime>02/21/2022 01:13:05</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveInvoicePurchase.cshtml">
-      <publishTime>02/19/2022 13:42:29</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveInvoiceSales.cshtml">
-      <publishTime>02/19/2022 20:57:01</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveProduct.cshtml">
-      <publishTime>02/19/2022 23:52:55</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveSector.cshtml">
-      <publishTime>02/21/2022 00:30:37</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveStock.cshtml">
-      <publishTime>02/20/2022 00:51:24</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveSupplier.cshtml">
-      <publishTime>02/21/2022 02:22:53</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveTown.cshtml">
-      <publishTime>02/19/2022 23:52:55</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/SaveUnit.cshtml">
-      <publishTime>02/21/2022 02:02:06</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/Start.cshtml">
-      <publishTime>02/21/2022 00:05:19</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/User.cshtml">
-      <publishTime>02/21/2022 00:10:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Product/Worker.cshtml">
-      <publishTime>02/21/2022 00:08:11</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/CustomerAccount.cshtml">
-      <publishTime>02/15/2022 17:30:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/CustomersData.cshtml">
-      <publishTime>02/15/2022 17:30:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/DailyPurchases.cshtml">
-      <publishTime>02/15/2022 01:15:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/DailySales.cshtml">
-      <publishTime>02/15/2022 17:30:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/ItemsBalance.cshtml">
-      <publishTime>02/13/2022 21:10:45</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/ItemsState.cshtml">
-      <publishTime>02/13/2022 21:08:31</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/ProfitofItems.cshtml">
-      <publishTime>02/15/2022 17:30:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/StocksState.cshtml">
-      <publishTime>02/20/2022 00:56:01</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/SupplierAccount.cshtml">
-      <publishTime>02/15/2022 17:30:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/SupplierData.cshtml">
-      <publishTime>02/15/2022 17:30:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Reports/UsersData.cshtml">
-      <publishTime>02/20/2022 00:12:45</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>02/02/2022 23:05:16</publishTime>
@@ -490,40 +490,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/02/2022 23:05:16</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/21/2022 01:49:33</publishTime>
+      <publishTime>03/05/2022 00:09:04</publishTime>
     </File>
     <File Include="Views/Shared/_Layout2.cshtml">
-      <publishTime>02/21/2022 01:41:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutEm.cshtml">
-      <publishTime>02/18/2022 14:33:22</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutGeneral.cshtml">
-      <publishTime>02/19/2022 13:23:32</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutUser.cshtml">
-      <publishTime>02/18/2022 14:30:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutWorker.cshtml">
-      <publishTime>02/19/2022 23:45:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>02/19/2022 14:19:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartialA.cshtml">
-      <publishTime>02/20/2022 00:12:43</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartialb.cshtml">
-      <publishTime>02/19/2022 20:24:29</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>02/14/2022 18:28:44</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>02/02/2022 23:05:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/21/2022 02:54:46</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -4,11 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title </title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <script src="~/Scripts/main.js"></script>
-    <link rel="stylesheet" href="~/Content/styl.css" />
-    <link rel="stylesheet" href="~/Content/g.css" />
+
+    <link rel="stylesheet" href="~/Content/st.css" />
 
     <style>
         .dropbtn {
@@ -128,7 +125,9 @@
             <p>&copy; @DateTime.Now.Year - Ahmed Hosny Ahmed Khairy (AKSoft)</p>
         </footer>
     </div>
-
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/main.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

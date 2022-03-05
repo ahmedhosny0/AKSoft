@@ -21,14 +21,14 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     <script>
         swal("Deleted!", "Item has been deleted.", "success");
     </script>
-   // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-@if (TempData["As"] !=null)
+@if (TempData["As"] != null)
 {
     <script>
         swal("Modified Successfully!", " ", "success");
     </script>
-   // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
 @if (TempData["A"] != null)
 {
@@ -41,6 +41,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 <a href="@Url.Action("SaveUnit","Product")">Add Unit</a>
 <table class="table table-bordered table-striped">
     <tr>
+        <th style="display:none">السريال</th>
         <th>الكود</th>
         <th>الإسم</th>
         <th>ملاحظات</th>
@@ -49,9 +50,10 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     @for (int i = 0; i < Model.Rows.Count; i++)
     {
         <tr>
-            <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
-            <td>@Model.Rows[i][2]</td>
+            <td style="display:none">@Model.Rows[i][0]</td>
+            <td><a href="@Url.Action("EditUnit", "Product", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][1]</a></td>
+            <td><a href="@Url.Action("EditUnit", "Product", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][2]</a></td>
+            <td>@Model.Rows[i][3]</td>
             <td>
                 <a href="@Url.Action("EditUnit", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
                 <a href="@Url.Action("DeleteUnit", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>

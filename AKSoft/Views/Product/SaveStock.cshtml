@@ -17,29 +17,11 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link rel="stylesheet" href="~/Content/styl.css" />
+    <link rel="stylesheet" href="~/Content/st.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/main.js"> </script>
-    <style>
-        .Elements {
-            background-color: #e5e5e5;
-            list-style-type: none;
-            border: ridge 1px;
-            margin: 7px;
-            padding: 0px;
-        }
-                .head
-        {
-               background-color: #3577ff;
-    width: 40%;
-    color: white;
-                font-size:18px;
-        }
-    </style>
-
 </head>
 <body>
-    <h1 class="head save">تعريف مخزن</h1>
+    <h1 class="head">تعريف مخزن</h1>
     @if (TempData["Al"] != null)
     {
         <script>

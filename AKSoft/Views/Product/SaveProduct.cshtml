@@ -22,20 +22,13 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
-    <link rel="stylesheet" href="~/Content/styl.css" />
+    <link rel="stylesheet" href="~/Content/st.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>
     <script type="text/javascript" src="~/Scripts/main.js"> </script>
     <style>
                 .Lab
         {
             font-size:19px;
-        }
-        .Elements {
-            background-color: #e5e5e5;
-            list-style-type: none;
-            border: ridge 1px;
-            margin: 0;
-            padding: 8px;
         }
         .dr
 {
@@ -47,18 +40,11 @@ if (Convert.ToInt32(Session["Role"]) == 5)
             font-size: 14px;
             color: #333;
 }
-                .head
-        {
-                background-color: #3577ff;
-                            font-size:18px;
-    width: 40%;
-    color: white
-        }
     </style>
 </head>
 <body><div></div>
     <div style="direction:rtl;">
-        <h1 class="head save">إضافة صنف</h1>
+        <h1 class="head">إضافة صنف</h1>
     </div>    @if (TempData["Al"] != null)
     {
         <script>

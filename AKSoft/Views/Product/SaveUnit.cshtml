@@ -22,30 +22,15 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link rel="stylesheet" href="~/Content/styl.css" />
-    <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
-    <script type="text/javascript" src="~/Scripts/main.js"> </script>
+
     <style>
-        .Elements {
-            background-color: #e5e5e5;
-            list-style-type: none;
-            border: ridge 1px;
-            margin: 0;
-            padding: 8px;
-        }
-                .head
-        {
-                background-color: #3577ff;
-                            font-size:18px;
-    width: 40%;
-    color: white
-        }
+            
     </style>
 
 </head>
 <body> 
     <div style="direction:rtl;">
-        <h1 class="head save">تعريف وحده</h1>
+        <h1 class="head">تعريف وحده</h1>
     </div>
     @if (TempData["Al"] != null)
     {
@@ -80,7 +65,8 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     </ul>
     }
 
-
+    <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
+    <script type="text/javascript" src="~/Scripts/main.js"> </script>
 </body>
 </html>
 
