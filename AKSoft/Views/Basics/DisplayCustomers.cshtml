@@ -1,14 +1,19 @@
 ﻿@model System.Data.DataTable
+           @{
+               ViewBag.Title = "DisplayCustomers";
+           }
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Display Suppliers";
 }
 if (Convert.ToInt32(Session["Role"]) == 4)
 {
-    ViewBag.Title = "Display Suppliers";
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 }
 }
 <script src="~/Scripts/sweetalert.min.js"></script>
@@ -33,33 +38,30 @@ if (Convert.ToInt32(Session["Role"]) == 4)
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<style>th{text-align:center;}</style>
-<h2>Display Suppliers</h2>
-<a href="@Url.Action("SaveSupplier","Product")">Add Supplier</a>
-<table class="table table-bordered table-striped" style="float:right;">
-    <tr >
-        <th>الكود</th>
-        <th >الاسم عربي</th>
-        <th>الإسم إنجليزي</th>
-        <th>اللقب</th>
-        <th>الوصف/ ملاحظات</th>
-        <th>عنوان1</th>
-        <th>عنوان2</th>
+<h2>Display Customerrs</h2>
+<a href="@Url.Action("SaveCustomer", "Basics")">Add Customer</a>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th style="display:none">السريال</th>
+        <th>كود العميل</th>
+        <th>الإسم عربي</th>
+        <th>الإسم انجليزي</th>
+        <th>العنوان</th>
         <th>تليفون1</th>
         <th>تليفون2</th>
-        <th>تليفون3</th>
         <th>الدوله</th>
-        <th>المدينة</th>
-        <th >البريد الإلكتروني</th>
-        <th>الموقع</th>
+        <th>المدينه</th>
+        <th>البريد الإلكتروني</th>
     </tr>
 
     @for (int i = 0; i < Model.Rows.Count; i++)
     {
         <tr>
-            <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
-            <td>@Model.Rows[i][2]</td>
+            <td style="display:none">@Model.Rows[i][0]</td>
+            <td><a href="@Url.Action("EditCustomer", "Basics", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][1]</a>
+</td>
+            <td><a class="LinkItem" href="@Url.Action("EditCustomer", "Basics", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][1]</a>
+</td>            
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>
             <td>@Model.Rows[i][5]</td>
@@ -67,16 +69,11 @@ if (Convert.ToInt32(Session["Role"]) == 4)
             <td>@Model.Rows[i][7]</td>
             <td>@Model.Rows[i][8]</td>
             <td>@Model.Rows[i][9]</td>
-            <td>@Model.Rows[i][10]</td>
-            <td>@Model.Rows[i][11]</td>
-            <td>@Model.Rows[i][12]</td>
-            <td>@Model.Rows[i][13]</td>
             <td>
-                <a href="@Url.Action("EditSupplier", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
-                <a href="@Url.Action("DeleteSupplier", "Product", new { @id = @Model.Rows[i][0] })">Delete</a>
+                <a href="@Url.Action("EditCustomer", "Basics", new { @id = @Model.Rows[i][0] })">Edit</a>
+                <a href="@Url.Action("DeleteCustomer", "Basics", new { @id = @Model.Rows[i][0] })">Delete</a>
             </td>
         </tr>
     }
 </table>
-
 

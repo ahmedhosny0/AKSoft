@@ -1,13 +1,11 @@
-﻿@model AKSoft.Models.DealerCode
-@{ViewBag.Title = "تعريف مندوب";}
+﻿@model AKSoft.Models.SupplierCode
+@{ViewBag.Title = "تعريف مورد";}
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Save Dealer";
 }
 if (Convert.ToInt32(Session["Role"]) == 4)
 {
-    ViewBag.Title = "Save Dealer";
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
 }
@@ -16,21 +14,22 @@ if (Convert.ToInt32(Session["Role"]) == 4)
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>تعريف مندوب</title>
+    <title>SaveCustomer</title>
+    <link rel="stylesheet" href="~/Css/style.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>
 </head>
 <body>
     <div style="direction:rtl;">
-        <h1 class="head">تعريف مندوب</h1>
+        <h1 class="head">تعريف مورد</h1>
     </div>
     @if (TempData["Al"] != null)
     {
         <script>
-            swal("Saved successfully!", " ", "success");
+            swal("تم الحفظ بنجاح", " ", "success");
         </script>
         <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
     }
-    @using (Html.BeginForm("SaveDealer", "Product", FormMethod.Post))
+    @using (Html.BeginForm("SaveSupplier", "Basics", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -84,10 +83,10 @@ if (Convert.ToInt32(Session["Role"]) == 4)
             </li>
             <li class="">
                 <button class="save">حفظ</button>
-                <a href="@Url.Action("DisplayDealers", "Product")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
-            </li>
+                <a href="@Url.Action("DisplaySuppliers", "Basics")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
+                        </li>
         </ul>
     }
-    <script type="text/javascript" src="~/Scripts/main.js"> </script>
+
 </body>
 </html>

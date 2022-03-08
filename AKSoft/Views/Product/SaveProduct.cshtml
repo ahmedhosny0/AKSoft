@@ -24,23 +24,6 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     <title></title>
     <link rel="stylesheet" href="~/Content/st.css" />
     <script src="~/Scripts/sweetalert.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/main.js"> </script>
-    <style>
-                .Lab
-        {
-            font-size:19px;
-        }
-        .dr
-{
-            clear: both;
-            display: inline-block;
-            height: 26px;
-            margin: 0% 0% 1% 6%;
-            width:7%;
-            font-size: 14px;
-            color: #333;
-}
-    </style>
 </head>
 <body><div></div>
     <div style="direction:rtl;">
@@ -61,14 +44,8 @@ if (Convert.ToInt32(Session["Role"]) == 5)
                 <label class="Lab">الكود</label>
                 @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
             </li>
-            <li class="">
-                <label class="Lab">التاريخ</label>
-                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
-            </li>
             <li>
-                <label class="Lab">إسم المخزن</label>
-                @Html.DropDownListFor(model => model.StoreID, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
-                <label class="Lab dr">الوحدة</label>
+               <label class="Lab dr">الوحدة</label>
                 @Html.DropDownListFor(model => model.Unit1, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
                 <label class="Lab dr">مجموعة الصنف</label>
                 @Html.DropDownListFor(model => model.SerialGroup, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
@@ -97,7 +74,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
             </div>
             <div class="">
                 <label class="Lab">سعر البيع</label>
-                @Html.EditorFor(model => model.PriceSale1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "", @required = "required" } })
+                @Html.EditorFor(model => model.PriceSale1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
             </div>
             @*<div class="">
                 <label class="Lab">Quantity</label>
@@ -110,6 +87,6 @@ if (Convert.ToInt32(Session["Role"]) == 5)
             </div>
         </ul>
     }
-
+    <script type="text/javascript" src="~/Scripts/main.js"> </script>
 </body>
 </html>

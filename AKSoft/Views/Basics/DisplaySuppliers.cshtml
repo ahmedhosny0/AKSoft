@@ -1,23 +1,21 @@
 ﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "DisplaySuppliers";
+}
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "DisplayInvoicePurchase";
-}
-if (Convert.ToInt32(Session["Role"]) == 2)
-{
-    ViewBag.Title = "DisplayInvoicePurchase";
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 if (Convert.ToInt32(Session["Role"]) == 4)
 {
-    ViewBag.Title = "DisplayInvoicePurchase";
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
 }
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 }
-
-<h2>Display Invoice Purchase</h2>
+}
 <script src="~/Scripts/sweetalert.min.js"></script>
 @if (TempData["Al"] != null)
 {
@@ -40,43 +38,44 @@ if (Convert.ToInt32(Session["Role"]) == 4)
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<a href="@Url.Action("SaveInvoicePurchase", "Product")">Add Invoice Purchase</a>
+<h2>Display Supplierrs</h2>
+<a href="@Url.Action("SaveSupplier", "Basics")">Add Supplier</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th style="display:none">السريال</th>
-        <th>كود الحركة</th>
-        <th>الصنف</th>
-        <th>المخزن</th>
-        <th>الوحده</th>
-        <th>المورد</th>
-        <th>الكميه</th>
-        <th>سعر الوحده</th>
-        <th>الإجمالي</th>
-
+        <th>كود العميل</th>
+        <th>الإسم عربي</th>
+        <th>الإسم انجليزي</th>
+        <th>العنوان</th>
+        <th>تليفون1</th>
+        <th>تليفون2</th>
+        <th>الدوله</th>
+        <th>المدينه</th>
+        <th>البريد الإلكتروني</th>
     </tr>
+
     @for (int i = 0; i < Model.Rows.Count; i++)
     {
         <tr>
             <td style="display:none">@Model.Rows[i][0]</td>
             <td>
-                <a href="@Url.Action("EditInvoicePurchase", "Product", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][1]</a>
+                <a href="@Url.Action("EditSupplier", "Basics", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][1]</a>
             </td>
-            <td>@Model.Rows[i][2]</td>
+            <td>
+                <a class="LinkItem" href="@Url.Action("EditSupplier", "Basics", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][2]</a>
+            </td>            
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>
-            <td>
-                <a class="LinkItem" href="@Url.Action("EditInvoicePurchase", "Product", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][5]</a>
-            </td>
+            <td>@Model.Rows[i][5]</td>
             <td>@Model.Rows[i][6]</td>
             <td>@Model.Rows[i][7]</td>
             <td>@Model.Rows[i][8]</td>
-
+            <td>@Model.Rows[i][9]</td>
             <td>
-                <a href="@Url.Action("EditInvoicePurchase", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
-                <a href="@Url.Action("DeleteInPurchase", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
+                <a href="@Url.Action("EditSupplier", "Basics", new { @id = @Model.Rows[i][0] })">Edit</a>
+                <a href="@Url.Action("DeleteSupplier", "Basics", new { @id = @Model.Rows[i][0] })">Delete</a>
             </td>
         </tr>
     }
 </table>
-
 

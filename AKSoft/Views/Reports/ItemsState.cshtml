@@ -1,15 +1,14 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "Items State";
+    ViewBag.Title = "كارت الصنف";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Items State</h2>
+<h2>كارت الصنف</h2>
 <a href="@Url.Action("SaveProduct", "Product")">Add Product</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th>إسم الصنف</th>
-        <th>إسم المخزن</th>
         <th>مجموعة الصنف</th>
         <th>الوحده</th>
     </tr>
@@ -20,7 +19,6 @@
             <td>@Model.Rows[i][0]</td>
             <td>@Model.Rows[i][1]</td>
             <td>@Model.Rows[i][2]</td>
-            <td>@Model.Rows[i][3]</td>
         </tr>
     }
 </table>

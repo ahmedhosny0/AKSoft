@@ -23,22 +23,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <script src="~/Scripts/sweetalert.min.js"></script>
-<style>
-.Elements{
-   background-color: #e5e5e5; 
-  list-style-type: none;
-  border:ridge 1px;
-  margin: 0;
- padding: 15px;
-}
-        .head
-        {
-                 background-color: #3577ff;
-    width: 40%;
-                font-size:18px;
-    color: white
-        }
-</style>
 </head>
 <body>
     <br />
@@ -54,9 +38,13 @@
     {
         @Html.AntiForgeryToken()        
         <div style="direction:rtl;">
-            <h1 class="head save">فاتورة مبيعات</h1>
+            <h1 class="head">فاتورة مبيعات</h1>
         </div>
-    <ul class="Elements gs">
+    <ul class="Elements">
+        <li class="">
+            <label class="Lab">الكود</label>
+            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
+        </li>
             <li class="">
                 <label class="Lab">التاريخ</label>
                 @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@

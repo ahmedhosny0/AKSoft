@@ -1,56 +1,27 @@
 ﻿@model AKSoft.Models.HPurchase
+
 @{
-    ViewBag.Title = "فاتورة مشتريات";
-}
-@{if (Convert.ToInt32(Session["Role"]) == 1)
-{
+    ViewBag.Title = "EditInvoicePurchase";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-  if (Convert.ToInt32(Session["Role"]) == 2)
-  {
-      Layout = "~/Views/Shared/_LayoutUser.cshtml";
-
-  }
-  if (Convert.ToInt32(Session["Role"]) == 4)
-{ 
-    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
-
-}
-}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="~/Scripts/sweetalert.min.js"></script>
-
-    <title></title>
-</head>
-
-<body>
-    <div style="direction:rtl;">
-        <h1 class="head">فاتورة مشتريات</h1>
-    </div>
-    @if (TempData["Al"] != null)
-    {
-        <script>
-            swal("تم الحفظ بنجاح", " ", "success");
-        </script>
-        <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
-    }
-
-    @using (Html.BeginForm("SaveInvoicePurchase", "Product", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
+}<div style="direction:rtl;">
+    <h1 class="head">فاتورة مشتريات</h1>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
     <ul class="Elements">
+        <li style="display:none">
+            <label class="Lab">السريال</label>
+            @Html.EditorFor(model => model.Serial, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "" } }) @*Required TextBox*@
+        </li>
         <li class="">
             <label class="Lab">الكود</label>
             @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
         </li>
         <li class="gs">
             <label class="Lab">التاريخ</label>
-           @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
+            @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
         </li>
         <li>
             <label class="Lab">المخزن</label>
@@ -69,7 +40,7 @@
             @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
         </li>
         <li>
-            <a onclick="PopupForm('@Url.Action("ItemLastPurchasePrice","Reports")')"> <label class="Lab">الكميه</label></a>
+            <a onclick="PopupForm('@Url.Action("ItemLastPurchasePrice", "Reports")')"> <label class="Lab">الكميه</label></a>
             @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
         </li>
         <li>
@@ -81,13 +52,16 @@
             @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Total", @id = "txtResult" } })
         </li>
         <li>
-            <button class="save">حفظ</button>
-            <a href="@Url.Action("DisplayInvoicePurchase","Product")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
+            <button class="save">تعديل</button>
         </li>
-    </ul>
 
-    }
-    <script type="text/javascript">
+    </ul>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "DisplayInvoicePurchase")
+</div>
+<script type="text/javascript">
     function Multiy() {
         var txtFirstNo = document.getElementById('txtFirstNo').value;
         var txtSecondNo = document.getElementById('txtSecondNo').value;
@@ -96,9 +70,9 @@
             document.getElementById('txtResult').value = result;
         }
     }
-   
-            var Popup;
-       
+
+    var Popup;
+
     function PopupForm(url) {
         var formDiv = $('<div/>');
         $.get(url)
@@ -118,8 +92,9 @@
             });
         });
     }
-    </script>
+</script>
 
 
-</body>
-</html>
+
+
+

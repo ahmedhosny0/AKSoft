@@ -24,8 +24,6 @@
                 @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
             </li>
             <li>
-                <label class="Lab">إسم المخزن</label>
-                @Html.DropDownListFor(model => model.StoreID, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
                 <label class="Lab dr">الوحدة</label>
                 @Html.DropDownListFor(model => model.Unit1, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
                 <label class="Lab dr">مجموعة الصنف</label>

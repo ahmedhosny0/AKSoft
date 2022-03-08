@@ -152,7 +152,7 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select storecode.ArabicName,ItemCode.arabicname Name,UnitCode.ArabicName ,sum(s.a) from itemcode left join (select itemserial, sum(case when type =1 then (Quantity) else (Quantity)*-1  end) a from ( select ItemSerial,HPurchase.Quantity,1 as type from HPurchase union select ItemSerial,Quantity,0 as type from HSales ) ss group by ItemSerial)s on s.ItemSerial = itemcode.serial left join StoreCode on StoreCode.serial =ItemCode.StoreID left join UnitCode on UnitCode.serial =ItemCode.Unit1 group by Itemcode.ArabicName,storecode.ArabicName,UnitCode.ArabicName", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select StoreName,ItemName,GroupName,UnitName,Balance from RptItemBalance", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);
@@ -163,7 +163,7 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select distinct ItemName,StoreName,GroupName,UnitName from ItemCard", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select distinct ItemName,GroupName,UnitName from ItemCard", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);
@@ -176,7 +176,7 @@ public class ReportsController : Controller
         {
             sqlCon.Open();
 
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select hsalesCode,ItemName,StoreName,UnitName,CustomerName,HsalesQuantity,ItemSales1Unit1,HsalesTotal from RptSales", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select hsalesCode,ItemName,StoreName,UnitName,CustomerName,HsalesQuantity,HsalesPrice,(HsalesQuantity*HsalesPrice) from RptSales", sqlCon);
             sqlDa.Fill(dtblProduct);
         }
         return View(dtblProduct);
@@ -187,7 +187,7 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select StoreName,ItemName,UnitName,SupplierName,HpurchaseQuantity,HpurchasePrice,HpurchaseTotal from RptPurchase", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select StoreName,ItemName,UnitName,SupplierName,HpurchaseQuantity,HpurchasePrice,(HpurchaseQuantity*HpurchasePrice) from RptPurchase", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);

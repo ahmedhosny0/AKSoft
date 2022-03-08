@@ -44,32 +44,35 @@ if (Convert.ToInt32(Session["Role"]) == 4)
 <a href="@Url.Action("SaveInvoiceSales","Product")">Add Invoice Sales</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>ID</th>
-        <th>Store</th>
-        <th>Item</th>
-        <th>Unit</th>
-        <th>Group</th>
-        <th>Customer</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Total</th>
-        <th></th>
+        <th style="display:none">السريال</th>
+        <th>كود الحركة</th>
+        <th>الصنف</th>
+        <th>المخزن</th>
+        <th>الوحده</th>
+        <th>العميل</th>
+        <th>الكميه</th>
+        <th>سعر الوحده</th>
+        <th>الإجمالي</th>
 
     </tr>
     @for (int i = 0; i < Model.Rows.Count; i++)
     {
         <tr>
-            <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
+            <td style="display:none">@Model.Rows[i][0]</td>
+            <td><a href="@Url.Action("EditInvoiceSales", "Product", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][1]</a>
+</td>
             <td>@Model.Rows[i][2]</td>
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>
-            <td>@Model.Rows[i][5]</td>
+            <td>
+                <a class="LinkItem" href="@Url.Action("EditInvoiceSales", "Product", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][5]</a>
+            </td>            
             <td>@Model.Rows[i][6]</td>
             <td>@Model.Rows[i][7]</td>
             <td>@Model.Rows[i][8]</td>
+
             <td>
-                <a href="@Url.Action("EditInSales", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
+                <a href="@Url.Action("EditInvoiceSales", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
                 <a href="@Url.Action("DeleteInSales", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
             </td>
         </tr>

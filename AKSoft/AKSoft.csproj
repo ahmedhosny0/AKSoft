@@ -160,6 +160,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\BasicsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -376,7 +377,6 @@
     <Content Include="Views\Product\EditItem.cshtml" />
     <Content Include="Views\Product\DisplayItems.cshtml" />
     <Content Include="Views\Product\DisplayInvoiceSales.cshtml" />
-    <Content Include="Views\Product\EditInSales.cshtml" />
     <Content Include="Views\Product\DisplayStocks.cshtml" />
     <Content Include="Views\Product\EditStock.cshtml" />
     <Content Include="Views\Product\Home.cshtml" />
@@ -393,7 +393,6 @@
     <Content Include="Views\Reports\SupplierAccount.cshtml" />
     <Content Include="Views\Product\SaveInvoicePurchase.cshtml" />
     <Content Include="Views\Product\DisplayInvoicePurchase.cshtml" />
-    <Content Include="Views\Product\EditInPurchase.cshtml" />
     <Content Include="Views\Product\SaveCustomer.cshtml" />
     <Content Include="Views\Product\CashExchange.cshtml" />
     <Content Include="Views\Product\ReceiveCash.cshtml" />
@@ -409,8 +408,6 @@
     <Content Include="Views\Product\EditTown.cshtml" />
     <Content Include="Views\Product\DisplayCountries.cshtml" />
     <Content Include="Views\Product\EditCountry.cshtml" />
-    <Content Include="Views\Product\DisplayCustomers.cshtml" />
-    <Content Include="Views\Product\DisplaySuppliers.cshtml" />
     <Content Include="Views\Reports\SupplierData.cshtml" />
     <Content Include="Views\Product\SaveSector.cshtml" />
     <Content Include="Views\Product\SaveBranch.cshtml" />
@@ -449,6 +446,15 @@
     <Content Include="Views\Product\AddPermission.cshtml" />
     <Content Include="Views\Product\ExchangePermission.cshtml" />
     <Content Include="Views\Product\SaveEmployee.cshtml" />
+    <Content Include="Views\Product\EditInvoiceSales.cshtml" />
+    <Content Include="Views\Product\EditInvoicePurchase.cshtml" />
+    <Content Include="Views\Basics\SaveCustomer.cshtml" />
+    <Content Include="Views\Basics\EditCustomer.cshtml" />
+    <Content Include="Views\Basics\DisplayCustomers.cshtml" />
+    <Content Include="Views\Basics\SaveSupplier.cshtml" />
+    <Content Include="Views\Basics\DisplaySuppliers.cshtml" />
+    <Content Include="Views\Basics\EditSupplier.cshtml" />
+    <Content Include="Views\Product\EditDealer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
