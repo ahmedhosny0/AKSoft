@@ -14,12 +14,6 @@ namespace AKSoft.Models
     
     public partial class BranchCode
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BranchCode()
-        {
-            this.UserInfo1 = new HashSet<UserInfo>();
-        }
-    
         public int Serial { get; set; }
         public Nullable<int> Code { get; set; }
         public string ArabicName { get; set; }
@@ -27,7 +21,5 @@ namespace AKSoft.Models
         public Nullable<int> UserId { get; set; }
     
         public virtual UserInfo UserInfo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserInfo> UserInfo1 { get; set; }
     }
 }

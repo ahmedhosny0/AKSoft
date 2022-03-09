@@ -35,7 +35,6 @@ namespace AKSoft.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BranchCode> BranchCode { get; set; }
-        public virtual BranchCode BranchCode1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SectorCode> SectorCode { get; set; }
         public virtual SectorCode SectorCode1 { get; set; }

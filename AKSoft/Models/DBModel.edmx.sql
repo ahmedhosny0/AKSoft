@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/09/2022 01:21:06
+-- Date Created: 03/09/2022 18:45:30
 -- Generated from EDMX file: D:\My-Git\AKSoft\AKSoft\Models\DBModel.edmx
 -- --------------------------------------------------
 
@@ -22,9 +22,6 @@ IF OBJECT_ID(N'[dbo].[FK__BranchCod__UserI__3A6CA48E]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK__CustomerC__Regio__0682EC34]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CustomerCode] DROP CONSTRAINT [FK__CustomerC__Regio__0682EC34];
-GO
-IF OBJECT_ID(N'[dbo].[FK__CustomerC__Regio__0B47A151]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CustomerCode] DROP CONSTRAINT [FK__CustomerC__Regio__0B47A151];
 GO
 IF OBJECT_ID(N'[dbo].[FK__CustomerC__TownS__671F4F74]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CustomerCode] DROP CONSTRAINT [FK__CustomerC__TownS__671F4F74];
@@ -56,35 +53,17 @@ GO
 IF OBJECT_ID(N'[dbo].[FK__HPurchase__Group__1975C517]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__Group__1975C517];
 GO
-IF OBJECT_ID(N'[dbo].[FK__HPurchase__ItemS__1C5231C2]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__ItemS__1C5231C2];
-GO
-IF OBJECT_ID(N'[dbo].[FK__HPurchase__Store__1A69E950]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__Store__1A69E950];
-GO
-IF OBJECT_ID(N'[dbo].[FK__HPurchase__Suppl__1D4655FB]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__Suppl__1D4655FB];
-GO
 IF OBJECT_ID(N'[dbo].[FK__HPurchase__UnitS__1B5E0D89]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__UnitS__1B5E0D89];
 GO
 IF OBJECT_ID(N'[dbo].[FK__HSales__Customer__23F3538A]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK__HSales__Customer__23F3538A];
 GO
-IF OBJECT_ID(N'[dbo].[FK__HSales__DealerCo__5AA469F6]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK__HSales__DealerCo__5AA469F6];
-GO
-IF OBJECT_ID(N'[dbo].[FK__HSales__DealerCo__5DB5E0CB]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK__HSales__DealerCo__5DB5E0CB];
-GO
 IF OBJECT_ID(N'[dbo].[FK__SectorCod__UserI__3D491139]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SectorCode] DROP CONSTRAINT [FK__SectorCod__UserI__3D491139];
 GO
 IF OBJECT_ID(N'[dbo].[FK__StoreCode__Count__7740A8A4]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[StoreCode] DROP CONSTRAINT [FK__StoreCode__Count__7740A8A4];
-GO
-IF OBJECT_ID(N'[dbo].[FK__StoreCode__Emplo__764C846B]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[StoreCode] DROP CONSTRAINT [FK__StoreCode__Emplo__764C846B];
 GO
 IF OBJECT_ID(N'[dbo].[FK__StoreCode__TownS__7834CCDD]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[StoreCode] DROP CONSTRAINT [FK__StoreCode__TownS__7834CCDD];
@@ -98,14 +77,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK__SupplierC__Websi__69FBBC1F]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SupplierCode] DROP CONSTRAINT [FK__SupplierC__Websi__69FBBC1F];
 GO
-IF OBJECT_ID(N'[dbo].[FK__UserInfo__Branch__420DC656]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserInfo] DROP CONSTRAINT [FK__UserInfo__Branch__420DC656];
-GO
 IF OBJECT_ID(N'[dbo].[FK__UserInfo__Role__5EAA0504]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[UserInfo] DROP CONSTRAINT [FK__UserInfo__Role__5EAA0504];
-GO
-IF OBJECT_ID(N'[dbo].[FK__UserInfo__Sector__4301EA8F]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserInfo] DROP CONSTRAINT [FK__UserInfo__Sector__4301EA8F];
 GO
 IF OBJECT_ID(N'[dbo].[FK_GroupSerial]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK_GroupSerial];
@@ -118,12 +91,6 @@ IF OBJECT_ID(N'[dbo].[FK_ItemCode_StoreCode]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ItemCode_UnitCode]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ItemCode] DROP CONSTRAINT [FK_ItemCode_UnitCode];
-GO
-IF OBJECT_ID(N'[dbo].[FK_itemSerial]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK_itemSerial];
-GO
-IF OBJECT_ID(N'[dbo].[FK_StoreSerial]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK_StoreSerial];
 GO
 IF OBJECT_ID(N'[dbo].[FK_UnitSerial]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK_UnitSerial];
@@ -578,7 +545,7 @@ ADD CONSTRAINT [FK__BranchCod__UserI__3A6CA48E]
     FOREIGN KEY ([UserId])
     REFERENCES [dbo].[UserInfo]
         ([Id])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__BranchCod__UserI__3A6CA48E'
@@ -587,28 +554,13 @@ ON [dbo].[BranchCode]
     ([UserId]);
 GO
 
--- Creating foreign key on [BranchSerial] in table 'UserInfo'
-ALTER TABLE [dbo].[UserInfo]
-ADD CONSTRAINT [FK__UserInfo__Branch__420DC656]
-    FOREIGN KEY ([BranchSerial])
-    REFERENCES [dbo].[BranchCode]
-        ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK__UserInfo__Branch__420DC656'
-CREATE INDEX [IX_FK__UserInfo__Branch__420DC656]
-ON [dbo].[UserInfo]
-    ([BranchSerial]);
-GO
-
 -- Creating foreign key on [CountrySerial] in table 'CustomerCode'
 ALTER TABLE [dbo].[CustomerCode]
 ADD CONSTRAINT [FK__CustomerC__Websi__662B2B3B]
     FOREIGN KEY ([CountrySerial])
     REFERENCES [dbo].[CountryCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__CustomerC__Websi__662B2B3B'
@@ -623,7 +575,7 @@ ADD CONSTRAINT [FK__DealerCod__Websi__1EC48A19]
     FOREIGN KEY ([CountrySerial])
     REFERENCES [dbo].[CountryCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__DealerCod__Websi__1EC48A19'
@@ -638,7 +590,7 @@ ADD CONSTRAINT [FK__Employee__AddUse__7093AB15]
     FOREIGN KEY ([CountrySerial])
     REFERENCES [dbo].[CountryCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__Employee__AddUse__7093AB15'
@@ -653,7 +605,7 @@ ADD CONSTRAINT [FK__StoreCode__Count__7740A8A4]
     FOREIGN KEY ([CountrySerial])
     REFERENCES [dbo].[CountryCode]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__StoreCode__Count__7740A8A4'
@@ -668,7 +620,7 @@ ADD CONSTRAINT [FK__SupplierC__Websi__69FBBC1F]
     FOREIGN KEY ([CountrySerial])
     REFERENCES [dbo].[CountryCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__SupplierC__Websi__69FBBC1F'
@@ -683,7 +635,7 @@ ADD CONSTRAINT [FK__CustomerC__Regio__0682EC34]
     FOREIGN KEY ([RegionSerial])
     REFERENCES [dbo].[Region]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__CustomerC__Regio__0682EC34'
@@ -698,7 +650,7 @@ ADD CONSTRAINT [FK__CustomerC__Regio__0B47A151]
     FOREIGN KEY ([RegionSerial])
     REFERENCES [dbo].[Region]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__CustomerC__Regio__0B47A151'
@@ -713,7 +665,7 @@ ADD CONSTRAINT [FK__CustomerC__TownS__671F4F74]
     FOREIGN KEY ([TownSerial])
     REFERENCES [dbo].[TownCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__CustomerC__TownS__671F4F74'
@@ -728,7 +680,7 @@ ADD CONSTRAINT [FK__HSales__Customer__23F3538A]
     FOREIGN KEY ([CustomerSerial])
     REFERENCES [dbo].[CustomerCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__HSales__Customer__23F3538A'
@@ -743,7 +695,7 @@ ADD CONSTRAINT [FK__DealerCod__Regio__0777106D]
     FOREIGN KEY ([RegionSerial])
     REFERENCES [dbo].[Region]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__DealerCod__Regio__0777106D'
@@ -758,7 +710,7 @@ ADD CONSTRAINT [FK__DealerCod__TownS__1FB8AE52]
     FOREIGN KEY ([TownSerial])
     REFERENCES [dbo].[TownCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__DealerCod__TownS__1FB8AE52'
@@ -773,7 +725,7 @@ ADD CONSTRAINT [FK__HPurchase__Deale__59B045BD]
     FOREIGN KEY ([DealerCode])
     REFERENCES [dbo].[DealerCode]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__HPurchase__Deale__59B045BD'
@@ -788,7 +740,7 @@ ADD CONSTRAINT [FK__HSales__DealerCo__5AA469F6]
     FOREIGN KEY ([DealerCode])
     REFERENCES [dbo].[DealerCode]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__HSales__DealerCo__5AA469F6'
@@ -803,7 +755,7 @@ ADD CONSTRAINT [FK__HSales__DealerCo__5DB5E0CB]
     FOREIGN KEY ([DealerCode])
     REFERENCES [dbo].[DealerCode]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__HSales__DealerCo__5DB5E0CB'
@@ -818,7 +770,7 @@ ADD CONSTRAINT [FK__Employee__Region__095F58DF]
     FOREIGN KEY ([RegionSerial])
     REFERENCES [dbo].[Region]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__Employee__Region__095F58DF'
@@ -833,7 +785,7 @@ ADD CONSTRAINT [FK__Employee__TownSe__7187CF4E]
     FOREIGN KEY ([TownSerial])
     REFERENCES [dbo].[TownCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__Employee__TownSe__7187CF4E'
@@ -848,7 +800,7 @@ ADD CONSTRAINT [FK__StoreCode__Emplo__764C846B]
     FOREIGN KEY ([EmployeeSerial])
     REFERENCES [dbo].[Employee]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__StoreCode__Emplo__764C846B'
@@ -863,7 +815,7 @@ ADD CONSTRAINT [FK__HPurchase__Group__1975C517]
     FOREIGN KEY ([GroupSerial])
     REFERENCES [dbo].[GroupCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__HPurchase__Group__1975C517'
@@ -878,7 +830,7 @@ ADD CONSTRAINT [FK_GroupSerial]
     FOREIGN KEY ([GroupSerial])
     REFERENCES [dbo].[GroupCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_GroupSerial'
@@ -893,7 +845,7 @@ ADD CONSTRAINT [FK_ItemCode_GroupCode]
     FOREIGN KEY ([SerialGroup])
     REFERENCES [dbo].[GroupCode]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ItemCode_GroupCode'
@@ -908,7 +860,7 @@ ADD CONSTRAINT [FK__HPurchase__ItemS__1C5231C2]
     FOREIGN KEY ([ItemSerial])
     REFERENCES [dbo].[ItemCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__HPurchase__ItemS__1C5231C2'
@@ -923,7 +875,7 @@ ADD CONSTRAINT [FK__HPurchase__Store__1A69E950]
     FOREIGN KEY ([StoreSerial])
     REFERENCES [dbo].[StoreCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__HPurchase__Store__1A69E950'
@@ -938,7 +890,7 @@ ADD CONSTRAINT [FK__HPurchase__Suppl__1D4655FB]
     FOREIGN KEY ([SupplierSerial])
     REFERENCES [dbo].[SupplierCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__HPurchase__Suppl__1D4655FB'
@@ -953,7 +905,7 @@ ADD CONSTRAINT [FK__HPurchase__UnitS__1B5E0D89]
     FOREIGN KEY ([UnitSerial])
     REFERENCES [dbo].[UnitCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__HPurchase__UnitS__1B5E0D89'
@@ -968,7 +920,7 @@ ADD CONSTRAINT [FK_itemSerial]
     FOREIGN KEY ([ItemSerial])
     REFERENCES [dbo].[ItemCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_itemSerial'
@@ -983,7 +935,7 @@ ADD CONSTRAINT [FK_StoreSerial]
     FOREIGN KEY ([StoreSerial])
     REFERENCES [dbo].[StoreCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_StoreSerial'
@@ -998,7 +950,7 @@ ADD CONSTRAINT [FK_UnitSerial]
     FOREIGN KEY ([UnitSerial])
     REFERENCES [dbo].[UnitCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UnitSerial'
@@ -1013,7 +965,7 @@ ADD CONSTRAINT [FK_ItemCode_StoreCode]
     FOREIGN KEY ([StoreID])
     REFERENCES [dbo].[StoreCode]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ItemCode_StoreCode'
@@ -1028,7 +980,7 @@ ADD CONSTRAINT [FK_ItemCode_UnitCode]
     FOREIGN KEY ([Unit1])
     REFERENCES [dbo].[UnitCode]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ItemCode_UnitCode'
@@ -1043,7 +995,7 @@ ADD CONSTRAINT [FK__SupplierC__Regio__086B34A6]
     FOREIGN KEY ([RegionSerial])
     REFERENCES [dbo].[Region]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__SupplierC__Regio__086B34A6'
@@ -1058,7 +1010,7 @@ ADD CONSTRAINT [FK__SectorCod__UserI__3D491139]
     FOREIGN KEY ([UserId])
     REFERENCES [dbo].[UserInfo]
         ([Id])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__SectorCod__UserI__3D491139'
@@ -1073,7 +1025,7 @@ ADD CONSTRAINT [FK__UserInfo__Sector__4301EA8F]
     FOREIGN KEY ([SectorSerial])
     REFERENCES [dbo].[SectorCode]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__UserInfo__Sector__4301EA8F'
@@ -1088,7 +1040,7 @@ ADD CONSTRAINT [FK__StoreCode__TownS__7834CCDD]
     FOREIGN KEY ([TownSerial])
     REFERENCES [dbo].[TownCode]
         ([Serial])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__StoreCode__TownS__7834CCDD'
@@ -1103,7 +1055,7 @@ ADD CONSTRAINT [FK__SupplierC__TownS__6AEFE058]
     FOREIGN KEY ([TownSerial])
     REFERENCES [dbo].[TownCode]
         ([Serial])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__SupplierC__TownS__6AEFE058'
@@ -1118,7 +1070,7 @@ ADD CONSTRAINT [FK__UserInfo__Role__5EAA0504]
     FOREIGN KEY ([Role])
     REFERENCES [dbo].[UserRole]
         ([RoleId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE CASCADE;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__UserInfo__Role__5EAA0504'

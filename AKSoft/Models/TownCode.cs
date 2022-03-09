@@ -17,6 +17,8 @@ namespace AKSoft.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TownCode()
         {
+            this.CustomerCode = new HashSet<CustomerCode>();
+            this.DealerCode = new HashSet<DealerCode>();
             this.Employee = new HashSet<Employee>();
             this.StoreCode = new HashSet<StoreCode>();
             this.SupplierCode = new HashSet<SupplierCode>();
@@ -27,6 +29,10 @@ namespace AKSoft.Models
         public string ArabicName { get; set; }
         public string Notes { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerCode> CustomerCode { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DealerCode> DealerCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

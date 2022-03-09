@@ -39,7 +39,9 @@ namespace AKSoft.Models
         public string EnglishName { get; set; }
         public string DescName { get; set; }
     
+        public virtual CountryCode CountryCode { get; set; }
         public virtual Region Region { get; set; }
+        public virtual TownCode TownCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HPurchase> HPurchase { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

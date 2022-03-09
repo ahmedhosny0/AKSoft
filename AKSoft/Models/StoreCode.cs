@@ -25,13 +25,18 @@ namespace AKSoft.Models
         public int Serial { get; set; }
         public Nullable<int> Code { get; set; }
         public string ArabicName { get; set; }
+        public string EnglishName { get; set; }
+        public string DescName { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
+        public Nullable<int> NumberOfLeans { get; set; }
         public string Phone1 { get; set; }
+        public string StoreKeeper { get; set; }
         public string Phone2 { get; set; }
         public string Phone3 { get; set; }
         public string Phone4 { get; set; }
         public string AreaStock { get; set; }
+        public Nullable<System.DateTime> AddUserDate { get; set; }
         public Nullable<int> EmployeeSerial { get; set; }
         public Nullable<int> CountrySerial { get; set; }
         public Nullable<int> TownSerial { get; set; }

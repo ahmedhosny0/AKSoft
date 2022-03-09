@@ -4,33 +4,36 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4502b58353344a8c8393873c0fc0929f" Name="Diagram1" ZoomLevel="10">
-        <EntityTypeShape EntityType="TopSoftModel.BranchCode" Width="1.5" PointX="14.25" PointY="5.625" />
-        <EntityTypeShape EntityType="TopSoftModel.CountryCode" Width="1.5" PointX="0.75" PointY="18.625" />
-        <EntityTypeShape EntityType="TopSoftModel.CustomerCode" Width="1.5" PointX="3" PointY="16.75" />
-        <EntityTypeShape EntityType="TopSoftModel.DealerCode" Width="1.5" PointX="3" PointY="27.75" />
-        <EntityTypeShape EntityType="TopSoftModel.Employee" Width="1.5" PointX="3" PointY="10.875" />
-        <EntityTypeShape EntityType="TopSoftModel.GroupCode" Width="1.5" PointX="5.25" PointY="4.5" />
-        <EntityTypeShape EntityType="TopSoftModel.HPurchase" Width="1.5" PointX="8.25" PointY="20.125" />
-        <EntityTypeShape EntityType="TopSoftModel.HSales" Width="1.5" PointX="5.25" PointY="21.125" />
-        <EntityTypeShape EntityType="TopSoftModel.ItemCode" Width="1.5" PointX="7.5" PointY="7.75" />
-        <EntityTypeShape EntityType="TopSoftModel.Region" Width="1.5" PointX="0.75" PointY="14.875" />
-        <EntityTypeShape EntityType="TopSoftModel.SectorCode" Width="1.5" PointX="14.25" PointY="2.5" />
-        <EntityTypeShape EntityType="TopSoftModel.StoreCode" Width="1.5" PointX="5.25" PointY="8" />
-        <EntityTypeShape EntityType="TopSoftModel.SupplierCode" Width="1.5" PointX="6" PointY="13.875" />
-        <EntityTypeShape EntityType="TopSoftModel.TownCode" Width="1.5" PointX="0.75" PointY="10.5" />
-        <EntityTypeShape EntityType="TopSoftModel.UnitCode" Width="1.5" PointX="5.25" PointY="0.75" />
-        <EntityTypeShape EntityType="TopSoftModel.UserInfo" Width="1.5" PointX="12" PointY="3.25" />
-        <EntityTypeShape EntityType="TopSoftModel.UserRole" Width="1.5" PointX="9.75" PointY="4.5" />
+      <Diagram DiagramId="4502b58353344a8c8393873c0fc0929f" Name="Diagram1" ZoomLevel="53">
+        <EntityTypeShape EntityType="TopSoftModel.BranchCode" Width="1.5" PointX="17.25" PointY="1.125" />
+        <EntityTypeShape EntityType="TopSoftModel.CountryCode" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="TopSoftModel.CustomerCode" Width="1.5" PointX="6" PointY="12.625" />
+        <EntityTypeShape EntityType="TopSoftModel.DealerCode" Width="1.5" PointX="3" PointY="18.625" />
+        <EntityTypeShape EntityType="TopSoftModel.Employee" Width="1.5" PointX="3" PointY="12.75" />
+        <EntityTypeShape EntityType="TopSoftModel.GroupCode" Width="1.5" PointX="6" PointY="19.375" />
+        <EntityTypeShape EntityType="TopSoftModel.HPurchase" Width="1.5" PointX="10.5" PointY="12.25" />
+        <EntityTypeShape EntityType="TopSoftModel.HSales" Width="1.5" PointX="8.25" PointY="14.625" />
+        <EntityTypeShape EntityType="TopSoftModel.ItemCode" Width="1.5" PointX="10.5" PointY="5.625" />
+        <EntityTypeShape EntityType="TopSoftModel.Region" Width="1.5" PointX="0.75" PointY="13.875" />
+        <EntityTypeShape EntityType="TopSoftModel.SectorCode" Width="1.5" PointX="17.25" PointY="4" />
+        <EntityTypeShape EntityType="TopSoftModel.StoreCode" Width="1.5" PointX="8.25" PointY="7.375" />
+        <EntityTypeShape EntityType="TopSoftModel.SupplierCode" Width="1.5" PointX="3" PointY="6.75" />
+        <EntityTypeShape EntityType="TopSoftModel.TownCode" Width="1.5" PointX="0.75" PointY="9.625" />
+        <EntityTypeShape EntityType="TopSoftModel.UnitCode" Width="1.5" PointX="8.25" PointY="4" />
+        <EntityTypeShape EntityType="TopSoftModel.UserInfo" Width="1.5" PointX="15" PointY="1.75" />
+        <EntityTypeShape EntityType="TopSoftModel.UserRole" Width="1.5" PointX="12.75" PointY="2.875" />
         <AssociationConnector Association="TopSoftModel.FK__BranchCod__UserI__3A6CA48E" />
-        <AssociationConnector Association="TopSoftModel.FK__UserInfo__Branch__420DC656" />
+        <AssociationConnector Association="TopSoftModel.FK__CustomerC__Websi__662B2B3B" />
+        <AssociationConnector Association="TopSoftModel.FK__DealerCod__Websi__1EC48A19" />
         <AssociationConnector Association="TopSoftModel.FK__Employee__AddUse__7093AB15" />
         <AssociationConnector Association="TopSoftModel.FK__StoreCode__Count__7740A8A4" />
         <AssociationConnector Association="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" />
         <AssociationConnector Association="TopSoftModel.FK__CustomerC__Regio__0682EC34" />
         <AssociationConnector Association="TopSoftModel.FK__CustomerC__Regio__0B47A151" />
+        <AssociationConnector Association="TopSoftModel.FK__CustomerC__TownS__671F4F74" />
         <AssociationConnector Association="TopSoftModel.FK__HSales__Customer__23F3538A" />
         <AssociationConnector Association="TopSoftModel.FK__DealerCod__Regio__0777106D" />
+        <AssociationConnector Association="TopSoftModel.FK__DealerCod__TownS__1FB8AE52" />
         <AssociationConnector Association="TopSoftModel.FK__HPurchase__Deale__59B045BD" />
         <AssociationConnector Association="TopSoftModel.FK__HSales__DealerCo__5AA469F6" />
         <AssociationConnector Association="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB" />
