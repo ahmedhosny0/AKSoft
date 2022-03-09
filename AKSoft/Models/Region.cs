@@ -12,38 +12,32 @@ namespace AKSoft.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class StoreCode
+    public partial class Region
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public StoreCode()
+        public Region()
         {
-            this.HPurchase = new HashSet<HPurchase>();
-            this.HSales = new HashSet<HSales>();
-            this.ItemCode = new HashSet<ItemCode>();
+            this.CustomerCode = new HashSet<CustomerCode>();
+            this.CustomerCode1 = new HashSet<CustomerCode>();
+            this.DealerCode = new HashSet<DealerCode>();
+            this.Employee = new HashSet<Employee>();
+            this.SupplierCode = new HashSet<SupplierCode>();
         }
     
         public int Serial { get; set; }
         public Nullable<int> Code { get; set; }
         public string ArabicName { get; set; }
-        public string Address { get; set; }
-        public string Description { get; set; }
-        public string Phone1 { get; set; }
-        public string Phone2 { get; set; }
-        public string Phone3 { get; set; }
-        public string Phone4 { get; set; }
-        public string AreaStock { get; set; }
-        public Nullable<int> EmployeeSerial { get; set; }
-        public Nullable<int> CountrySerial { get; set; }
-        public Nullable<int> TownSerial { get; set; }
+        public string Notes { get; set; }
     
-        public virtual CountryCode CountryCode { get; set; }
-        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HPurchase> HPurchase { get; set; }
+        public virtual ICollection<CustomerCode> CustomerCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HSales> HSales { get; set; }
+        public virtual ICollection<CustomerCode> CustomerCode1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemCode> ItemCode { get; set; }
-        public virtual TownCode TownCode { get; set; }
+        public virtual ICollection<DealerCode> DealerCode { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupplierCode> SupplierCode { get; set; }
     }
 }

@@ -42,7 +42,7 @@
             @Html.DropDownListFor(model => model.DealerCode, ViewBag.DepartmentList6 as SelectList, "--select--", new { @class = "Txt drop" })
         </li>
         <li>
-            <a onclick="PopupForm('@Url.Action("ItemLastSalesPrice", "Reports")')"> <label class="Lab">الكميه</label></a>
+            <a onclick="PopupForm('@Url.Action("أخر سعر بيع للصنف", "Reports")')"> <label class="Lab">الكميه</label></a>
 
             @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
         </li>

@@ -15,7 +15,6 @@ namespace AKSoft.Models
     public partial class HPurchase
     {
         public int Serial { get; set; }
-        public Nullable<int> ID { get; set; }
         public Nullable<int> BranchCode { get; set; }
         public Nullable<int> Code { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
@@ -37,11 +36,11 @@ namespace AKSoft.Models
         public Nullable<int> SupplierSerial { get; set; }
         public Nullable<System.DateTime> AddUserDate { get; set; }
     
+        public virtual DealerCode DealerCode1 { get; set; }
         public virtual GroupCode GroupCode { get; set; }
         public virtual ItemCode ItemCode { get; set; }
         public virtual StoreCode StoreCode { get; set; }
         public virtual SupplierCode SupplierCode { get; set; }
         public virtual UnitCode UnitCode { get; set; }
-        public virtual DealerCode DealerCode1 { get; set; }
     }
 }

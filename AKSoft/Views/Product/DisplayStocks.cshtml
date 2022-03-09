@@ -2,17 +2,17 @@
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Display Stocks";
+    ViewBag.Title = "بيانات المخازن";
 }
 if (Convert.ToInt32(Session["Role"]) == 4)
 {
-    ViewBag.Title = "Display Stocks";
+    ViewBag.Title = "بيانات المخازن";
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
 }
 if (Convert.ToInt32(Session["Role"]) == 5)
 {
-    ViewBag.Title = "Display Stocks";
+    ViewBag.Title = "بيانات المخازن";
     Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 }
 }
@@ -27,7 +27,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 @if (TempData["As"] != null)
 {
     <script>
-        swal("Modified Successfully!", " ", "success");
+        swal("الحمد لله تم التعديل بنجاح", " ", "success");
     </script>
     // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
@@ -38,8 +38,8 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<h2>DisplayStocks</h2>
-<a href="@Url.Action("SaveStock","Product")">Add Stock</a>
+<h2>بيانات المخازن</h2>
+<a href="@Url.Action("SaveStock","Product")">تعريف مخزن</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th style="display:none">السريال</th>

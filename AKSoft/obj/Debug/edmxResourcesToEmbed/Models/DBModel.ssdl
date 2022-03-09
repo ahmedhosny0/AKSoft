@@ -6,13 +6,9 @@
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Code" Type="int" />
-    <Property Name="Id" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
-    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
-    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
     <Property Name="Notes" Type="nvarchar" MaxLength="150" />
     <Property Name="UserId" Type="int" />
-    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="CountryCode">
     <Key>
@@ -20,12 +16,8 @@
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Code" Type="int" />
-    <Property Name="Id" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
-    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
-    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
     <Property Name="Notes" Type="nvarchar" MaxLength="150" />
-    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="CustomerCode">
     <Key>
@@ -33,10 +25,7 @@
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Code" Type="int" />
-    <Property Name="Id" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
-    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
-    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
     <Property Name="Description" Type="nvarchar" MaxLength="150" />
     <Property Name="Address1" Type="nvarchar" MaxLength="150" />
     <Property Name="Address2" Type="nvarchar" MaxLength="150" />
@@ -47,7 +36,9 @@
     <Property Name="TownSerial" Type="int" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Website" Type="nvarchar" MaxLength="30" />
-    <Property Name="AddUserDate" Type="datetime" />
+    <Property Name="RegionSerial" Type="int" />
+    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DescName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="DealerCode">
     <Key>
@@ -55,10 +46,7 @@
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Code" Type="int" />
-    <Property Name="Id" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
-    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
-    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
     <Property Name="Description" Type="nvarchar" MaxLength="150" />
     <Property Name="Address1" Type="nvarchar" MaxLength="150" />
     <Property Name="Address2" Type="nvarchar" MaxLength="150" />
@@ -69,7 +57,9 @@
     <Property Name="TownSerial" Type="int" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Website" Type="nvarchar" MaxLength="30" />
-    <Property Name="AddUserDate" Type="datetime" />
+    <Property Name="RegionSerial" Type="int" />
+    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DescName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -90,28 +80,23 @@
     <Property Name="TownSerial" Type="int" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Website" Type="nvarchar" MaxLength="30" />
-    <Property Name="AddUserDate" Type="datetime" />
+    <Property Name="RegionSerial" Type="int" />
   </EntityType>
   <EntityType Name="GroupCode">
     <Key>
       <PropertyRef Name="Serial" />
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID" Type="int" />
     <Property Name="Code" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="150" />
-    <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
-    <Property Name="DescName" Type="nvarchar" MaxLength="150" />
     <Property Name="Description" Type="nvarchar" MaxLength="150" />
     <Property Name="ColorName" Type="nvarchar" MaxLength="50" />
-    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="HPurchase">
     <Key>
       <PropertyRef Name="Serial" />
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID" Type="int" />
     <Property Name="BranchCode" Type="int" />
     <Property Name="Code" Type="int" />
     <Property Name="Date" Type="datetime" />
@@ -138,7 +123,6 @@
       <PropertyRef Name="Serial" />
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID" Type="int" />
     <Property Name="BranchCode" Type="int" />
     <Property Name="Code" Type="int" />
     <Property Name="Date" Type="datetime" />
@@ -169,7 +153,6 @@
       <PropertyRef Name="Serial" />
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID" Type="int" />
     <Property Name="Code" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="150" />
     <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
@@ -185,7 +168,15 @@
     <Property Name="PriceSale1Unit2" Type="float" />
     <Property Name="StoreID" Type="int" />
     <Property Name="Counts" Type="float" />
-    <Property Name="AddUserDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="int" />
+    <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="SectorCode">
     <Key>
@@ -193,34 +184,24 @@
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Code" Type="int" />
-    <Property Name="Id" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
-    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
-    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
     <Property Name="Notes" Type="nvarchar" MaxLength="150" />
     <Property Name="UserId" Type="int" />
-    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="StoreCode">
     <Key>
       <PropertyRef Name="Serial" />
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID" Type="int" />
     <Property Name="Code" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="150" />
-    <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
-    <Property Name="DescName" Type="nvarchar" MaxLength="150" />
     <Property Name="Address" Type="nvarchar" MaxLength="150" />
     <Property Name="Description" Type="nvarchar" MaxLength="150" />
-    <Property Name="NumberOfLeans" Type="int" />
     <Property Name="Phone1" Type="nvarchar" MaxLength="20" />
-    <Property Name="StoreKeeper" Type="nvarchar" MaxLength="150" />
     <Property Name="Phone2" Type="nvarchar" MaxLength="20" />
     <Property Name="Phone3" Type="nvarchar" MaxLength="20" />
     <Property Name="Phone4" Type="nvarchar" MaxLength="20" />
     <Property Name="AreaStock" Type="nvarchar" MaxLength="20" />
-    <Property Name="AddUserDate" Type="datetime" />
     <Property Name="EmployeeSerial" Type="int" />
     <Property Name="CountrySerial" Type="int" />
     <Property Name="TownSerial" Type="int" />
@@ -231,7 +212,6 @@
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Code" Type="int" />
-    <Property Name="Id" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
     <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
     <Property Name="DescName" Type="nvarchar" MaxLength="100" />
@@ -245,7 +225,7 @@
     <Property Name="TownSerial" Type="int" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Website" Type="nvarchar" MaxLength="30" />
-    <Property Name="AddUserDate" Type="datetime" />
+    <Property Name="RegionSerial" Type="int" />
   </EntityType>
   <EntityType Name="TownCode">
     <Key>
@@ -253,24 +233,16 @@
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Code" Type="int" />
-    <Property Name="Id" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
-    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
-    <Property Name="DescName" Type="nvarchar" MaxLength="100" />
     <Property Name="Notes" Type="nvarchar" MaxLength="150" />
-    <Property Name="AddUserDate" Type="datetime" />
   </EntityType>
   <EntityType Name="UnitCode">
     <Key>
       <PropertyRef Name="Serial" />
     </Key>
     <Property Name="Serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID" Type="int" />
     <Property Name="ArabicName" Type="nvarchar" MaxLength="150" />
-    <Property Name="EnglishName" Type="nvarchar" MaxLength="150" />
-    <Property Name="DescName" Type="nvarchar" MaxLength="150" />
     <Property Name="Description" Type="nvarchar" MaxLength="150" />
-    <Property Name="AddUserDate" Type="datetime" />
     <Property Name="Code" Type="int" />
   </EntityType>
   <EntityType Name="UserInfo">
@@ -310,59 +282,43 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CustomerC__TownS__671F4F74">
-    <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
+  <Association Name="FK__CustomerC__Regio__0682EC34">
+    <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+    <End Role="CustomerCode" Type="Self.CustomerCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="CustomerCode">
+        <PropertyRef Name="RegionSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CustomerC__Regio__0B47A151">
+    <End Role="Region" Type="Self.Region" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="CustomerCode" Type="Self.CustomerCode" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TownCode">
+      <Principal Role="Region">
         <PropertyRef Name="Serial" />
       </Principal>
       <Dependent Role="CustomerCode">
-        <PropertyRef Name="TownSerial" />
+        <PropertyRef Name="RegionSerial" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CustomerC__Websi__662B2B3B">
-    <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="CustomerCode" Type="Self.CustomerCode" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CountryCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="CustomerCode">
-        <PropertyRef Name="CountrySerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__DealerCod__TownS__1FB8AE52">
-    <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
+  <Association Name="FK__DealerCod__Regio__0777106D">
+    <End Role="Region" Type="Self.Region" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="DealerCode" Type="Self.DealerCode" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TownCode">
+      <Principal Role="Region">
         <PropertyRef Name="Serial" />
       </Principal>
       <Dependent Role="DealerCode">
-        <PropertyRef Name="TownSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__DealerCod__Websi__1EC48A19">
-    <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="DealerCode" Type="Self.DealerCode" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CountryCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="DealerCode">
-        <PropertyRef Name="CountrySerial" />
+        <PropertyRef Name="RegionSerial" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -377,6 +333,20 @@
       </Principal>
       <Dependent Role="Employee">
         <PropertyRef Name="CountrySerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__Region__095F58DF">
+    <End Role="Region" Type="Self.Region" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="RegionSerial" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -564,6 +534,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__SupplierC__Regio__086B34A6">
+    <End Role="Region" Type="Self.Region" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SupplierCode" Type="Self.SupplierCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="SupplierCode">
+        <PropertyRef Name="RegionSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__SupplierC__TownS__6AEFE058">
     <End Role="TownCode" Type="Self.TownCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -730,6 +714,7 @@
     <EntitySet Name="HPurchase" EntityType="Self.HPurchase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HSales" EntityType="Self.HSales" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemCode" EntityType="Self.ItemCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SectorCode" EntityType="Self.SectorCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StoreCode" EntityType="Self.StoreCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SupplierCode" EntityType="Self.SupplierCode" Schema="dbo" store:Type="Tables" />
@@ -741,24 +726,24 @@
       <End Role="UserInfo" EntitySet="UserInfo" />
       <End Role="BranchCode" EntitySet="BranchCode" />
     </AssociationSet>
-    <AssociationSet Name="FK__CustomerC__TownS__671F4F74" Association="Self.FK__CustomerC__TownS__671F4F74">
-      <End Role="TownCode" EntitySet="TownCode" />
+    <AssociationSet Name="FK__CustomerC__Regio__0682EC34" Association="Self.FK__CustomerC__Regio__0682EC34">
+      <End Role="Region" EntitySet="Region" />
       <End Role="CustomerCode" EntitySet="CustomerCode" />
     </AssociationSet>
-    <AssociationSet Name="FK__CustomerC__Websi__662B2B3B" Association="Self.FK__CustomerC__Websi__662B2B3B">
-      <End Role="CountryCode" EntitySet="CountryCode" />
+    <AssociationSet Name="FK__CustomerC__Regio__0B47A151" Association="Self.FK__CustomerC__Regio__0B47A151">
+      <End Role="Region" EntitySet="Region" />
       <End Role="CustomerCode" EntitySet="CustomerCode" />
     </AssociationSet>
-    <AssociationSet Name="FK__DealerCod__TownS__1FB8AE52" Association="Self.FK__DealerCod__TownS__1FB8AE52">
-      <End Role="TownCode" EntitySet="TownCode" />
-      <End Role="DealerCode" EntitySet="DealerCode" />
-    </AssociationSet>
-    <AssociationSet Name="FK__DealerCod__Websi__1EC48A19" Association="Self.FK__DealerCod__Websi__1EC48A19">
-      <End Role="CountryCode" EntitySet="CountryCode" />
+    <AssociationSet Name="FK__DealerCod__Regio__0777106D" Association="Self.FK__DealerCod__Regio__0777106D">
+      <End Role="Region" EntitySet="Region" />
       <End Role="DealerCode" EntitySet="DealerCode" />
     </AssociationSet>
     <AssociationSet Name="FK__Employee__AddUse__7093AB15" Association="Self.FK__Employee__AddUse__7093AB15">
       <End Role="CountryCode" EntitySet="CountryCode" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__Region__095F58DF" Association="Self.FK__Employee__Region__095F58DF">
+      <End Role="Region" EntitySet="Region" />
       <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
     <AssociationSet Name="FK__Employee__TownSe__7187CF4E" Association="Self.FK__Employee__TownSe__7187CF4E">
@@ -816,6 +801,10 @@
     <AssociationSet Name="FK__StoreCode__TownS__7834CCDD" Association="Self.FK__StoreCode__TownS__7834CCDD">
       <End Role="TownCode" EntitySet="TownCode" />
       <End Role="StoreCode" EntitySet="StoreCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SupplierC__Regio__086B34A6" Association="Self.FK__SupplierC__Regio__086B34A6">
+      <End Role="Region" EntitySet="Region" />
+      <End Role="SupplierCode" EntitySet="SupplierCode" />
     </AssociationSet>
     <AssociationSet Name="FK__SupplierC__TownS__6AEFE058" Association="Self.FK__SupplierC__TownS__6AEFE058">
       <End Role="TownCode" EntitySet="TownCode" />

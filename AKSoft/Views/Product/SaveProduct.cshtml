@@ -68,23 +68,23 @@ if (Convert.ToInt32(Session["Role"]) == 5)
                 <label class="Lab">الوصف</label>
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
             </li>
-            <div class="">
+            <li class="">
                 <label class="Lab">سعر الشراء</label>
                 @Html.EditorFor(model => model.PricePurchase1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
-            </div>
-            <div class="">
+            </li>
+            <li class="">
                 <label class="Lab">سعر البيع</label>
                 @Html.EditorFor(model => model.PriceSale1Unit1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
-            </div>
+            </li>
             @*<div class="">
                 <label class="Lab">Quantity</label>
                 @Html.EditorFor(model => model.Counts, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
             </div>*@
             <br />
-            <div class="">
+            <li class="">
                 <button class="save">حفظ</button>
                 <a href="@Url.Action("DisplayItems", "Product")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
-            </div>
+            </li>
         </ul>
     }
     <script type="text/javascript" src="~/Scripts/main.js"> </script>

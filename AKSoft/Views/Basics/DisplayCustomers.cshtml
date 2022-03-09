@@ -27,7 +27,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 @if (TempData["As"] != null)
 {
     <script>
-        swal("Modified Successfully!", " ", "success");
+        swal("الحمد لله تم التعديل بنجاح", " ", "success");
     </script>
     // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
@@ -38,8 +38,8 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<h2>Display Customerrs</h2>
-<a href="@Url.Action("SaveCustomer", "Basics")">Add Customer</a>
+<h2>بيانات العملاء</h2>
+<a href="@Url.Action("SaveCustomer", "Basics")">تعريف عميل</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th style="display:none">السريال</th>
@@ -60,7 +60,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
             <td style="display:none">@Model.Rows[i][0]</td>
             <td><a href="@Url.Action("EditCustomer", "Basics", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][1]</a>
 </td>
-            <td><a class="LinkItem" href="@Url.Action("EditCustomer", "Basics", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][1]</a>
+            <td><a class="LinkItem" href="@Url.Action("EditCustomer", "Basics", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][2]</a>
 </td>            
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>

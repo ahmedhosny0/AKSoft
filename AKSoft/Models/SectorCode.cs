@@ -22,13 +22,9 @@ namespace AKSoft.Models
     
         public int Serial { get; set; }
         public Nullable<int> Code { get; set; }
-        public Nullable<int> Id { get; set; }
         public string ArabicName { get; set; }
-        public string EnglishName { get; set; }
-        public string DescName { get; set; }
         public string Notes { get; set; }
         public Nullable<int> UserId { get; set; }
-        public Nullable<System.DateTime> AddUserDate { get; set; }
     
         public virtual UserInfo UserInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

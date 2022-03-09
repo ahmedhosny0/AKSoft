@@ -210,6 +210,9 @@
     <Compile Include="Models\ItemCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Region.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SectorCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -455,6 +458,8 @@
     <Content Include="Views\Basics\DisplaySuppliers.cshtml" />
     <Content Include="Views\Basics\EditSupplier.cshtml" />
     <Content Include="Views\Product\EditDealer.cshtml" />
+    <Content Include="Views\Product\DisplayDealers - Copy.cshtml" />
+    <Content Include="Views\Reports\EmployeesData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,7 +27,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 @if (TempData["As"] != null)
 {
     <script>
-        swal("Modified Successfully!", " ", "success");
+        swal("الحمد لله تم التعديل بنجاح", " ", "success");
     </script>
     // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
@@ -39,13 +39,12 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
 <h2>DisplayItems</h2>
-<a href="@Url.Action("SaveProduct","Product")">Add Product</a>
+<a href="@Url.Action("SaveProduct","Product")">تعريف صنف</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th style="display:none">السريال</th>
         <th>الكود</th>
         <th>الإسم عربي</th>
-        <th>الإسم انجليزي</th>
         <th>ملاحظات/ الوصف</th>
         <th>الوحدة</th>
         <th>التصنيف</th>
@@ -59,9 +58,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
             <td><a class="LinkItem" href="@Url.Action("EditItem", "Product", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][2]</a></td>
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>
-            <td>@Model.Rows[i][5]</td>
-            <td>@Model.Rows[i][6]</td>
-            <td>
+            <td>@Model.Rows[i][5]</td>            <td>
                 <a href="@Url.Action("EditItem", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
                 <a href="@Url.Action("DeleteItem", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
             </td>

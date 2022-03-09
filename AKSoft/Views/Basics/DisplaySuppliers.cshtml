@@ -1,6 +1,6 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "DisplaySuppliers";
+    ViewBag.Title = "بيانات الموردين";
 }
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
@@ -27,7 +27,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 @if (TempData["As"] != null)
 {
     <script>
-        swal("Modified Successfully!", " ", "success");
+        swal("الحمد لله تم التعديل بنجاح", " ", "success");
     </script>
     // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
@@ -38,12 +38,12 @@ if (Convert.ToInt32(Session["Role"]) == 5)
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<h2>Display Supplierrs</h2>
-<a href="@Url.Action("SaveSupplier", "Basics")">Add Supplier</a>
+<h2>بيانات الموردين</h2>
+<a href="@Url.Action("SaveSupplier", "Basics")">تعريف مورد</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th style="display:none">السريال</th>
-        <th>كود العميل</th>
+        <th>كود المورد</th>
         <th>الإسم عربي</th>
         <th>الإسم انجليزي</th>
         <th>العنوان</th>

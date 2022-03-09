@@ -1,14 +1,14 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "بيانات الموردين";
+    ViewBag.Title = "بيانات الموظفين";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>بيانات الموردين</h2>
-<a href="@Url.Action("SaveSupplier", "Basics")">تعريف مورد</a>
+<h2>بيانات الموظفين</h2>
+<a href="@Url.Action("SaveEmployee", "Product")">تعريف موظف</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>كود المندوب</th>
+        <th>كود الموظف</th>
         <th>الإسم عربي</th>
         <th>الإسم انجليزي</th>
         <th>العنوان</th>

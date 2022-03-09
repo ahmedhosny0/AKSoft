@@ -22,7 +22,6 @@ namespace AKSoft.Models
     
         public int Serial { get; set; }
         public Nullable<int> Code { get; set; }
-        public Nullable<int> Id { get; set; }
         public string ArabicName { get; set; }
         public string EnglishName { get; set; }
         public string DescName { get; set; }
@@ -36,11 +35,12 @@ namespace AKSoft.Models
         public Nullable<int> TownSerial { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
-        public Nullable<System.DateTime> AddUserDate { get; set; }
+        public Nullable<int> RegionSerial { get; set; }
     
         public virtual CountryCode CountryCode { get; set; }
-        public virtual TownCode TownCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HPurchase> HPurchase { get; set; }
+        public virtual Region Region { get; set; }
+        public virtual TownCode TownCode { get; set; }
     }
 }

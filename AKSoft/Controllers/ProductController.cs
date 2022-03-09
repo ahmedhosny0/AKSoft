@@ -31,10 +31,10 @@ public class ProductController : Controller
     {
         return View();
     }
-    public ActionResult User()
-    {
-        return View();
-    }
+    //public ActionResult User()
+    //{
+    //    return View();
+    //}
 
     public ActionResult Worker()
     {
@@ -482,7 +482,6 @@ public class ProductController : Controller
             invo2.DiscValue = model.DiscValue;
             invo2.Factor = model.Factor;
             invo2.GroupSerial = model.GroupSerial;
-            invo2.ID = model.ID;
             invo2.ItemSerial = model.ItemSerial;
             invo2.Price = model.Price;
             invo2.Quantity = model.Quantity;
@@ -705,7 +704,7 @@ public class ProductController : Controller
             stock.Phone2 = model.Phone2;
             stock.Phone3 = model.Phone3;
             stock.Phone4 = model.Phone4;
-            stock.AddUserDate = model.AddUserDate;
+            stock.Description = model.Description;
             stock.EmployeeSerial = model.EmployeeSerial;
             stock.TownSerial = model.TownSerial;
             stock.CountrySerial = model.CountrySerial;
@@ -768,7 +767,6 @@ public class ProductController : Controller
             TopSoft db = new TopSoft();
             GroupCode group = new GroupCode();
             group.ArabicName = model.ArabicName;
-            group.EnglishName = model.EnglishName;
             group.Code = model.Code;
             db.GroupCode.Add(group);
             db.SaveChanges();
@@ -987,7 +985,7 @@ public class ProductController : Controller
         {
             sqlCon.Open();
 
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select distinct ItemCode,ItemCode2,ItemName,ItemEName,ItemDescription,UnitName,GroupName from ItemCard", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select distinct ItemCode,ItemCode2,ItemName,ItemDescription,UnitName,GroupName from ItemCard", sqlCon);
             sqlDa.Fill(dtblProduct);
         }
         return View(dtblProduct);
@@ -1254,7 +1252,6 @@ public class ProductController : Controller
             ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
             DealerCode product = new DealerCode();
             product.Serial = model.Serial;
-            product.Id = model.Id;
             product.Code = model.Code;
             product.ArabicName = model.ArabicName;
             product.EnglishName = model.EnglishName;
@@ -1269,7 +1266,6 @@ public class ProductController : Controller
             product.TownSerial = model.TownSerial;
             product.Email = model.Email;
             product.Website = model.Website;
-            product.AddUserDate = model.AddUserDate;
             db.DealerCode.Add(product);
             db.SaveChanges();
             int latestEmpId = product.Serial;
@@ -1450,7 +1446,6 @@ public class ProductController : Controller
             product.TownSerial = model.TownSerial;
             product.Email = model.Email;
             product.Website = model.Website;
-            product.AddUserDate = model.AddUserDate;
             db.Employee.Add(product);
             db.SaveChanges();
             int latestEmpId = product.Serial;
@@ -1516,7 +1511,6 @@ public class ProductController : Controller
             unit.ArabicName = model.ArabicName;
             unit.Notes = model.Description;
             unit.Code = model.Code;
-            unit.AddUserDate = model.AddUserDate;
             db.CountryCode.Add(unit);
             db.SaveChanges();
             int latestEmpId = unit.Serial;
@@ -1750,12 +1744,8 @@ public class ProductController : Controller
             TopSoft db = new TopSoft();
             BranchCode unit = new BranchCode();
             unit.ArabicName = model.ArabicName;
-            unit.EnglishName = model.EnglishName;
-            unit.DescName = model.DescName;
             unit.Notes = model.Notes;
-            unit.Id = model.Id;
             unit.Code = model.Code;
-            unit.AddUserDate = model.AddUserDate;
             db.BranchCode.Add(unit);
             db.SaveChanges();
             int latestEmpId = unit.Serial;
@@ -1870,12 +1860,8 @@ public class ProductController : Controller
             TopSoft db = new TopSoft();
             SectorCode unit = new SectorCode();
             unit.ArabicName = model.ArabicName;
-            unit.EnglishName = model.EnglishName;
-            unit.DescName = model.DescName;
             unit.Notes = model.Notes;
-            unit.Id = model.Id;
             unit.Code = model.Code;
-            unit.AddUserDate = model.AddUserDate;
             db.SectorCode.Add(unit);
             db.SaveChanges();
             int latestEmpId = unit.Serial;
@@ -2111,7 +2097,6 @@ public class ProductController : Controller
             invo2.DiscValue = model.DiscValue;
             invo2.Factor = model.Factor;
             invo2.GroupSerial = model.GroupSerial;
-            invo2.ID = model.ID;
             invo2.ItemSerial = model.ItemSerial;
             invo2.Price = model.Price;
             invo2.Quantity = model.Quantity;
@@ -2187,7 +2172,6 @@ public class ProductController : Controller
             invo.Factor = model.Factor;
             invo.FirstPayment = model.FirstPayment;
             invo.GroupSerial = model.GroupSerial;
-            invo.ID = model.ID;
             invo.ItemSerial = model.ItemSerial;
             invo.Paid = model.Paid;
             invo.Price = model.Price;

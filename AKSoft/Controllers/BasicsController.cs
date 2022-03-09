@@ -37,11 +37,8 @@ namespace AKSoft.Controllers
                 ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
                 CustomerCode product = new CustomerCode();
                 product.Serial = model.Serial;
-                product.Id = model.Id;
                 product.Code = model.Code;
                 product.ArabicName = model.ArabicName;
-                product.EnglishName = model.EnglishName;
-                product.DescName = model.DescName;
                 product.Description = model.Description;
                 product.Address1 = model.Address1;
                 product.Address2 = model.Address2;
@@ -52,7 +49,6 @@ namespace AKSoft.Controllers
                 product.TownSerial = model.TownSerial;
                 product.Email = model.Email;
                 product.Website = model.Website;
-                product.AddUserDate = model.AddUserDate;
                 db.CustomerCode.Add(product);
                 db.SaveChanges();
                 int latestEmpId = product.Serial;
@@ -217,7 +213,6 @@ namespace AKSoft.Controllers
                 ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
                 SupplierCode product = new SupplierCode();
                 product.Serial = model.Serial;
-                product.Id = model.Id;
                 product.Code = model.Code;
                 product.ArabicName = model.ArabicName;
                 product.EnglishName = model.EnglishName;
@@ -232,7 +227,6 @@ namespace AKSoft.Controllers
                 product.TownSerial = model.TownSerial;
                 product.Email = model.Email;
                 product.Website = model.Website;
-                product.AddUserDate = model.AddUserDate;
                 db.SupplierCode.Add(product);
                 db.SaveChanges();
                 int latestEmpId = product.Serial;

@@ -1,11 +1,11 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "DisplaySales";
+    ViewBag.Title = "الحركة اليومية للمبيعات";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Display Invoices Sales</h2>
-<a href="@Url.Action("SaveInvoiceSales", "Product")">Add Invoice</a>
+<a href="@Url.Action("SaveInvoiceSales", "Product")">تسجيل فاتورة</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th>كود الصنف</th>
@@ -25,7 +25,9 @@
             <td>@Model.Rows[i][1]</td>
             <td>@Model.Rows[i][2]</td>
             <td>@Model.Rows[i][3]</td>
-            <td>@Model.Rows[i][4]</td>
+            <td>
+                <a class="LinkItem" href="@Url.Action("EditInvoiceSales", "Product", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][4]</a>
+            </td>
             <td>@Model.Rows[i][5]</td>
             <td>@Model.Rows[i][6]</td>
             <td>@Model.Rows[i][7]</td>

@@ -30,7 +30,7 @@ if (Convert.ToInt32(Session["Role"]) == 4)
 @if (TempData["As"] != null)
 {
     <script>
-        swal("Modified Successfully!", " ", "success");
+        swal("الحمد لله تم التعديل بنجاح", " ", "success");
     </script>
     // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
@@ -41,7 +41,7 @@ if (Convert.ToInt32(Session["Role"]) == 4)
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<a href="@Url.Action("SaveInvoiceSales","Product")">Add Invoice Sales</a>
+<a href="@Url.Action("SaveInvoiceSales","Product")">تسجيل فاتورة Sales</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th style="display:none">السريال</th>

@@ -22,7 +22,6 @@ namespace AKSoft.Models
         }
     
         public int Serial { get; set; }
-        public Nullable<int> ID { get; set; }
         public Nullable<int> Code { get; set; }
         public string ArabicName { get; set; }
         public string EnglishName { get; set; }
@@ -38,14 +37,13 @@ namespace AKSoft.Models
         public Nullable<double> PriceSale1Unit2 { get; set; }
         public Nullable<int> StoreID { get; set; }
         public Nullable<double> Counts { get; set; }
-        public Nullable<System.DateTime> AddUserDate { get; set; }
     
         public virtual GroupCode GroupCode { get; set; }
-        public virtual StoreCode StoreCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HPurchase> HPurchase { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HSales> HSales { get; set; }
+        public virtual StoreCode StoreCode { get; set; }
         public virtual UnitCode UnitCode { get; set; }
     }
 }

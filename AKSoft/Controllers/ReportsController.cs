@@ -124,13 +124,26 @@ public class ReportsController : Controller
         }
         return View(dt);
     }
+   // Start Employee Show Data
+    public ActionResult EmployeesData()
+    {
+        DataTable dt = new DataTable();
+        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        {
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select EmployeeCode,EmployeeName,EmployeeEname,EmployeeAddress1,EmployeeTel1,EmployeeTel2,CountryName,TownName,Email from RptEmployees", sqlCon);
+            sqlDa.Fill(dt);
+        }
+        return View(dt);
+    }
+    // End Employee Data
     public ActionResult StocksState()
     {
         DataTable dt = new DataTable();
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("Select Code,ArabicName,Address,StoreKeeper,AreaStock,Phone1 from StoreCode", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select StoreCode2,StoreName,StoreAddress,EmployeeName,StoreArea,StorePhone1 from RptStore", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);

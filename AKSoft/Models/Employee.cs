@@ -35,9 +35,10 @@ namespace AKSoft.Models
         public Nullable<int> TownSerial { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
-        public Nullable<System.DateTime> AddUserDate { get; set; }
+        public Nullable<int> RegionSerial { get; set; }
     
         public virtual CountryCode CountryCode { get; set; }
+        public virtual Region Region { get; set; }
         public virtual TownCode TownCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StoreCode> StoreCode { get; set; }

@@ -25,21 +25,22 @@ namespace AKSoft.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<GroupCode> GroupCode { get; set; }
-        public virtual DbSet<ItemCode> ItemCode { get; set; }
-        public virtual DbSet<StoreCode> StoreCode { get; set; }
-        public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<BranchCode> BranchCode { get; set; }
         public virtual DbSet<CountryCode> CountryCode { get; set; }
         public virtual DbSet<CustomerCode> CustomerCode { get; set; }
-        public virtual DbSet<SupplierCode> SupplierCode { get; set; }
-        public virtual DbSet<TownCode> TownCode { get; set; }
+        public virtual DbSet<DealerCode> DealerCode { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<GroupCode> GroupCode { get; set; }
         public virtual DbSet<HPurchase> HPurchase { get; set; }
         public virtual DbSet<HSales> HSales { get; set; }
-        public virtual DbSet<BranchCode> BranchCode { get; set; }
+        public virtual DbSet<ItemCode> ItemCode { get; set; }
+        public virtual DbSet<Region> Region { get; set; }
         public virtual DbSet<SectorCode> SectorCode { get; set; }
-        public virtual DbSet<DealerCode> DealerCode { get; set; }
-        public virtual DbSet<UserRole> UserRole { get; set; }
+        public virtual DbSet<StoreCode> StoreCode { get; set; }
+        public virtual DbSet<SupplierCode> SupplierCode { get; set; }
+        public virtual DbSet<TownCode> TownCode { get; set; }
         public virtual DbSet<UnitCode> UnitCode { get; set; }
-        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<UserRole> UserRole { get; set; }
     }
 }
