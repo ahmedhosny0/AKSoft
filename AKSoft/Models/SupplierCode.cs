@@ -14,12 +14,6 @@ namespace AKSoft.Models
     
     public partial class SupplierCode
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SupplierCode()
-        {
-            this.HPurchase = new HashSet<HPurchase>();
-        }
-    
         public int Serial { get; set; }
         public Nullable<int> Code { get; set; }
         public string ArabicName { get; set; }
@@ -38,8 +32,6 @@ namespace AKSoft.Models
         public Nullable<int> RegionSerial { get; set; }
     
         public virtual CountryCode CountryCode { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HPurchase> HPurchase { get; set; }
         public virtual Region Region { get; set; }
         public virtual TownCode TownCode { get; set; }
     }

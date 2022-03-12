@@ -200,14 +200,50 @@ public class ProductController : Controller
         TopSoft db = new TopSoft();
         List<UnitCode> list1 = db.UnitCode.ToList();
         ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName",1);
-        List<StoreCode> list2 = db.StoreCode.ToList();
-        ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName",1);
         List<GroupCode> list3 = db.GroupCode.ToList();
         ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName",1);
-        List<ItemCode> list4 = db.ItemCode.ToList();
-        ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
         return View();
 
+    } 
+    [HttpPost]
+
+    public ActionResult SaveProduct(ItemCode model)
+    {
+        try
+        {
+            TopSoft db = new TopSoft();
+            List<UnitCode> list1 = db.UnitCode.ToList();
+            ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName", 1);
+            List<GroupCode> list3 = db.GroupCode.ToList();
+            ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName", 1);
+            ItemCode product = new ItemCode();
+            if (model.Code == null)
+            {
+                model.Code = 0;
+            }
+            product.Code = model.Code;
+            product.Serial = model.Serial;
+            product.SerialGroup = model.SerialGroup;
+            product.Unit1 = model.Unit1;
+            product.ArabicName = model.ArabicName;
+            product.EnglishName = model.EnglishName;
+            product.Counts = model.Counts;
+            product.DescName = model.DescName;
+            product.Description = model.Description;
+            product.PricePurchase1Unit1 = model.PricePurchase1Unit1;
+            product.PriceSale1Unit1 = model.PriceSale1Unit1;
+            db.ItemCode.Add(product);
+            db.SaveChanges();
+            int latestEmpId = product.Serial;
+            TempData["Al"] = product.ArabicName;
+            return RedirectToAction("SaveProduct");
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+
+        }
     }
     public ActionResult SaveInvoiceSales()
     {
@@ -223,7 +259,7 @@ public class ProductController : Controller
         List<CustomerCode> list5 = db.CustomerCode.ToList();
         ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName",1);
         List<DealerCode> list6 = db.DealerCode.ToList();
-        ViewBag.DepartmentList6 = new SelectList(list6, "Serial", "ArabicName",1);
+        ViewBag.DepartmentList6 = new SelectList(list6, "Serial", "ArabicName",2);
         return View();
 
     }
@@ -257,10 +293,10 @@ public class ProductController : Controller
             else
             {
                 invo.Code = model.Code;
-            } invo.Code = model.Code;
+            }
+                invo.DealerCode = model.DealerCode;
             invo.CurrencyCode = model.CurrencyCode;
             invo.Date = model.Date;
-            invo.DealerCode = model.DealerCode;
             invo.Discount = model.Discount;
             invo.DiscValue = model.DiscValue;
             invo.Factor = model.Factor;
@@ -368,12 +404,13 @@ public class ProductController : Controller
                 productModel.ItemSerial = Convert.ToInt32(dtblProduct.Rows[0][6].ToString());
                 productModel.UnitSerial = Convert.ToInt32(dtblProduct.Rows[0][7].ToString());
                 productModel.DealerCode = Convert.ToInt32(dtblProduct.Rows[0][8].ToString());
-                productModel.Quantity = Convert.ToInt32(dtblProduct.Rows[0][9].ToString());
-                productModel.Price = Convert.ToInt32(dtblProduct.Rows[0][10].ToString());
-                productModel.Total = Convert.ToInt32(dtblProduct.Rows[0][10].ToString());
+                productModel.Quantity = float.Parse(dtblProduct.Rows[0][9].ToString());
+                productModel.Price = float.Parse(dtblProduct.Rows[0][10].ToString());
+                productModel.Total = float.Parse(dtblProduct.Rows[0][10].ToString());
 
                 TempData["As"] = 1;
                 return View(productModel);
+
             }
         }
         catch
@@ -474,10 +511,10 @@ public class ProductController : Controller
             else
             {
                 invo2.Code = model.Code;
-            } invo2.Code = model.Code;
+            }
+                invo2.DealerCode = model.DealerCode;
             invo2.CurrencyCode = model.CurrencyCode;
             invo2.Date = model.Date;
-            invo2.DealerCode = model.DealerCode;
             invo2.Discount = model.Discount;
             invo2.DiscValue = model.DiscValue;
             invo2.Factor = model.Factor;
@@ -577,9 +614,9 @@ public class ProductController : Controller
                 productModel.SupplierSerial = Convert.ToInt32(dtblProduct.Rows[0][5].ToString());
                 productModel.ItemSerial = Convert.ToInt32(dtblProduct.Rows[0][6].ToString());
                 productModel.UnitSerial = Convert.ToInt32(dtblProduct.Rows[0][7].ToString());
-                productModel.Quantity = Convert.ToInt32(dtblProduct.Rows[0][8].ToString());
-                productModel.Price = Convert.ToInt32(dtblProduct.Rows[0][9].ToString());
-                productModel.Total = Convert.ToInt32(dtblProduct.Rows[0][10].ToString());
+                productModel.Quantity = float.Parse(dtblProduct.Rows[0][8].ToString());
+                productModel.Price = float.Parse(dtblProduct.Rows[0][9].ToString());
+                productModel.Total = float.Parse(dtblProduct.Rows[0][10].ToString());
 
                 TempData["As"] = 1;
                 return View(productModel);
@@ -640,42 +677,7 @@ public class ProductController : Controller
     }
     // End Purchase
 
-    [HttpPost]
-
-    public ActionResult SaveProduct(ItemCode model)
-    {
-        try
-        {
-            TopSoft db = new TopSoft();
-            List<UnitCode> list1 = db.UnitCode.ToList();
-            ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName",1);
-            List<GroupCode> list3 = db.GroupCode.ToList();
-            ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName",1);
-            ItemCode product = new ItemCode();
-            product.Code = model.Code;
-            product.Serial = model.Serial;
-            product.SerialGroup = model.SerialGroup;
-            product.Unit1 = model.Unit1;
-            product.ArabicName = model.ArabicName;
-            product.EnglishName = model.EnglishName;
-            product.Counts = model.Counts;
-            product.DescName = model.DescName;
-            product.Description = model.Description;
-            product.PricePurchase1Unit1 = model.PricePurchase1Unit1;
-            product.PriceSale1Unit1 = model.PriceSale1Unit1;
-            db.ItemCode.Add(product);
-            db.SaveChanges();
-            int latestEmpId = product.Serial;
-            TempData["Al"] = product.ArabicName;
-            return RedirectToAction("SaveProduct");
-        }
-
-        catch (Exception ex)
-        {
-            throw ex;
-
-        }
-    }
+   
     public ActionResult SaveStock()
     {
         TopSoft db = new TopSoft();
@@ -1002,35 +1004,36 @@ public class ProductController : Controller
         ItemCode productModel = new ItemCode();
         DataTable dtblProduct = new DataTable();
         try
-        { 
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
-            sqlCon.Open();
-            string query = "select Serial,Code,Unit1,SerialGroup,ArabicName,EnglishName,DescName,Description,PricePurchase1Unit1,PriceSale1Unit1 from itemcode Where Serial=@Serial";
-            SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
-            sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
-            sqlDa.Fill(dtblProduct);
-        }
-        if (dtblProduct.Rows.Count <= 1)
-        {
-            productModel.Serial = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
-            productModel.Code = Convert.ToInt32(dtblProduct.Rows[0][1].ToString());
-            productModel.Unit1 = Convert.ToInt32(dtblProduct.Rows[0][2].ToString());
-            productModel.SerialGroup = Convert.ToInt32(dtblProduct.Rows[0][3].ToString());
-            productModel.ArabicName = dtblProduct.Rows[0][4].ToString();
-            productModel.EnglishName = dtblProduct.Rows[0][5].ToString();
-            productModel.DescName = dtblProduct.Rows[0][6].ToString();
-            productModel.Description = dtblProduct.Rows[0][7].ToString();
-            productModel.PricePurchase1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][8].ToString());
-            productModel.PriceSale1Unit1 = Convert.ToInt32(dtblProduct.Rows[0][9].ToString());
-            TempData["As"] = 1;
-            return View(productModel);
-        }
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string query = "select Serial,Code,Unit1,SerialGroup,ArabicName,EnglishName,DescName,Description,PricePurchase1Unit1,PriceSale1Unit1 from itemcode Where Serial=@Serial";
+                SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
+                sqlDa.SelectCommand.Parameters.AddWithValue("@Serial", id);
+                sqlDa.Fill(dtblProduct);
+            }
+            if (dtblProduct.Rows.Count <= 1)
+            {
+                productModel.Serial = Convert.ToInt32(dtblProduct.Rows[0][0].ToString());
+                productModel.Code = Convert.ToInt32(dtblProduct.Rows[0][1].ToString());
+                productModel.Unit1 = Convert.ToInt32(dtblProduct.Rows[0][2].ToString());
+                productModel.SerialGroup = Convert.ToInt32(dtblProduct.Rows[0][3].ToString());
+                productModel.ArabicName = dtblProduct.Rows[0][4].ToString();
+                productModel.EnglishName = dtblProduct.Rows[0][5].ToString();
+                productModel.DescName = dtblProduct.Rows[0][6].ToString();
+                productModel.Description = dtblProduct.Rows[0][7].ToString();
+                productModel.PricePurchase1Unit1 = float.Parse(dtblProduct.Rows[0][8].ToString());
+                productModel.PriceSale1Unit1 = float.Parse(dtblProduct.Rows[0][9].ToString());
+                TempData["As"] = 1;
+                return View(productModel);
+            }
         }
         catch
         {
             TempData["A"] = 1;
         }
+
             return RedirectToAction("DisplayItems");
 
     }

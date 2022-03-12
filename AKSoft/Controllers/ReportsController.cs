@@ -27,8 +27,6 @@ public class ReportsController : Controller
         List<CustomerCode> list5 = db.CustomerCode.ToList();
         ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName", 1);
         List<DealerCode> list6 = db.DealerCode.ToList();
-        ViewBag.DepartmentList6 = new SelectList(list6, "2", "2", 1);
-        ViewBag.c = model.ItemCode; 
         HSales invo = new HSales();
         DataTable dt = new DataTable(); 
         using (SqlConnection sqlCon = new SqlConnection(connectionString))

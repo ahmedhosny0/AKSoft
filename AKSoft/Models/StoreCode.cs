@@ -14,14 +14,6 @@ namespace AKSoft.Models
     
     public partial class StoreCode
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public StoreCode()
-        {
-            this.HPurchase = new HashSet<HPurchase>();
-            this.HSales = new HashSet<HSales>();
-            this.ItemCode = new HashSet<ItemCode>();
-        }
-    
         public int Serial { get; set; }
         public Nullable<int> Code { get; set; }
         public string ArabicName { get; set; }
@@ -42,13 +34,6 @@ namespace AKSoft.Models
         public Nullable<int> TownSerial { get; set; }
     
         public virtual CountryCode CountryCode { get; set; }
-        public virtual Employee Employee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HPurchase> HPurchase { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HSales> HSales { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemCode> ItemCode { get; set; }
         public virtual TownCode TownCode { get; set; }
     }
 }

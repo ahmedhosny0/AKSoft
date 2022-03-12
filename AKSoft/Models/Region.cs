@@ -18,7 +18,6 @@ namespace AKSoft.Models
         public Region()
         {
             this.CustomerCode = new HashSet<CustomerCode>();
-            this.CustomerCode1 = new HashSet<CustomerCode>();
             this.DealerCode = new HashSet<DealerCode>();
             this.Employee = new HashSet<Employee>();
             this.SupplierCode = new HashSet<SupplierCode>();
@@ -31,8 +30,6 @@ namespace AKSoft.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerCode> CustomerCode { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerCode> CustomerCode1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DealerCode> DealerCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -46,10 +46,6 @@
       <End Role="Region" EntitySet="Region" />
       <End Role="CustomerCode" EntitySet="CustomerCode" />
     </AssociationSet>
-    <AssociationSet Name="FK__CustomerC__Regio__0B47A151" Association="TopSoftModel.FK__CustomerC__Regio__0B47A151">
-      <End Role="Region" EntitySet="Region" />
-      <End Role="CustomerCode" EntitySet="CustomerCode" />
-    </AssociationSet>
     <AssociationSet Name="FK__CustomerC__TownS__671F4F74" Association="TopSoftModel.FK__CustomerC__TownS__671F4F74">
       <End Role="TownCode" EntitySet="TownCode" />
       <End Role="CustomerCode" EntitySet="CustomerCode" />
@@ -70,14 +66,6 @@
       <End Role="DealerCode" EntitySet="DealerCode" />
       <End Role="HPurchase" EntitySet="HPurchase" />
     </AssociationSet>
-    <AssociationSet Name="FK__HSales__DealerCo__5AA469F6" Association="TopSoftModel.FK__HSales__DealerCo__5AA469F6">
-      <End Role="DealerCode" EntitySet="DealerCode" />
-      <End Role="HSales" EntitySet="HSales" />
-    </AssociationSet>
-    <AssociationSet Name="FK__HSales__DealerCo__5DB5E0CB" Association="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB">
-      <End Role="DealerCode" EntitySet="DealerCode" />
-      <End Role="HSales" EntitySet="HSales" />
-    </AssociationSet>
     <AssociationSet Name="FK__Employee__Region__095F58DF" Association="TopSoftModel.FK__Employee__Region__095F58DF">
       <End Role="Region" EntitySet="Region" />
       <End Role="Employee" EntitySet="Employee" />
@@ -85,10 +73,6 @@
     <AssociationSet Name="FK__Employee__TownSe__7187CF4E" Association="TopSoftModel.FK__Employee__TownSe__7187CF4E">
       <End Role="TownCode" EntitySet="TownCode" />
       <End Role="Employee" EntitySet="Employee" />
-    </AssociationSet>
-    <AssociationSet Name="FK__StoreCode__Emplo__764C846B" Association="TopSoftModel.FK__StoreCode__Emplo__764C846B">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="StoreCode" EntitySet="StoreCode" />
     </AssociationSet>
     <AssociationSet Name="FK__HPurchase__Group__1975C517" Association="TopSoftModel.FK__HPurchase__Group__1975C517">
       <End Role="GroupCode" EntitySet="GroupCode" />
@@ -102,37 +86,13 @@
       <End Role="GroupCode" EntitySet="GroupCode" />
       <End Role="ItemCode" EntitySet="ItemCode" />
     </AssociationSet>
-    <AssociationSet Name="FK__HPurchase__ItemS__1C5231C2" Association="TopSoftModel.FK__HPurchase__ItemS__1C5231C2">
-      <End Role="ItemCode" EntitySet="ItemCode" />
-      <End Role="HPurchase" EntitySet="HPurchase" />
-    </AssociationSet>
-    <AssociationSet Name="FK__HPurchase__Store__1A69E950" Association="TopSoftModel.FK__HPurchase__Store__1A69E950">
-      <End Role="StoreCode" EntitySet="StoreCode" />
-      <End Role="HPurchase" EntitySet="HPurchase" />
-    </AssociationSet>
-    <AssociationSet Name="FK__HPurchase__Suppl__1D4655FB" Association="TopSoftModel.FK__HPurchase__Suppl__1D4655FB">
-      <End Role="SupplierCode" EntitySet="SupplierCode" />
-      <End Role="HPurchase" EntitySet="HPurchase" />
-    </AssociationSet>
     <AssociationSet Name="FK__HPurchase__UnitS__1B5E0D89" Association="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89">
       <End Role="UnitCode" EntitySet="UnitCode" />
       <End Role="HPurchase" EntitySet="HPurchase" />
     </AssociationSet>
-    <AssociationSet Name="FK_itemSerial" Association="TopSoftModel.FK_itemSerial">
-      <End Role="ItemCode" EntitySet="ItemCode" />
-      <End Role="HSales" EntitySet="HSales" />
-    </AssociationSet>
-    <AssociationSet Name="FK_StoreSerial" Association="TopSoftModel.FK_StoreSerial">
-      <End Role="StoreCode" EntitySet="StoreCode" />
-      <End Role="HSales" EntitySet="HSales" />
-    </AssociationSet>
     <AssociationSet Name="FK_UnitSerial" Association="TopSoftModel.FK_UnitSerial">
       <End Role="UnitCode" EntitySet="UnitCode" />
       <End Role="HSales" EntitySet="HSales" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ItemCode_StoreCode" Association="TopSoftModel.FK_ItemCode_StoreCode">
-      <End Role="StoreCode" EntitySet="StoreCode" />
-      <End Role="ItemCode" EntitySet="ItemCode" />
     </AssociationSet>
     <AssociationSet Name="FK_ItemCode_UnitCode" Association="TopSoftModel.FK_ItemCode_UnitCode">
       <End Role="UnitCode" EntitySet="UnitCode" />
@@ -145,10 +105,6 @@
     <AssociationSet Name="FK__SectorCod__UserI__3D491139" Association="TopSoftModel.FK__SectorCod__UserI__3D491139">
       <End Role="UserInfo" EntitySet="UserInfo" />
       <End Role="SectorCode" EntitySet="SectorCode" />
-    </AssociationSet>
-    <AssociationSet Name="FK__UserInfo__Sector__4301EA8F" Association="TopSoftModel.FK__UserInfo__Sector__4301EA8F">
-      <End Role="SectorCode" EntitySet="SectorCode" />
-      <End Role="UserInfo" EntitySet="UserInfo" />
     </AssociationSet>
     <AssociationSet Name="FK__StoreCode__TownS__7834CCDD" Association="TopSoftModel.FK__StoreCode__TownS__7834CCDD">
       <End Role="TownCode" EntitySet="TownCode" />
@@ -210,7 +166,6 @@
     <Property Name="DescName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__CustomerC__Websi__662B2B3B" FromRole="CustomerCode" ToRole="CountryCode" />
     <NavigationProperty Name="Region" Relationship="TopSoftModel.FK__CustomerC__Regio__0682EC34" FromRole="CustomerCode" ToRole="Region" />
-    <NavigationProperty Name="Region1" Relationship="TopSoftModel.FK__CustomerC__Regio__0B47A151" FromRole="CustomerCode" ToRole="Region" />
     <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__CustomerC__TownS__671F4F74" FromRole="CustomerCode" ToRole="TownCode" />
     <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK__HSales__Customer__23F3538A" FromRole="CustomerCode" ToRole="HSales" />
   </EntityType>
@@ -238,8 +193,6 @@
     <NavigationProperty Name="Region" Relationship="TopSoftModel.FK__DealerCod__Regio__0777106D" FromRole="DealerCode" ToRole="Region" />
     <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__DealerCod__TownS__1FB8AE52" FromRole="DealerCode" ToRole="TownCode" />
     <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Deale__59B045BD" FromRole="DealerCode" ToRole="HPurchase" />
-    <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK__HSales__DealerCo__5AA469F6" FromRole="DealerCode" ToRole="HSales" />
-    <NavigationProperty Name="HSales1" Relationship="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB" FromRole="DealerCode" ToRole="HSales" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -264,7 +217,6 @@
     <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__Employee__AddUse__7093AB15" FromRole="Employee" ToRole="CountryCode" />
     <NavigationProperty Name="Region" Relationship="TopSoftModel.FK__Employee__Region__095F58DF" FromRole="Employee" ToRole="Region" />
     <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__Employee__TownSe__7187CF4E" FromRole="Employee" ToRole="TownCode" />
-    <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__StoreCode__Emplo__764C846B" FromRole="Employee" ToRole="StoreCode" />
   </EntityType>
   <EntityType Name="GroupCode">
     <Key>
@@ -306,9 +258,6 @@
     <Property Name="AddUserDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="DealerCode1" Relationship="TopSoftModel.FK__HPurchase__Deale__59B045BD" FromRole="HPurchase" ToRole="DealerCode" />
     <NavigationProperty Name="GroupCode" Relationship="TopSoftModel.FK__HPurchase__Group__1975C517" FromRole="HPurchase" ToRole="GroupCode" />
-    <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.FK__HPurchase__ItemS__1C5231C2" FromRole="HPurchase" ToRole="ItemCode" />
-    <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__HPurchase__Store__1A69E950" FromRole="HPurchase" ToRole="StoreCode" />
-    <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__HPurchase__Suppl__1D4655FB" FromRole="HPurchase" ToRole="SupplierCode" />
     <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.FK__HPurchase__UnitS__1B5E0D89" FromRole="HPurchase" ToRole="UnitCode" />
   </EntityType>
   <EntityType Name="HSales">
@@ -341,11 +290,7 @@
     <Property Name="TaxValue" Type="Double" />
     <Property Name="TotalAfterTax" Type="Double" />
     <NavigationProperty Name="CustomerCode" Relationship="TopSoftModel.FK__HSales__Customer__23F3538A" FromRole="HSales" ToRole="CustomerCode" />
-    <NavigationProperty Name="DealerCode1" Relationship="TopSoftModel.FK__HSales__DealerCo__5AA469F6" FromRole="HSales" ToRole="DealerCode" />
-    <NavigationProperty Name="DealerCode2" Relationship="TopSoftModel.FK__HSales__DealerCo__5DB5E0CB" FromRole="HSales" ToRole="DealerCode" />
     <NavigationProperty Name="GroupCode" Relationship="TopSoftModel.FK_GroupSerial" FromRole="HSales" ToRole="GroupCode" />
-    <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.FK_itemSerial" FromRole="HSales" ToRole="ItemCode" />
-    <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK_StoreSerial" FromRole="HSales" ToRole="StoreCode" />
     <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.FK_UnitSerial" FromRole="HSales" ToRole="UnitCode" />
   </EntityType>
   <EntityType Name="ItemCode">
@@ -366,12 +311,8 @@
     <Property Name="PricePurchase1Unit2" Type="Double" />
     <Property Name="PriceSale1Unit1" Type="Double" />
     <Property Name="PriceSale1Unit2" Type="Double" />
-    <Property Name="StoreID" Type="Int32" />
     <Property Name="Counts" Type="Double" />
     <NavigationProperty Name="GroupCode" Relationship="TopSoftModel.FK_ItemCode_GroupCode" FromRole="ItemCode" ToRole="GroupCode" />
-    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__ItemS__1C5231C2" FromRole="ItemCode" ToRole="HPurchase" />
-    <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK_itemSerial" FromRole="ItemCode" ToRole="HSales" />
-    <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK_ItemCode_StoreCode" FromRole="ItemCode" ToRole="StoreCode" />
     <NavigationProperty Name="UnitCode" Relationship="TopSoftModel.FK_ItemCode_UnitCode" FromRole="ItemCode" ToRole="UnitCode" />
   </EntityType>
   <EntityType Name="Region">
@@ -383,7 +324,6 @@
     <Property Name="ArabicName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Notes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CustomerCode" Relationship="TopSoftModel.FK__CustomerC__Regio__0682EC34" FromRole="Region" ToRole="CustomerCode" />
-    <NavigationProperty Name="CustomerCode1" Relationship="TopSoftModel.FK__CustomerC__Regio__0B47A151" FromRole="Region" ToRole="CustomerCode" />
     <NavigationProperty Name="DealerCode" Relationship="TopSoftModel.FK__DealerCod__Regio__0777106D" FromRole="Region" ToRole="DealerCode" />
     <NavigationProperty Name="Employee" Relationship="TopSoftModel.FK__Employee__Region__095F58DF" FromRole="Region" ToRole="Employee" />
     <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__SupplierC__Regio__086B34A6" FromRole="Region" ToRole="SupplierCode" />
@@ -398,7 +338,6 @@
     <Property Name="Notes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="UserId" Type="Int32" />
     <NavigationProperty Name="UserInfo" Relationship="TopSoftModel.FK__SectorCod__UserI__3D491139" FromRole="SectorCode" ToRole="UserInfo" />
-    <NavigationProperty Name="UserInfo1" Relationship="TopSoftModel.FK__UserInfo__Sector__4301EA8F" FromRole="SectorCode" ToRole="UserInfo" />
   </EntityType>
   <EntityType Name="StoreCode">
     <Key>
@@ -423,10 +362,6 @@
     <Property Name="CountrySerial" Type="Int32" />
     <Property Name="TownSerial" Type="Int32" />
     <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__StoreCode__Count__7740A8A4" FromRole="StoreCode" ToRole="CountryCode" />
-    <NavigationProperty Name="Employee" Relationship="TopSoftModel.FK__StoreCode__Emplo__764C846B" FromRole="StoreCode" ToRole="Employee" />
-    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Store__1A69E950" FromRole="StoreCode" ToRole="HPurchase" />
-    <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK_StoreSerial" FromRole="StoreCode" ToRole="HSales" />
-    <NavigationProperty Name="ItemCode" Relationship="TopSoftModel.FK_ItemCode_StoreCode" FromRole="StoreCode" ToRole="ItemCode" />
     <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__StoreCode__TownS__7834CCDD" FromRole="StoreCode" ToRole="TownCode" />
   </EntityType>
   <EntityType Name="SupplierCode">
@@ -450,7 +385,6 @@
     <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="RegionSerial" Type="Int32" />
     <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="SupplierCode" ToRole="CountryCode" />
-    <NavigationProperty Name="HPurchase" Relationship="TopSoftModel.FK__HPurchase__Suppl__1D4655FB" FromRole="SupplierCode" ToRole="HPurchase" />
     <NavigationProperty Name="Region" Relationship="TopSoftModel.FK__SupplierC__Regio__086B34A6" FromRole="SupplierCode" ToRole="Region" />
     <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__SupplierC__TownS__6AEFE058" FromRole="SupplierCode" ToRole="TownCode" />
   </EntityType>
@@ -497,7 +431,6 @@
     <Property Name="SectorSerial" Type="Int32" />
     <NavigationProperty Name="BranchCode" Relationship="TopSoftModel.FK__BranchCod__UserI__3A6CA48E" FromRole="UserInfo" ToRole="BranchCode" />
     <NavigationProperty Name="SectorCode" Relationship="TopSoftModel.FK__SectorCod__UserI__3D491139" FromRole="UserInfo" ToRole="SectorCode" />
-    <NavigationProperty Name="SectorCode1" Relationship="TopSoftModel.FK__UserInfo__Sector__4301EA8F" FromRole="UserInfo" ToRole="SectorCode" />
     <NavigationProperty Name="UserRole" Relationship="TopSoftModel.FK__UserInfo__Role__5EAA0504" FromRole="UserInfo" ToRole="UserRole" />
   </EntityType>
   <EntityType Name="UserRole">
@@ -565,7 +498,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__StoreCode__Count__7740A8A4">
-    <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1" />
+    <End Type="TopSoftModel.CountryCode" Role="CountryCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CountryCode">
@@ -591,18 +526,6 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__CustomerC__Regio__0682EC34">
-    <End Type="TopSoftModel.Region" Role="Region" Multiplicity="0..1" />
-    <End Type="TopSoftModel.CustomerCode" Role="CustomerCode" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Region">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="CustomerCode">
-        <PropertyRef Name="RegionSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__CustomerC__Regio__0B47A151">
     <End Type="TopSoftModel.Region" Role="Region" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -673,37 +596,15 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__HPurchase__Deale__59B045BD">
-    <End Type="TopSoftModel.DealerCode" Role="DealerCode" Multiplicity="0..1" />
+    <End Type="TopSoftModel.DealerCode" Role="DealerCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DealerCode">
         <PropertyRef Name="Serial" />
       </Principal>
       <Dependent Role="HPurchase">
-        <PropertyRef Name="DealerCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HSales__DealerCo__5AA469F6">
-    <End Type="TopSoftModel.DealerCode" Role="DealerCode" Multiplicity="0..1" />
-    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DealerCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HSales">
-        <PropertyRef Name="DealerCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HSales__DealerCo__5DB5E0CB">
-    <End Type="TopSoftModel.DealerCode" Role="DealerCode" Multiplicity="0..1" />
-    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DealerCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HSales">
         <PropertyRef Name="DealerCode" />
       </Dependent>
     </ReferentialConstraint>
@@ -736,18 +637,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__StoreCode__Emplo__764C846B">
-    <End Type="TopSoftModel.Employee" Role="Employee" Multiplicity="0..1" />
-    <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="StoreCode">
-        <PropertyRef Name="EmployeeSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__HPurchase__Group__1975C517">
     <End Type="TopSoftModel.GroupCode" Role="GroupCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -777,7 +666,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ItemCode_GroupCode">
-    <End Type="TopSoftModel.GroupCode" Role="GroupCode" Multiplicity="0..1" />
+    <End Type="TopSoftModel.GroupCode" Role="GroupCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="GroupCode">
@@ -785,48 +676,6 @@
       </Principal>
       <Dependent Role="ItemCode">
         <PropertyRef Name="SerialGroup" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HPurchase__ItemS__1C5231C2">
-    <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ItemCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HPurchase">
-        <PropertyRef Name="ItemSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HPurchase__Store__1A69E950">
-    <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StoreCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HPurchase">
-        <PropertyRef Name="StoreSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HPurchase__Suppl__1D4655FB">
-    <End Type="TopSoftModel.SupplierCode" Role="SupplierCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="TopSoftModel.HPurchase" Role="HPurchase" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SupplierCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HPurchase">
-        <PropertyRef Name="SupplierSerial" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -844,34 +693,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_itemSerial">
-    <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ItemCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HSales">
-        <PropertyRef Name="ItemSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_StoreSerial">
-    <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="TopSoftModel.HSales" Role="HSales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StoreCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="HSales">
-        <PropertyRef Name="StoreSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_UnitSerial">
     <End Type="TopSoftModel.UnitCode" Role="UnitCode" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -886,20 +707,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ItemCode_StoreCode">
-    <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="0..1" />
-    <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StoreCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="ItemCode">
-        <PropertyRef Name="StoreID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ItemCode_UnitCode">
-    <End Type="TopSoftModel.UnitCode" Role="UnitCode" Multiplicity="0..1" />
+    <End Type="TopSoftModel.UnitCode" Role="UnitCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="TopSoftModel.ItemCode" Role="ItemCode" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UnitCode">
@@ -938,20 +749,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserInfo__Sector__4301EA8F">
-    <End Type="TopSoftModel.SectorCode" Role="SectorCode" Multiplicity="0..1" />
-    <End Type="TopSoftModel.UserInfo" Role="UserInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SectorCode">
-        <PropertyRef Name="Serial" />
-      </Principal>
-      <Dependent Role="UserInfo">
-        <PropertyRef Name="SectorSerial" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__StoreCode__TownS__7834CCDD">
-    <End Type="TopSoftModel.TownCode" Role="TownCode" Multiplicity="0..1" />
+    <End Type="TopSoftModel.TownCode" Role="TownCode" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="TopSoftModel.StoreCode" Role="StoreCode" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TownCode">
@@ -977,7 +778,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__UserInfo__Role__5EAA0504">
-    <End Type="TopSoftModel.UserRole" Role="UserRole" Multiplicity="0..1" />
+    <End Type="TopSoftModel.UserRole" Role="UserRole" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="TopSoftModel.UserInfo" Role="UserInfo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UserRole">

@@ -250,7 +250,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 					max = parseFloat( max ) * ( max.indexOf( em ) > -1 ? ( eminpx || getEmValue() ) : 1 );
 				}
 				
-				// if there's no media query at all (the () part), or min or max is not null, and if either is present, they're true
+				// if there's no media query at all (the () part), or min or max IS NULL, and if either is present, they're true
 				if( !thisstyle.hasquery || ( !minnull || !maxnull ) && ( minnull || currWidth >= min ) && ( maxnull || currWidth <= max ) ){
 						if( !styleBlocks[ thisstyle.media ] ){
 							styleBlocks[ thisstyle.media ] = [];

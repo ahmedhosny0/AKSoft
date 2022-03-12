@@ -39,7 +39,6 @@ namespace AKSoft.Models
     
         public virtual CountryCode CountryCode { get; set; }
         public virtual Region Region { get; set; }
-        public virtual Region Region1 { get; set; }
         public virtual TownCode TownCode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HSales> HSales { get; set; }

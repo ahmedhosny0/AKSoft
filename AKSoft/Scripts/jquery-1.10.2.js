@@ -6515,7 +6515,7 @@ jQuery.extend({
 
 			// Fix all IE cloning issues
 			for ( i = 0; (node = srcElements[i]) != null; ++i ) {
-				// Ensure that the destination node is not null; Fixes #9587
+				// Ensure that the destination node IS NULL; Fixes #9587
 				if ( destElements[i] ) {
 					fixCloneNodeIssues( node, destElements[i] );
 				}

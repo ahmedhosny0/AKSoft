@@ -17,82 +17,82 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK__BranchCod__UserI__3A6CA48E]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__BranchCod__UserI__3A6CA48E]', 'F') IS NULL
     ALTER TABLE [dbo].[BranchCode] DROP CONSTRAINT [FK__BranchCod__UserI__3A6CA48E];
 GO
-IF OBJECT_ID(N'[dbo].[FK__CustomerC__Regio__0682EC34]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__CustomerC__Regio__0682EC34]', 'F') IS NULL
     ALTER TABLE [dbo].[CustomerCode] DROP CONSTRAINT [FK__CustomerC__Regio__0682EC34];
 GO
-IF OBJECT_ID(N'[dbo].[FK__CustomerC__TownS__671F4F74]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__CustomerC__TownS__671F4F74]', 'F') IS NULL
     ALTER TABLE [dbo].[CustomerCode] DROP CONSTRAINT [FK__CustomerC__TownS__671F4F74];
 GO
-IF OBJECT_ID(N'[dbo].[FK__CustomerC__Websi__662B2B3B]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__CustomerC__Websi__662B2B3B]', 'F') IS NULL
     ALTER TABLE [dbo].[CustomerCode] DROP CONSTRAINT [FK__CustomerC__Websi__662B2B3B];
 GO
-IF OBJECT_ID(N'[dbo].[FK__DealerCod__Regio__0777106D]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__DealerCod__Regio__0777106D]', 'F') IS NULL
     ALTER TABLE [dbo].[DealerCode] DROP CONSTRAINT [FK__DealerCod__Regio__0777106D];
 GO
-IF OBJECT_ID(N'[dbo].[FK__DealerCod__TownS__1FB8AE52]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__DealerCod__TownS__1FB8AE52]', 'F') IS NULL
     ALTER TABLE [dbo].[DealerCode] DROP CONSTRAINT [FK__DealerCod__TownS__1FB8AE52];
 GO
-IF OBJECT_ID(N'[dbo].[FK__DealerCod__Websi__1EC48A19]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__DealerCod__Websi__1EC48A19]', 'F') IS NULL
     ALTER TABLE [dbo].[DealerCode] DROP CONSTRAINT [FK__DealerCod__Websi__1EC48A19];
 GO
-IF OBJECT_ID(N'[dbo].[FK__Employee__AddUse__7093AB15]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__Employee__AddUse__7093AB15]', 'F') IS NULL
     ALTER TABLE [dbo].[Employee] DROP CONSTRAINT [FK__Employee__AddUse__7093AB15];
 GO
-IF OBJECT_ID(N'[dbo].[FK__Employee__Region__095F58DF]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__Employee__Region__095F58DF]', 'F') IS NULL
     ALTER TABLE [dbo].[Employee] DROP CONSTRAINT [FK__Employee__Region__095F58DF];
 GO
-IF OBJECT_ID(N'[dbo].[FK__Employee__TownSe__7187CF4E]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__Employee__TownSe__7187CF4E]', 'F') IS NULL
     ALTER TABLE [dbo].[Employee] DROP CONSTRAINT [FK__Employee__TownSe__7187CF4E];
 GO
-IF OBJECT_ID(N'[dbo].[FK__HPurchase__Deale__59B045BD]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__HPurchase__Deale__59B045BD]', 'F') IS NULL
     ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__Deale__59B045BD];
 GO
-IF OBJECT_ID(N'[dbo].[FK__HPurchase__Group__1975C517]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__HPurchase__Group__1975C517]', 'F') IS NULL
     ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__Group__1975C517];
 GO
-IF OBJECT_ID(N'[dbo].[FK__HPurchase__UnitS__1B5E0D89]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__HPurchase__UnitS__1B5E0D89]', 'F') IS NULL
     ALTER TABLE [dbo].[HPurchase] DROP CONSTRAINT [FK__HPurchase__UnitS__1B5E0D89];
 GO
-IF OBJECT_ID(N'[dbo].[FK__HSales__Customer__23F3538A]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__HSales__Customer__23F3538A]', 'F') IS NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK__HSales__Customer__23F3538A];
 GO
-IF OBJECT_ID(N'[dbo].[FK__SectorCod__UserI__3D491139]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__SectorCod__UserI__3D491139]', 'F') IS NULL
     ALTER TABLE [dbo].[SectorCode] DROP CONSTRAINT [FK__SectorCod__UserI__3D491139];
 GO
-IF OBJECT_ID(N'[dbo].[FK__StoreCode__Count__7740A8A4]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__StoreCode__Count__7740A8A4]', 'F') IS NULL
     ALTER TABLE [dbo].[StoreCode] DROP CONSTRAINT [FK__StoreCode__Count__7740A8A4];
 GO
-IF OBJECT_ID(N'[dbo].[FK__StoreCode__TownS__7834CCDD]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__StoreCode__TownS__7834CCDD]', 'F') IS NULL
     ALTER TABLE [dbo].[StoreCode] DROP CONSTRAINT [FK__StoreCode__TownS__7834CCDD];
 GO
-IF OBJECT_ID(N'[dbo].[FK__SupplierC__Regio__086B34A6]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__SupplierC__Regio__086B34A6]', 'F') IS NULL
     ALTER TABLE [dbo].[SupplierCode] DROP CONSTRAINT [FK__SupplierC__Regio__086B34A6];
 GO
-IF OBJECT_ID(N'[dbo].[FK__SupplierC__TownS__6AEFE058]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__SupplierC__TownS__6AEFE058]', 'F') IS NULL
     ALTER TABLE [dbo].[SupplierCode] DROP CONSTRAINT [FK__SupplierC__TownS__6AEFE058];
 GO
-IF OBJECT_ID(N'[dbo].[FK__SupplierC__Websi__69FBBC1F]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__SupplierC__Websi__69FBBC1F]', 'F') IS NULL
     ALTER TABLE [dbo].[SupplierCode] DROP CONSTRAINT [FK__SupplierC__Websi__69FBBC1F];
 GO
-IF OBJECT_ID(N'[dbo].[FK__UserInfo__Role__5EAA0504]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK__UserInfo__Role__5EAA0504]', 'F') IS NULL
     ALTER TABLE [dbo].[UserInfo] DROP CONSTRAINT [FK__UserInfo__Role__5EAA0504];
 GO
-IF OBJECT_ID(N'[dbo].[FK_GroupSerial]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK_GroupSerial]', 'F') IS NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK_GroupSerial];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ItemCode_GroupCode]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK_ItemCode_GroupCode]', 'F') IS NULL
     ALTER TABLE [dbo].[ItemCode] DROP CONSTRAINT [FK_ItemCode_GroupCode];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ItemCode_StoreCode]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK_ItemCode_StoreCode]', 'F') IS NULL
     ALTER TABLE [dbo].[ItemCode] DROP CONSTRAINT [FK_ItemCode_StoreCode];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ItemCode_UnitCode]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK_ItemCode_UnitCode]', 'F') IS NULL
     ALTER TABLE [dbo].[ItemCode] DROP CONSTRAINT [FK_ItemCode_UnitCode];
 GO
-IF OBJECT_ID(N'[dbo].[FK_UnitSerial]', 'F') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[FK_UnitSerial]', 'F') IS NULL
     ALTER TABLE [dbo].[HSales] DROP CONSTRAINT [FK_UnitSerial];
 GO
 
@@ -100,55 +100,55 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[BranchCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[BranchCode]', 'U') IS NULL
     DROP TABLE [dbo].[BranchCode];
 GO
-IF OBJECT_ID(N'[dbo].[CountryCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[CountryCode]', 'U') IS NULL
     DROP TABLE [dbo].[CountryCode];
 GO
-IF OBJECT_ID(N'[dbo].[CustomerCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[CustomerCode]', 'U') IS NULL
     DROP TABLE [dbo].[CustomerCode];
 GO
-IF OBJECT_ID(N'[dbo].[DealerCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[DealerCode]', 'U') IS NULL
     DROP TABLE [dbo].[DealerCode];
 GO
-IF OBJECT_ID(N'[dbo].[Employee]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[Employee]', 'U') IS NULL
     DROP TABLE [dbo].[Employee];
 GO
-IF OBJECT_ID(N'[dbo].[GroupCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[GroupCode]', 'U') IS NULL
     DROP TABLE [dbo].[GroupCode];
 GO
-IF OBJECT_ID(N'[dbo].[HPurchase]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[HPurchase]', 'U') IS NULL
     DROP TABLE [dbo].[HPurchase];
 GO
-IF OBJECT_ID(N'[dbo].[HSales]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[HSales]', 'U') IS NULL
     DROP TABLE [dbo].[HSales];
 GO
-IF OBJECT_ID(N'[dbo].[ItemCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[ItemCode]', 'U') IS NULL
     DROP TABLE [dbo].[ItemCode];
 GO
-IF OBJECT_ID(N'[dbo].[Region]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[Region]', 'U') IS NULL
     DROP TABLE [dbo].[Region];
 GO
-IF OBJECT_ID(N'[dbo].[SectorCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[SectorCode]', 'U') IS NULL
     DROP TABLE [dbo].[SectorCode];
 GO
-IF OBJECT_ID(N'[dbo].[StoreCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[StoreCode]', 'U') IS NULL
     DROP TABLE [dbo].[StoreCode];
 GO
-IF OBJECT_ID(N'[dbo].[SupplierCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[SupplierCode]', 'U') IS NULL
     DROP TABLE [dbo].[SupplierCode];
 GO
-IF OBJECT_ID(N'[dbo].[TownCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[TownCode]', 'U') IS NULL
     DROP TABLE [dbo].[TownCode];
 GO
-IF OBJECT_ID(N'[dbo].[UnitCode]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[UnitCode]', 'U') IS NULL
     DROP TABLE [dbo].[UnitCode];
 GO
-IF OBJECT_ID(N'[dbo].[UserInfo]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[UserInfo]', 'U') IS NULL
     DROP TABLE [dbo].[UserInfo];
 GO
-IF OBJECT_ID(N'[dbo].[UserRole]', 'U') IS NOT NULL
+IF OBJECT_ID(N'[dbo].[UserRole]', 'U') IS NULL
     DROP TABLE [dbo].[UserRole];
 GO
 
@@ -164,8 +164,7 @@ CREATE TABLE [dbo].[BranchCode] (
     [Notes] nvarchar(150)  NULL,
     [UserId] int  NULL
 );
-GO
-
+Go
 -- Creating table 'CountryCode'
 CREATE TABLE [dbo].[CountryCode] (
     [Serial] int IDENTITY(1,1) NOT NULL,
@@ -174,7 +173,6 @@ CREATE TABLE [dbo].[CountryCode] (
     [Notes] nvarchar(150)  NULL
 );
 GO
-
 -- Creating table 'CustomerCode'
 CREATE TABLE [dbo].[CustomerCode] (
     [Serial] int IDENTITY(1,1) NOT NULL,
@@ -960,18 +958,6 @@ ON [dbo].[HSales]
 GO
 
 -- Creating foreign key on [StoreID] in table 'ItemCode'
-ALTER TABLE [dbo].[ItemCode]
-ADD CONSTRAINT [FK_ItemCode_StoreCode]
-    FOREIGN KEY ([StoreID])
-    REFERENCES [dbo].[StoreCode]
-        ([Serial])
-    ON DELETE CASCADE ON UPDATE CASCADE;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ItemCode_StoreCode'
-CREATE INDEX [IX_FK_ItemCode_StoreCode]
-ON [dbo].[ItemCode]
-    ([StoreID]);
 GO
 
 -- Creating foreign key on [Unit1] in table 'ItemCode'

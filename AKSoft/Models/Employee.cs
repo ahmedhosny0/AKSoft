@@ -14,12 +14,6 @@ namespace AKSoft.Models
     
     public partial class Employee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
-        {
-            this.StoreCode = new HashSet<StoreCode>();
-        }
-    
         public int Serial { get; set; }
         public string Code { get; set; }
         public string ArabicName { get; set; }
@@ -40,7 +34,5 @@ namespace AKSoft.Models
         public virtual CountryCode CountryCode { get; set; }
         public virtual Region Region { get; set; }
         public virtual TownCode TownCode { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StoreCode> StoreCode { get; set; }
     }
 }

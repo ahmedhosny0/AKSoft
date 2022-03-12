@@ -41,11 +41,7 @@ namespace AKSoft.Models
         public Nullable<double> TotalAfterTax { get; set; }
     
         public virtual CustomerCode CustomerCode { get; set; }
-        public virtual DealerCode DealerCode1 { get; set; }
-        public virtual DealerCode DealerCode2 { get; set; }
         public virtual GroupCode GroupCode { get; set; }
-        public virtual ItemCode ItemCode { get; set; }
-        public virtual StoreCode StoreCode { get; set; }
         public virtual UnitCode UnitCode { get; set; }
     }
 }
