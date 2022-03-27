@@ -736,15 +736,13 @@ public class ProductController : Controller
         {
             TopSoft db = new TopSoft();
             UnitCode unit = new UnitCode();
-            unit.ArabicName = model.ArabicName; 
-            unit.Description = model.Description;
-            unit.Code = model.Code;
-            db.UnitCode.Add(unit);
-            db.SaveChanges();
+                unit.ArabicName = model.ArabicName;
+                unit.Description = model.Description;
+                unit.Code = model.Code;
+                db.UnitCode.Add(unit); db.SaveChanges();
             int latestEmpId = unit.Serial;
-
             TempData["Al"] = unit.ArabicName;
-            return View();
+            return RedirectToAction("SaveUnit");
 
         }
 
@@ -1537,7 +1535,7 @@ public class ProductController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,Code,ArabicName,EnglishName,DescName,Notes,AddUserDate from CountryCode", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("SELECT Serial,Code,ArabicName,Notes from CountryCode", sqlCon);
             sqlDa.Fill(dtblProduct);
         }
         return View(dtblProduct);

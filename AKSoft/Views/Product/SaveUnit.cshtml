@@ -53,7 +53,6 @@ if (Convert.ToInt32(Session["Role"]) == 5)
             <label class="Lab">ملاحظات</label>
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
         </li>
-
         <li class="">
             <button class="save">حفظ</button>
             <a href="@Url.Action("Displayunits", "Product" )"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>

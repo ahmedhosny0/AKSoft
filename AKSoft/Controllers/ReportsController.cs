@@ -152,7 +152,7 @@ public class ReportsController : Controller
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
             sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select ItemCode.Serial ItemCode ,ItemCode.ArabicName,(hp.t-(max(HPurchase.Price) * hp.q))t from HPurchase left join ItemCode on ItemCode.Serial=HPurchase.ItemSerial left join (select itemSerial,sum(hsales.total)t ,sum(hsales.Quantity) q from hsales group by hsales.ItemSerial)hp on hp.ItemSerial=HPurchase.ItemSerial group by ItemCode.Serial,HPurchase.Price , hp.q,hp.t,ItemCode.ArabicName", sqlCon);
+            SqlDataAdapter sqlDa = new SqlDataAdapter("select ItemCode.Code ItemCode ,ItemCode.ArabicName,(hp.t-(max(HPurchase.Price) * hp.q))t from HPurchase left join ItemCode on ItemCode.Serial=HPurchase.ItemSerial left join (select itemSerial,sum(hsales.total)t ,sum(hsales.Quantity) q from hsales group by hsales.ItemSerial)hp on hp.ItemSerial=HPurchase.ItemSerial group by ItemCode.Code,HPurchase.Price , hp.q,hp.t,ItemCode.ArabicName", sqlCon);
             sqlDa.Fill(dt);
         }
         return View(dt);
