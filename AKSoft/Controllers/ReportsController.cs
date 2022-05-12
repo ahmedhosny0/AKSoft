@@ -7,32 +7,31 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-public class ReportsController : Controller 
+public class ReportsController : Controller
 {
     string connectionString = @"Data Source = .; Initial Catalog = TopSoft; Integrated Security=True";
-
+    TopSoft objContext = new TopSoft();
     // GET: Reports
     // Last Pruchase Price
-    public ActionResult ItemLastPurchasePrice(HSales model,int? id)
+    public ActionResult ItemLastPurchasePrice(HSales model, int? id)
     {
-        TopSoft db = new TopSoft();
-        List<UnitCode> list1 = db.UnitCode.ToList();
+        List<UnitCode> list1 = objContext.UnitCode.ToList();
         ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName", 1);
-        List<StoreCode> list2 = db.StoreCode.ToList();
+        List<StoreCode> list2 = objContext.StoreCode.ToList();
         ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName", 1);
-        List<GroupCode> list3 = db.GroupCode.ToList();
+        List<GroupCode> list3 = objContext.GroupCode.ToList();
         ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName", 1);
-        List<ItemCode> list4 = db.ItemCode.ToList();
+        List<ItemCode> list4 = objContext.ItemCode.ToList();
         ViewBag.DepartmentList4 = new SelectList(list4, "2", "2");
-        List<CustomerCode> list5 = db.CustomerCode.ToList();
+        List<CustomerCode> list5 = objContext.CustomerCode.ToList();
         ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName", 1);
-        List<DealerCode> list6 = db.DealerCode.ToList();
+        List<DealerCode> list6 = objContext.DealerCode.ToList();
         HSales invo = new HSales();
-        DataTable dt = new DataTable(); 
+        DataTable dt = new DataTable();
         using (SqlConnection sqlCon = new SqlConnection(connectionString))
         {
 
-            var i =0;
+            var i = 0;
             sqlCon.Open();
             string query = "SELECT ItemCode from rptsales Where ItemCode = 3";
             SqlDataAdapter sqlDa2 = new SqlDataAdapter(query, sqlCon);
@@ -55,16 +54,31 @@ public class ReportsController : Controller
         }
         return View(dt);
     }
+
     public ActionResult SupplierAccount()
     {
-        DataTable dt = new DataTable();
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
-        {
-            sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select SupplierCode,SupplierName,0 Debit,0 Credit,sum(HpurchaseTotal)ToatalPurchase from RptPurchase group by SupplierName,SupplierCode", sqlCon);
-            sqlDa.Fill(dt);
-        }
-        return View(dt);
+    
+          var result = objContext.RptPurchase.GroupBy(ac => new
+                   {
+                       ac.SupplierName,
+                       ac.SupplierCode
+                   })
+     .Select(ac => new SupplierAccountModel
+                   {
+                       SupplierCode = ac.Key.SupplierCode,
+                       SupplierName = ac.Key.SupplierName,
+                       Total = ac.Sum(acs => acs.HpurchaseTotal)
+                   }).ToList();
+
+        //DataTable dt = new DataTable();
+        //using (SqlConnection sqlCon = new SqlConnection(connectionString))
+        //{
+        //    sqlCon.Open();
+        //    SqlDataAdapter sqlDa = new SqlDataAdapter("select SupplierCode,SupplierName,0 Debit,0 Credit,sum(HpurchaseTotal)ToatalPurchase from RptPurchase group by SupplierName,SupplierCode", sqlCon);
+        //    sqlDa.Fill(dt);
+        //}
+
+          return View(result);
     }
     // Items BestSeller
     public ActionResult ItemsBestSeller()
@@ -122,7 +136,7 @@ public class ReportsController : Controller
         }
         return View(dt);
     }
-   // Start Employee Show Data
+    // Start Employee Show Data
     public ActionResult EmployeesData()
     {
         DataTable dt = new DataTable();
@@ -168,16 +182,9 @@ public class ReportsController : Controller
         }
         return View(dt);
     }
-    public ActionResult ItemsState()
+    public ActionResult ItemsState(string i)
     {
-        DataTable dt = new DataTable();
-        using (SqlConnection sqlCon = new SqlConnection(connectionString))
-        {
-            sqlCon.Open();
-            SqlDataAdapter sqlDa = new SqlDataAdapter("select distinct ItemName,GroupName,UnitName from ItemCard", sqlCon);
-            sqlDa.Fill(dt);
-        }
-        return View(dt);
+        return View(objContext.ItemCard.Where(x => x.ItemName.StartsWith(i) || i == null).ToList());
     }
     [HttpGet]
     public ActionResult DailySales()

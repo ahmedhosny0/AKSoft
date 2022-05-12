@@ -6,7 +6,7 @@
 
 <h2>EditItem</h2>
 <div>
-    @Html.ActionLink("Back to List", "DisplayItems")
+    @Html.ActionLink("العودة للقائمة السابقة", "DisplayItems")
 </div>
 
 @using (Html.BeginForm())
@@ -21,7 +21,7 @@
             </li>
             <li class="">
                 <label class="Lab">الكود</label>
-                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
+                            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @Value = @ViewBag.MaxCode } })
             </li>
             <li>
                 <label class="Lab dr">الوحدة</label>

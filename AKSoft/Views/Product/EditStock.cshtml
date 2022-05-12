@@ -1,10 +1,10 @@
 ﻿@model AKSoft.Models.StoreCode
 @{
-    ViewBag.Title = "EditStock";
+    ViewBag.Title = "تعديل المخزن";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EditStock</h2>
+<h2>تعديل المخزن</h2>
 
 @using (Html.BeginForm())
 {
@@ -18,7 +18,7 @@
         </li>
         <li class="">
             <label class="Lab">الكود</label>
-            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
+                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @Value = @ViewBag.MaxCode } })
         </li>
         <li class="">
             <label class="Lab">الإسم</label>
@@ -57,7 +57,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "DisplayStocks")
+    @Html.ActionLink("العودة للقائمة السابقة", "DisplayStocks")
 </div>
 
 

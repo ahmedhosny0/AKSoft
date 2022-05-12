@@ -256,7 +256,8 @@
                     <div class="login-form">
                         <div class="group">
                             <label for="user" class="label">الإسم الأول</label>
-                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "input", @required = "required" } })
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "input" } })
+                            @Html.ValidationMessageFor(model => model.FirstName)
                         </div>
                         <div class="group">
                             <label for="pass" class="label">الإسم الأوسط</label>

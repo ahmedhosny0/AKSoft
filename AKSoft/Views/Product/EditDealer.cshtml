@@ -23,7 +23,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 <div style="direction:rtl;">
     <h1 class="head">تعريف مندوب</h1>
 </div><div>
-    @Html.ActionLink("Back to List", "DisplayDealers")
+    @Html.ActionLink("العودة للقائمة السابقة", "DisplayDealers")
 </div>
 @using (Html.BeginForm())
 {
@@ -37,7 +37,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
         </li>
         <li class="">
             <label class="Lab">الكود</label>
-            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
+                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @Value = @ViewBag.MaxCode } })
         </li>
         <li class="">
             <label class="Lab">الإسم عربي</label>

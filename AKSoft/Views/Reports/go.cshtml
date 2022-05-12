@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AKSoft.Models.ItemCard>
+@{
+    ViewBag.Title = "كارت الصنف";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>كارت الصنف</h2>
+<a href="@Url.Action("SaveProduct", "Product")">تعريف صنف</a>
+<input type="text" id="txtCustomerName" />
+@using (Html.BeginForm("ItemsState", "Reports", FormMethod.Post))
+{
+
+    <span>Item Name:</span> @Html.TextBox("i")
+    <input type="submit" value="Search" />
+    <br />
+    <br />
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>إسم الصنف</th>
+            <th>مجموعة الصنف</th>
+            <th>الوحده</th>
+        </tr>
+        @foreach (AKSoft.Models.ItemCard customer in Model)
+        {
+            <tr>
+                <td>@customer.ItemName</td>
+                <td>@customer.GroupName</td>
+                <td>@customer.UnitName</td>
+            </tr>
+        }
+    </table>
+
+}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        GetCustomers();
+        $("#txtCustomerName").keyup(function () {
+            GetCustomers();
+        });
+    });
+</script>

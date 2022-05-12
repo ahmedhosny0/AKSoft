@@ -6,6 +6,12 @@
 
 <h2>بيانات المستخدمين</h2>
 <a href="@Url.Action("AddUser", "Product")">إضافة مستخدم</a>
+@using (Html.BeginForm("UsersData", "Reports", FormMethod.Post))
+    {
+    <span>User Name:</span> @Html.TextBox("CustomerName")
+    <input type="submit" value="Search" />
+    <br />
+    <br />
 <table class="table table-bordered table-striped">
     <tr>
         <th>كود المستخدم</th>
@@ -18,11 +24,11 @@
         <th>القطاع</th>
     </tr>
 
-    @for (int i = 0; i < Model.Rows.Count; i++)
+@foreach (AKSoft.Models.UsersData customer in Model)
     {
         <tr>
             <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][1]</td
             <td>@Model.Rows[i][2]</td>
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>

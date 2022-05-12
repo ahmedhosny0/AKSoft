@@ -15,13 +15,14 @@ namespace AKSoft.Controllers
     {
         string connectionString = @"Data Source = .; Initial Catalog = TopSoft; Integrated Security=True";
         // Customer
-
+        TopSoft objContext = new TopSoft();
         public ActionResult SaveCustomer()
         {
-            TopSoft db = new TopSoft();
-            List<CountryCode> list1 = db.CountryCode.ToList();
+            
+            ViewBag.MaxCode = objContext.CustomerCode.Max(x => x.Code) + 1;
+            List<CountryCode> list1 = objContext.CountryCode.ToList();
             ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-            List<TownCode> list2 = db.TownCode.ToList();
+            List<TownCode> list2 = objContext.TownCode.ToList();
             ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
             return View();
         }
@@ -30,10 +31,10 @@ namespace AKSoft.Controllers
         {
             try
             {
-                TopSoft db = new TopSoft();
-                List<CountryCode> list1 = db.CountryCode.ToList();
+                
+                List<CountryCode> list1 = objContext.CountryCode.ToList();
                 ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-                List<TownCode> list2 = db.TownCode.ToList();
+                List<TownCode> list2 = objContext.TownCode.ToList();
                 ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
                 CustomerCode product = new CustomerCode();
                 product.Serial = model.Serial;
@@ -49,8 +50,8 @@ namespace AKSoft.Controllers
                 product.TownSerial = model.TownSerial;
                 product.Email = model.Email;
                 product.Website = model.Website;
-                db.CustomerCode.Add(product);
-                db.SaveChanges();
+                objContext.CustomerCode.Add(product);
+                objContext.SaveChanges();
                 int latestEmpId = product.Serial;
                 TempData["Al"] = product.ArabicName;
                 return RedirectToAction("SaveCustomer");
@@ -100,10 +101,10 @@ namespace AKSoft.Controllers
         public ActionResult EditCustomer(int? id)
         {
 
-            TopSoft db = new TopSoft();
-            List<CountryCode> list1 = db.CountryCode.ToList();
+            
+            List<CountryCode> list1 = objContext.CountryCode.ToList();
             ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-            List<TownCode> list2 = db.TownCode.ToList();
+            List<TownCode> list2 = objContext.TownCode.ToList();
             ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
             CustomerCode productModel = new CustomerCode();
             DataTable dtblProduct = new DataTable();
@@ -150,10 +151,10 @@ namespace AKSoft.Controllers
 
         public ActionResult EditCustomer(CustomerCode productModel)
         {
-            TopSoft db = new TopSoft();
-            List<CountryCode> list1 = db.CountryCode.ToList();
+            
+            List<CountryCode> list1 = objContext.CountryCode.ToList();
             ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-            List<TownCode> list2 = db.TownCode.ToList();
+            List<TownCode> list2 = objContext.TownCode.ToList();
             ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
             try
             {
@@ -194,10 +195,10 @@ namespace AKSoft.Controllers
         //Supplier
         public ActionResult SaveSupplier()
         {
-            TopSoft db = new TopSoft();
-            List<CountryCode> list1 = db.CountryCode.ToList();
+            ViewBag.MaxCode = objContext.SupplierCode.Max(x => x.Code) + 1;
+            List<CountryCode> list1 = objContext.CountryCode.ToList();
             ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-            List<TownCode> list2 = db.TownCode.ToList();
+            List<TownCode> list2 = objContext.TownCode.ToList();
             ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
             return View();
         }
@@ -206,10 +207,10 @@ namespace AKSoft.Controllers
         {
             try
             {
-                TopSoft db = new TopSoft();
-                List<CountryCode> list1 = db.CountryCode.ToList();
+                
+                List<CountryCode> list1 = objContext.CountryCode.ToList();
                 ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-                List<TownCode> list2 = db.TownCode.ToList();
+                List<TownCode> list2 = objContext.TownCode.ToList();
                 ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
                 SupplierCode product = new SupplierCode();
                 product.Serial = model.Serial;
@@ -227,8 +228,8 @@ namespace AKSoft.Controllers
                 product.TownSerial = model.TownSerial;
                 product.Email = model.Email;
                 product.Website = model.Website;
-                db.SupplierCode.Add(product);
-                db.SaveChanges();
+                objContext.SupplierCode.Add(product);
+                objContext.SaveChanges();
                 int latestEmpId = product.Serial;
                 TempData["Al"] = product.ArabicName;
                 return RedirectToAction("SaveSupplier");
@@ -278,10 +279,10 @@ namespace AKSoft.Controllers
         public ActionResult EditSupplier(int? id)
         {
 
-            TopSoft db = new TopSoft();
-            List<CountryCode> list1 = db.CountryCode.ToList();
+            
+            List<CountryCode> list1 = objContext.CountryCode.ToList();
             ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-            List<TownCode> list2 = db.TownCode.ToList();
+            List<TownCode> list2 = objContext.TownCode.ToList();
             ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
             SupplierCode productModel = new SupplierCode();
             DataTable dtblProduct = new DataTable();
@@ -328,10 +329,10 @@ namespace AKSoft.Controllers
 
         public ActionResult EditSupplier(SupplierCode productModel)
         {
-            TopSoft db = new TopSoft();
-            List<CountryCode> list1 = db.CountryCode.ToList();
+            
+            List<CountryCode> list1 = objContext.CountryCode.ToList();
             ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-            List<TownCode> list2 = db.TownCode.ToList();
+            List<TownCode> list2 = objContext.TownCode.ToList();
             ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
             try
             {

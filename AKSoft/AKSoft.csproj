@@ -160,10 +160,25 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BasicsController.cs" />
+    <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\DealerController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\SafeController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\SectorController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TownController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,7 +188,22 @@
     <Compile Include="Models\CountryCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerAccount.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CustomerCode.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerData.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customers.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customers_SearchCustomers_Result.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DailySales.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DBModel.Context.cs">
@@ -194,7 +224,13 @@
     <Compile Include="Models\DealerCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DealersData.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Employee.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeesData.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GroupCode.cs">
@@ -207,10 +243,37 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ItemCard.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ItemCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Region.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RptCustomers.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RptDealers.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RptEmployees.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RptPurchase.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RptSales.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RptStore.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RptSuppliers.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RptUsers.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SectorCode.cs">
@@ -219,7 +282,14 @@
     <Compile Include="Models\StoreCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SupplierAccount.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SupplierAccountModel.cs" />
     <Compile Include="Models\SupplierCode.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SuppliersData.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TownCode.cs">
@@ -232,6 +302,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserRole.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsersData.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -460,9 +533,33 @@
     <Content Include="Views\Product\EditDealer.cshtml" />
     <Content Include="Views\Product\DisplayDealers - Copy.cshtml" />
     <Content Include="Views\Reports\EmployeesData.cshtml" />
+    <Content Include="Views\Reports\go.cshtml" />
+    <Content Include="Views\Customer\DisplayCustomers.cshtml" />
+    <Content Include="Views\Customer\EditCustomer.cshtml" />
+    <Content Include="Views\Customer\SaveCustomer.cshtml" />
+    <Content Include="Views\Supplier\DisplaySuppliers.cshtml" />
+    <Content Include="Views\Supplier\EditSupplier.cshtml" />
+    <Content Include="Views\Supplier\SaveSupplier.cshtml" />
+    <Content Include="Views\Purchases\DisplayInvoicePurchase.cshtml" />
+    <Content Include="Views\Purchases\EditInvoicePurchase.cshtml" />
+    <Content Include="Views\Purchases\SaveInvoicePurchase.cshtml" />
+    <Content Include="Views\Sales\DisplayInvoiceSales.cshtml" />
+    <Content Include="Views\Sales\SaveInvoiceSales.cshtml" />
+    <Content Include="Views\Sales\EditInvoiceSales.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Branch\" />
+    <Folder Include="Views\Country\" />
+    <Folder Include="Views\Dealer\" />
+    <Folder Include="Views\Group\" />
+    <Folder Include="Views\Safe\" />
+    <Folder Include="Views\Sector\" />
+    <Folder Include="Views\Store\" />
+    <Folder Include="Views\Town\" />
+    <Folder Include="Views\Unit\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

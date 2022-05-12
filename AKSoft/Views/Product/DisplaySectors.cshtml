@@ -20,7 +20,7 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 @if (TempData["Al"] != null)
 {
     <script>
-        swal("Deleted!", "Item has been deleted.", "success");
+        swal("تم الحذف!", "تم حذف الحركة بنجاح.", "success");
     </script>
     // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
@@ -34,12 +34,12 @@ if (Convert.ToInt32(Session["Role"]) == 5)
 @if (TempData["A"] != null)
 {
     <script>
-        swal("Oops...", "Something went wrong!Not Allowed", "error");
+        swal("عزيزي المستخدم"," هناك خطأ بسيط يرجي مراجعة الداتا أو الصلاحية", "error");
     </script>
     //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
 }
-<h2>Display Sectors</h2>
-<a href="@Url.Action("SaveSector","Product")">Add Sector</a>
+<h2>القطاعات المُسجلة</h2>
+<a href="@Url.Action("SaveSector","Product")">تعريف قطاع</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th style="display:none">السريال</th>
@@ -56,8 +56,8 @@ if (Convert.ToInt32(Session["Role"]) == 5)
             <td>@Model.Rows[i][2]</td>
             <td>@Model.Rows[i][3]</td>
             <td>
-                <a href="@Url.Action("EditSector", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
-                <a href="@Url.Action("DeleteSector", "Product", new { @id = @Model.Rows[i][0] })">Delete</a>
+                <a href="@Url.Action("EditSector", "Product", new { @id = @Model.Rows[i][0] })">تعديل</a> --
+                <a href="@Url.Action("DeleteSector", "Product", new { @id = @Model.Rows[i][0] })">حذف</a>
             </td>
         </tr>
     }

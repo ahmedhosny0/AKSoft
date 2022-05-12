@@ -40,6 +40,14 @@
     <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
     <Property Name="DescName" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Country" Type="varchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="DealerCode">
     <Key>
       <PropertyRef Name="Serial" />
@@ -271,6 +279,497 @@
     </Key>
     <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.CustomerAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CustomerAccount">
+    <Key>
+      <PropertyRef Name="Debit" />
+      <PropertyRef Name="Credit" />
+    </Key>
+    <Property Name="CustomerCode" Type="int" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Debit" Type="int" Nullable="false" />
+    <Property Name="Credit" Type="int" Nullable="false" />
+    <Property Name="TotalSales" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.CustomerData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CustomerData">
+    <Key>
+      <PropertyRef Name="CustomerCode" />
+    </Key>
+    <Property Name="CustomerCode" Type="int" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerEname" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="CustomerTel1" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerTel2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TownName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.DailySales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DailySales">
+    <Key>
+      <PropertyRef Name="hsalesCode" />
+    </Key>
+    <Property Name="hsalesCode" Type="int" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
+    <Property Name="UnitName" Type="nvarchar" MaxLength="150" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="HsalesQuantity" Type="float" />
+    <Property Name="HsalesPrice" Type="float" />
+    <Property Name="Total" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.DealersData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DealersData">
+    <Key>
+      <PropertyRef Name="DealerCode" />
+    </Key>
+    <Property Name="DealerCode" Type="int" Nullable="false" />
+    <Property Name="DealerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerEname" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="DealerTel1" Type="nvarchar" MaxLength="50" />
+    <Property Name="DealerTel2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TownName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.EmployeesData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EmployeesData">
+    <Key>
+      <PropertyRef Name="EmployeeCode" />
+    </Key>
+    <Property Name="EmployeeCode" Type="int" Nullable="false" />
+    <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmployeeEname" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmployeeAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="EmployeeTel1" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmployeeTel2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TownName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.ItemCard' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ItemCard">
+    <Key>
+      <PropertyRef Name="ItemCode" />
+    </Key>
+    <Property Name="ItemCode" Type="int" Nullable="false" />
+    <Property Name="ItemCode2" Type="int" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemEName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemDescName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemPurchase1Unit1" Type="float" />
+    <Property Name="ItemPurchase1Unit2" Type="float" />
+    <Property Name="ItemSales1Unit1" Type="float" />
+    <Property Name="ItemSales1Unit2" Type="float" />
+    <Property Name="Unit1" Type="int" />
+    <Property Name="Unit2" Type="int" />
+    <Property Name="Unit3" Type="int" />
+    <Property Name="GroupCode" Type="int" />
+    <Property Name="GroupCode2" Type="int" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="150" />
+    <Property Name="GroupDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="GroupColorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UnitCode" Type="int" />
+    <Property Name="UnitCode2" Type="int" />
+    <Property Name="UnitName" Type="nvarchar" MaxLength="150" />
+    <Property Name="UnitDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="HpurchaseCode" Type="int" />
+    <Property Name="HpurchaseCode2" Type="int" />
+    <Property Name="HpurchaseCurrency" Type="int" />
+    <Property Name="HpurchaseDate" Type="datetime" />
+    <Property Name="HpurchaseDealerCode" Type="int" />
+    <Property Name="HpurchaseDiscount" Type="float" />
+    <Property Name="HpurchaseDiscValue" Type="float" />
+    <Property Name="HpurchaseFactor" Type="float" />
+    <Property Name="HpurchasePrice" Type="float" />
+    <Property Name="HpurchaseQuantity" Type="float" />
+    <Property Name="HpurchaseTax" Type="float" />
+    <Property Name="HpurchaseTotal" Type="float" />
+    <Property Name="HpurchaseTotalAfter" Type="float" />
+    <Property Name="HSalesCode" Type="int" />
+    <Property Name="HSalesCode2" Type="int" />
+    <Property Name="HSalesCurrency" Type="int" />
+    <Property Name="HSalesDate" Type="datetime" />
+    <Property Name="HSalesDealerCode" Type="int" />
+    <Property Name="HSalesDiscount" Type="float" />
+    <Property Name="HSalesDiscValue" Type="float" />
+    <Property Name="HSalesFactor" Type="float" />
+    <Property Name="HSalesPrice" Type="float" />
+    <Property Name="HSalesQuantity" Type="float" />
+    <Property Name="HSalesTax" Type="float" />
+    <Property Name="HSalesTotal" Type="float" />
+    <Property Name="HSalesTotalAfter" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.RptCustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RptCustomers">
+    <Key>
+      <PropertyRef Name="CustomerCode" />
+    </Key>
+    <Property Name="CustomerCode" Type="int" Nullable="false" />
+    <Property Name="CustomerCode2" Type="int" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerEname" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="CustomerAddress2" Type="nvarchar" MaxLength="150" />
+    <Property Name="CustomerTel1" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerTel2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="CountryCode" Type="int" />
+    <Property Name="CountryCode2" Type="int" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CountryNotes" Type="nvarchar" MaxLength="150" />
+    <Property Name="TownCode" Type="int" />
+    <Property Name="TownCode2" Type="int" />
+    <Property Name="TownName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Townnotes" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.RptDealers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RptDealers">
+    <Key>
+      <PropertyRef Name="DealerCode" />
+    </Key>
+    <Property Name="DealerCode" Type="int" Nullable="false" />
+    <Property Name="DealerCode2" Type="int" />
+    <Property Name="DealerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerEname" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="DealerAddress2" Type="nvarchar" MaxLength="150" />
+    <Property Name="DealerTel1" Type="nvarchar" MaxLength="50" />
+    <Property Name="DealerTel2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="CountryCode" Type="int" />
+    <Property Name="CountryCode2" Type="int" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CountryNotes" Type="nvarchar" MaxLength="150" />
+    <Property Name="TownCode" Type="int" />
+    <Property Name="TownCode2" Type="int" />
+    <Property Name="TownName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Townnotes" Type="nvarchar" MaxLength="150" />
+    <Property Name="hsalesCode" Type="int" />
+    <Property Name="HsalesCode2" Type="int" />
+    <Property Name="HsalesCurrency" Type="int" />
+    <Property Name="HsalesDate" Type="datetime" />
+    <Property Name="HsalesDealerCode" Type="int" />
+    <Property Name="HsalesDiscount" Type="float" />
+    <Property Name="HsalesDiscValue" Type="float" />
+    <Property Name="HsalesFactor" Type="float" />
+    <Property Name="HsalesPrice" Type="float" />
+    <Property Name="HsalesQuantity" Type="float" />
+    <Property Name="FirstPayment" Type="float" />
+    <Property Name="HsalesTax" Type="float" />
+    <Property Name="HsalesTotal" Type="float" />
+    <Property Name="HsalesTotalAfter" Type="float" />
+    <Property Name="HpurchaseCode" Type="int" />
+    <Property Name="HpurchaseCode2" Type="int" />
+    <Property Name="HpurchaseCurrency" Type="int" />
+    <Property Name="HpurchaseDate" Type="datetime" />
+    <Property Name="HpurchaseDealerCode" Type="int" />
+    <Property Name="HpurchaseDiscount" Type="float" />
+    <Property Name="HpurchaseDiscValue" Type="float" />
+    <Property Name="HpurchaseFactor" Type="float" />
+    <Property Name="HpurchasePrice" Type="float" />
+    <Property Name="HpurchaseQuantity" Type="float" />
+    <Property Name="HpurchaseTax" Type="float" />
+    <Property Name="HpurchaseTotal" Type="float" />
+    <Property Name="HpurchaseTotalAfter" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.RptEmployees' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RptEmployees">
+    <Key>
+      <PropertyRef Name="EmployeeCode" />
+    </Key>
+    <Property Name="EmployeeCode" Type="int" Nullable="false" />
+    <Property Name="EmployeeCode2" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmployeeEname" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmployeeAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="EmployeeAddress2" Type="nvarchar" MaxLength="150" />
+    <Property Name="EmployeeTel1" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmployeeTel2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="CountryCode" Type="int" />
+    <Property Name="CountryCode2" Type="int" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CountryNotes" Type="nvarchar" MaxLength="150" />
+    <Property Name="TownCode" Type="int" />
+    <Property Name="TownCode2" Type="int" />
+    <Property Name="TownName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Townnotes" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.RptPurchase' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RptPurchase">
+    <Key>
+      <PropertyRef Name="HpurchaseCode" />
+    </Key>
+    <Property Name="ItemCode" Type="int" />
+    <Property Name="ItemCode2" Type="int" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemEName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemDescName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemPurchase1Unit1" Type="float" />
+    <Property Name="ItemPurchase1Unit2" Type="float" />
+    <Property Name="ItemSales1Unit1" Type="float" />
+    <Property Name="ItemSales1Unit2" Type="float" />
+    <Property Name="Unit1" Type="int" />
+    <Property Name="Unit2" Type="int" />
+    <Property Name="Unit3" Type="int" />
+    <Property Name="HpurchaseCode" Type="int" Nullable="false" />
+    <Property Name="HpurchaseCode2" Type="int" />
+    <Property Name="HpurchaseCurrency" Type="int" />
+    <Property Name="HpurchaseDate" Type="datetime" />
+    <Property Name="HpurchaseDiscount" Type="float" />
+    <Property Name="HpurchaseDiscValue" Type="float" />
+    <Property Name="HpurchaseFactor" Type="float" />
+    <Property Name="HpurchasePrice" Type="float" />
+    <Property Name="HpurchaseQuantity" Type="float" />
+    <Property Name="HpurchaseTax" Type="float" />
+    <Property Name="HpurchaseTotal" Type="float" />
+    <Property Name="HpurchaseTotalAfter" Type="float" />
+    <Property Name="GroupCode" Type="int" />
+    <Property Name="GroupCode2" Type="int" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="150" />
+    <Property Name="GroupDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="GroupColorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UnitCode" Type="int" />
+    <Property Name="UnitCode2" Type="int" />
+    <Property Name="UnitName" Type="nvarchar" MaxLength="150" />
+    <Property Name="UnitDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreCode" Type="int" />
+    <Property Name="StoreCode2" Type="int" />
+    <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreAddress" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreArea" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone1" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone2" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone3" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone4" Type="nvarchar" MaxLength="20" />
+    <Property Name="SupplierCode" Type="int" />
+    <Property Name="SupplierCode2" Type="int" />
+    <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SupplierEName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SupplierDescName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SupplierAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="SupplierAddress2" Type="nvarchar" MaxLength="150" />
+    <Property Name="DealerCode" Type="int" />
+    <Property Name="DealerCode2" Type="int" />
+    <Property Name="DealerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerEName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerDescName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DealerAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="DealerAddress2" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.RptSales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RptSales">
+    <Key>
+      <PropertyRef Name="HSalesCode" />
+    </Key>
+    <Property Name="ItemCode" Type="int" />
+    <Property Name="ItemCode2" Type="int" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemEName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemDescName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="ItemPurchase1Unit1" Type="float" />
+    <Property Name="ItemPurchase1Unit2" Type="float" />
+    <Property Name="ItemSales1Unit1" Type="float" />
+    <Property Name="ItemSales1Unit2" Type="float" />
+    <Property Name="Unit1" Type="int" />
+    <Property Name="Unit2" Type="int" />
+    <Property Name="Unit3" Type="int" />
+    <Property Name="HSalesCode" Type="int" Nullable="false" />
+    <Property Name="HSalesCode2" Type="int" />
+    <Property Name="HSalesCurrency" Type="int" />
+    <Property Name="HSalesDate" Type="datetime" />
+    <Property Name="HSalesDealerCode" Type="int" />
+    <Property Name="HSalesDiscount" Type="float" />
+    <Property Name="HSalesDiscValue" Type="float" />
+    <Property Name="HSalesFactor" Type="float" />
+    <Property Name="HSalesPrice" Type="float" />
+    <Property Name="HSalesQuantity" Type="float" />
+    <Property Name="HSalesTax" Type="float" />
+    <Property Name="HSalesTotal" Type="float" />
+    <Property Name="HSalesTotalAfter" Type="float" />
+    <Property Name="GroupCode" Type="int" />
+    <Property Name="GroupCode2" Type="int" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="150" />
+    <Property Name="GroupDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="GroupColorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UnitCode" Type="int" />
+    <Property Name="UnitCode2" Type="int" />
+    <Property Name="UnitName" Type="nvarchar" MaxLength="150" />
+    <Property Name="UnitDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreCode" Type="int" />
+    <Property Name="StoreCode2" Type="int" />
+    <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreAddress" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreArea" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone1" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone2" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone3" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone4" Type="nvarchar" MaxLength="20" />
+    <Property Name="CustomerCode" Type="int" />
+    <Property Name="CustomerCode2" Type="int" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerEName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerDescName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="CustomerAddress2" Type="nvarchar" MaxLength="150" />
+    <Property Name="DealerCode" Type="int" />
+    <Property Name="DealerCode2" Type="int" />
+    <Property Name="DealerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerEName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerDescName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DealerAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="DealerAddress2" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.RptStore' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RptStore">
+    <Key>
+      <PropertyRef Name="StoreCode" />
+    </Key>
+    <Property Name="StoreCode" Type="int" Nullable="false" />
+    <Property Name="StoreCode2" Type="int" />
+    <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreAddress" Type="nvarchar" MaxLength="150" />
+    <Property Name="StoreArea" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone1" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone2" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone3" Type="nvarchar" MaxLength="20" />
+    <Property Name="StorePhone4" Type="nvarchar" MaxLength="20" />
+    <Property Name="EmployeeCode" Type="int" />
+    <Property Name="EmployeeCode2" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmployeeEName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmployeeDescName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmployeeAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="EmployeeAddress2" Type="nvarchar" MaxLength="150" />
+    <Property Name="CountryCode" Type="int" />
+    <Property Name="CountryCode2" Type="int" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CountryNotes" Type="nvarchar" MaxLength="150" />
+    <Property Name="TownCode" Type="int" />
+    <Property Name="TownCode2" Type="int" />
+    <Property Name="TownName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Townnotes" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.RptSuppliers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RptSuppliers">
+    <Key>
+      <PropertyRef Name="SupplierCode" />
+    </Key>
+    <Property Name="SupplierCode" Type="int" Nullable="false" />
+    <Property Name="SupplierCode2" Type="int" />
+    <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SupplierEname" Type="nvarchar" MaxLength="100" />
+    <Property Name="SupplierAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="SupplierAddress2" Type="nvarchar" MaxLength="150" />
+    <Property Name="SupplierTel1" Type="nvarchar" MaxLength="50" />
+    <Property Name="SupplierTel2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="CountryCode" Type="int" />
+    <Property Name="CountryCode2" Type="int" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CountryNotes" Type="nvarchar" MaxLength="150" />
+    <Property Name="TownCode" Type="int" />
+    <Property Name="TownCode2" Type="int" />
+    <Property Name="TownName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Townnotes" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.RptUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RptUsers">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="BranchCode" Type="int" />
+    <Property Name="BranchName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SectorCode" Type="int" />
+    <Property Name="SectorName" Type="nvarchar" MaxLength="100" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.SupplierAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SupplierAccount">
+    <Key>
+      <PropertyRef Name="Debit" />
+      <PropertyRef Name="Credit" />
+    </Key>
+    <Property Name="SupplierCode" Type="int" />
+    <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Debit" Type="int" Nullable="false" />
+    <Property Name="Credit" Type="int" Nullable="false" />
+    <Property Name="ToatalPurchase" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.SuppliersData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SuppliersData">
+    <Key>
+      <PropertyRef Name="SupplierCode" />
+    </Key>
+    <Property Name="SupplierCode" Type="int" Nullable="false" />
+    <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SupplierEname" Type="nvarchar" MaxLength="100" />
+    <Property Name="SupplierAddress1" Type="nvarchar" MaxLength="150" />
+    <Property Name="SupplierTel1" Type="nvarchar" MaxLength="50" />
+    <Property Name="SupplierTel2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TownName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UsersData">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BranchName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SectorName" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <Association Name="FK__BranchCod__UserI__3A6CA48E">
     <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1">
@@ -622,10 +1121,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="Customers_SearchCustomers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ContactName" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="TopSoftModelStoreContainer">
     <EntitySet Name="BranchCode" EntityType="Self.BranchCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CustomerCode" EntityType="Self.CustomerCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DealerCode" EntityType="Self.DealerCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GroupCode" EntityType="Self.GroupCode" Schema="dbo" store:Type="Tables" />
@@ -640,6 +1143,444 @@
     <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerAccount" EntityType="Self.CustomerAccount" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CustomerAccount].[CustomerCode] AS [CustomerCode], 
+    [CustomerAccount].[CustomerName] AS [CustomerName], 
+    [CustomerAccount].[Debit] AS [Debit], 
+    [CustomerAccount].[Credit] AS [Credit], 
+    [CustomerAccount].[TotalSales] AS [TotalSales]
+    FROM [dbo].[CustomerAccount] AS [CustomerAccount]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CustomerData" EntityType="Self.CustomerData" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CustomerData].[CustomerCode] AS [CustomerCode], 
+    [CustomerData].[CustomerName] AS [CustomerName], 
+    [CustomerData].[CustomerEname] AS [CustomerEname], 
+    [CustomerData].[CustomerAddress1] AS [CustomerAddress1], 
+    [CustomerData].[CustomerTel1] AS [CustomerTel1], 
+    [CustomerData].[CustomerTel2] AS [CustomerTel2], 
+    [CustomerData].[CountryName] AS [CountryName], 
+    [CustomerData].[TownName] AS [TownName], 
+    [CustomerData].[Email] AS [Email]
+    FROM [dbo].[CustomerData] AS [CustomerData]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DailySales" EntityType="Self.DailySales" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DailySales].[hsalesCode] AS [hsalesCode], 
+    [DailySales].[ItemName] AS [ItemName], 
+    [DailySales].[StoreName] AS [StoreName], 
+    [DailySales].[UnitName] AS [UnitName], 
+    [DailySales].[CustomerName] AS [CustomerName], 
+    [DailySales].[HsalesQuantity] AS [HsalesQuantity], 
+    [DailySales].[HsalesPrice] AS [HsalesPrice], 
+    [DailySales].[Total] AS [Total]
+    FROM [dbo].[DailySales] AS [DailySales]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DealersData" EntityType="Self.DealersData" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DealersData].[DealerCode] AS [DealerCode], 
+    [DealersData].[DealerName] AS [DealerName], 
+    [DealersData].[DealerEname] AS [DealerEname], 
+    [DealersData].[DealerAddress1] AS [DealerAddress1], 
+    [DealersData].[DealerTel1] AS [DealerTel1], 
+    [DealersData].[DealerTel2] AS [DealerTel2], 
+    [DealersData].[CountryName] AS [CountryName], 
+    [DealersData].[TownName] AS [TownName], 
+    [DealersData].[Email] AS [Email]
+    FROM [dbo].[DealersData] AS [DealersData]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EmployeesData" EntityType="Self.EmployeesData" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EmployeesData].[EmployeeCode] AS [EmployeeCode], 
+    [EmployeesData].[EmployeeName] AS [EmployeeName], 
+    [EmployeesData].[EmployeeEname] AS [EmployeeEname], 
+    [EmployeesData].[EmployeeAddress1] AS [EmployeeAddress1], 
+    [EmployeesData].[EmployeeTel1] AS [EmployeeTel1], 
+    [EmployeesData].[EmployeeTel2] AS [EmployeeTel2], 
+    [EmployeesData].[CountryName] AS [CountryName], 
+    [EmployeesData].[TownName] AS [TownName], 
+    [EmployeesData].[Email] AS [Email]
+    FROM [dbo].[EmployeesData] AS [EmployeesData]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ItemCard" EntityType="Self.ItemCard" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ItemCard].[ItemCode] AS [ItemCode], 
+    [ItemCard].[ItemCode2] AS [ItemCode2], 
+    [ItemCard].[ItemName] AS [ItemName], 
+    [ItemCard].[ItemEName] AS [ItemEName], 
+    [ItemCard].[ItemDescName] AS [ItemDescName], 
+    [ItemCard].[ItemDescription] AS [ItemDescription], 
+    [ItemCard].[ItemPurchase1Unit1] AS [ItemPurchase1Unit1], 
+    [ItemCard].[ItemPurchase1Unit2] AS [ItemPurchase1Unit2], 
+    [ItemCard].[ItemSales1Unit1] AS [ItemSales1Unit1], 
+    [ItemCard].[ItemSales1Unit2] AS [ItemSales1Unit2], 
+    [ItemCard].[Unit1] AS [Unit1], 
+    [ItemCard].[Unit2] AS [Unit2], 
+    [ItemCard].[Unit3] AS [Unit3], 
+    [ItemCard].[GroupCode] AS [GroupCode], 
+    [ItemCard].[GroupCode2] AS [GroupCode2], 
+    [ItemCard].[GroupName] AS [GroupName], 
+    [ItemCard].[GroupDescription] AS [GroupDescription], 
+    [ItemCard].[GroupColorName] AS [GroupColorName], 
+    [ItemCard].[UnitCode] AS [UnitCode], 
+    [ItemCard].[UnitCode2] AS [UnitCode2], 
+    [ItemCard].[UnitName] AS [UnitName], 
+    [ItemCard].[UnitDescription] AS [UnitDescription], 
+    [ItemCard].[HpurchaseCode] AS [HpurchaseCode], 
+    [ItemCard].[HpurchaseCode2] AS [HpurchaseCode2], 
+    [ItemCard].[HpurchaseCurrency] AS [HpurchaseCurrency], 
+    [ItemCard].[HpurchaseDate] AS [HpurchaseDate], 
+    [ItemCard].[HpurchaseDealerCode] AS [HpurchaseDealerCode], 
+    [ItemCard].[HpurchaseDiscount] AS [HpurchaseDiscount], 
+    [ItemCard].[HpurchaseDiscValue] AS [HpurchaseDiscValue], 
+    [ItemCard].[HpurchaseFactor] AS [HpurchaseFactor], 
+    [ItemCard].[HpurchasePrice] AS [HpurchasePrice], 
+    [ItemCard].[HpurchaseQuantity] AS [HpurchaseQuantity], 
+    [ItemCard].[HpurchaseTax] AS [HpurchaseTax], 
+    [ItemCard].[HpurchaseTotal] AS [HpurchaseTotal], 
+    [ItemCard].[HpurchaseTotalAfter] AS [HpurchaseTotalAfter], 
+    [ItemCard].[HSalesCode] AS [HSalesCode], 
+    [ItemCard].[HSalesCode2] AS [HSalesCode2], 
+    [ItemCard].[HSalesCurrency] AS [HSalesCurrency], 
+    [ItemCard].[HSalesDate] AS [HSalesDate], 
+    [ItemCard].[HSalesDealerCode] AS [HSalesDealerCode], 
+    [ItemCard].[HSalesDiscount] AS [HSalesDiscount], 
+    [ItemCard].[HSalesDiscValue] AS [HSalesDiscValue], 
+    [ItemCard].[HSalesFactor] AS [HSalesFactor], 
+    [ItemCard].[HSalesPrice] AS [HSalesPrice], 
+    [ItemCard].[HSalesQuantity] AS [HSalesQuantity], 
+    [ItemCard].[HSalesTax] AS [HSalesTax], 
+    [ItemCard].[HSalesTotal] AS [HSalesTotal], 
+    [ItemCard].[HSalesTotalAfter] AS [HSalesTotalAfter]
+    FROM [dbo].[ItemCard] AS [ItemCard]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RptCustomers" EntityType="Self.RptCustomers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RptCustomers].[CustomerCode] AS [CustomerCode], 
+    [RptCustomers].[CustomerCode2] AS [CustomerCode2], 
+    [RptCustomers].[CustomerName] AS [CustomerName], 
+    [RptCustomers].[CustomerEname] AS [CustomerEname], 
+    [RptCustomers].[CustomerAddress1] AS [CustomerAddress1], 
+    [RptCustomers].[CustomerAddress2] AS [CustomerAddress2], 
+    [RptCustomers].[CustomerTel1] AS [CustomerTel1], 
+    [RptCustomers].[CustomerTel2] AS [CustomerTel2], 
+    [RptCustomers].[Telephone3] AS [Telephone3], 
+    [RptCustomers].[Email] AS [Email], 
+    [RptCustomers].[Website] AS [Website], 
+    [RptCustomers].[Description] AS [Description], 
+    [RptCustomers].[CountryCode] AS [CountryCode], 
+    [RptCustomers].[CountryCode2] AS [CountryCode2], 
+    [RptCustomers].[CountryName] AS [CountryName], 
+    [RptCustomers].[CountryNotes] AS [CountryNotes], 
+    [RptCustomers].[TownCode] AS [TownCode], 
+    [RptCustomers].[TownCode2] AS [TownCode2], 
+    [RptCustomers].[TownName] AS [TownName], 
+    [RptCustomers].[Townnotes] AS [Townnotes]
+    FROM [dbo].[RptCustomers] AS [RptCustomers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RptDealers" EntityType="Self.RptDealers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RptDealers].[DealerCode] AS [DealerCode], 
+    [RptDealers].[DealerCode2] AS [DealerCode2], 
+    [RptDealers].[DealerName] AS [DealerName], 
+    [RptDealers].[DealerEname] AS [DealerEname], 
+    [RptDealers].[DealerAddress1] AS [DealerAddress1], 
+    [RptDealers].[DealerAddress2] AS [DealerAddress2], 
+    [RptDealers].[DealerTel1] AS [DealerTel1], 
+    [RptDealers].[DealerTel2] AS [DealerTel2], 
+    [RptDealers].[Telephone3] AS [Telephone3], 
+    [RptDealers].[Email] AS [Email], 
+    [RptDealers].[Website] AS [Website], 
+    [RptDealers].[Description] AS [Description], 
+    [RptDealers].[CountryCode] AS [CountryCode], 
+    [RptDealers].[CountryCode2] AS [CountryCode2], 
+    [RptDealers].[CountryName] AS [CountryName], 
+    [RptDealers].[CountryNotes] AS [CountryNotes], 
+    [RptDealers].[TownCode] AS [TownCode], 
+    [RptDealers].[TownCode2] AS [TownCode2], 
+    [RptDealers].[TownName] AS [TownName], 
+    [RptDealers].[Townnotes] AS [Townnotes], 
+    [RptDealers].[hsalesCode] AS [hsalesCode], 
+    [RptDealers].[HsalesCode2] AS [HsalesCode2], 
+    [RptDealers].[HsalesCurrency] AS [HsalesCurrency], 
+    [RptDealers].[HsalesDate] AS [HsalesDate], 
+    [RptDealers].[HsalesDealerCode] AS [HsalesDealerCode], 
+    [RptDealers].[HsalesDiscount] AS [HsalesDiscount], 
+    [RptDealers].[HsalesDiscValue] AS [HsalesDiscValue], 
+    [RptDealers].[HsalesFactor] AS [HsalesFactor], 
+    [RptDealers].[HsalesPrice] AS [HsalesPrice], 
+    [RptDealers].[HsalesQuantity] AS [HsalesQuantity], 
+    [RptDealers].[FirstPayment] AS [FirstPayment], 
+    [RptDealers].[HsalesTax] AS [HsalesTax], 
+    [RptDealers].[HsalesTotal] AS [HsalesTotal], 
+    [RptDealers].[HsalesTotalAfter] AS [HsalesTotalAfter], 
+    [RptDealers].[HpurchaseCode] AS [HpurchaseCode], 
+    [RptDealers].[HpurchaseCode2] AS [HpurchaseCode2], 
+    [RptDealers].[HpurchaseCurrency] AS [HpurchaseCurrency], 
+    [RptDealers].[HpurchaseDate] AS [HpurchaseDate], 
+    [RptDealers].[HpurchaseDealerCode] AS [HpurchaseDealerCode], 
+    [RptDealers].[HpurchaseDiscount] AS [HpurchaseDiscount], 
+    [RptDealers].[HpurchaseDiscValue] AS [HpurchaseDiscValue], 
+    [RptDealers].[HpurchaseFactor] AS [HpurchaseFactor], 
+    [RptDealers].[HpurchasePrice] AS [HpurchasePrice], 
+    [RptDealers].[HpurchaseQuantity] AS [HpurchaseQuantity], 
+    [RptDealers].[HpurchaseTax] AS [HpurchaseTax], 
+    [RptDealers].[HpurchaseTotal] AS [HpurchaseTotal], 
+    [RptDealers].[HpurchaseTotalAfter] AS [HpurchaseTotalAfter]
+    FROM [dbo].[RptDealers] AS [RptDealers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RptEmployees" EntityType="Self.RptEmployees" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RptEmployees].[EmployeeCode] AS [EmployeeCode], 
+    [RptEmployees].[EmployeeCode2] AS [EmployeeCode2], 
+    [RptEmployees].[EmployeeName] AS [EmployeeName], 
+    [RptEmployees].[EmployeeEname] AS [EmployeeEname], 
+    [RptEmployees].[EmployeeAddress1] AS [EmployeeAddress1], 
+    [RptEmployees].[EmployeeAddress2] AS [EmployeeAddress2], 
+    [RptEmployees].[EmployeeTel1] AS [EmployeeTel1], 
+    [RptEmployees].[EmployeeTel2] AS [EmployeeTel2], 
+    [RptEmployees].[Telephone3] AS [Telephone3], 
+    [RptEmployees].[Email] AS [Email], 
+    [RptEmployees].[Website] AS [Website], 
+    [RptEmployees].[Description] AS [Description], 
+    [RptEmployees].[CountryCode] AS [CountryCode], 
+    [RptEmployees].[CountryCode2] AS [CountryCode2], 
+    [RptEmployees].[CountryName] AS [CountryName], 
+    [RptEmployees].[CountryNotes] AS [CountryNotes], 
+    [RptEmployees].[TownCode] AS [TownCode], 
+    [RptEmployees].[TownCode2] AS [TownCode2], 
+    [RptEmployees].[TownName] AS [TownName], 
+    [RptEmployees].[Townnotes] AS [Townnotes]
+    FROM [dbo].[RptEmployees] AS [RptEmployees]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RptPurchase" EntityType="Self.RptPurchase" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RptPurchase].[ItemCode] AS [ItemCode], 
+    [RptPurchase].[ItemCode2] AS [ItemCode2], 
+    [RptPurchase].[ItemName] AS [ItemName], 
+    [RptPurchase].[ItemEName] AS [ItemEName], 
+    [RptPurchase].[ItemDescName] AS [ItemDescName], 
+    [RptPurchase].[ItemDescription] AS [ItemDescription], 
+    [RptPurchase].[ItemPurchase1Unit1] AS [ItemPurchase1Unit1], 
+    [RptPurchase].[ItemPurchase1Unit2] AS [ItemPurchase1Unit2], 
+    [RptPurchase].[ItemSales1Unit1] AS [ItemSales1Unit1], 
+    [RptPurchase].[ItemSales1Unit2] AS [ItemSales1Unit2], 
+    [RptPurchase].[Unit1] AS [Unit1], 
+    [RptPurchase].[Unit2] AS [Unit2], 
+    [RptPurchase].[Unit3] AS [Unit3], 
+    [RptPurchase].[HpurchaseCode] AS [HpurchaseCode], 
+    [RptPurchase].[HpurchaseCode2] AS [HpurchaseCode2], 
+    [RptPurchase].[HpurchaseCurrency] AS [HpurchaseCurrency], 
+    [RptPurchase].[HpurchaseDate] AS [HpurchaseDate], 
+    [RptPurchase].[HpurchaseDiscount] AS [HpurchaseDiscount], 
+    [RptPurchase].[HpurchaseDiscValue] AS [HpurchaseDiscValue], 
+    [RptPurchase].[HpurchaseFactor] AS [HpurchaseFactor], 
+    [RptPurchase].[HpurchasePrice] AS [HpurchasePrice], 
+    [RptPurchase].[HpurchaseQuantity] AS [HpurchaseQuantity], 
+    [RptPurchase].[HpurchaseTax] AS [HpurchaseTax], 
+    [RptPurchase].[HpurchaseTotal] AS [HpurchaseTotal], 
+    [RptPurchase].[HpurchaseTotalAfter] AS [HpurchaseTotalAfter], 
+    [RptPurchase].[GroupCode] AS [GroupCode], 
+    [RptPurchase].[GroupCode2] AS [GroupCode2], 
+    [RptPurchase].[GroupName] AS [GroupName], 
+    [RptPurchase].[GroupDescription] AS [GroupDescription], 
+    [RptPurchase].[GroupColorName] AS [GroupColorName], 
+    [RptPurchase].[UnitCode] AS [UnitCode], 
+    [RptPurchase].[UnitCode2] AS [UnitCode2], 
+    [RptPurchase].[UnitName] AS [UnitName], 
+    [RptPurchase].[UnitDescription] AS [UnitDescription], 
+    [RptPurchase].[StoreCode] AS [StoreCode], 
+    [RptPurchase].[StoreCode2] AS [StoreCode2], 
+    [RptPurchase].[StoreName] AS [StoreName], 
+    [RptPurchase].[StoreDescription] AS [StoreDescription], 
+    [RptPurchase].[StoreAddress] AS [StoreAddress], 
+    [RptPurchase].[StoreArea] AS [StoreArea], 
+    [RptPurchase].[StorePhone1] AS [StorePhone1], 
+    [RptPurchase].[StorePhone2] AS [StorePhone2], 
+    [RptPurchase].[StorePhone3] AS [StorePhone3], 
+    [RptPurchase].[StorePhone4] AS [StorePhone4], 
+    [RptPurchase].[SupplierCode] AS [SupplierCode], 
+    [RptPurchase].[SupplierCode2] AS [SupplierCode2], 
+    [RptPurchase].[SupplierName] AS [SupplierName], 
+    [RptPurchase].[SupplierEName] AS [SupplierEName], 
+    [RptPurchase].[SupplierDescName] AS [SupplierDescName], 
+    [RptPurchase].[SupplierAddress1] AS [SupplierAddress1], 
+    [RptPurchase].[SupplierAddress2] AS [SupplierAddress2], 
+    [RptPurchase].[DealerCode] AS [DealerCode], 
+    [RptPurchase].[DealerCode2] AS [DealerCode2], 
+    [RptPurchase].[DealerName] AS [DealerName], 
+    [RptPurchase].[DealerEName] AS [DealerEName], 
+    [RptPurchase].[DealerDescName] AS [DealerDescName], 
+    [RptPurchase].[DealerAddress1] AS [DealerAddress1], 
+    [RptPurchase].[DealerAddress2] AS [DealerAddress2]
+    FROM [dbo].[RptPurchase] AS [RptPurchase]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RptSales" EntityType="Self.RptSales" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RptSales].[ItemCode] AS [ItemCode], 
+    [RptSales].[ItemCode2] AS [ItemCode2], 
+    [RptSales].[ItemName] AS [ItemName], 
+    [RptSales].[ItemEName] AS [ItemEName], 
+    [RptSales].[ItemDescName] AS [ItemDescName], 
+    [RptSales].[ItemDescription] AS [ItemDescription], 
+    [RptSales].[ItemPurchase1Unit1] AS [ItemPurchase1Unit1], 
+    [RptSales].[ItemPurchase1Unit2] AS [ItemPurchase1Unit2], 
+    [RptSales].[ItemSales1Unit1] AS [ItemSales1Unit1], 
+    [RptSales].[ItemSales1Unit2] AS [ItemSales1Unit2], 
+    [RptSales].[Unit1] AS [Unit1], 
+    [RptSales].[Unit2] AS [Unit2], 
+    [RptSales].[Unit3] AS [Unit3], 
+    [RptSales].[HSalesCode] AS [HSalesCode], 
+    [RptSales].[HSalesCode2] AS [HSalesCode2], 
+    [RptSales].[HSalesCurrency] AS [HSalesCurrency], 
+    [RptSales].[HSalesDate] AS [HSalesDate], 
+    [RptSales].[HSalesDealerCode] AS [HSalesDealerCode], 
+    [RptSales].[HSalesDiscount] AS [HSalesDiscount], 
+    [RptSales].[HSalesDiscValue] AS [HSalesDiscValue], 
+    [RptSales].[HSalesFactor] AS [HSalesFactor], 
+    [RptSales].[HSalesPrice] AS [HSalesPrice], 
+    [RptSales].[HSalesQuantity] AS [HSalesQuantity], 
+    [RptSales].[HSalesTax] AS [HSalesTax], 
+    [RptSales].[HSalesTotal] AS [HSalesTotal], 
+    [RptSales].[HSalesTotalAfter] AS [HSalesTotalAfter], 
+    [RptSales].[GroupCode] AS [GroupCode], 
+    [RptSales].[GroupCode2] AS [GroupCode2], 
+    [RptSales].[GroupName] AS [GroupName], 
+    [RptSales].[GroupDescription] AS [GroupDescription], 
+    [RptSales].[GroupColorName] AS [GroupColorName], 
+    [RptSales].[UnitCode] AS [UnitCode], 
+    [RptSales].[UnitCode2] AS [UnitCode2], 
+    [RptSales].[UnitName] AS [UnitName], 
+    [RptSales].[UnitDescription] AS [UnitDescription], 
+    [RptSales].[StoreCode] AS [StoreCode], 
+    [RptSales].[StoreCode2] AS [StoreCode2], 
+    [RptSales].[StoreName] AS [StoreName], 
+    [RptSales].[StoreDescription] AS [StoreDescription], 
+    [RptSales].[StoreAddress] AS [StoreAddress], 
+    [RptSales].[StoreArea] AS [StoreArea], 
+    [RptSales].[StorePhone1] AS [StorePhone1], 
+    [RptSales].[StorePhone2] AS [StorePhone2], 
+    [RptSales].[StorePhone3] AS [StorePhone3], 
+    [RptSales].[StorePhone4] AS [StorePhone4], 
+    [RptSales].[CustomerCode] AS [CustomerCode], 
+    [RptSales].[CustomerCode2] AS [CustomerCode2], 
+    [RptSales].[CustomerName] AS [CustomerName], 
+    [RptSales].[CustomerEName] AS [CustomerEName], 
+    [RptSales].[CustomerDescName] AS [CustomerDescName], 
+    [RptSales].[CustomerAddress1] AS [CustomerAddress1], 
+    [RptSales].[CustomerAddress2] AS [CustomerAddress2], 
+    [RptSales].[DealerCode] AS [DealerCode], 
+    [RptSales].[DealerCode2] AS [DealerCode2], 
+    [RptSales].[DealerName] AS [DealerName], 
+    [RptSales].[DealerEName] AS [DealerEName], 
+    [RptSales].[DealerDescName] AS [DealerDescName], 
+    [RptSales].[DealerAddress1] AS [DealerAddress1], 
+    [RptSales].[DealerAddress2] AS [DealerAddress2]
+    FROM [dbo].[RptSales] AS [RptSales]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RptStore" EntityType="Self.RptStore" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RptStore].[StoreCode] AS [StoreCode], 
+    [RptStore].[StoreCode2] AS [StoreCode2], 
+    [RptStore].[StoreName] AS [StoreName], 
+    [RptStore].[StoreDescription] AS [StoreDescription], 
+    [RptStore].[StoreAddress] AS [StoreAddress], 
+    [RptStore].[StoreArea] AS [StoreArea], 
+    [RptStore].[StorePhone1] AS [StorePhone1], 
+    [RptStore].[StorePhone2] AS [StorePhone2], 
+    [RptStore].[StorePhone3] AS [StorePhone3], 
+    [RptStore].[StorePhone4] AS [StorePhone4], 
+    [RptStore].[EmployeeCode] AS [EmployeeCode], 
+    [RptStore].[EmployeeCode2] AS [EmployeeCode2], 
+    [RptStore].[EmployeeName] AS [EmployeeName], 
+    [RptStore].[EmployeeEName] AS [EmployeeEName], 
+    [RptStore].[EmployeeDescName] AS [EmployeeDescName], 
+    [RptStore].[EmployeeAddress1] AS [EmployeeAddress1], 
+    [RptStore].[EmployeeAddress2] AS [EmployeeAddress2], 
+    [RptStore].[CountryCode] AS [CountryCode], 
+    [RptStore].[CountryCode2] AS [CountryCode2], 
+    [RptStore].[CountryName] AS [CountryName], 
+    [RptStore].[CountryNotes] AS [CountryNotes], 
+    [RptStore].[TownCode] AS [TownCode], 
+    [RptStore].[TownCode2] AS [TownCode2], 
+    [RptStore].[TownName] AS [TownName], 
+    [RptStore].[Townnotes] AS [Townnotes]
+    FROM [dbo].[RptStore] AS [RptStore]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RptSuppliers" EntityType="Self.RptSuppliers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RptSuppliers].[SupplierCode] AS [SupplierCode], 
+    [RptSuppliers].[SupplierCode2] AS [SupplierCode2], 
+    [RptSuppliers].[SupplierName] AS [SupplierName], 
+    [RptSuppliers].[SupplierEname] AS [SupplierEname], 
+    [RptSuppliers].[SupplierAddress1] AS [SupplierAddress1], 
+    [RptSuppliers].[SupplierAddress2] AS [SupplierAddress2], 
+    [RptSuppliers].[SupplierTel1] AS [SupplierTel1], 
+    [RptSuppliers].[SupplierTel2] AS [SupplierTel2], 
+    [RptSuppliers].[Telephone3] AS [Telephone3], 
+    [RptSuppliers].[Email] AS [Email], 
+    [RptSuppliers].[Website] AS [Website], 
+    [RptSuppliers].[Description] AS [Description], 
+    [RptSuppliers].[CountryCode] AS [CountryCode], 
+    [RptSuppliers].[CountryCode2] AS [CountryCode2], 
+    [RptSuppliers].[CountryName] AS [CountryName], 
+    [RptSuppliers].[CountryNotes] AS [CountryNotes], 
+    [RptSuppliers].[TownCode] AS [TownCode], 
+    [RptSuppliers].[TownCode2] AS [TownCode2], 
+    [RptSuppliers].[TownName] AS [TownName], 
+    [RptSuppliers].[Townnotes] AS [Townnotes]
+    FROM [dbo].[RptSuppliers] AS [RptSuppliers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RptUsers" EntityType="Self.RptUsers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RptUsers].[UserId] AS [UserId], 
+    [RptUsers].[FirstName] AS [FirstName], 
+    [RptUsers].[MiddleName] AS [MiddleName], 
+    [RptUsers].[LastName] AS [LastName], 
+    [RptUsers].[Email] AS [Email], 
+    [RptUsers].[Password] AS [Password], 
+    [RptUsers].[BranchCode] AS [BranchCode], 
+    [RptUsers].[BranchName] AS [BranchName], 
+    [RptUsers].[SectorCode] AS [SectorCode], 
+    [RptUsers].[SectorName] AS [SectorName], 
+    [RptUsers].[RoleName] AS [RoleName]
+    FROM [dbo].[RptUsers] AS [RptUsers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SupplierAccount" EntityType="Self.SupplierAccount" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SupplierAccount].[SupplierCode] AS [SupplierCode], 
+    [SupplierAccount].[SupplierName] AS [SupplierName], 
+    [SupplierAccount].[Debit] AS [Debit], 
+    [SupplierAccount].[Credit] AS [Credit], 
+    [SupplierAccount].[ToatalPurchase] AS [ToatalPurchase]
+    FROM [dbo].[SupplierAccount] AS [SupplierAccount]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SuppliersData" EntityType="Self.SuppliersData" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SuppliersData].[SupplierCode] AS [SupplierCode], 
+    [SuppliersData].[SupplierName] AS [SupplierName], 
+    [SuppliersData].[SupplierEname] AS [SupplierEname], 
+    [SuppliersData].[SupplierAddress1] AS [SupplierAddress1], 
+    [SuppliersData].[SupplierTel1] AS [SupplierTel1], 
+    [SuppliersData].[SupplierTel2] AS [SupplierTel2], 
+    [SuppliersData].[CountryName] AS [CountryName], 
+    [SuppliersData].[TownName] AS [TownName], 
+    [SuppliersData].[Email] AS [Email]
+    FROM [dbo].[SuppliersData] AS [SuppliersData]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UsersData" EntityType="Self.UsersData" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UsersData].[UserId] AS [UserId], 
+    [UsersData].[FirstName] AS [FirstName], 
+    [UsersData].[MiddleName] AS [MiddleName], 
+    [UsersData].[LastName] AS [LastName], 
+    [UsersData].[Email] AS [Email], 
+    [UsersData].[RoleName] AS [RoleName], 
+    [UsersData].[BranchName] AS [BranchName], 
+    [UsersData].[SectorName] AS [SectorName]
+    FROM [dbo].[UsersData] AS [UsersData]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK__BranchCod__UserI__3A6CA48E" Association="Self.FK__BranchCod__UserI__3A6CA48E">
       <End Role="UserInfo" EntitySet="UserInfo" />
       <End Role="BranchCode" EntitySet="BranchCode" />

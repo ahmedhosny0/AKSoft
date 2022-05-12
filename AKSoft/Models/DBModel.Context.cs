@@ -12,6 +12,8 @@ namespace AKSoft.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class TopSoft : DbContext
     {
@@ -42,5 +44,50 @@ namespace AKSoft.Models
         public virtual DbSet<UnitCode> UnitCode { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
+        public virtual DbSet<ItemCard> ItemCard { get; set; }
+        public virtual DbSet<RptCustomers> RptCustomers { get; set; }
+        public virtual DbSet<RptDealers> RptDealers { get; set; }
+        public virtual DbSet<RptEmployees> RptEmployees { get; set; }
+        public virtual DbSet<RptPurchase> RptPurchase { get; set; }
+        public virtual DbSet<RptSales> RptSales { get; set; }
+        public virtual DbSet<RptStore> RptStore { get; set; }
+        public virtual DbSet<RptSuppliers> RptSuppliers { get; set; }
+        public virtual DbSet<RptUsers> RptUsers { get; set; }
+        public virtual DbSet<CustomerAccount> CustomerAccount { get; set; }
+        public virtual DbSet<CustomerData> CustomerData { get; set; }
+        public virtual DbSet<DailySales> DailySales { get; set; }
+        public virtual DbSet<DealersData> DealersData { get; set; }
+        public virtual DbSet<EmployeesData> EmployeesData { get; set; }
+        public virtual DbSet<SupplierAccount> SupplierAccount { get; set; }
+        public virtual DbSet<SuppliersData> SuppliersData { get; set; }
+        public virtual DbSet<UsersData> UsersData { get; set; }
+        public virtual DbSet<Customers> Customers { get; set; }
+    
+        public virtual ObjectResult<Customers_SearchCustomers_Result> Customers_SearchCustomers(string contactName)
+        {
+            var contactNameParameter = contactName != null ?
+                new ObjectParameter("ContactName", contactName) :
+                new ObjectParameter("ContactName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Customers_SearchCustomers_Result>("Customers_SearchCustomers", contactNameParameter);
+        }
+    
+        public virtual ObjectResult<ItemCode> SearchItems(string contactName)
+        {
+            var contactNameParameter = contactName != null ?
+                new ObjectParameter("ContactName", contactName) :
+                new ObjectParameter("ContactName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemCode>("SearchItems", contactNameParameter);
+        }
+    
+        public virtual ObjectResult<ItemCode> SearchItems(string contactName, MergeOption mergeOption)
+        {
+            var contactNameParameter = contactName != null ?
+                new ObjectParameter("ContactName", contactName) :
+                new ObjectParameter("ContactName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemCode>("SearchItems", mergeOption, contactNameParameter);
+        }
     }
 }

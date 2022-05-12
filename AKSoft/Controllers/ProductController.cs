@@ -1,4 +1,5 @@
-﻿using AKSoft.Models;
+﻿using AKSoft.Controllers;
+using AKSoft.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,16 +10,44 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-public class ProductController : Controller
+public class ProductController : BaseController
 {  
     string connectionString = @"Data Source = .; Initial Catalog = TopSoft; Integrated Security=True";
+    TopSoft objContext = new TopSoft();
+    public ActionResult Index()
+    {
+        return View(objContext.Customers);
+    }
+
+    //public JsonResult InsertCustomers(List<Customer> customers)
+    //{
+    //    using (TopSoft entities = new TopSoft())
+    //    {
+    //        //Truncate Table to delete all old records.
+    //        objContext.Database.ExecuteSqlCommand("TRUNCATE TABLE [Customers]");
+
+    //        //Check for NULL.
+    //        if (customers == null)
+    //        {
+    //            customers = new List<Customer>();
+    //        }
+
+    //        //Loop and insert records.
+    //        foreach (Customer customer in customers)
+    //        {
+    //            objContext.Customers.Add(customer);
+    //        }
+    //        int insertedRecords = objContext.SaveChanges();
+    //        return Json(insertedRecords);
+    //    }
+    //}
     public ActionResult Test(int? id)
     {
         return View();
     }
     
     [HttpGet]
-    public ActionResult a()
+    public ActionResult User()
     {
 
         return View();
@@ -77,6 +106,12 @@ public class ProductController : Controller
             ViewBag.DepartmentList8 = new SelectList(list8, "Serial", "ArabicName");
             List<UserRole> list9 = db.UserRole.ToList();
             ViewBag.DepartmentList9 = new SelectList(list9, "RoleId", "RoleName");
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+           
+           
             UserInfo group = new UserInfo();
             group.FirstName = model.FirstName;
             group.MiddleName = model.MiddleName;
@@ -198,6 +233,7 @@ public class ProductController : Controller
     public ActionResult SaveProduct()
     {
         TopSoft db = new TopSoft();
+        ViewBag.MaxCode = db.ItemCode.Max(x => x.Code) + 1;
         List<UnitCode> list1 = db.UnitCode.ToList();
         ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName",1);
         List<GroupCode> list3 = db.GroupCode.ToList();
@@ -248,6 +284,7 @@ public class ProductController : Controller
     public ActionResult SaveInvoiceSales()
     {
         TopSoft db = new TopSoft();
+        ViewBag.MaxCode = db.HSales.Max(x => x.Code) + 1;
         List<UnitCode> list1 = db.UnitCode.ToList();
         ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName",1);
         List<StoreCode> list2 = db.StoreCode.ToList();
@@ -472,6 +509,8 @@ public class ProductController : Controller
     public ActionResult SaveInvoicePurchase()
     {
         TopSoft db = new TopSoft();
+        ViewBag.MaxCode =db.HPurchase.Max(x => x.Code) + 1;
+        
         List<UnitCode> list1 = db.UnitCode.ToList();
         ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName",1);
         List<StoreCode> list2 = db.StoreCode.ToList();
@@ -504,14 +543,7 @@ public class ProductController : Controller
             List<SupplierCode> list5 = db.SupplierCode.ToList();
             ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
             invo2.BranchCode = model.BranchCode;
-            if (model.Code == null)
-            {
-                model.Code = invo2.Serial + 1;
-            }
-            else
-            {
-                invo2.Code = model.Code;
-            }
+            invo2.Code = model.Code;
                 invo2.DealerCode = model.DealerCode;
             invo2.CurrencyCode = model.CurrencyCode;
             invo2.Date = model.Date;
@@ -680,12 +712,12 @@ public class ProductController : Controller
    
     public ActionResult SaveStock()
     {
-        TopSoft db = new TopSoft();
-        List<CountryCode> list1 = db.CountryCode.ToList();
+        ViewBag.MaxCode = objContext.StoreCode.Max(x => x.Code) + 1;
+        List<CountryCode> list1 = objContext.CountryCode.ToList();
         ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName", 1);
-        List<TownCode> list2 = db.TownCode.ToList();
+        List<TownCode> list2 = objContext.TownCode.ToList();
         ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName", 1);
-        List<Employee> list3 = db.Employee.ToList();
+        List<Employee> list3 = objContext.Employee.ToList();
         ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName", 1);
         return View();
 
@@ -725,6 +757,7 @@ public class ProductController : Controller
     }
     public ActionResult SaveUnit()
     {
+        ViewBag.MaxCode = objContext.UnitCode.Max(x => x.Code) + 1;
         return View();
     }
     [HttpPost]
@@ -755,6 +788,8 @@ public class ProductController : Controller
 
     public ActionResult SaveGroup()
     {
+        ViewBag.MaxCode = objContext.GroupCode.Max(x => x.Code) + 1;
+
         return View();
 
     }
@@ -1235,6 +1270,7 @@ public class ProductController : Controller
     public ActionResult SaveDealer()
     {
         TopSoft db = new TopSoft();
+        ViewBag.MaxCode = objContext.DealerCode.Max(x => x.Code) + 1;
         List<CountryCode> list1 = db.CountryCode.ToList();
         ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
         List<TownCode> list2 = db.TownCode.ToList();
@@ -1415,6 +1451,7 @@ public class ProductController : Controller
     public ActionResult SaveEmployee()
     {
         TopSoft db = new TopSoft();
+        ViewBag.MaxCode = objContext.Employee.Max(x => x.Code) + 1;
         List<CountryCode> list1 = db.CountryCode.ToList();
         ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
         List<TownCode> list2 = db.TownCode.ToList();
@@ -1500,6 +1537,7 @@ public class ProductController : Controller
 
     public ActionResult SaveCountry()
     {
+        ViewBag.MaxCode = objContext.CountryCode.Max(x => x.Code) + 1;
         return View();
     }
     [HttpPost]
@@ -1618,6 +1656,7 @@ public class ProductController : Controller
     // Town
     public ActionResult SaveTown()
     {
+        ViewBag.MaxCode = objContext.TownCode.Max(x => x.Code) + 1;
         return View();
     }
     [HttpPost]
@@ -1735,6 +1774,8 @@ public class ProductController : Controller
     // Start Branch
     public ActionResult SaveBranch()
     {
+        ViewBag.MaxCode = objContext.BranchCode.Max(x => x.Code) + 1;
+
         return View();
     }
     [HttpPost]
@@ -1851,6 +1892,8 @@ public class ProductController : Controller
     //Start Sector
     public ActionResult SaveSector()
     {
+        ViewBag.MaxCode = objContext.SectorCode.Max(x => x.Code) + 1;
+
         return View();
     }
     [HttpPost]
