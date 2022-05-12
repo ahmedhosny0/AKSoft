@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 public class ProductController : BaseController
 {  
+
     string connectionString = @"Data Source = .; Initial Catalog = TopSoft; Integrated Security=True";
     TopSoft objContext = new TopSoft();
     public ActionResult Index()
