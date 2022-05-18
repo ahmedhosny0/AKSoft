@@ -80,7 +80,7 @@ public class ReportsController : Controller
 
           return View(result);
     }
-    // Items BestSeller
+    // الأصناف الأكثر مبيعاً
     public ActionResult ItemsBestSeller()
     {
         DataTable dt = new DataTable();
@@ -182,9 +182,22 @@ public class ReportsController : Controller
         }
         return View(dt);
     }
+    //[HttpPost]
+    //public ActionResult ItemsState(string i)
+    //{
+    //    return View(objContext.ItemCard.Where(x => x.ItemName.StartsWith(i) || i == null).ToList());
+    //}
+    //[HttpGet]
     public ActionResult ItemsState(string i)
     {
-        return View(objContext.ItemCard.Where(x => x.ItemName.StartsWith(i) || i == null).ToList());
+        var result = objContext.ItemCard.Where(x => x.ItemName.StartsWith(i) || i == null).ToList()
+    .Select(ac => new ItemCardView
+    {
+        ItemName = ac.ItemName,
+        UnitName = ac.UnitName,
+        GroupName = ac.GroupName
+    }).ToList();
+        return View(result);
     }
     [HttpGet]
     public ActionResult DailySales()

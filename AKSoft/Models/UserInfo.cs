@@ -11,7 +11,6 @@ namespace AKSoft.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class UserInfo
     {
@@ -23,7 +22,6 @@ namespace AKSoft.Models
         }
     
         public int Id { get; set; }
-       [Required(ErrorMessage = "Please Enter First Name")]
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

@@ -36,10 +36,10 @@
         <script>
             swal("تم الحفظ بنجاح", " ", "success");
         </script>
-        <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+        <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
     }
 
-    @using (Html.BeginForm("SaveInvoicePurchase", "Product", FormMethod.Post))
+    @using (Html.BeginForm("SaveInvoicePurchase", "Purchases", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -83,7 +83,7 @@
         </li>
         <li>
             <button class="save">حفظ</button>
-            <a href="@Url.Action("DisplayInvoicePurchase","Product")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
+            <a href="@Url.Action("DisplayInvoicePurchase", "Purchases")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
         </li>
     </ul>
 

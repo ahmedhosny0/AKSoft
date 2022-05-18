@@ -142,6 +142,7 @@
     <EntitySet Name="SuppliersData" EntityType="TopSoftModel.SuppliersData" />
     <EntitySet Name="UsersData" EntityType="TopSoftModel.UsersData" />
     <EntitySet Name="Customers" EntityType="TopSoftModel.Customers" />
+    <FunctionImport Name="Re" ReturnType="Collection(TopSoftModel.Re_Result)" />
   </EntityContainer>
   <EntityType Name="BranchCode">
     <Key>
@@ -1297,4 +1298,65 @@
     <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
+  <ComplexType Name="Re_Result">
+    <Property Type="Int32" Name="ItemCode" Nullable="true" />
+    <Property Type="Int32" Name="ItemCode2" Nullable="true" />
+    <Property Type="String" Name="ItemName" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="ItemEName" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="ItemDescName" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="ItemDescription" Nullable="true" MaxLength="150" />
+    <Property Type="Double" Name="ItemPurchase1Unit1" Nullable="true" />
+    <Property Type="Double" Name="ItemPurchase1Unit2" Nullable="true" />
+    <Property Type="Double" Name="ItemSales1Unit1" Nullable="true" />
+    <Property Type="Double" Name="ItemSales1Unit2" Nullable="true" />
+    <Property Type="Int32" Name="Unit1" Nullable="true" />
+    <Property Type="Int32" Name="Unit2" Nullable="true" />
+    <Property Type="Int32" Name="Unit3" Nullable="true" />
+    <Property Type="Int32" Name="HSalesCode" Nullable="false" />
+    <Property Type="Int32" Name="HSalesCode2" Nullable="true" />
+    <Property Type="Int32" Name="HSalesCurrency" Nullable="true" />
+    <Property Type="DateTime" Name="HSalesDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="HSalesDealerCode" Nullable="true" />
+    <Property Type="Double" Name="HSalesDiscount" Nullable="true" />
+    <Property Type="Double" Name="HSalesDiscValue" Nullable="true" />
+    <Property Type="Double" Name="HSalesFactor" Nullable="true" />
+    <Property Type="Double" Name="HSalesPrice" Nullable="true" />
+    <Property Type="Double" Name="HSalesQuantity" Nullable="true" />
+    <Property Type="Double" Name="HSalesTax" Nullable="true" />
+    <Property Type="Double" Name="HSalesTotal" Nullable="true" />
+    <Property Type="Double" Name="HSalesTotalAfter" Nullable="true" />
+    <Property Type="Int32" Name="GroupCode" Nullable="true" />
+    <Property Type="Int32" Name="GroupCode2" Nullable="true" />
+    <Property Type="String" Name="GroupName" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="GroupDescription" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="GroupColorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UnitCode" Nullable="true" />
+    <Property Type="Int32" Name="UnitCode2" Nullable="true" />
+    <Property Type="String" Name="UnitName" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="UnitDescription" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="StoreCode" Nullable="true" />
+    <Property Type="Int32" Name="StoreCode2" Nullable="true" />
+    <Property Type="String" Name="StoreName" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="StoreDescription" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="StoreAddress" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="StoreArea" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="StorePhone1" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="StorePhone2" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="StorePhone3" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="StorePhone4" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="CustomerCode" Nullable="true" />
+    <Property Type="Int32" Name="CustomerCode2" Nullable="true" />
+    <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CustomerEName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CustomerDescName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CustomerAddress1" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="CustomerAddress2" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="DealerCode" Nullable="true" />
+    <Property Type="Int32" Name="DealerCode2" Nullable="true" />
+    <Property Type="String" Name="DealerName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DealerEName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DealerDescName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DealerAddress1" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="DealerAddress2" Nullable="true" MaxLength="150" />
+  </ComplexType>
 </Schema>

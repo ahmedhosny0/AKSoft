@@ -17,7 +17,7 @@ namespace AKSoft.Controllers
         TopSoft objContext = new TopSoft();
         public ActionResult SaveCustomer()
         {
-            ViewBag.MaxCode = objContext.HSales.Max(x => x.Code) + 1;
+            ViewBag.MaxCode = objContext.CustomerCode.Max(x => x.Code) + 1;
             List<CountryCode> list1 = objContext.CountryCode.ToList();
             ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
             List<TownCode> list2 = objContext.TownCode.ToList();
@@ -142,7 +142,7 @@ namespace AKSoft.Controllers
             return RedirectToAction("DisplayCustomers");
 
         }
-        [HttpPost]
+                [HttpPost]
 
         public ActionResult EditCustomer(CustomerCode productModel)
         {

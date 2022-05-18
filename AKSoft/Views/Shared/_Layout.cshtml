@@ -96,7 +96,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("الرئيسيه", "Home", "Product", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("الرئيسيه", "Home", "MainPages", new { area = "" }, new { @class = "navbar-brand" })
             </div>
 
             <div class="navbar-collapse collapse" >
@@ -105,11 +105,11 @@
                         <div class="dropdown">
                             <button onclick="myFunction2()" class="dropbtn">تعريفات</button>
                             <div id="myDropdown2" class="dropdown-content">
-                                <a href="/Product/SaveBranch">تعريف الفرع</a>
-                                <a href="/Product/SaveSector">تعريف القطاع</a>
-                                <a href="/Product/SaveCountry">تعريف الدوله</a>
-                                <a href="/Product/SaveTown">تعريف المدينه</a>
-                                <a href="/Product/SaveDealer">تعريف المندوب</a>
+                                <a href="/Branch/SaveBranch">تعريف الفرع</a>
+                                <a href="/Sector/SaveSector">تعريف القطاع</a>
+                                <a href="/Country/SaveCountry">تعريف الدوله</a>
+                                <a href="/Town/SaveTown">تعريف المدينه</a>
+                                <a href="/Dealer/SaveDealer">تعريف المندوب</a>
                             </div>
                         </div>
                     </li>
@@ -117,18 +117,18 @@
                         <div class="dropdown">
                             <button onclick="myFunction4()" class="dropbtn" style="background-color:#1dc181;">المخازن</button>
                             <div id="myDropdown4" class="dropdown-content" style="height: 50px;">
-                                <a href="/Product/ConvertBetweenStocks">التحويل بين المخازن</a>
+                                <a href="/ConvertBetweenStocks/ConvertBetweenStocks">التحويل بين المخازن</a>
                             </div>
                         </div>
                     </li>
-                    @*<li><a href="/Product/SaveStock">Store</a></li>
-            <li><a href="/Product/SaveGroup">Category</a></li>
-            <li><a href="/Product/SaveUnit">Unit</a></li>
+                    @*<li><a href="/Store/SaveStock">Store</a></li>
+            <li><a href="/Group/SaveGroup">Category</a></li>
+            <li><a href="/Unit/SaveUnit">Unit</a></li>
             <li><a href="/Product/SaveProduct">Product</a></li>*@
-                    <li><a href="/Basics/SaveCustomer">تعريف العميل</a></li>
-                    <li><a href="/Product/SaveInvoiceSales">فاتورة مبيعات</a></li>
-                    <li><a href="/Product/SaveInvoicePurchase">فاتورة مشتريات</a></li>
-                    <li><a href="/Basics/SaveSupplier">تعريف المورد</a></li>
+                    <li><a href="/Customer/SaveCustomer">تعريف العميل</a></li>
+                    <li><a href="/Sales/SaveInvoiceSales">فاتورة مبيعات</a></li>
+                    <li><a href="/Purchases/SaveInvoicePurchase">فاتورة مشتريات</a></li>
+                    <li><a href="/Supplier/SaveSupplier">تعريف المورد</a></li>
                     <li>
                         <div class="dropdown">
                             <button onclick="myFunction()" class="dropbtn">التقارير</button>
@@ -175,16 +175,16 @@
                         <i class="fa fa-caret-down"></i>
 </a>
                 <ul class="t">
-                    <li><a class="l" href="/Product/SaveBranch">تعريف الفرع</a></li>
-                    <li><a class="l" href="/Product/SaveSector">تعريف القطاع</a></li>
-                    <li><a class="l" href="/Product/SaveCountry">تعريف الدوله</a></li>
-                    <li><a class="l" href="/Product/SaveTown">تعريف المدينه</a></li>
-                    <li><a class="l" href="/Product/SaveDealer">تعريف المندوب</a></li>
-                    <li><a class="l" href="/Product/SaveEmployee">تعريف الموظف</a></li>
+                    <li><a class="l" href="/Branch/SaveBranch">تعريف الفرع</a></li>
+                    <li><a class="l" href="/Sector/SaveSector">تعريف القطاع</a></li>
+                    <li><a class="l" href="/Country/SaveCountry">تعريف الدوله</a></li>
+                    <li><a class="l" href="/Town/SaveTown">تعريف المدينه</a></li>
+                    <li><a class="l" href="/Dealer/SaveDealer">تعريف المندوب</a></li>
+                    <li><a class="l" href="/Employee/SaveEmployee">تعريف الموظف</a></li>
                 </ul>
             </li>
             <li class="has-subnav">
-                <a href="/Product/SaveStock">
+                <a href="/Store/SaveStock">
                     <i class="fa fa-cart-plus"></i>
                     <span class="nav-text">
                         تعريف المخزن
@@ -192,7 +192,7 @@
                 </a>
             </li>
             <li class="has-subnav">
-                <a href="/Product/SaveGroup">
+                <a href="/Group/SaveGroup">
                     <i class="fa fa-object-group"></i> 
                     <span class="nav-text">
                         تعريف مجموعة الصنف
@@ -201,7 +201,7 @@
 
             </li>
             <li class="has-subnav">
-                <a href="/Product/SaveUnit">
+                <a href="/Unit/SaveUnit">
                     <i class="fa fa-infinity"></i>
                     <span class="nav-text">
                         تعريف الوحدة
@@ -220,7 +220,7 @@
 
             </li>
             <li class="has-subnav">
-                <a href="/Product/AddPermission">
+                <a href="/AddPermission/AddPermission">
                     <i class="fa fa-bacon"></i>
                     <span class="nav-text">
                         إذن إضافة
@@ -228,7 +228,7 @@
                 </a>
             </li>
             <li class="has-subnav">
-                <a href="/Product/ExchangePermission">
+                <a href="/ExchangePermission/ExchangePermission">
                     <i class="fa fa-procedures"></i>
                     <span class="nav-text">
                         إذن صرف              

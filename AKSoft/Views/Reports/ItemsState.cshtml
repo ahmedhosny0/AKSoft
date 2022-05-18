@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AKSoft.Models.ItemCard>
+﻿@model IEnumerable<AKSoft.Models.ItemCardView>
 @{
     ViewBag.Title = "كارت الصنف";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,12 +19,12 @@
         <th>مجموعة الصنف</th>
         <th>الوحده</th>
     </tr>
-@foreach (AKSoft.Models.ItemCard customer in Model)
+@foreach (var i in Model)
                 {
         <tr>
-            <td>@customer.ItemName</td>
-            <td>@customer.GroupName</td>
-            <td>@customer.UnitName</td>
+            <td>@i.ItemName</td>
+            <td>@i.GroupName</td>
+            <td>@i.UnitName</td>
         </tr>
 }
 </table>

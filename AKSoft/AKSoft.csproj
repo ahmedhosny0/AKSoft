@@ -40,6 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -160,15 +161,23 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AddPermisionController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BasicsController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\CashExchangeController.cs" />
+    <Compile Include="Controllers\ConvertBetweenStocksController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\CurrencyController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DealerController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\ExchangePermisionController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\MainPagesController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
+    <Compile Include="Controllers\RecieveCashController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\SafeController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
@@ -246,10 +255,14 @@
     <Compile Include="Models\ItemCard.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemCardView.cs" />
     <Compile Include="Models\ItemCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Region.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Re_Result.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RptCustomers.cs">
@@ -308,6 +321,19 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\DataSet2.Designer.cs" />
+    <Compile Include="Reports\DataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Report1.aspx.cs">
+      <DependentUpon>Report1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Report1.aspx.designer.cs">
+      <DependentUpon>Report1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -382,6 +408,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Reports\Report1.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom.js" />
@@ -401,6 +428,17 @@
     <Content Include="Content\fonts\webfonts\fa-solid-900.woff" />
     <Content Include="Content\fonts\webfonts\fa-solid-900.woff2" />
     <None Include="Properties\PublishProfiles\A-One.pubxml" />
+    <Content Include="Reports\DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -439,25 +477,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Product\SaveProduct.cshtml" />
-    <Content Include="Views\Product\SaveStock.cshtml" />
-    <Content Include="Views\Product\SaveUnit.cshtml" />
-    <Content Include="Views\Product\SaveGroup.cshtml" />
-    <Content Include="Views\Product\SaveInvoiceSales.cshtml" />
-    <Content Include="Views\Product\Doc.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Product\DisplayCategories.cshtml" />
-    <Content Include="Views\Product\EditCat.cshtml" />
-    <Content Include="Views\Product\DisplayUnits.cshtml" />
-    <Content Include="Views\Product\EditUnit.cshtml" />
-    <Content Include="Views\Product\EditItem.cshtml" />
-    <Content Include="Views\Product\DisplayItems.cshtml" />
-    <Content Include="Views\Product\DisplayInvoiceSales.cshtml" />
-    <Content Include="Views\Product\DisplayStocks.cshtml" />
-    <Content Include="Views\Product\EditStock.cshtml" />
-    <Content Include="Views\Product\Home.cshtml" />
-    <Content Include="Views\Product\Login.cshtml" />
-    <Content Include="Views\Product\Start.cshtml" />
     <Content Include="Views\Reports\CustomerAccount.cshtml" />
     <Content Include="Views\Reports\CustomersData.cshtml" />
     <Content Include="Views\Reports\DailyPurchases.cshtml" />
@@ -467,73 +486,21 @@
     <Content Include="Views\Reports\ProfitofItems.cshtml" />
     <Content Include="Views\Reports\StocksState.cshtml" />
     <Content Include="Views\Reports\SupplierAccount.cshtml" />
-    <Content Include="Views\Product\SaveInvoicePurchase.cshtml" />
-    <Content Include="Views\Product\DisplayInvoicePurchase.cshtml" />
-    <Content Include="Views\Product\SaveCustomer.cshtml" />
-    <Content Include="Views\Product\CashExchange.cshtml" />
-    <Content Include="Views\Product\ReceiveCash.cshtml" />
-    <Content Include="Views\Product\SaveSupplier.cshtml" />
-    <Content Include="Views\Product\AddUser.cshtml" />
-    <Content Include="Views\Product\Loginr.cshtml" />
-    <Content Include="Views\Product\c.cshtml" />
-    <Content Include="Views\Product\d.cshtml" />
-    <Content Include="Views\Product\LoginUser.cshtml" />
-    <Content Include="Views\Product\SaveCountry.cshtml" />
-    <Content Include="Views\Product\SaveTown.cshtml" />
-    <Content Include="Views\Product\DisplayTowns.cshtml" />
-    <Content Include="Views\Product\EditTown.cshtml" />
-    <Content Include="Views\Product\DisplayCountries.cshtml" />
-    <Content Include="Views\Product\EditCountry.cshtml" />
     <Content Include="Views\Reports\SupplierData.cshtml" />
-    <Content Include="Views\Product\SaveSector.cshtml" />
-    <Content Include="Views\Product\SaveBranch.cshtml" />
-    <Content Include="Views\Product\SaveDealer.cshtml" />
-    <Content Include="Views\Product\DisplaySectors.cshtml" />
-    <Content Include="Views\Product\DisplayBranches.cshtml" />
-    <Content Include="Views\Product\DisplayDealers.cshtml" />
-    <Content Include="Views\Product\EditBranch.cshtml" />
-    <Content Include="Views\Product\EditSector.cshtml" />
-    <Content Include="Views\Product\User.cshtml" />
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
     <Content Include="Views\Shared\_LayoutEm.cshtml" />
-    <Content Include="Views\Product\Sales.cshtml" />
     <Content Include="Views\Shared\_LoginPartialA.cshtml" />
     <Content Include="Views\Shared\_LayoutGeneral.cshtml" />
-    <Content Include="Views\Product\GeneralUser.cshtml" />
     <Content Include="Views\Shared\_LoginPartialb.cshtml" />
-    <Content Include="Views\Product\index.cshtml" />
-    <Content Include="Views\Product\Worker.cshtml" />
     <Content Include="Views\Shared\_LayoutWorker.cshtml" />
     <Content Include="Views\Reports\UsersData.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
-    <Content Include="Views\Product\agg.cshtml" />
     <Content Include="Views\Reports\DealerAccount.cshtml" />
     <Content Include="Views\Reports\DealerData.cshtml" />
-    <Content Include="Views\Product\Test.cshtml" />
-    <Content Include="Views\Product\ConvertBetweenStocks.cshtml" />
-    <Content Include="Views\Product\SaveCurrency.cshtml" />
-    <Content Include="Views\Product\SaveSafe.cshtml" />
-    <Content Include="Views\Product\a.cshtml" />
     <Content Include="Views\Reports\ItemsBestSeller.cshtml" />
-    <Content Include="Views\Test\AddOrder.cshtml" />
     <Content Include="Views\Reports\ItemLastSalesPrice.cshtml" />
-    <Content Include="Views\Reports\ItemLastPurchasePrice2.cshtml" />
     <Content Include="Views\Reports\ItemLastPurchasePrice.cshtml" />
-    <Content Include="Views\Product\AddPermission.cshtml" />
-    <Content Include="Views\Product\ExchangePermission.cshtml" />
-    <Content Include="Views\Product\SaveEmployee.cshtml" />
-    <Content Include="Views\Product\EditInvoiceSales.cshtml" />
-    <Content Include="Views\Product\EditInvoicePurchase.cshtml" />
-    <Content Include="Views\Basics\SaveCustomer.cshtml" />
-    <Content Include="Views\Basics\EditCustomer.cshtml" />
-    <Content Include="Views\Basics\DisplayCustomers.cshtml" />
-    <Content Include="Views\Basics\SaveSupplier.cshtml" />
-    <Content Include="Views\Basics\DisplaySuppliers.cshtml" />
-    <Content Include="Views\Basics\EditSupplier.cshtml" />
-    <Content Include="Views\Product\EditDealer.cshtml" />
-    <Content Include="Views\Product\DisplayDealers - Copy.cshtml" />
     <Content Include="Views\Reports\EmployeesData.cshtml" />
-    <Content Include="Views\Reports\go.cshtml" />
     <Content Include="Views\Customer\DisplayCustomers.cshtml" />
     <Content Include="Views\Customer\EditCustomer.cshtml" />
     <Content Include="Views\Customer\SaveCustomer.cshtml" />
@@ -546,20 +513,55 @@
     <Content Include="Views\Sales\DisplayInvoiceSales.cshtml" />
     <Content Include="Views\Sales\SaveInvoiceSales.cshtml" />
     <Content Include="Views\Sales\EditInvoiceSales.cshtml" />
+    <Content Include="Views\MainPages\GeneralUser.cshtml" />
+    <Content Include="Views\MainPages\Home.cshtml" />
+    <Content Include="Views\MainPages\Loginr.cshtml" />
+    <Content Include="Views\MainPages\LoginUser.cshtml" />
+    <Content Include="Views\MainPages\Sales.cshtml" />
+    <Content Include="Views\MainPages\Start.cshtml" />
+    <Content Include="Views\MainPages\User.cshtml" />
+    <Content Include="Views\MainPages\Worker.cshtml" />
+    <Content Include="Views\AddPermision\AddPermission.cshtml" />
+    <Content Include="Views\Branch\DisplayBranches.cshtml" />
+    <Content Include="Views\Branch\EditBranch.cshtml" />
+    <Content Include="Views\Branch\SaveBranch.cshtml" />
+    <Content Include="Views\CashExchange\CashExchange.cshtml" />
+    <Content Include="Views\ConvertBetweenStocks\ConvertBetweenStocks.cshtml" />
+    <Content Include="Views\Country\DisplayCountries.cshtml" />
+    <Content Include="Views\Country\EditCountry.cshtml" />
+    <Content Include="Views\Country\SaveCountry.cshtml" />
+    <Content Include="Views\Currency\SaveCurrency.cshtml" />
+    <Content Include="Views\Dealer\DisplayDealers.cshtml" />
+    <Content Include="Views\Dealer\EditDealer.cshtml" />
+    <Content Include="Views\Dealer\SaveDealer.cshtml" />
+    <Content Include="Views\Employee\SaveEmployee.cshtml" />
+    <Content Include="Views\ExchangePermision\ExchangePermission.cshtml" />
+    <Content Include="Views\Group\DisplayCategories.cshtml" />
+    <Content Include="Views\Group\EditCat.cshtml" />
+    <Content Include="Views\Group\SaveGroup.cshtml" />
+    <Content Include="Views\Product\DisplayItems.cshtml" />
+    <Content Include="Views\Product\EditItem.cshtml" />
+    <Content Include="Views\Product\SaveProduct.cshtml" />
+    <Content Include="Views\RecieveCash\ReceiveCash.cshtml" />
+    <Content Include="Views\Safe\SaveSafe.cshtml" />
+    <Content Include="Views\Sector\DisplaySectors.cshtml" />
+    <Content Include="Views\Sector\EditSector.cshtml" />
+    <Content Include="Views\Sector\SaveSector.cshtml" />
+    <Content Include="Views\Store\DisplayStocks.cshtml" />
+    <Content Include="Views\Store\EditStock.cshtml" />
+    <Content Include="Views\Store\SaveStock.cshtml" />
+    <Content Include="Views\Town\DisplayTowns.cshtml" />
+    <Content Include="Views\Town\EditTown.cshtml" />
+    <Content Include="Views\Town\SaveTown.cshtml" />
+    <Content Include="Views\Unit\DisplayUnits.cshtml" />
+    <Content Include="Views\Unit\EditUnit.cshtml" />
+    <Content Include="Views\Unit\SaveUnit.cshtml" />
+    <Content Include="Views\User\AddUser.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Product\Start.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\Branch\" />
-    <Folder Include="Views\Country\" />
-    <Folder Include="Views\Dealer\" />
-    <Folder Include="Views\Group\" />
-    <Folder Include="Views\Safe\" />
-    <Folder Include="Views\Sector\" />
-    <Folder Include="Views\Store\" />
-    <Folder Include="Views\Town\" />
-    <Folder Include="Views\Unit\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -571,6 +573,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -793,5 +793,70 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Re" FunctionName="TopSoftModel.Store.Re">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TopSoftModel.Re_Result">
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+          <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+          <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+          <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+          <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="HSalesCode" ColumnName="HSalesCode" />
+          <ScalarProperty Name="HSalesCode2" ColumnName="HSalesCode2" />
+          <ScalarProperty Name="HSalesCurrency" ColumnName="HSalesCurrency" />
+          <ScalarProperty Name="HSalesDate" ColumnName="HSalesDate" />
+          <ScalarProperty Name="HSalesDealerCode" ColumnName="HSalesDealerCode" />
+          <ScalarProperty Name="HSalesDiscount" ColumnName="HSalesDiscount" />
+          <ScalarProperty Name="HSalesDiscValue" ColumnName="HSalesDiscValue" />
+          <ScalarProperty Name="HSalesFactor" ColumnName="HSalesFactor" />
+          <ScalarProperty Name="HSalesPrice" ColumnName="HSalesPrice" />
+          <ScalarProperty Name="HSalesQuantity" ColumnName="HSalesQuantity" />
+          <ScalarProperty Name="HSalesTax" ColumnName="HSalesTax" />
+          <ScalarProperty Name="HSalesTotal" ColumnName="HSalesTotal" />
+          <ScalarProperty Name="HSalesTotalAfter" ColumnName="HSalesTotalAfter" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+          <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+          <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+          <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+          <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+          <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+          <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+          <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerCode2" ColumnName="CustomerCode2" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerEName" ColumnName="CustomerEName" />
+          <ScalarProperty Name="CustomerDescName" ColumnName="CustomerDescName" />
+          <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
+          <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+          <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+          <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+          <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

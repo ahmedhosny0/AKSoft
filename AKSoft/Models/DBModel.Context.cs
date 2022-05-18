@@ -89,5 +89,10 @@ namespace AKSoft.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemCode>("SearchItems", mergeOption, contactNameParameter);
         }
+    
+        public virtual ObjectResult<Re_Result> Re()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Re_Result>("Re");
+        }
     }
 }

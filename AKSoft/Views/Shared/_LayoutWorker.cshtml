@@ -67,33 +67,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("الرئيسيه", "Worker", "Product", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("الرئيسيه", "Worker", "MainPages", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/Product/SaveStock">المخازن</a></li>
-                    <li><a href="/Product/SaveGroup">تعريف مجموعة الصنف</a></li>
-                    <li><a href="/Product/SaveUnit">تعريف الوحدة</a></li>
+                    <li><a href="/Store/SaveStock">المخازن</a></li>
+                    <li><a href="/Group/SaveGroup">تعريف مجموعة الصنف</a></li>
+                    <li><a href="/Unit/SaveUnit">تعريف الوحدة</a></li>
                     <li><a href="/Product/SaveProduct">تعريف الصنف</a></li>
-                    <li><a href="/Product/AddPermission">إذن إضافة</a></li>
-                    <li><a href="/Product/ExchangePermission">إذن صرف</a></li>
+                    <li><a href="/AddPermission/AddPermission">إذن إضافة</a></li>
+                    <li><a href="/ExchangePermission/ExchangePermission">إذن صرف</a></li>
                     <li>
                         <div class="dropdown">
                             <button onclick="myFunction2()" class="dropbtn">تعريفات</button>
                             <div id="myDropdown2" class="dropdown-content">
-                                <a href="/Product/SaveBranch">تعريف الفرع</a>
-                                <a href="/Product/SaveSector">تعريف القطاع</a>
-                                <a href="/Product/SaveCountry">تعريف الدوله</a>
-                                <a href="/Product/SaveTown">تعريف المدينه</a>
+                                <a href="/Branch/SaveBranch">تعريف الفرع</a>
+                                <a href="/Sector/SaveSector">تعريف القطاع</a>
+                                <a href="/Country/SaveCountry">تعريف الدوله</a>
+                                <a href="/Town/SaveTown">تعريف المدينه</a>
                                 <a href="/Basics/SaveDealer">تعريف المندوب</a>
                             </div>
                         </div>
                     </li>
                      @*
-                    <li><a href="/Product/SaveCustomer">Customers</a></li>
-                    <li><a href="/Product/SaveInvoiceSales">Sales</a></li>
-                    <li><a href="/Product/SaveSupplier">Suppliers</a></li>
-                    <li><a href="/Product/SaveInvoicePurchase">Purchase</a></li>
+                    <li><a href="/Customer/SaveCustomer">Customers</a></li>
+                    <li><a href="/Sales/SaveInvoiceSales">Sales</a></li>
+                    <li><a href="/Supplier/SaveSupplier">Suppliers</a></li>
+                    <li><a href="/Purchases/SaveInvoicePurchase">Purchase</a></li>
 
                     @*<li>
                         

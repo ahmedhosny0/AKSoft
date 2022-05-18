@@ -82,7 +82,8 @@ namespace AKSoft.Controllers
                 objContext.SaveChanges();
                 TempData["Al"] = "";
                 latestEmpId = invo.Serial;
-                return RedirectToAction("SaveInvoiceSales");
+                return RedirectToAction("Report1.aspx", "Reports", new { area = "" });
+
             }
 
             catch (Exception ex)

@@ -1,0 +1,158 @@
+
+@*﻿@model AKSoft.Models.UserProfile
+
+@{
+    ViewBag.Title = "Login";
+}
+    @using (Html.BeginForm("Login", "MainPages", FormMethod.Post))AKSoft.Models.
+    {
+        
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <label for="user" class="label">Username</label>
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class="input"} })
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input" } })
+                    </div>
+                    <div class="group">
+                        <input id="check" type="checkbox" class="check" checked>
+                        <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                    </div>
+                    <div class="group">
+                        <a href="@Url.Action("Home","Product")">
+                            <input type="submit" class="button" value="Sign In">
+
+                        </a>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="#forgot">Forgot Password?</a>
+                    </div>
+                </div>
+                }
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="user" class="label">Username</label>
+                        <input id="user" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input id="pass" type="password" class="input" data-type="password">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Repeat Password</label>
+                        <input id="pass" type="password" class="input" data-type="password">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Email Address</label>
+                        <input id="pass" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Sign Up">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                       <a> <label for="tab-1">Already Member?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+=======
+﻿@model UserInfo
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="panel panel-body">
+
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Director Message</h3>
+                </div>
+            </div>
+            <img src="~/Content/Images/director1.jpg" alt="..." style="margin-top:-20px">
+            <div class="caption">
+                <h3>Ashish Tiwary</h3>
+                <p>&para; Have faith in us, We will give you full satisfaction by providing best service. &para;</p>
+                <p><a href="#" class="btn btn-primary" role="button">See more</a> </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+
+        <form id="myForm">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <h4>Login Here</h4>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "EmailId" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <a href="#" class="btn btn-primary " onclick="LoginUser()">Submit</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+
+    var LoginUser = function () {
+        debugger
+        var data = $("#myForm").serialize();
+
+        $.ajax({
+            type: "Post",
+            url: "/Product/Loginr",
+            data: data,
+            success: function (response) {
+                debugger
+                if (response == "fail") {
+
+                    window.location.href = "/Test/Login";
+                }
+                else if (response == "Admin") {
+
+                    window.location.href = "/Test/Admin";
+                }
+                else {
+
+                    window.location.href = "/Test/Index";
+                }
+            }
+
+
+
+        })
+
+
+
+    }
+
+</script>
+>>>>>>> d07ade0df540868136570a8fc43d58ff61c663ba*@

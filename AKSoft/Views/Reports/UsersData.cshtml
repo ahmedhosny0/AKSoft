@@ -5,7 +5,7 @@
 }
 
 <h2>بيانات المستخدمين</h2>
-<a href="@Url.Action("AddUser", "Product")">إضافة مستخدم</a>
+<a href="@Url.Action("AddUser", "User")">إضافة مستخدم</a>
 @using (Html.BeginForm("UsersData", "Reports", FormMethod.Post))
     {
     <span>User Name:</span> @Html.TextBox("CustomerName")
@@ -24,7 +24,7 @@
         <th>القطاع</th>
     </tr>
 
-@foreach (AKSoft.Models.UsersData customer in Model)
+@foreach (var customer in Model)
     {
         <tr>
             <td>@Model.Rows[i][0]</td>

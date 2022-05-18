@@ -18,17 +18,18 @@ namespace AKSoft.Controllers
 
         public ActionResult SaveInvoicePurchase()
         {
+            TopSoft db = new TopSoft();
+            ViewBag.MaxCode = db.HPurchase.Max(x => x.Code) + 1;
 
-            ViewBag.MaxCode = objContext.HPurchase.Max(x => x.Code) + 1;
-            List<UnitCode> list1 = objContext.UnitCode.ToList();
+            List<UnitCode> list1 = db.UnitCode.ToList();
             ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName", 1);
-            List<StoreCode> list2 = objContext.StoreCode.ToList();
+            List<StoreCode> list2 = db.StoreCode.ToList();
             ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName", 1);
-            List<GroupCode> list3 = objContext.GroupCode.ToList();
+            List<GroupCode> list3 = db.GroupCode.ToList();
             ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName", 1);
-            List<ItemCode> list4 = objContext.ItemCode.ToList();
+            List<ItemCode> list4 = db.ItemCode.ToList();
             ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
-            List<SupplierCode> list5 = objContext.SupplierCode.ToList();
+            List<SupplierCode> list5 = db.SupplierCode.ToList();
             ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName", 1);
             return View();
 
@@ -41,15 +42,15 @@ namespace AKSoft.Controllers
             {
                 TopSoft db = new TopSoft();
                 HPurchase invo2 = new HPurchase();
-                List<UnitCode> list1 = objContext.UnitCode.ToList();
+                List<UnitCode> list1 = db.UnitCode.ToList();
                 ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-                List<StoreCode> list2 = objContext.StoreCode.ToList();
+                List<StoreCode> list2 = db.StoreCode.ToList();
                 ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
-                List<GroupCode> list3 = objContext.GroupCode.ToList();
+                List<GroupCode> list3 = db.GroupCode.ToList();
                 ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
-                List<ItemCode> list4 = objContext.ItemCode.ToList();
+                List<ItemCode> list4 = db.ItemCode.ToList();
                 ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
-                List<SupplierCode> list5 = objContext.SupplierCode.ToList();
+                List<SupplierCode> list5 = db.SupplierCode.ToList();
                 ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
                 invo2.BranchCode = model.BranchCode;
                 invo2.Code = model.Code;
@@ -71,8 +72,8 @@ namespace AKSoft.Controllers
                 invo2.UnitSerial = model.UnitSerial;
                 invo2.SupplierSerial = model.SupplierSerial;
                 invo2.AddUserDate = model.AddUserDate;
-                objContext.HPurchase.Add(invo2);
-                objContext.SaveChanges();
+                db.HPurchase.Add(invo2);
+                db.SaveChanges();
                 TempData["Al"] = "";
                 int latestEmpId = invo2.Serial;
                 return RedirectToAction("SaveInvoicePurchase");
@@ -123,15 +124,15 @@ namespace AKSoft.Controllers
 
             TopSoft db = new TopSoft();
             HPurchase invo2 = new HPurchase();
-            List<UnitCode> list1 = objContext.UnitCode.ToList();
+            List<UnitCode> list1 = db.UnitCode.ToList();
             ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-            List<StoreCode> list2 = objContext.StoreCode.ToList();
+            List<StoreCode> list2 = db.StoreCode.ToList();
             ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
-            List<GroupCode> list3 = objContext.GroupCode.ToList();
+            List<GroupCode> list3 = db.GroupCode.ToList();
             ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
-            List<ItemCode> list4 = objContext.ItemCode.ToList();
+            List<ItemCode> list4 = db.ItemCode.ToList();
             ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
-            List<SupplierCode> list5 = objContext.SupplierCode.ToList();
+            List<SupplierCode> list5 = db.SupplierCode.ToList();
             ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
             HPurchase productModel = new HPurchase();
             DataTable dtblProduct = new DataTable();
@@ -175,17 +176,17 @@ namespace AKSoft.Controllers
         public ActionResult EditInvoicePurchase(HPurchase productModel)
         {
             TopSoft db = new TopSoft();
-            List<UnitCode> list1 = objContext.UnitCode.ToList();
+            List<UnitCode> list1 = db.UnitCode.ToList();
             ViewBag.DepartmentList1 = new SelectList(list1, "Serial", "ArabicName");
-            List<StoreCode> list2 = objContext.StoreCode.ToList();
+            List<StoreCode> list2 = db.StoreCode.ToList();
             ViewBag.DepartmentList2 = new SelectList(list2, "Serial", "ArabicName");
-            List<GroupCode> list3 = objContext.GroupCode.ToList();
+            List<GroupCode> list3 = db.GroupCode.ToList();
             ViewBag.DepartmentList3 = new SelectList(list3, "Serial", "ArabicName");
-            List<ItemCode> list4 = objContext.ItemCode.ToList();
+            List<ItemCode> list4 = db.ItemCode.ToList();
             ViewBag.DepartmentList4 = new SelectList(list4, "Serial", "ArabicName");
-            List<CustomerCode> list5 = objContext.CustomerCode.ToList();
+            List<CustomerCode> list5 = db.CustomerCode.ToList();
             ViewBag.DepartmentList5 = new SelectList(list5, "Serial", "ArabicName");
-            List<DealerCode> list6 = objContext.DealerCode.ToList();
+            List<DealerCode> list6 = db.DealerCode.ToList();
             ViewBag.DepartmentList6 = new SelectList(list5, "Serial", "ArabicName");
             try
             {

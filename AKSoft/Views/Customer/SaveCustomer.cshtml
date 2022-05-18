@@ -28,11 +28,11 @@ if (Convert.ToInt32(Session["Role"]) == 4)
     @if (TempData["Al"] != null)
     {
         <script>
-            swal("Saved successfully!", " ", "success");
+            swal("تم الحفظ بنجاح", " ", "success");
         </script>
-        <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+        <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
     }
-    @using (Html.BeginForm("SaveCustomer", "Basics", FormMethod.Post))
+    @using (Html.BeginForm("SaveCustomer", "Customer", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -86,7 +86,7 @@ if (Convert.ToInt32(Session["Role"]) == 4)
         </li>
         <li class="">
             <button class="save">حفظ</button>
-            <a href="@Url.Action("DisplayCustomers", "Basics")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
+            <a href="@Url.Action("DisplayCustomers", "Customer")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
         </li>
     </ul>
     }

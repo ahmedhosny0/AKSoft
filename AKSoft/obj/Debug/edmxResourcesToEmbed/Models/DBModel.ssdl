@@ -1124,6 +1124,7 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
   <Function Name="Customers_SearchCustomers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ContactName" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="Re" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="TopSoftModelStoreContainer">
     <EntitySet Name="BranchCode" EntityType="Self.BranchCode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
