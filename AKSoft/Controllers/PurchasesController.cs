@@ -85,7 +85,44 @@ namespace AKSoft.Controllers
 
             }
         }
-        [HttpGet]
+        public ActionResult Index()
+        {
+           TopSoft db = new TopSoft();
+           return View(db.HSales);
+        }
+
+        public JsonResult InsertCustomers(List<HSales> customers)
+        {
+            try
+            {
+                using (TopSoft entities = new TopSoft())
+                {
+                    //Truncate Table to delete all old records.
+                    entities.Database.ExecuteSqlCommand("TRUNCATE TABLE [HPurchase]");
+
+                    //Check for NULL.
+                    if (customers == null)
+                    {
+                        customers = new List<HSales>();
+                    }
+
+                    //Loop and insert records.
+                    foreach (HSales customer in customers)
+                    {
+                        entities.HSales.Add(customer);
+                    }
+                    int insertedRecords = entities.SaveChanges();
+                    return Json(insertedRecords);
+                }
+            }
+            catch (SqlException ex)
+            {
+                
+                throw;
+            }    
+           
+        }
+      [HttpGet]
         public ActionResult DisplayInvoicePurchase()
         {
             DataTable dtblProduct = new DataTable();

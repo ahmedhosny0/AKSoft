@@ -559,6 +559,7 @@
     <Content Include="Views\User\AddUser.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Product\Start.cshtml" />
+    <Content Include="Views\Purchases\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
