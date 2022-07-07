@@ -96,59 +96,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("الرئيسيه", "Worker", "MainPages", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("الرئيسيه", "SalesManager", "MainPages", new { area = "" }, new { @class = "navbar-brand" })
             </div>
 
             <div class="navbar-collapse collapse">
-@*<li>
-    <ul class="nav navbar-nav" style="float:right;">
-        <li>
-            <div class="dropdown">
-                <button onclick="myFunction2()" class="dropbtn">تعريفات</button>
-                <div id="myDropdown2" class="dropdown-content">
-                    <a href="/Branch/SaveBranch">تعريف الفرع</a>
-                    <a href="/Sector/SaveSector">تعريف القطاع</a>
-                    <a href="/Country/SaveCountry">تعريف الدوله</a>
-                    <a href="/Town/SaveTown">تعريف المدينه</a>
-                    <a href="/Dealer/SaveDealer">تعريف المندوب</a>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="dropdown">
-                <button onclick="myFunction4()" class="dropbtn" style="background-color:#1dc181;">المخازن</button>
-                <div id="myDropdown4" class="dropdown-content" style="height: 50px;">
-                    <a href="/ConvertBetweenStocks/ConvertBetweenStocks">التحويل بين المخازن</a>
-                </div>
-            </div>
-        </li>
-        @*<li><a href="/Store/SaveStock">Store</a></li>
-            <li><a href="/Group/SaveGroup">Category</a></li>
-            <li><a href="/Unit/SaveUnit">Unit</a></li>
-            <li><a href="/Product/SaveProduct">Product</a></li>
-                    <li><a href="/Customer/SaveCustomer">تعريف العميل</a></li>
+                <ul class="nav navbar-nav" style="float:right;">
+      
                     <li><a href="/Sales/SaveInvoiceSales">فاتورة مبيعات</a></li>
-                    <li><a href="/Purchases/SaveInvoicePurchase">فاتورة مشتريات</a></li>
-                    <li><a href="/Supplier/SaveSupplier">تعريف المورد</a></li>
-                    <li>
-                        <div class="dropdown">
-                            <button onclick="myFunction()" class="dropbtn">التقارير</button>
-                            <div id="myDropdown" class="dropdown-content">
-                                <a href="/Reports/DailySales">الحركةاليومية للمبيعات</a>
-                                <a href="/Reports/ItemsBalance">أرصدة الأصناف</a>
-                                <a href="/Reports/ItemsState">دليل الأصناف</a>
-                                <a href="/Reports/ProfitofItems">ربحية الأصناف</a>
-                                <a href="/Reports/StocksState">تقييم المخزن</a>
-                                <a href="/Reports/DailyPurchases">الحركة اليومية للمشتريات</a>
-                                <a href="/Reports/CustomersData">العملاء</a>
-                                <a href="/Reports/CustomerAccount">كشف حساب عميل</a>
-                                <a href="/Reports/SupplierAccount">كشف حساب مورد</a>
-                                <a href="/Reports/SupplierData">الموردين</a>
-                                <a href="/Reports/DealerAccount">كشف حساب مندوب</a>
-                                <a href="/Reports/DealerData">المندوبين</a>
-                            </div>
-                        </div>
-                    </li>
+              
+                    @*<li>
                             <div class="dropdown">
                                 <button onclick="myFunction5()" class="dropbtn" style="background-color:#1dc181;">Accounts</button>
                                 <div id="myDropdown5" class="dropdown-content" style="height:100px">
@@ -156,7 +112,7 @@
                                     <a href="/Product/CashExchange">CashExchange</a>
                                 </div>
                             </div>
-                        </li> *@
+                        </li>*@
                 </ul>
 
                 @Html.Partial("_LoginPartialA")
@@ -165,106 +121,93 @@
     </div>
     <div class="area"></div><nav class="main-menu" style="height:800px;float:right;direction:rtl;right:0;overflow:auto;">
 
-        <ul style="margin-top:50px;height:100%">
+        <ul style="margin-top:50px;height:100%"> @*
+    <li class="has-subnav">
+        <a>
+            <i class="fa fa-store"></i>
+            <span class="nav-text" style="width:140px">
+                تعريفات
+            </span>
+            <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="t">
+            <li><a class="l" href="/Branch/SaveBranch">تعريف الفرع</a></li>
+            <li><a class="l" href="/Sector/SaveSector">تعريف القطاع</a></li>
+            <li><a class="l" href="/Country/SaveCountry">تعريف الدوله</a></li>
+            <li><a class="l" href="/Town/SaveTown">تعريف المدينه</a></li>
+            <li><a class="l" href="/Dealer/SaveDealer">تعريف المندوب</a></li>
+            <li><a class="l" href="/Employee/SaveEmployee">تعريف الموظف</a></li>
+        </ul>
+    </li>
+    <li class="has-subnav">
+        <a href="/Store/SaveStock">
+            <i class="fa fa-cart-plus"></i>
+            <span class="nav-text">
+                تعريف المخزن
+            </span>
+        </a>
+    </li>
+    <li class="has-subnav">
+        <a href="/Group/SaveGroup">
+            <i class="fa fa-object-group"></i>
+            <span class="nav-text">
+                تعريف مجموعة الصنف
+            </span>
+        </a>
+
+    </li>
+    <li class="has-subnav">
+        <a href="/Unit/SaveUnit">
+            <i class="fa fa-infinity"></i>
+            <span class="nav-text">
+                تعريف الوحدة
+            </span>
+        </a>
+
+    </li>
+    <li class="has-subnav">
+        <a href="/Product/SaveProduct">
+            <i class="fa fa-procedures"></i>
+            <span class="nav-text">
+                تعريف الصنف
+            </span>
+        </a>
+    <li>
+
+    </li>
+    <li class="has-subnav">
+        <a href="/AddPermission/AddPermission">
+            <i class="fa fa-bacon"></i>
+            <span class="nav-text">
+                إذن إضافة
+            </span>
+        </a>
+    </li>
+    <li class="has-subnav">
+        <a href="/ExchangePermission/ExchangePermission">
+            <i class="fa fa-procedures"></i>
+            <span class="nav-text">
+                إذن صرف
+            </span>
+        </a>
+    </li>*@
             <li class="has-subnav">
                 <a>
-                    <i class="fa fa-store"></i>
+                    <i class="fa fa-flag"></i>
                     <span class="nav-text" style="width:140px">
-                        تعريفات
+                        التقارير
                     </span>
-                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-cart-plus"></i>
                 </a>
                 <ul class="t">
-                    <li><a class="l" href="/Branch/SaveBranch">تعريف الفرع</a></li>
-                    <li><a class="l" href="/Sector/SaveSector">تعريف القطاع</a></li>
-                    <li><a class="l" href="/Country/SaveCountry">تعريف الدوله</a></li>
-                    <li><a class="l" href="/Town/SaveTown">تعريف المدينه</a></li>
-                    <li><a class="l" href="/Dealer/SaveDealer">تعريف المندوب</a></li>
-                    <li><a class="l" href="/Employee/SaveEmployee">تعريف الموظف</a></li>
-                    <li><a class="l" href="/Supplier/SaveSupplier">تعريف المورد</a></li>
-                    <li><a class="l" href="/Customer/SaveCustomer">تعريف العميل</a></li>
+                    <li><a class="l" href="/Reports/DailySales">الحركةاليومية للمبيعات</a></li>
+                    <li><a class="l" href="/Reports/ItemsBalance">أرصدة الأصناف</a></li>
+                    <li><a class="l" href="/Reports/ItemsState"> كارت الصنف</a></li>
+                    <li><a class="l" href="/Reports/ProfitofItems">ربحية الأصناف</a></li>
+                    <li><a class="l" href="/Reports/StocksState">تقييم المخزن</a></li>
+
                 </ul>
             </li>
-            <li class="has-subnav">
-                <a href="/Store/SaveStock">
-                    <i class="fa fa-cart-plus"></i>
-                    <span class="nav-text">
-                        تعريف المخزن
-                    </span>
-                </a>
-            </li>
-            <li class="has-subnav">
-                <a href="/Group/SaveGroup">
-                    <i class="fa fa-object-group"></i>
-                    <span class="nav-text">
-                        تعريف مجموعة الصنف
-                    </span>
-                </a>
-
-            </li>
-            <li class="has-subnav">
-                <a href="/Unit/SaveUnit">
-                    <i class="fa fa-infinity"></i>
-                    <span class="nav-text">
-                        تعريف الوحدة
-                    </span>
-                </a>
-
-            </li>
-            <li class="has-subnav">
-                <a href="/Product/SaveProduct">
-                    <i class="fa fa-procedures"></i>
-                    <span class="nav-text">
-                        تعريف الصنف
-                    </span>
-                </a>
-            <li>
-
-            </li>            @*
-                           <li class="has-subnav">
-            <a href="/AddPermission/AddPermission">
-                <i class="fa fa-bacon"></i>
-                <span class="nav-text">
-                    إذن إضافة
-                </span>
-            </a>
-        </li>
-        <li class="has-subnav">
-            <a href="/ExchangePermission/ExchangePermission">
-                <i class="fa fa-procedures"></i>
-                <span class="nav-text">
-                    إذن صرف
-                </span>
-            </a>
-        </li>
-        <li class="has-subnav">
-            <a>
-                <i class="fa fa-flag"></i>
-                <span class="nav-text" style="width:140px">
-                    التقارير
-                </span>
-                <i class="fa fa-cart-plus"></i>
-            </a>
-            <ul class="t">
-                <li><a class="l" href="/Reports/DailySales">الحركةاليومية للمبيعات</a></li>
-                <li><a class="l" href="/Reports/ItemsBalance">أرصدة الأصناف</a></li>
-                <li><a class="l" href="/Reports/ItemsState"> كارت الصنف</a></li>
-                <li><a class="l" href="/Reports/ProfitofItems">ربحية الأصناف</a></li>
-                <li><a class="l" href="/Reports/StocksState">تقييم المخزن</a></li>
-                <li><a class="l" href="/Reports/DailyPurchases">الحركة اليومية للمشتريات</a></li>
-                <li><a class="l" href="/Reports/CustomersData">تفاصيل العملاء</a></li>
-                <li><a class="l" href="/Reports/CustomerAccount">كشف حساب عميل</a></li>
-                <li><a class="l" href="/Reports/SupplierAccount">كشف حساب مورد</a></li>
-                <li><a class="l" href="/Reports/SupplierData">تفاصيل الموردين</a></li>
-                <li><a class="l" href="/Reports/DealerAccount">كشف حساب مندوب</a></li>
-                <li><a class="l" href="/Reports/DealerData">تفاصيل المندوبين</a></li>
-                <li><a class="l" href="/Reports/ItemsBestSeller">الأصناف الأكثر مبيعاً</a></li>
-
-            </ul>
-        </li>
-
-            *@
-  
         </ul>
 
         @*<ul class="logout">

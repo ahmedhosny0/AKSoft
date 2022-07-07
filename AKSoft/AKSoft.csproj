@@ -487,7 +487,7 @@
     <Content Include="Views\Reports\StocksState.cshtml" />
     <Content Include="Views\Reports\SupplierAccount.cshtml" />
     <Content Include="Views\Reports\SupplierData.cshtml" />
-    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\Shared\_LayPurMa.cshtml" />
     <Content Include="Views\Shared\_LayoutEm.cshtml" />
     <Content Include="Views\Shared\_LoginPartialA.cshtml" />
     <Content Include="Views\Shared\_LayoutGeneral.cshtml" />
@@ -517,9 +517,9 @@
     <Content Include="Views\MainPages\Home.cshtml" />
     <Content Include="Views\MainPages\Loginr.cshtml" />
     <Content Include="Views\MainPages\LoginUser.cshtml" />
-    <Content Include="Views\MainPages\Sales.cshtml" />
+    <Content Include="Views\MainPages\SalesManager.cshtml" />
     <Content Include="Views\MainPages\Start.cshtml" />
-    <Content Include="Views\MainPages\User.cshtml" />
+    <Content Include="Views\MainPages\PurchaseManager.cshtml" />
     <Content Include="Views\MainPages\Worker.cshtml" />
     <Content Include="Views\AddPermision\AddPermission.cshtml" />
     <Content Include="Views\Branch\DisplayBranches.cshtml" />
@@ -560,6 +560,11 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Product\Start.cshtml" />
     <Content Include="Views\Purchases\Index.cshtml" />
+    <Content Include="Views\MainPages\PurchaseAcc.cshtml" />
+    <Content Include="Views\MainPages\SalesAcc.cshtml" />
+    <Content Include="Views\Shared\_LayPurAcc.cshtml" />
+    <Content Include="Views\Shared\_LaySaMa.cshtml" />
+    <Content Include="Views\Shared\_LaySaAcc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

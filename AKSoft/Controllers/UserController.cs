@@ -109,17 +109,25 @@ namespace AKSoft.Controllers
                         }
                         else if (obj.Role == 2)
                         {
-                            return RedirectToAction("User", "MainPages");
+                            return RedirectToAction("Home", "MainPages");
                         }
                         else if (obj.Role == 3)
                         {
-                            return RedirectToAction("Sales", "MainPages");
+                            return RedirectToAction("PurchaseManager", "MainPages");
                         }
                         else if (obj.Role == 4)
                         {
-                            return RedirectToAction("GeneralUser", "MainPages");
+                            return RedirectToAction("PurchaseAcc", "MainPages");
                         }
                         else if (obj.Role == 5)
+                        {
+                            return RedirectToAction("SalesManager", "MainPages");
+                        }
+                        else if (obj.Role == 6)
+                        {
+                            return RedirectToAction("SalesAcc", "MainPages");
+                        }
+                        else if (obj.Role == 7)
                         {
                             return RedirectToAction("Worker", "MainPages");
                         }

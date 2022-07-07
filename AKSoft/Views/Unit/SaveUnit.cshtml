@@ -7,12 +7,12 @@
 
     ViewBag.Title = "Save Unit";
 }
-if (Convert.ToInt32(Session["Role"]) == 4)
+if (Convert.ToInt32(Session["Role"]) == 2)
 {
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
 
 }
-if (Convert.ToInt32(Session["Role"]) == 5)
+if (Convert.ToInt32(Session["Role"]) == 7)
 {
     Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 }

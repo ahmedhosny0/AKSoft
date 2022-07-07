@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
     public class MainPagesController : Controller
     {
-        public ActionResult User()
+        public ActionResult PurchaseManager()
         {
             return View();
         }
@@ -20,11 +20,15 @@ using System.Web.Mvc;
         {
             return View();
         }
-        public ActionResult GeneralUser()
+        public ActionResult PurchaseAcc()
         {
             return View();
         }
-        public ActionResult Sales()
+        public ActionResult SalesManager()
+        {
+            return View();
+        }
+        public ActionResult SalesAcc()
         {
             return View();
         }

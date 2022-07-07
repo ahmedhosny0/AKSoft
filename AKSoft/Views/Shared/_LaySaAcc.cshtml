@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/fonts/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/st.css" type="text/css" />
+    <style>
+        .fa {
+            display: table-cell;
+        }
+
+        .dropbtn {
+            background-color: #3498DB;
+            padding: 6px;
+            font-size: 18px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 9px;
+        }
+
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #2980B9;
+            }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            height: 250px;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+        .show {
+            display: block;
+        }
+
+        ul li:hover ul.t {
+            display: block; /* Display the dropdown */
+        }
+
+        ul li ul.t li {
+            display: block;
+        }
+
+        .t .l {
+            font-size: 20px;
+            padding: 20px;
+            margin: 10px;
+            font-family: auto;
+        }
+
+        .t {
+            display: none;
+            z-index: 1;
+            margin-left: 40px;
+        }
+
+        .lab {
+            font-size: 19px;
+        }
+    </style>
+
+</head>
+
+<body style="direction:rtl;">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header" style="float:right;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("الرئيسيه", "SalesAcc", "MainPages", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" style="float:right;">
+                    @*
+                        <li>
+                            <div class="dropdown">
+                                <button onclick="myFunction2()" class="dropbtn">تعريفات</button>
+                                <div id="myDropdown2" class="dropdown-content">
+                                    <a href="/Branch/SaveBranch">تعريف الفرع</a>
+                                    <a href="/Sector/SaveSector">تعريف القطاع</a>
+                                    <a href="/Country/SaveCountry">تعريف الدوله</a>
+                                    <a href="/Town/SaveTown">تعريف المدينه</a>
+                                    <a href="/Dealer/SaveDealer">تعريف المندوب</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown">
+                                <button onclick="myFunction4()" class="dropbtn" style="background-color:#1dc181;">المخازن</button>
+                                <div id="myDropdown4" class="dropdown-content" style="height: 50px;">
+                                    <a href="/ConvertBetweenStocks/ConvertBetweenStocks">التحويل بين المخازن</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="/Store/SaveStock">Store</a></li>
+                            <li><a href="/Group/SaveGroup">Category</a></li>
+                            <li><a href="/Unit/SaveUnit">Unit</a></li>
+                            <li><a href="/Product/SaveProduct">Product</a></li>
+                        <li><a href="/Customer/SaveCustomer">تعريف العميل</a></li>
+                        <li><a href="/Sales/SaveInvoiceSales">فاتورة مبيعات</a></li>
+                        <li><a href="/Supplier/SaveSupplier">تعريف المورد</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <button onclick="myFunction()" class="dropbtn">التقارير</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <a href="/Reports/DailySales">الحركةاليومية للمبيعات</a>
+                                    <a href="/Reports/ItemsBalance">أرصدة الأصناف</a>
+                                    <a href="/Reports/ItemsState">دليل الأصناف</a>
+                                    <a href="/Reports/ProfitofItems">ربحية الأصناف</a>
+                                    <a href="/Reports/StocksState">تقييم المخزن</a>
+                                    <a href="/Reports/DailyPurchases">الحركة اليومية للمشتريات</a>
+                                    <a href="/Reports/CustomersData">العملاء</a>
+                                    <a href="/Reports/CustomerAccount">كشف حساب عميل</a>
+                                    <a href="/Reports/SupplierAccount">كشف حساب مورد</a>
+                                    <a href="/Reports/SupplierData">الموردين</a>
+                                    <a href="/Reports/DealerAccount">كشف حساب مندوب</a>
+                                    <a href="/Reports/DealerData">المندوبين</a>
+                                </div>
+                            </div>
+                        </li>
+                        @*<li>
+                                <div class="dropdown">
+                                    <button onclick="myFunction5()" class="dropbtn" style="background-color:#1dc181;">Accounts</button>
+                                    <div id="myDropdown5" class="dropdown-content" style="height:100px">
+                                        <a href="/Product/ReceiveCash">Receive Cash</a>
+                                        <a href="/Product/CashExchange">CashExchange</a>
+                                    </div>
+                                </div>
+                            </li>*@
+                    <li><a href="/Sales/SaveInvoiceSales">فاتورة مبيعات</a></li>
+                </ul>
+
+                @Html.Partial("_LoginPartialA")
+            </div>
+        </div>
+    </div>
+    <div class="area"></div><nav class="main-menu" style="height:800px;float:right;direction:rtl;right:0;overflow:auto;">
+
+        <ul style="margin-top:50px;height:100%">
+            @*<li class="has-subnav">
+            <a>
+                <i class="fa fa-store"></i>
+                <span class="nav-text" style="width:140px">
+                    تعريفات
+                </span>
+                <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="t">
+                <li><a class="l" href="/Branch/SaveBranch">تعريف الفرع</a></li>
+                <li><a class="l" href="/Sector/SaveSector">تعريف القطاع</a></li>
+                <li><a class="l" href="/Country/SaveCountry">تعريف الدوله</a></li>
+                <li><a class="l" href="/Town/SaveTown">تعريف المدينه</a></li>
+                <li><a class="l" href="/Dealer/SaveDealer">تعريف المندوب</a></li>
+                <li><a class="l" href="/Employee/SaveEmployee">تعريف الموظف</a></li>
+            </ul>
+        </li>
+        <li class="has-subnav">
+            <a href="/Store/SaveStock">
+                <i class="fa fa-cart-plus"></i>
+                <span class="nav-text">
+                    تعريف المخزن
+                </span>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a href="/Group/SaveGroup">
+                <i class="fa fa-object-group"></i>
+                <span class="nav-text">
+                    تعريف مجموعة الصنف
+                </span>
+            </a>
+
+        </li>
+        <li class="has-subnav">
+            <a href="/Unit/SaveUnit">
+                <i class="fa fa-infinity"></i>
+                <span class="nav-text">
+                    تعريف الوحدة
+                </span>
+            </a>
+
+        </li>
+        <li class="has-subnav">
+            <a href="/Product/SaveProduct">
+                <i class="fa fa-procedures"></i>
+                <span class="nav-text">
+                    تعريف الصنف
+                </span>
+            </a>
+        <li>
+
+        </li>
+        <li class="has-subnav">
+            <a href="/AddPermission/AddPermission">
+                <i class="fa fa-bacon"></i>
+                <span class="nav-text">
+                    إذن إضافة
+                </span>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a href="/ExchangePermission/ExchangePermission">
+                <i class="fa fa-procedures"></i>
+                <span class="nav-text">
+                    إذن صرف
+                </span>
+            </a>
+        </li>
+    <li class="has-subnav">
+        <a>
+            <i class="fa fa-flag"></i>
+            <span class="nav-text" style="width:140px">
+                التقارير
+            </span>
+            <i class="fa fa-cart-plus"></i>
+        </a>
+
+        <ul class="t">
+            <li><a class="l" href="/Reports/DailySales">الحركةاليومية للمبيعات</a></li>
+            <li><a class="l" href="/Reports/ItemsBalance">أرصدة الأصناف</a></li>
+            <li><a class="l" href="/Reports/ItemsState"> كارت الصنف</a></li>
+            <li><a class="l" href="/Reports/StocksState">تقييم المخزن</a></li>
+        </ul>
+    </li>*@
+        </ul>
+
+        @*<ul class="logout">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                            تسجيل الخروج
+                        </span>
+                    </a>
+                </li>
+
+            </ul>*@
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - أحمد حسني أحمد خيري (AKSoft)</p>
+        </footer>
+    </div>
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    @*<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+        <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />*@
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        function myFunction2() {
+            document.getElementById("myDropdown2").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        function myFunction4() {
+            document.getElementById("myDropdown4").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        function myFunction5() {
+            document.getElementById("myDropdown5").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/notify.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,17 +1,33 @@
 ﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Display Units";
+}
 @{if (Convert.ToInt32(Session["Role"]) == 1)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Display Units";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
 }
 if (Convert.ToInt32(Session["Role"]) == 4)
 {
-    ViewBag.Title = "Display Units";
-    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
 }
 if (Convert.ToInt32(Session["Role"]) == 5)
 {
-    ViewBag.Title = "Display Units";
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
     Layout = "~/Views/Shared/_LayoutWorker.cshtml";
 }
 }
