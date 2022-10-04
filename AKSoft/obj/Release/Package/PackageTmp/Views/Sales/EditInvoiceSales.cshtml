@@ -1,0 +1,153 @@
+﻿@model AKSoft.Models.HSales
+
+@{
+    ViewBag.Title = "EditInvoiceSales";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<div style="direction:rtl;">
+    <h1 class="head">فاتورة مبيعات</h1>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <ul class="Elements gs">
+        <li style="display:none">
+            <label class="Lab">السريال</label>
+            @Html.EditorFor(model => model.Serial, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "" } }) @*Required TextBox*@
+        </li>
+        <li>
+            <label class="Lab">الكود</label>
+            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "" } }) @*Required TextBox*@
+        </li>
+        <li class="">
+            <label class="Lab">التاريخ</label>
+            @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
+        </li>
+        <li>
+            <label class="Lab">المخزن</label>
+            @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+            <label class="Lab">مجموعة الصنف</label>
+            @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+            <label class="Lab">العميل</label>
+            @Html.DropDownListFor(model => model.CustomerSerial, ViewBag.DepartmentList5 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+        </li>
+
+        <li>
+            <label class="Lab">الصنف</label>
+            @Html.DropDownListFor(model => model.ItemSerial, ViewBag.DepartmentList4 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+
+            <label class="Lab">الوحده</label>
+            @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+            <label class="Lab">المندوب</label>
+            @Html.DropDownListFor(model => model.DealerCode, ViewBag.DepartmentList6 as SelectList, "--select--", new { @class = "Txt drop" })
+        </li>
+        <li>
+            <a onclick="PopupForm('@Url.Action("أخر سعر بيع للصنف", "Reports")')"> <label class="Lab">الكميه</label></a>
+
+            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
+        </li>
+        <li>
+            <label class="Lab">السعر</label>
+            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Price", @id = "txtSecondNo", @onkeyup = "Multiy()", @required = "required" } }) @*Multiply function in js*@
+        </li>
+        <li>
+            <label class="Lab">الإجمالي</label>
+            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Total", @id = "txtResult", @onkeyup = "Disc()" } })
+            @*       <label class="Lab">Discount</label>
+                @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "" } })<label class="Lab"></label>
+
+                        @Html.EditorFor(model => model.DiscValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Discount", @onkeyup = "Disc()" } })
+                        <label class="Lab">Discount Percent</label>
+                        @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "DiscountPercent", @onkeyup = "DiscountVal()" } })%
+                           <label class="Lab">Tax</label>
+                        @Html.EditorFor(model => model.TaxValue, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "Tax", @onkeyup = "TaxTotal()" } })
+                        <label class="Lab">Tax Percent</label>
+                        @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "TaxPercent", @onkeyup = "TaxVal()" } })%
+                     </li>
+                    <li>
+                        <label class="Lab">Total After Dis</label>
+                        @Html.EditorFor(model => model.TotalAfterDisc, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "DiscTotal" } })
+                    </li>
+                    <li>
+                        <label class="Lab">Total After Tax</label>
+                        @Html.EditorFor(model => model.TotalAfterTax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "taxTotal" } })
+                    </li>
+                   <li>
+                        <label class="Lab">Total Value</label>
+                        @Html.EditorFor(model => model.TotalAfterTax, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @id = "taxTotal" } })
+                    </li>*@
+        <li>
+            <button class="save">تعديل</button>
+           </li>
+
+    </ul>
+}
+
+<div>
+    @Html.ActionLink("العودة للقائمة السابقة", "DisplayInvoiceSales")
+</div>
+
+<script type="text/javascript">
+    function Multiy() {
+        var txtFirstNo = document.getElementById('txtFirstNo').value;
+        var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtFirstNo) * parseFloat(txtSecondNo);//Don't forget the captial in float
+        if (!isNaN(result)) {
+            document.getElementById('txtResult').value = result;
+        }
+    }
+
+    var Popup;
+
+    function PopupForm(url) {
+        var formDiv = $('<div/>');
+        $.get(url)
+        .done(function (response) {
+            formDiv.html(response);
+
+            Popup = formDiv.dialog({
+                autoOpen: true,
+                resizable: false,
+                title: 'Item Last PurchasePrice',
+                height: 230,
+                width: 370,
+                close: function () {
+                    Popup.dialog('destroy').remove()
+                }
+
+            });
+        });
+    }
+</script>
+
+
+

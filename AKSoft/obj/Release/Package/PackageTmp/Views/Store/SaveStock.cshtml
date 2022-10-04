@@ -1,0 +1,97 @@
+﻿@model AKSoft.Models.StoreCode
+@{ViewBag.Title = "تعريف مخزن";}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/Content/st.css" />
+    <script src="~/Scripts/sweetalert.min.js"></script>
+</head>
+<body>
+    <h1 class="head">تعريف مخزن</h1>
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("تم الحفظ بنجاح", " ", "success");
+        </script>
+        <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
+    }
+    @using (Html.BeginForm("SaveStock", "Store", FormMethod.Post))
+    {
+@Html.AntiForgeryToken()
+
+    <ul class="Elements">
+       <br />
+        <li class="">
+            <label class="Lab">الكود</label>
+                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @Value = @ViewBag.MaxCode } })
+        </li>
+        <li class="">
+            <label class="Lab">الإسم</label>
+            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
+        </li>
+        <li class="">
+            <label class="Lab">ملاحظات</label>
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+        </li>
+        <li class="">
+            <label class="Lab">العنوان</label>
+            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            <label class="Lab">المساحه</label>
+            @Html.EditorFor(model => model.AreaStock, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li class="">
+            <label class="Lab">الدوله</label>
+            @Html.DropDownListFor(model => model.CountrySerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+            <label class="Lab">المدينه</label>
+            @Html.DropDownListFor(model => model.TownSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+        </li>
+        <li class="">
+            <label class="Lab">أمين المخزن</label>
+            @Html.DropDownListFor(model => model.EmployeeSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+        </li>
+        <li class="">
+            <label class="Lab">تليفونات</label>
+            @Html.EditorFor(model => model.Phone1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            @Html.EditorFor(model => model.Phone2, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            @Html.EditorFor(model => model.Phone3, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li>
+            <button class="save">حفظ</button>
+            <a  href="@Url.Action("DisplayStocks", "Store")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
+        </li>
+        </ul>
+    }
+</body>
+</html>

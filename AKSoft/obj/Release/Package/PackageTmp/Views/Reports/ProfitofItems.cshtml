@@ -1,16 +1,43 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "Profit of Items";
+    ViewBag.Title = "ربحية الأصناف";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Profit of Items</h2>
-<a href="@Url.Action("SaveInvoiceSales", "Product")">Add Invoice</a>
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<h2>ربحية الأصناف</h2>
+<a href="@Url.Action("SaveInvoiceSales", "Sales")">تسجيل فاتورة</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>Item ID</th>
-        <th>Item Name</th>
-        <th>Total Profit</th>
+        <th>كود الصنف</th>
+        <th>إسم الصنف</th>
+        <th>أجمالي الربح</th>
     </tr>
 
     @for (int i = 0; i < Model.Rows.Count; i++)

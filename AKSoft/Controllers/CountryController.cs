@@ -21,14 +21,14 @@ namespace AKSoft.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SaveCountry(UnitCode model, string name)
+        public ActionResult SaveCountry(CountryCode model, string name)
         {
             try
             {
                 TopSoft db = new TopSoft();
                 CountryCode unit = new CountryCode();
                 unit.ArabicName = model.ArabicName;
-                unit.Notes = model.Description;
+                unit.Notes = model.Notes;
                 unit.Code = model.Code;
                 db.CountryCode.Add(unit);
                 db.SaveChanges();

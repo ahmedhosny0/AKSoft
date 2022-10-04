@@ -3,31 +3,33 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-       
+    <ul class="nav navbar-nav navbar-left">
+
         @if (Session["UserID"] != null)
         {
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <div class="dropdown">
-                        <button onclick="myFunction3()" class="dropbtn" style="background-color: #f15b5b;border-radius: 12px;font-family: -webkit-body;">@Session["UserName"]</button>ssss
+                        <button onclick="myFunction3()" class="dropbtn" style="background-color: #f15b5b;border-radius: 12px;font-family: -webkit-body;"> @Session["UserName"]</button>
                         <div id="myDropdown3" class="dropdown-content" style="height:50px; background-color:#ff8e8e;">
-                @Html.ActionLink("تسجيل الخروج", "Start", "MainPages", routeValues: null, htmlAttributes: new { id = "loginLink" })
-                </div>
-                </div>
+                            @*@Html.ActionLink("إضافة مستخدم", "AddUser", "User", routeValues: null, htmlAttributes: new { id = "registerLink" })
+            @Html.ActionLink("بيانات المستحدمين", "UsersData", "Reports", routeValues: null, htmlAttributes: new { id = "registerLink" })*@
+                            @Html.ActionLink("تسجيل الخروج", "Start", "MainPages", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                        </div>
+                    </div>
                 </li>
                 @*<li><a style="background-color:red;font-weight:bold;" href="#">@Session["UserName"] </a></li>*@
                 @*<li><a href="/Test/Logout">Logout</a></li>*@

@@ -1,0 +1,122 @@
+﻿@model AKSoft.Models.CustomerCode
+
+@{
+    ViewBag.Title = "EditCustomer";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<script src="~/Scripts/sweetalert.min.js"></script>
+@if (TempData["Al"] != null)
+{
+    <script>
+        swal("تم الحذف!", "تم حذف الحركة بنجاح.", "success");
+    </script>
+    // <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
+}
+<script src="~/Scripts/sweetalert.min.js"></script>
+@if (TempData["Al"] != null)
+{
+    <script>
+        swal("تم الحذف!", "تم حذف الحركة بنجاح.", "success");
+    </script>
+    // <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
+}
+
+
+<div style="direction:rtl;">
+    <h1 class="head">تعريف عميل</h1>
+</div><div>
+    @Html.ActionLink("العودة للقائمة السابقة", "DisplayCustomers")
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <ul class="Elements" style="direction:rtl;">
+        <li style="display:none">
+            <label class="Lab">السريال</label>
+            @Html.EditorFor(model => model.Serial, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "" } }) @*Required TextBox*@
+        </li>
+        <li class="">
+            <label class="Lab">الكود</label>
+                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "" } })
+        </li>
+            <li class="">
+                <label class="Lab">الإسم عربي</label>
+                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+                <label class="Lab">الإسم انجليزي</label>
+                @Html.EditorFor(model => model.EnglishName, new { htmlAttributes = new { @class = "Txt", @placeholder = "EnglishName" } })
+            </li>
+
+            <li class="">
+                <label class="Lab">اللقب</label>
+                @Html.EditorFor(model => model.DescName, new { htmlAttributes = new { @class = "Txt", @placeholder = "Title" } })
+            </li>
+            <li class="">
+                <label class="Lab">ملاحظات</label>
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            </li>
+            <li class="">
+                <label class="Lab">عنوان 1</label>
+                @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+                <label class="Lab">عنوان 2</label>
+                @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            </li>
+            <li class="">
+                <label class="Lab">تليفون 1</label>
+                @Html.EditorFor(model => model.Telephone1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+                <label class="Lab">تليفون 2</label>
+                @Html.EditorFor(model => model.Telephone2, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+                <label class="Lab">تليفون 3</label>
+                @Html.EditorFor(model => model.Telephone3, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            </li>
+            <li class="">
+                <label class="Lab">الدوله</label>
+                @Html.DropDownListFor(model => model.CountrySerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+                <label class="Lab">المدينه</label>
+                @Html.DropDownListFor(model => model.TownSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+            </li>
+            <li class="">
+                <label class="Lab">الإيميل</label>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            </li>
+            <li class="">
+                <label class="Lab">الموقع الإلكتروني</label>
+                @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            </li>
+            <li class="">
+                <button class="save">تعديل</button>
+            </li>
+        </ul>
+        }
+
+
+

@@ -1,0 +1,86 @@
+﻿@model AKSoft.Models.GroupCode
+@{
+    ViewBag.Title = "تعريف مجموعة الصنف";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<script src="~/Scripts/sweetalert.min.js"></script>
+<div style="direction:rtl;">
+    <h1 class="head save">تعريف مجموعة الصنف</h1>
+</div>
+@if (TempData["Al"] != null)
+{
+    <script>
+        swal("تم الحفظ بنجاح", " ", "success");
+    </script>
+    <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"] //Display Word (Successful Done) + name
+}
+<style>
+    .Elements {
+        background-color: #e5e5e5;
+        list-style-type: none;
+        border: ridge 1px;
+        margin: 0;
+        padding: 8px;
+    }
+            .head
+        {
+               background-color: #3577ff;
+                           font-size:18px;
+    width: 40%;
+    color: white
+        }
+</style>
+
+@using (Html.BeginForm("SaveGroup", "Group", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+        <ul class="Elements">
+            <li class="">
+                <label class="Lab">الكود</label>
+                            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @Value = @ViewBag.MaxCode } })
+            </li>
+                <li class="">
+                    <label class="Lab">الإسم</label>
+                    @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+                </li>
+                <li class="">
+                    <label class="Lab">ملاحظات</label>
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+                </li>
+
+                <li class="">
+                    <button class="save">حفظ</button>
+                    <a style="background-color:#0bf765" class="save" href="@Url.Action("DisplayCategories", "Group")">عرض الكل</a>
+                </li>
+            </ul>
+}
+
+

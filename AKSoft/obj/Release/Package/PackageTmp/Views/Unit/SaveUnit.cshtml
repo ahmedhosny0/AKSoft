@@ -1,0 +1,70 @@
+﻿@model AKSoft.Models.UnitCode
+@{
+ ViewBag.Title = "تعريف وحده";
+  }
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+
+    ViewBag.Title = "Save Unit";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
+</head>
+<body> 
+    <div style="direction:rtl;">
+        <h1 class="head">تعريف وحده</h1>
+    </div>
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("تم الحفظ بنجاح", " ", "success");
+        </script>
+        <strong style="color:green">تم الحفظ بنجاح  </strong>@TempData["Al"]
+    }
+
+            @using (Html.BeginForm("SaveUnit", "Unit", FormMethod.Post))
+    {
+                @Html.AntiForgeryToken()
+
+    <ul class="Elements">
+        <li class="">
+            <label class="Lab">الكود</label>
+                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @Value = @ViewBag.MaxCode } })
+        </li>
+        <li class="">
+            <label class="Lab">الإسم</label>
+            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+        </li>
+        <li class="">
+            <label class="Lab">ملاحظات</label>
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+        </li>
+        <li class="">
+            <button class="save">حفظ</button>
+            <a href="@Url.Action("Displayunits", "Unit")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
+        </li>
+    </ul>
+    }
+
+    <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
+    <script type="text/javascript" src="~/Scripts/main.js"> </script>
+</body>
+</html>
+
+
+
+

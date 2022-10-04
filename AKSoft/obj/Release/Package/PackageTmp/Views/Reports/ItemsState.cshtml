@@ -1,28 +1,69 @@
-﻿@model System.Data.DataTable
+﻿@model IEnumerable<AKSoft.Models.ItemCardView>
 @{
-    ViewBag.Title = "Items State";
+    ViewBag.Title = "كارت الصنف";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Items State</h2>
-<a href="@Url.Action("SaveProduct", "Product")">Add Product</a>
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<h2>كارت الصنف</h2>
+<a href="@Url.Action("SaveProduct", "Product")">تعريف صنف</a>
+@using (Html.BeginForm("ItemsState", "Reports", FormMethod.Post))
+    {
+    
+    <span>إسم الصنف:</span> @Html.TextBox("i")
+    <input type="submit" value="بحث" />
+    <br />
+    <br />
 <table class="table table-bordered table-striped">
     <tr>
-        <th>Item Name</th>
-        <th>Store Name</th>
-        <th>Group Name</th>
-        <th>Unit Name</th>
+        <th>إسم الصنف</th>
+        <th>مجموعة الصنف</th>
+        <th>الوحده</th>
     </tr>
-
-    @for (int i = 0; i < Model.Rows.Count; i++)
-    {
+@foreach (var i in Model)
+                {
         <tr>
-            <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
-            <td>@Model.Rows[i][2]</td>
-            <td>@Model.Rows[i][3]</td>
+            <td>@i.ItemName</td>
+            <td>@i.GroupName</td>
+            <td>@i.UnitName</td>
         </tr>
-    }
+}
 </table>
+  
+}
 
-
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        GetCustomers();
+        $("#txtCustomerName").keyup(function () {
+            GetCustomers();
+        });
+    });
+   </script>

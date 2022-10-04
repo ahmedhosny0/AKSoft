@@ -1,0 +1,67 @@
+﻿@model AKSoft.Models.UnitCode
+@{
+    ViewBag.Title = "EditUnit";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<h2>EditUnit</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <ul class="Elements">
+        <li style="display:none">
+            <label class="Lab">السريال</label>
+            @Html.EditorFor(model => model.Serial, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "" } }) @*Required TextBox*@
+        </li>
+        <li>
+            <label class="Lab">الكود</label>
+            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "" } }) @*Required TextBox*@
+        </li>
+        <li class="">
+            <label class="Lab">الإسم</label>
+            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+        </li>
+        <li class="">
+            <label class="Lab">ملاحظات</label>
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+        </li>
+
+        <li class="">
+            <button class="save">تعديل</button>
+        </li>
+    </ul>
+}
+
+<div>
+    @Html.ActionLink("العودة للقائمة السابقة", "DisplayUnits")
+</div>
+
+

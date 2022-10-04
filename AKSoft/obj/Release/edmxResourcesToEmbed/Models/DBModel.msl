@@ -1,26 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TopSoftModelStoreContainer" CdmEntityContainer="TopSoft">
-    <EntitySetMapping Name="GroupCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.GroupCode)">
-        <MappingFragment StoreEntitySet="GroupCode">
+    <FunctionImportMapping FunctionImportName="Customers_SearchCustomers" FunctionName="TopSoftModel.Store.Customers_SearchCustomers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TopSoftModel.Customers_SearchCustomers_Result">
           <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-          <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ItemCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.ItemCode)">
-        <MappingFragment StoreEntitySet="ItemCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
           <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
@@ -34,255 +18,736 @@
           <ScalarProperty Name="PricePurchase1Unit2" ColumnName="PricePurchase1Unit2" />
           <ScalarProperty Name="PriceSale1Unit1" ColumnName="PriceSale1Unit1" />
           <ScalarProperty Name="PriceSale1Unit2" ColumnName="PriceSale1Unit2" />
-          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
           <ScalarProperty Name="Counts" ColumnName="Counts" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="StoreCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.StoreCode)">
-        <MappingFragment StoreEntitySet="StoreCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchItems" FunctionName="TopSoftModel.Store.Customers_SearchCustomers" />
+    <FunctionImportMapping FunctionImportName="Re" FunctionName="TopSoftModel.Store.Re">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TopSoftModel.Re_Result">
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+          <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+          <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+          <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+          <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="HSalesCode" ColumnName="HSalesCode" />
+          <ScalarProperty Name="HSalesCode2" ColumnName="HSalesCode2" />
+          <ScalarProperty Name="HSalesCurrency" ColumnName="HSalesCurrency" />
+          <ScalarProperty Name="HSalesDate" ColumnName="HSalesDate" />
+          <ScalarProperty Name="HSalesDealerCode" ColumnName="HSalesDealerCode" />
+          <ScalarProperty Name="HSalesDiscount" ColumnName="HSalesDiscount" />
+          <ScalarProperty Name="HSalesDiscValue" ColumnName="HSalesDiscValue" />
+          <ScalarProperty Name="HSalesFactor" ColumnName="HSalesFactor" />
+          <ScalarProperty Name="HSalesPrice" ColumnName="HSalesPrice" />
+          <ScalarProperty Name="HSalesQuantity" ColumnName="HSalesQuantity" />
+          <ScalarProperty Name="HSalesTax" ColumnName="HSalesTax" />
+          <ScalarProperty Name="HSalesTotal" ColumnName="HSalesTotal" />
+          <ScalarProperty Name="HSalesTotalAfter" ColumnName="HSalesTotalAfter" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+          <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+          <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+          <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+          <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+          <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+          <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+          <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerCode2" ColumnName="CustomerCode2" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerEName" ColumnName="CustomerEName" />
+          <ScalarProperty Name="CustomerDescName" ColumnName="CustomerDescName" />
+          <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
+          <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+          <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+          <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+          <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="BranchCode">
+      <EntityTypeMapping TypeName="TopSoftModel.BranchCode">
+        <MappingFragment StoreEntitySet="BranchCode">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-          <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="NumberOfLeans" ColumnName="NumberOfLeans" />
-          <ScalarProperty Name="Phone1" ColumnName="Phone1" />
-          <ScalarProperty Name="StoreKeeper" ColumnName="StoreKeeper" />
-          <ScalarProperty Name="Phone2" ColumnName="Phone2" />
-          <ScalarProperty Name="Phone3" ColumnName="Phone3" />
-          <ScalarProperty Name="Phone4" ColumnName="Phone4" />
-          <ScalarProperty Name="AreaStock" ColumnName="AreaStock" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserInfo">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UserInfo)">
-        <MappingFragment StoreEntitySet="UserInfo">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="RePassword" ColumnName="RePassword" />
-          <ScalarProperty Name="Role" ColumnName="Role" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-          <ScalarProperty Name="BranchSerial" ColumnName="BranchSerial" />
-          <ScalarProperty Name="SectorSerial" ColumnName="SectorSerial" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CountryCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.CountryCode)">
+      <EntityTypeMapping TypeName="TopSoftModel.CountryCode">
         <MappingFragment StoreEntitySet="CountryCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-          <ScalarProperty Name="DescName" ColumnName="DescName" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="TopSoftModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CustomerCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.CustomerCode)">
+      <EntityTypeMapping TypeName="TopSoftModel.CustomerCode">
         <MappingFragment StoreEntitySet="CustomerCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
           <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Address1" ColumnName="Address1" />
-          <ScalarProperty Name="Address2" ColumnName="Address2" />
-          <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
-          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
-          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
-          <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
-          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="RegionSerial" ColumnName="RegionSerial" />
           <ScalarProperty Name="Website" ColumnName="Website" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SupplierCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.SupplierCode)">
-        <MappingFragment StoreEntitySet="SupplierCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-          <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Address1" ColumnName="Address1" />
-          <ScalarProperty Name="Address2" ColumnName="Address2" />
-          <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
-          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
-          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
-          <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
-          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Website" ColumnName="Website" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TownCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.TownCode)">
-        <MappingFragment StoreEntitySet="TownCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+          <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+          <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-          <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="Notes" ColumnName="Notes" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="HPurchase">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.HPurchase)">
-        <MappingFragment StoreEntitySet="HPurchase">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
-          <ScalarProperty Name="Factor" ColumnName="Factor" />
-          <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
-          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
-          <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
-          <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
-          <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Discount" ColumnName="Discount" />
-          <ScalarProperty Name="Tax" ColumnName="Tax" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
-          <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
-          <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
-          <ScalarProperty Name="SupplierSerial" ColumnName="SupplierSerial" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HSales">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.HSales)">
-        <MappingFragment StoreEntitySet="HSales">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
-          <ScalarProperty Name="Factor" ColumnName="Factor" />
-          <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
-          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
-          <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
-          <ScalarProperty Name="FirstPayment" ColumnName="FirstPayment" />
-          <ScalarProperty Name="Paid" ColumnName="Paid" />
-          <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
-          <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Discount" ColumnName="Discount" />
-          <ScalarProperty Name="Tax" ColumnName="Tax" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
-          <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
-          <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
-          <ScalarProperty Name="CustomerSerial" ColumnName="CustomerSerial" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BranchCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.BranchCode)">
-        <MappingFragment StoreEntitySet="BranchCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-          <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="Notes" ColumnName="Notes" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SectorCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.SectorCode)">
-        <MappingFragment StoreEntitySet="SectorCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-          <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="Notes" ColumnName="Notes" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="TopSoftModel.Customers">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DealerCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.DealerCode)">
+      <EntityTypeMapping TypeName="TopSoftModel.DealerCode">
         <MappingFragment StoreEntitySet="DealerCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
           <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Address1" ColumnName="Address1" />
-          <ScalarProperty Name="Address2" ColumnName="Address2" />
-          <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
-          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
-          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
-          <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
-          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="RegionSerial" ColumnName="RegionSerial" />
           <ScalarProperty Name="Website" ColumnName="Website" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+          <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+          <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UserRole">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UserRole)">
-        <MappingFragment StoreEntitySet="UserRole">
-          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="TopSoftModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="RegionSerial" ColumnName="RegionSerial" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+          <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+          <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupCode">
+      <EntityTypeMapping TypeName="TopSoftModel.GroupCode">
+        <MappingFragment StoreEntitySet="GroupCode">
+          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HPurchase">
+      <EntityTypeMapping TypeName="TopSoftModel.HPurchase">
+        <MappingFragment StoreEntitySet="HPurchase">
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="SupplierSerial" ColumnName="SupplierSerial" />
+          <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
+          <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
+          <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
+          <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
+          <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
+          <ScalarProperty Name="Factor" ColumnName="Factor" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HSales">
+      <EntityTypeMapping TypeName="TopSoftModel.HSales">
+        <MappingFragment StoreEntitySet="HSales">
+          <ScalarProperty Name="TotalAfterTax" ColumnName="TotalAfterTax" />
+          <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="CustomerSerial" ColumnName="CustomerSerial" />
+          <ScalarProperty Name="GroupSerial" ColumnName="GroupSerial" />
+          <ScalarProperty Name="DiscValue" ColumnName="DiscValue" />
+          <ScalarProperty Name="TotalAfterDisc" ColumnName="TotalAfterDisc" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitSerial" ColumnName="UnitSerial" />
+          <ScalarProperty Name="ItemSerial" ColumnName="ItemSerial" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="FirstPayment" ColumnName="FirstPayment" />
+          <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="StoreSerial" ColumnName="StoreSerial" />
+          <ScalarProperty Name="Factor" ColumnName="Factor" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemCode">
+      <EntityTypeMapping TypeName="TopSoftModel.ItemCode">
+        <MappingFragment StoreEntitySet="ItemCode">
+          <ScalarProperty Name="Counts" ColumnName="Counts" />
+          <ScalarProperty Name="PriceSale1Unit2" ColumnName="PriceSale1Unit2" />
+          <ScalarProperty Name="PriceSale1Unit1" ColumnName="PriceSale1Unit1" />
+          <ScalarProperty Name="PricePurchase1Unit2" ColumnName="PricePurchase1Unit2" />
+          <ScalarProperty Name="PricePurchase1Unit1" ColumnName="PricePurchase1Unit1" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="SerialGroup" ColumnName="SerialGroup" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Region">
+      <EntityTypeMapping TypeName="TopSoftModel.Region">
+        <MappingFragment StoreEntitySet="Region">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SectorCode">
+      <EntityTypeMapping TypeName="TopSoftModel.SectorCode">
+        <MappingFragment StoreEntitySet="SectorCode">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoreCode">
+      <EntityTypeMapping TypeName="TopSoftModel.StoreCode">
+        <MappingFragment StoreEntitySet="StoreCode">
+          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+          <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+          <ScalarProperty Name="EmployeeSerial" ColumnName="EmployeeSerial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="AreaStock" ColumnName="AreaStock" />
+          <ScalarProperty Name="Phone4" ColumnName="Phone4" />
+          <ScalarProperty Name="Phone3" ColumnName="Phone3" />
+          <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+          <ScalarProperty Name="StoreKeeper" ColumnName="StoreKeeper" />
+          <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+          <ScalarProperty Name="NumberOfLeans" ColumnName="NumberOfLeans" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierCode">
+      <EntityTypeMapping TypeName="TopSoftModel.SupplierCode">
+        <MappingFragment StoreEntitySet="SupplierCode">
+          <ScalarProperty Name="RegionSerial" ColumnName="RegionSerial" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TownSerial" ColumnName="TownSerial" />
+          <ScalarProperty Name="CountrySerial" ColumnName="CountrySerial" />
+          <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
+          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+          <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TopSoftModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TownCode">
+      <EntityTypeMapping TypeName="TopSoftModel.TownCode">
+        <MappingFragment StoreEntitySet="TownCode">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UnitCode">
-      <EntityTypeMapping TypeName="IsTypeOf(TopSoftModel.UnitCode)">
+      <EntityTypeMapping TypeName="TopSoftModel.UnitCode">
         <MappingFragment StoreEntitySet="UnitCode">
-          <ScalarProperty Name="Serial" ColumnName="Serial" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-          <ScalarProperty Name="DescName" ColumnName="DescName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
           <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfo">
+      <EntityTypeMapping TypeName="TopSoftModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="SectorSerial" ColumnName="SectorSerial" />
+          <ScalarProperty Name="BranchSerial" ColumnName="BranchSerial" />
+          <ScalarProperty Name="AddUserDate" ColumnName="AddUserDate" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="RePassword" ColumnName="RePassword" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRole">
+      <EntityTypeMapping TypeName="TopSoftModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Customere" FunctionName="TopSoftModel.Store.Customere">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TopSoftModel.Customere_Result">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Pu" FunctionName="TopSoftModel.Store.Pu">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TopSoftModel.Pu_Result">
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+          <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+          <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+          <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+          <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="HpurchaseCode" ColumnName="HpurchaseCode" />
+          <ScalarProperty Name="HpurchaseCode2" ColumnName="HpurchaseCode2" />
+          <ScalarProperty Name="HpurchaseCurrency" ColumnName="HpurchaseCurrency" />
+          <ScalarProperty Name="HpurchaseDate" ColumnName="HpurchaseDate" />
+          <ScalarProperty Name="HpurchaseDiscount" ColumnName="HpurchaseDiscount" />
+          <ScalarProperty Name="HpurchaseDiscValue" ColumnName="HpurchaseDiscValue" />
+          <ScalarProperty Name="HpurchaseFactor" ColumnName="HpurchaseFactor" />
+          <ScalarProperty Name="HpurchasePrice" ColumnName="HpurchasePrice" />
+          <ScalarProperty Name="HpurchaseQuantity" ColumnName="HpurchaseQuantity" />
+          <ScalarProperty Name="HpurchaseTax" ColumnName="HpurchaseTax" />
+          <ScalarProperty Name="HpurchaseTotal" ColumnName="HpurchaseTotal" />
+          <ScalarProperty Name="HpurchaseTotalAfter" ColumnName="HpurchaseTotalAfter" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+          <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+          <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+          <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+          <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+          <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+          <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+          <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+          <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+          <ScalarProperty Name="SupplierCode2" ColumnName="SupplierCode2" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="SupplierEName" ColumnName="SupplierEName" />
+          <ScalarProperty Name="SupplierDescName" ColumnName="SupplierDescName" />
+          <ScalarProperty Name="SupplierAddress1" ColumnName="SupplierAddress1" />
+          <ScalarProperty Name="SupplierAddress2" ColumnName="SupplierAddress2" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+          <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+          <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+          <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ReportMa" FunctionName="TopSoftModel.Store.ReportMa">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TopSoftModel.ReportMa_Result">
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+          <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+          <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+          <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+          <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="HSalesCode" ColumnName="HSalesCode" />
+          <ScalarProperty Name="HSalesCode2" ColumnName="HSalesCode2" />
+          <ScalarProperty Name="HSalesCurrency" ColumnName="HSalesCurrency" />
+          <ScalarProperty Name="HSalesDate" ColumnName="HSalesDate" />
+          <ScalarProperty Name="HSalesDealerCode" ColumnName="HSalesDealerCode" />
+          <ScalarProperty Name="HSalesDiscount" ColumnName="HSalesDiscount" />
+          <ScalarProperty Name="HSalesDiscValue" ColumnName="HSalesDiscValue" />
+          <ScalarProperty Name="HSalesFactor" ColumnName="HSalesFactor" />
+          <ScalarProperty Name="HSalesPrice" ColumnName="HSalesPrice" />
+          <ScalarProperty Name="HSalesQuantity" ColumnName="HSalesQuantity" />
+          <ScalarProperty Name="HSalesTax" ColumnName="HSalesTax" />
+          <ScalarProperty Name="HSalesTotal" ColumnName="HSalesTotal" />
+          <ScalarProperty Name="HSalesTotalAfter" ColumnName="HSalesTotalAfter" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+          <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+          <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+          <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+          <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+          <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+          <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+          <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerCode2" ColumnName="CustomerCode2" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerEName" ColumnName="CustomerEName" />
+          <ScalarProperty Name="CustomerDescName" ColumnName="CustomerDescName" />
+          <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
+          <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+          <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+          <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+          <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="TopSoftModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="TopSoftModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="TopSoftModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="TopSoftModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TopSoftModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="TopSoftModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TopSoftModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TopSoftModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TopSoftModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="ItemCard">
+      <EntityTypeMapping TypeName="TopSoftModel.ItemCard">
+        <MappingFragment StoreEntitySet="ItemCard">
+          <ScalarProperty Name="HSalesTotalAfter" ColumnName="HSalesTotalAfter" />
+          <ScalarProperty Name="HSalesTotal" ColumnName="HSalesTotal" />
+          <ScalarProperty Name="HSalesTax" ColumnName="HSalesTax" />
+          <ScalarProperty Name="HSalesQuantity" ColumnName="HSalesQuantity" />
+          <ScalarProperty Name="HSalesPrice" ColumnName="HSalesPrice" />
+          <ScalarProperty Name="HSalesFactor" ColumnName="HSalesFactor" />
+          <ScalarProperty Name="HSalesDiscValue" ColumnName="HSalesDiscValue" />
+          <ScalarProperty Name="HSalesDiscount" ColumnName="HSalesDiscount" />
+          <ScalarProperty Name="HSalesDealerCode" ColumnName="HSalesDealerCode" />
+          <ScalarProperty Name="HSalesDate" ColumnName="HSalesDate" />
+          <ScalarProperty Name="HSalesCurrency" ColumnName="HSalesCurrency" />
+          <ScalarProperty Name="HSalesCode2" ColumnName="HSalesCode2" />
+          <ScalarProperty Name="HSalesCode" ColumnName="HSalesCode" />
+          <ScalarProperty Name="HpurchaseTotalAfter" ColumnName="HpurchaseTotalAfter" />
+          <ScalarProperty Name="HpurchaseTotal" ColumnName="HpurchaseTotal" />
+          <ScalarProperty Name="HpurchaseTax" ColumnName="HpurchaseTax" />
+          <ScalarProperty Name="HpurchaseQuantity" ColumnName="HpurchaseQuantity" />
+          <ScalarProperty Name="HpurchasePrice" ColumnName="HpurchasePrice" />
+          <ScalarProperty Name="HpurchaseFactor" ColumnName="HpurchaseFactor" />
+          <ScalarProperty Name="HpurchaseDiscValue" ColumnName="HpurchaseDiscValue" />
+          <ScalarProperty Name="HpurchaseDiscount" ColumnName="HpurchaseDiscount" />
+          <ScalarProperty Name="HpurchaseDealerCode" ColumnName="HpurchaseDealerCode" />
+          <ScalarProperty Name="HpurchaseDate" ColumnName="HpurchaseDate" />
+          <ScalarProperty Name="HpurchaseCurrency" ColumnName="HpurchaseCurrency" />
+          <ScalarProperty Name="HpurchaseCode2" ColumnName="HpurchaseCode2" />
+          <ScalarProperty Name="HpurchaseCode" ColumnName="HpurchaseCode" />
+          <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+          <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+          <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+          <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+          <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+          <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RptPurchase">
+      <EntityTypeMapping TypeName="TopSoftModel.RptPurchase">
+        <MappingFragment StoreEntitySet="RptPurchase">
+          <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+          <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+          <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+          <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="SupplierAddress2" ColumnName="SupplierAddress2" />
+          <ScalarProperty Name="SupplierAddress1" ColumnName="SupplierAddress1" />
+          <ScalarProperty Name="SupplierDescName" ColumnName="SupplierDescName" />
+          <ScalarProperty Name="SupplierEName" ColumnName="SupplierEName" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="SupplierCode2" ColumnName="SupplierCode2" />
+          <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+          <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+          <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+          <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+          <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+          <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+          <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+          <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+          <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="HpurchaseTotalAfter" ColumnName="HpurchaseTotalAfter" />
+          <ScalarProperty Name="HpurchaseTotal" ColumnName="HpurchaseTotal" />
+          <ScalarProperty Name="HpurchaseTax" ColumnName="HpurchaseTax" />
+          <ScalarProperty Name="HpurchaseQuantity" ColumnName="HpurchaseQuantity" />
+          <ScalarProperty Name="HpurchasePrice" ColumnName="HpurchasePrice" />
+          <ScalarProperty Name="HpurchaseFactor" ColumnName="HpurchaseFactor" />
+          <ScalarProperty Name="HpurchaseDiscValue" ColumnName="HpurchaseDiscValue" />
+          <ScalarProperty Name="HpurchaseDiscount" ColumnName="HpurchaseDiscount" />
+          <ScalarProperty Name="HpurchaseDate" ColumnName="HpurchaseDate" />
+          <ScalarProperty Name="HpurchaseCurrency" ColumnName="HpurchaseCurrency" />
+          <ScalarProperty Name="HpurchaseCode2" ColumnName="HpurchaseCode2" />
+          <ScalarProperty Name="HpurchaseCode" ColumnName="HpurchaseCode" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+          <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+          <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+          <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+          <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RptSales">
+      <EntityTypeMapping TypeName="TopSoftModel.RptSales">
+        <MappingFragment StoreEntitySet="RptSales">
+          <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+          <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+          <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+          <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
+          <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
+          <ScalarProperty Name="CustomerDescName" ColumnName="CustomerDescName" />
+          <ScalarProperty Name="CustomerEName" ColumnName="CustomerEName" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerCode2" ColumnName="CustomerCode2" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+          <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+          <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+          <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+          <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+          <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+          <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+          <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+          <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="HSalesTotalAfter" ColumnName="HSalesTotalAfter" />
+          <ScalarProperty Name="HSalesTotal" ColumnName="HSalesTotal" />
+          <ScalarProperty Name="HSalesTax" ColumnName="HSalesTax" />
+          <ScalarProperty Name="HSalesQuantity" ColumnName="HSalesQuantity" />
+          <ScalarProperty Name="HSalesPrice" ColumnName="HSalesPrice" />
+          <ScalarProperty Name="HSalesFactor" ColumnName="HSalesFactor" />
+          <ScalarProperty Name="HSalesDiscValue" ColumnName="HSalesDiscValue" />
+          <ScalarProperty Name="HSalesDiscount" ColumnName="HSalesDiscount" />
+          <ScalarProperty Name="HSalesDealerCode" ColumnName="HSalesDealerCode" />
+          <ScalarProperty Name="HSalesDate" ColumnName="HSalesDate" />
+          <ScalarProperty Name="HSalesCurrency" ColumnName="HSalesCurrency" />
+          <ScalarProperty Name="HSalesCode2" ColumnName="HSalesCode2" />
+          <ScalarProperty Name="HSalesCode" ColumnName="HSalesCode" />
+          <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+          <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+          <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+          <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+          <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+          <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+          <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+          <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,0 +1,80 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "DisplayCategories";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<script src="~/Scripts/sweetalert.min.js"></script>
+@if (TempData["Al"] != null)
+{
+    <script>
+        swal("تم الحذف!", "تم حذف الحركة بنجاح.", "success");
+    </script>
+    // <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
+}
+@if (TempData["As"] != null)
+{
+    <script>
+        swal("الحمد لله تم التعديل بنجاح", " ", "success");
+    </script>
+    // <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
+}
+@if (TempData["A"] != null)
+{
+    <script>
+        swal("عزيزي المستخدم"," هناك خطأ بسيط يرجي مراجعة الداتا أو الصلاحية", "error");
+    </script>
+    //<strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
+}
+<h2>التصيفات المُسجلة</h2>
+<a href="@Url.Action("SaveGroup", "Group")">Add Group</a>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th style="display:none">السريال</th>
+        <th>الكود</th>
+        <th>الإسم</th>
+        <th>ملاحظات</th>
+    </tr>
+
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td style="display:none">@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>
+                <a href="@Url.Action("EditCat", "Group", new { @id = @Model.Rows[i][0] })">تعديل</a> --
+                <a href="@Url.Action("DeleteCat", "Group", new { @id = @Model.Rows[i][0] })">حذف</a>
+            </td>
+        </tr>
+    }
+</table>
+

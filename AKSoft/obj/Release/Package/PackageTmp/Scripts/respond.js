@@ -24,7 +24,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
       div      = doc.createElement('div');
   
   div.id = 'mq-test-1';
-  div.styl.cssText = "position:absolute;top:-100em";
+  div.st.cssText = "position:absolute;top:-100em";
   fakeBody.style.background = "none";
   fakeBody.appendChild(div);
   
@@ -187,7 +187,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 				body = doc.body,
 				fakeUsed = false;
 									
-			div.styl.cssText = "position:absolute;font-size:1em;width:1em";
+			div.st.cssText = "position:absolute;font-size:1em;width:1em";
 					
 			if( !body ){
 				body = fakeUsed = doc.createElement( "body" );
@@ -250,7 +250,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 					max = parseFloat( max ) * ( max.indexOf( em ) > -1 ? ( eminpx || getEmValue() ) : 1 );
 				}
 				
-				// if there's no media query at all (the () part), or min or max is not null, and if either is present, they're true
+				// if there's no media query at all (the () part), or min or max IS NULL, and if either is present, they're true
 				if( !thisstyle.hasquery || ( !minnull || !maxnull ) && ( minnull || currWidth >= min ) && ( maxnull || currWidth <= max ) ){
 						if( !styleBlocks[ thisstyle.media ] ){
 							styleBlocks[ thisstyle.media ] = [];

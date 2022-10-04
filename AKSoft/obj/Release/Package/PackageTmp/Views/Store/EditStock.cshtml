@@ -1,0 +1,92 @@
+﻿@model AKSoft.Models.StoreCode
+@{
+    ViewBag.Title = "تعديل المخزن";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<h2>تعديل المخزن</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <ul class="Elements">
+        <br />
+        <li style="display:none">
+            <label class="Lab">السريال</label>
+            @Html.EditorFor(model => model.Serial, new { htmlAttributes = new { @class = "Txt", @id = "name", @placeholder = "" } }) @*Required TextBox*@
+        </li>
+        <li class="">
+            <label class="Lab">الكود</label>
+                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = ""} })
+        </li>
+        <li class="">
+            <label class="Lab">الإسم</label>
+            @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "",@required = "required" } })
+        </li>
+        <li class="">
+            <label class="Lab">ملاحظات</label>
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li class="">
+            <label class="Lab">العنوان</label>
+            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            <label class="Lab">المساحه</label>
+            @Html.EditorFor(model => model.AreaStock, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li class="">
+            <label class="Lab">الدوله</label>
+            @Html.DropDownListFor(model => model.CountrySerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+            <label class="Lab">المدينه</label>
+            @Html.DropDownListFor(model => model.TownSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+        </li>
+        <li class="">
+            <label class="Lab">أمين المخزن</label>
+            @Html.DropDownListFor(model => model.EmployeeSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+        </li>
+        <li class="">
+            <label class="Lab">تليفونات</label>
+            @Html.EditorFor(model => model.Phone1, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            @Html.EditorFor(model => model.Phone2, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+            @Html.EditorFor(model => model.Phone3, new { htmlAttributes = new { @class = "Txt", @placeholder = "" } })
+        </li>
+        <li class="">
+            <button class="save">تعديل</button>
+        </li>
+    </ul>
+}
+
+<div>
+    @Html.ActionLink("العودة للقائمة السابقة", "DisplayStocks")
+</div>
+
+
+
+

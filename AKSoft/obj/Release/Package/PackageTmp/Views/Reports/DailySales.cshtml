@@ -1,21 +1,49 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "DisplaySales";
+    ViewBag.Title = "الحركة اليومية للمبيعات";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Display Invoices Sales</h2>
-<a href="@Url.Action("SaveInvoiceSales", "Product")">Add Invoice</a>
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<h2>إجمالي المبيعات</h2>
+<a href="@Url.Action("SaveInvoiceSales", "Sales")">تسجيل فاتورة</a>
+@*<a href="@Url.Action("Report1.aspx", "Reports")"> sv</a>*@
 <table class="table table-bordered table-striped">
     <tr>
-        <th>ID</th>
-        <th>ItemName</th>
-        <th>Store</th>
-        <th>UnitName</th>
-        <th>Customer Name</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Total</th>
+        <th>كود الصنف</th>
+        <th>الصنف</th>
+        <th>المخزن</th>
+        <th>الوحده</th>
+        <th>العميل</th>
+        <th>الكميه</th>
+        <th>سعر الوحده</th>
+        <th>الإجمالي</th>
     </tr>
 
     @for (int i = 0; i < Model.Rows.Count; i++)
@@ -25,12 +53,16 @@
             <td>@Model.Rows[i][1]</td>
             <td>@Model.Rows[i][2]</td>
             <td>@Model.Rows[i][3]</td>
-            <td>@Model.Rows[i][4]</td>
+            <td>
+                <a class="LinkItem" href="@Url.Action("EditInvoiceSales", "Sales", new { @id = @Model.Rows[i][0] })">@Model.Rows[i][4]</a>
+            </td>
             <td>@Model.Rows[i][5]</td>
             <td>@Model.Rows[i][6]</td>
             <td>@Model.Rows[i][7]</td>
         </tr>
+
     }
+
 </table>
 
 

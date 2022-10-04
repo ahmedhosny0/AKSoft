@@ -24,6 +24,14 @@
           <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
           <Property Name="Notes" Type="nvarchar" MaxLength="150" />
         </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="CustomerCode">
           <Key>
             <PropertyRef Name="Serial" />
@@ -244,6 +252,16 @@
           <Property Name="Website" Type="nvarchar" MaxLength="30" />
           <Property Name="RegionSerial" Type="int" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="TownCode">
           <Key>
             <PropertyRef Name="Serial" />
@@ -284,82 +302,6 @@
           </Key>
           <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.CustomerAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="CustomerAccount">
-          <Key>
-            <PropertyRef Name="Debit" />
-            <PropertyRef Name="Credit" />
-          </Key>
-          <Property Name="CustomerCode" Type="int" />
-          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Debit" Type="int" Nullable="false" />
-          <Property Name="Credit" Type="int" Nullable="false" />
-          <Property Name="TotalSales" Type="float" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.CustomerData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="CustomerData">
-          <Key>
-            <PropertyRef Name="CustomerCode" />
-          </Key>
-          <Property Name="CustomerCode" Type="int" Nullable="false" />
-          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
-          <Property Name="CustomerEname" Type="nvarchar" MaxLength="100" />
-          <Property Name="CustomerAddress1" Type="nvarchar" MaxLength="150" />
-          <Property Name="CustomerTel1" Type="nvarchar" MaxLength="50" />
-          <Property Name="CustomerTel2" Type="nvarchar" MaxLength="50" />
-          <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
-          <Property Name="TownName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.DailySales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="DailySales">
-          <Key>
-            <PropertyRef Name="hsalesCode" />
-          </Key>
-          <Property Name="hsalesCode" Type="int" Nullable="false" />
-          <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
-          <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
-          <Property Name="UnitName" Type="nvarchar" MaxLength="150" />
-          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
-          <Property Name="HsalesQuantity" Type="float" />
-          <Property Name="HsalesPrice" Type="float" />
-          <Property Name="Total" Type="float" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.DealersData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="DealersData">
-          <Key>
-            <PropertyRef Name="DealerCode" />
-          </Key>
-          <Property Name="DealerCode" Type="int" Nullable="false" />
-          <Property Name="DealerName" Type="nvarchar" MaxLength="100" />
-          <Property Name="DealerEname" Type="nvarchar" MaxLength="100" />
-          <Property Name="DealerAddress1" Type="nvarchar" MaxLength="150" />
-          <Property Name="DealerTel1" Type="nvarchar" MaxLength="50" />
-          <Property Name="DealerTel2" Type="nvarchar" MaxLength="50" />
-          <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
-          <Property Name="TownName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.EmployeesData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="EmployeesData">
-          <Key>
-            <PropertyRef Name="EmployeeCode" />
-          </Key>
-          <Property Name="EmployeeCode" Type="int" Nullable="false" />
-          <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
-          <Property Name="EmployeeEname" Type="nvarchar" MaxLength="100" />
-          <Property Name="EmployeeAddress1" Type="nvarchar" MaxLength="150" />
-          <Property Name="EmployeeTel1" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmployeeTel2" Type="nvarchar" MaxLength="50" />
-          <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
-          <Property Name="TownName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'TopSoft.dbo.ItemCard' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -415,114 +357,6 @@ warning 6002: The table/view 'TopSoft.dbo.ItemCard' does not have a primary key 
           <Property Name="HSalesTax" Type="float" />
           <Property Name="HSalesTotal" Type="float" />
           <Property Name="HSalesTotalAfter" Type="float" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.RptCustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="RptCustomers">
-          <Key>
-            <PropertyRef Name="CustomerCode" />
-          </Key>
-          <Property Name="CustomerCode" Type="int" Nullable="false" />
-          <Property Name="CustomerCode2" Type="int" />
-          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
-          <Property Name="CustomerEname" Type="nvarchar" MaxLength="100" />
-          <Property Name="CustomerAddress1" Type="nvarchar" MaxLength="150" />
-          <Property Name="CustomerAddress2" Type="nvarchar" MaxLength="150" />
-          <Property Name="CustomerTel1" Type="nvarchar" MaxLength="50" />
-          <Property Name="CustomerTel2" Type="nvarchar" MaxLength="50" />
-          <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="Website" Type="nvarchar" MaxLength="30" />
-          <Property Name="Description" Type="nvarchar" MaxLength="150" />
-          <Property Name="CountryCode" Type="int" />
-          <Property Name="CountryCode2" Type="int" />
-          <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
-          <Property Name="CountryNotes" Type="nvarchar" MaxLength="150" />
-          <Property Name="TownCode" Type="int" />
-          <Property Name="TownCode2" Type="int" />
-          <Property Name="TownName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Townnotes" Type="nvarchar" MaxLength="150" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.RptDealers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="RptDealers">
-          <Key>
-            <PropertyRef Name="DealerCode" />
-          </Key>
-          <Property Name="DealerCode" Type="int" Nullable="false" />
-          <Property Name="DealerCode2" Type="int" />
-          <Property Name="DealerName" Type="nvarchar" MaxLength="100" />
-          <Property Name="DealerEname" Type="nvarchar" MaxLength="100" />
-          <Property Name="DealerAddress1" Type="nvarchar" MaxLength="150" />
-          <Property Name="DealerAddress2" Type="nvarchar" MaxLength="150" />
-          <Property Name="DealerTel1" Type="nvarchar" MaxLength="50" />
-          <Property Name="DealerTel2" Type="nvarchar" MaxLength="50" />
-          <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="Website" Type="nvarchar" MaxLength="30" />
-          <Property Name="Description" Type="nvarchar" MaxLength="150" />
-          <Property Name="CountryCode" Type="int" />
-          <Property Name="CountryCode2" Type="int" />
-          <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
-          <Property Name="CountryNotes" Type="nvarchar" MaxLength="150" />
-          <Property Name="TownCode" Type="int" />
-          <Property Name="TownCode2" Type="int" />
-          <Property Name="TownName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Townnotes" Type="nvarchar" MaxLength="150" />
-          <Property Name="hsalesCode" Type="int" />
-          <Property Name="HsalesCode2" Type="int" />
-          <Property Name="HsalesCurrency" Type="int" />
-          <Property Name="HsalesDate" Type="datetime" />
-          <Property Name="HsalesDealerCode" Type="int" />
-          <Property Name="HsalesDiscount" Type="float" />
-          <Property Name="HsalesDiscValue" Type="float" />
-          <Property Name="HsalesFactor" Type="float" />
-          <Property Name="HsalesPrice" Type="float" />
-          <Property Name="HsalesQuantity" Type="float" />
-          <Property Name="FirstPayment" Type="float" />
-          <Property Name="HsalesTax" Type="float" />
-          <Property Name="HsalesTotal" Type="float" />
-          <Property Name="HsalesTotalAfter" Type="float" />
-          <Property Name="HpurchaseCode" Type="int" />
-          <Property Name="HpurchaseCode2" Type="int" />
-          <Property Name="HpurchaseCurrency" Type="int" />
-          <Property Name="HpurchaseDate" Type="datetime" />
-          <Property Name="HpurchaseDealerCode" Type="int" />
-          <Property Name="HpurchaseDiscount" Type="float" />
-          <Property Name="HpurchaseDiscValue" Type="float" />
-          <Property Name="HpurchaseFactor" Type="float" />
-          <Property Name="HpurchasePrice" Type="float" />
-          <Property Name="HpurchaseQuantity" Type="float" />
-          <Property Name="HpurchaseTax" Type="float" />
-          <Property Name="HpurchaseTotal" Type="float" />
-          <Property Name="HpurchaseTotalAfter" Type="float" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.RptEmployees' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="RptEmployees">
-          <Key>
-            <PropertyRef Name="EmployeeCode" />
-          </Key>
-          <Property Name="EmployeeCode" Type="int" Nullable="false" />
-          <Property Name="EmployeeCode2" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
-          <Property Name="EmployeeEname" Type="nvarchar" MaxLength="100" />
-          <Property Name="EmployeeAddress1" Type="nvarchar" MaxLength="150" />
-          <Property Name="EmployeeAddress2" Type="nvarchar" MaxLength="150" />
-          <Property Name="EmployeeTel1" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmployeeTel2" Type="nvarchar" MaxLength="50" />
-          <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="Website" Type="nvarchar" MaxLength="30" />
-          <Property Name="Description" Type="nvarchar" MaxLength="150" />
-          <Property Name="CountryCode" Type="int" />
-          <Property Name="CountryCode2" Type="int" />
-          <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
-          <Property Name="CountryNotes" Type="nvarchar" MaxLength="150" />
-          <Property Name="TownCode" Type="int" />
-          <Property Name="TownCode2" Type="int" />
-          <Property Name="TownName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Townnotes" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'TopSoft.dbo.RptPurchase' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -654,127 +488,6 @@ warning 6002: The table/view 'TopSoft.dbo.RptSales' does not have a primary key 
           <Property Name="DealerDescName" Type="nvarchar" MaxLength="50" />
           <Property Name="DealerAddress1" Type="nvarchar" MaxLength="150" />
           <Property Name="DealerAddress2" Type="nvarchar" MaxLength="150" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.RptStore' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="RptStore">
-          <Key>
-            <PropertyRef Name="StoreCode" />
-          </Key>
-          <Property Name="StoreCode" Type="int" Nullable="false" />
-          <Property Name="StoreCode2" Type="int" />
-          <Property Name="StoreName" Type="nvarchar" MaxLength="150" />
-          <Property Name="StoreDescription" Type="nvarchar" MaxLength="150" />
-          <Property Name="StoreAddress" Type="nvarchar" MaxLength="150" />
-          <Property Name="StoreArea" Type="nvarchar" MaxLength="20" />
-          <Property Name="StorePhone1" Type="nvarchar" MaxLength="20" />
-          <Property Name="StorePhone2" Type="nvarchar" MaxLength="20" />
-          <Property Name="StorePhone3" Type="nvarchar" MaxLength="20" />
-          <Property Name="StorePhone4" Type="nvarchar" MaxLength="20" />
-          <Property Name="EmployeeCode" Type="int" />
-          <Property Name="EmployeeCode2" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
-          <Property Name="EmployeeEName" Type="nvarchar" MaxLength="100" />
-          <Property Name="EmployeeDescName" Type="nvarchar" MaxLength="100" />
-          <Property Name="EmployeeAddress1" Type="nvarchar" MaxLength="150" />
-          <Property Name="EmployeeAddress2" Type="nvarchar" MaxLength="150" />
-          <Property Name="CountryCode" Type="int" />
-          <Property Name="CountryCode2" Type="int" />
-          <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
-          <Property Name="CountryNotes" Type="nvarchar" MaxLength="150" />
-          <Property Name="TownCode" Type="int" />
-          <Property Name="TownCode2" Type="int" />
-          <Property Name="TownName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Townnotes" Type="nvarchar" MaxLength="150" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.RptSuppliers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="RptSuppliers">
-          <Key>
-            <PropertyRef Name="SupplierCode" />
-          </Key>
-          <Property Name="SupplierCode" Type="int" Nullable="false" />
-          <Property Name="SupplierCode2" Type="int" />
-          <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
-          <Property Name="SupplierEname" Type="nvarchar" MaxLength="100" />
-          <Property Name="SupplierAddress1" Type="nvarchar" MaxLength="150" />
-          <Property Name="SupplierAddress2" Type="nvarchar" MaxLength="150" />
-          <Property Name="SupplierTel1" Type="nvarchar" MaxLength="50" />
-          <Property Name="SupplierTel2" Type="nvarchar" MaxLength="50" />
-          <Property Name="Telephone3" Type="nvarchar" MaxLength="50" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="Website" Type="nvarchar" MaxLength="30" />
-          <Property Name="Description" Type="nvarchar" MaxLength="150" />
-          <Property Name="CountryCode" Type="int" />
-          <Property Name="CountryCode2" Type="int" />
-          <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
-          <Property Name="CountryNotes" Type="nvarchar" MaxLength="150" />
-          <Property Name="TownCode" Type="int" />
-          <Property Name="TownCode2" Type="int" />
-          <Property Name="TownName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Townnotes" Type="nvarchar" MaxLength="150" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.RptUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="RptUsers">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="Password" Type="nvarchar" MaxLength="100" />
-          <Property Name="BranchCode" Type="int" />
-          <Property Name="BranchName" Type="nvarchar" MaxLength="100" />
-          <Property Name="SectorCode" Type="int" />
-          <Property Name="SectorName" Type="nvarchar" MaxLength="100" />
-          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.SupplierAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="SupplierAccount">
-          <Key>
-            <PropertyRef Name="Debit" />
-            <PropertyRef Name="Credit" />
-          </Key>
-          <Property Name="SupplierCode" Type="int" />
-          <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Debit" Type="int" Nullable="false" />
-          <Property Name="Credit" Type="int" Nullable="false" />
-          <Property Name="ToatalPurchase" Type="float" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.SuppliersData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="SuppliersData">
-          <Key>
-            <PropertyRef Name="SupplierCode" />
-          </Key>
-          <Property Name="SupplierCode" Type="int" Nullable="false" />
-          <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
-          <Property Name="SupplierEname" Type="nvarchar" MaxLength="100" />
-          <Property Name="SupplierAddress1" Type="nvarchar" MaxLength="150" />
-          <Property Name="SupplierTel1" Type="nvarchar" MaxLength="50" />
-          <Property Name="SupplierTel2" Type="nvarchar" MaxLength="50" />
-          <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
-          <Property Name="TownName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="UsersData">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
-          <Property Name="BranchName" Type="nvarchar" MaxLength="100" />
-          <Property Name="SectorName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK__BranchCod__UserI__3A6CA48E">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1">
@@ -1126,13 +839,48 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Customere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Customers_SearchCustomers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ContactName" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="Pu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Re" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ReportMa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="TopSoftModelStoreContainer">
           <EntitySet Name="BranchCode" EntityType="Self.BranchCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerCode" EntityType="Self.CustomerCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DealerCode" EntityType="Self.DealerCode" Schema="dbo" store:Type="Tables" />
@@ -1145,70 +893,11 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
           <EntitySet Name="SectorCode" EntityType="Self.SectorCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StoreCode" EntityType="Self.StoreCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierCode" EntityType="Self.SupplierCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TownCode" EntityType="Self.TownCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitCode" EntityType="Self.UnitCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CustomerAccount" EntityType="Self.CustomerAccount" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CustomerAccount].[CustomerCode] AS [CustomerCode], 
-    [CustomerAccount].[CustomerName] AS [CustomerName], 
-    [CustomerAccount].[Debit] AS [Debit], 
-    [CustomerAccount].[Credit] AS [Credit], 
-    [CustomerAccount].[TotalSales] AS [TotalSales]
-    FROM [dbo].[CustomerAccount] AS [CustomerAccount]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="CustomerData" EntityType="Self.CustomerData" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CustomerData].[CustomerCode] AS [CustomerCode], 
-    [CustomerData].[CustomerName] AS [CustomerName], 
-    [CustomerData].[CustomerEname] AS [CustomerEname], 
-    [CustomerData].[CustomerAddress1] AS [CustomerAddress1], 
-    [CustomerData].[CustomerTel1] AS [CustomerTel1], 
-    [CustomerData].[CustomerTel2] AS [CustomerTel2], 
-    [CustomerData].[CountryName] AS [CountryName], 
-    [CustomerData].[TownName] AS [TownName], 
-    [CustomerData].[Email] AS [Email]
-    FROM [dbo].[CustomerData] AS [CustomerData]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="DailySales" EntityType="Self.DailySales" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [DailySales].[hsalesCode] AS [hsalesCode], 
-    [DailySales].[ItemName] AS [ItemName], 
-    [DailySales].[StoreName] AS [StoreName], 
-    [DailySales].[UnitName] AS [UnitName], 
-    [DailySales].[CustomerName] AS [CustomerName], 
-    [DailySales].[HsalesQuantity] AS [HsalesQuantity], 
-    [DailySales].[HsalesPrice] AS [HsalesPrice], 
-    [DailySales].[Total] AS [Total]
-    FROM [dbo].[DailySales] AS [DailySales]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="DealersData" EntityType="Self.DealersData" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [DealersData].[DealerCode] AS [DealerCode], 
-    [DealersData].[DealerName] AS [DealerName], 
-    [DealersData].[DealerEname] AS [DealerEname], 
-    [DealersData].[DealerAddress1] AS [DealerAddress1], 
-    [DealersData].[DealerTel1] AS [DealerTel1], 
-    [DealersData].[DealerTel2] AS [DealerTel2], 
-    [DealersData].[CountryName] AS [CountryName], 
-    [DealersData].[TownName] AS [TownName], 
-    [DealersData].[Email] AS [Email]
-    FROM [dbo].[DealersData] AS [DealersData]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="EmployeesData" EntityType="Self.EmployeesData" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [EmployeesData].[EmployeeCode] AS [EmployeeCode], 
-    [EmployeesData].[EmployeeName] AS [EmployeeName], 
-    [EmployeesData].[EmployeeEname] AS [EmployeeEname], 
-    [EmployeesData].[EmployeeAddress1] AS [EmployeeAddress1], 
-    [EmployeesData].[EmployeeTel1] AS [EmployeeTel1], 
-    [EmployeesData].[EmployeeTel2] AS [EmployeeTel2], 
-    [EmployeesData].[CountryName] AS [CountryName], 
-    [EmployeesData].[TownName] AS [TownName], 
-    [EmployeesData].[Email] AS [Email]
-    FROM [dbo].[EmployeesData] AS [EmployeesData]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="ItemCard" EntityType="Self.ItemCard" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ItemCard].[ItemCode] AS [ItemCode], 
@@ -1260,105 +949,6 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
     [ItemCard].[HSalesTotal] AS [HSalesTotal], 
     [ItemCard].[HSalesTotalAfter] AS [HSalesTotalAfter]
     FROM [dbo].[ItemCard] AS [ItemCard]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="RptCustomers" EntityType="Self.RptCustomers" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RptCustomers].[CustomerCode] AS [CustomerCode], 
-    [RptCustomers].[CustomerCode2] AS [CustomerCode2], 
-    [RptCustomers].[CustomerName] AS [CustomerName], 
-    [RptCustomers].[CustomerEname] AS [CustomerEname], 
-    [RptCustomers].[CustomerAddress1] AS [CustomerAddress1], 
-    [RptCustomers].[CustomerAddress2] AS [CustomerAddress2], 
-    [RptCustomers].[CustomerTel1] AS [CustomerTel1], 
-    [RptCustomers].[CustomerTel2] AS [CustomerTel2], 
-    [RptCustomers].[Telephone3] AS [Telephone3], 
-    [RptCustomers].[Email] AS [Email], 
-    [RptCustomers].[Website] AS [Website], 
-    [RptCustomers].[Description] AS [Description], 
-    [RptCustomers].[CountryCode] AS [CountryCode], 
-    [RptCustomers].[CountryCode2] AS [CountryCode2], 
-    [RptCustomers].[CountryName] AS [CountryName], 
-    [RptCustomers].[CountryNotes] AS [CountryNotes], 
-    [RptCustomers].[TownCode] AS [TownCode], 
-    [RptCustomers].[TownCode2] AS [TownCode2], 
-    [RptCustomers].[TownName] AS [TownName], 
-    [RptCustomers].[Townnotes] AS [Townnotes]
-    FROM [dbo].[RptCustomers] AS [RptCustomers]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="RptDealers" EntityType="Self.RptDealers" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RptDealers].[DealerCode] AS [DealerCode], 
-    [RptDealers].[DealerCode2] AS [DealerCode2], 
-    [RptDealers].[DealerName] AS [DealerName], 
-    [RptDealers].[DealerEname] AS [DealerEname], 
-    [RptDealers].[DealerAddress1] AS [DealerAddress1], 
-    [RptDealers].[DealerAddress2] AS [DealerAddress2], 
-    [RptDealers].[DealerTel1] AS [DealerTel1], 
-    [RptDealers].[DealerTel2] AS [DealerTel2], 
-    [RptDealers].[Telephone3] AS [Telephone3], 
-    [RptDealers].[Email] AS [Email], 
-    [RptDealers].[Website] AS [Website], 
-    [RptDealers].[Description] AS [Description], 
-    [RptDealers].[CountryCode] AS [CountryCode], 
-    [RptDealers].[CountryCode2] AS [CountryCode2], 
-    [RptDealers].[CountryName] AS [CountryName], 
-    [RptDealers].[CountryNotes] AS [CountryNotes], 
-    [RptDealers].[TownCode] AS [TownCode], 
-    [RptDealers].[TownCode2] AS [TownCode2], 
-    [RptDealers].[TownName] AS [TownName], 
-    [RptDealers].[Townnotes] AS [Townnotes], 
-    [RptDealers].[hsalesCode] AS [hsalesCode], 
-    [RptDealers].[HsalesCode2] AS [HsalesCode2], 
-    [RptDealers].[HsalesCurrency] AS [HsalesCurrency], 
-    [RptDealers].[HsalesDate] AS [HsalesDate], 
-    [RptDealers].[HsalesDealerCode] AS [HsalesDealerCode], 
-    [RptDealers].[HsalesDiscount] AS [HsalesDiscount], 
-    [RptDealers].[HsalesDiscValue] AS [HsalesDiscValue], 
-    [RptDealers].[HsalesFactor] AS [HsalesFactor], 
-    [RptDealers].[HsalesPrice] AS [HsalesPrice], 
-    [RptDealers].[HsalesQuantity] AS [HsalesQuantity], 
-    [RptDealers].[FirstPayment] AS [FirstPayment], 
-    [RptDealers].[HsalesTax] AS [HsalesTax], 
-    [RptDealers].[HsalesTotal] AS [HsalesTotal], 
-    [RptDealers].[HsalesTotalAfter] AS [HsalesTotalAfter], 
-    [RptDealers].[HpurchaseCode] AS [HpurchaseCode], 
-    [RptDealers].[HpurchaseCode2] AS [HpurchaseCode2], 
-    [RptDealers].[HpurchaseCurrency] AS [HpurchaseCurrency], 
-    [RptDealers].[HpurchaseDate] AS [HpurchaseDate], 
-    [RptDealers].[HpurchaseDealerCode] AS [HpurchaseDealerCode], 
-    [RptDealers].[HpurchaseDiscount] AS [HpurchaseDiscount], 
-    [RptDealers].[HpurchaseDiscValue] AS [HpurchaseDiscValue], 
-    [RptDealers].[HpurchaseFactor] AS [HpurchaseFactor], 
-    [RptDealers].[HpurchasePrice] AS [HpurchasePrice], 
-    [RptDealers].[HpurchaseQuantity] AS [HpurchaseQuantity], 
-    [RptDealers].[HpurchaseTax] AS [HpurchaseTax], 
-    [RptDealers].[HpurchaseTotal] AS [HpurchaseTotal], 
-    [RptDealers].[HpurchaseTotalAfter] AS [HpurchaseTotalAfter]
-    FROM [dbo].[RptDealers] AS [RptDealers]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="RptEmployees" EntityType="Self.RptEmployees" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RptEmployees].[EmployeeCode] AS [EmployeeCode], 
-    [RptEmployees].[EmployeeCode2] AS [EmployeeCode2], 
-    [RptEmployees].[EmployeeName] AS [EmployeeName], 
-    [RptEmployees].[EmployeeEname] AS [EmployeeEname], 
-    [RptEmployees].[EmployeeAddress1] AS [EmployeeAddress1], 
-    [RptEmployees].[EmployeeAddress2] AS [EmployeeAddress2], 
-    [RptEmployees].[EmployeeTel1] AS [EmployeeTel1], 
-    [RptEmployees].[EmployeeTel2] AS [EmployeeTel2], 
-    [RptEmployees].[Telephone3] AS [Telephone3], 
-    [RptEmployees].[Email] AS [Email], 
-    [RptEmployees].[Website] AS [Website], 
-    [RptEmployees].[Description] AS [Description], 
-    [RptEmployees].[CountryCode] AS [CountryCode], 
-    [RptEmployees].[CountryCode2] AS [CountryCode2], 
-    [RptEmployees].[CountryName] AS [CountryName], 
-    [RptEmployees].[CountryNotes] AS [CountryNotes], 
-    [RptEmployees].[TownCode] AS [TownCode], 
-    [RptEmployees].[TownCode2] AS [TownCode2], 
-    [RptEmployees].[TownName] AS [TownName], 
-    [RptEmployees].[Townnotes] AS [Townnotes]
-    FROM [dbo].[RptEmployees] AS [RptEmployees]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="RptPurchase" EntityType="Self.RptPurchase" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1485,108 +1075,6 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
     [RptSales].[DealerAddress2] AS [DealerAddress2]
     FROM [dbo].[RptSales] AS [RptSales]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="RptStore" EntityType="Self.RptStore" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RptStore].[StoreCode] AS [StoreCode], 
-    [RptStore].[StoreCode2] AS [StoreCode2], 
-    [RptStore].[StoreName] AS [StoreName], 
-    [RptStore].[StoreDescription] AS [StoreDescription], 
-    [RptStore].[StoreAddress] AS [StoreAddress], 
-    [RptStore].[StoreArea] AS [StoreArea], 
-    [RptStore].[StorePhone1] AS [StorePhone1], 
-    [RptStore].[StorePhone2] AS [StorePhone2], 
-    [RptStore].[StorePhone3] AS [StorePhone3], 
-    [RptStore].[StorePhone4] AS [StorePhone4], 
-    [RptStore].[EmployeeCode] AS [EmployeeCode], 
-    [RptStore].[EmployeeCode2] AS [EmployeeCode2], 
-    [RptStore].[EmployeeName] AS [EmployeeName], 
-    [RptStore].[EmployeeEName] AS [EmployeeEName], 
-    [RptStore].[EmployeeDescName] AS [EmployeeDescName], 
-    [RptStore].[EmployeeAddress1] AS [EmployeeAddress1], 
-    [RptStore].[EmployeeAddress2] AS [EmployeeAddress2], 
-    [RptStore].[CountryCode] AS [CountryCode], 
-    [RptStore].[CountryCode2] AS [CountryCode2], 
-    [RptStore].[CountryName] AS [CountryName], 
-    [RptStore].[CountryNotes] AS [CountryNotes], 
-    [RptStore].[TownCode] AS [TownCode], 
-    [RptStore].[TownCode2] AS [TownCode2], 
-    [RptStore].[TownName] AS [TownName], 
-    [RptStore].[Townnotes] AS [Townnotes]
-    FROM [dbo].[RptStore] AS [RptStore]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="RptSuppliers" EntityType="Self.RptSuppliers" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RptSuppliers].[SupplierCode] AS [SupplierCode], 
-    [RptSuppliers].[SupplierCode2] AS [SupplierCode2], 
-    [RptSuppliers].[SupplierName] AS [SupplierName], 
-    [RptSuppliers].[SupplierEname] AS [SupplierEname], 
-    [RptSuppliers].[SupplierAddress1] AS [SupplierAddress1], 
-    [RptSuppliers].[SupplierAddress2] AS [SupplierAddress2], 
-    [RptSuppliers].[SupplierTel1] AS [SupplierTel1], 
-    [RptSuppliers].[SupplierTel2] AS [SupplierTel2], 
-    [RptSuppliers].[Telephone3] AS [Telephone3], 
-    [RptSuppliers].[Email] AS [Email], 
-    [RptSuppliers].[Website] AS [Website], 
-    [RptSuppliers].[Description] AS [Description], 
-    [RptSuppliers].[CountryCode] AS [CountryCode], 
-    [RptSuppliers].[CountryCode2] AS [CountryCode2], 
-    [RptSuppliers].[CountryName] AS [CountryName], 
-    [RptSuppliers].[CountryNotes] AS [CountryNotes], 
-    [RptSuppliers].[TownCode] AS [TownCode], 
-    [RptSuppliers].[TownCode2] AS [TownCode2], 
-    [RptSuppliers].[TownName] AS [TownName], 
-    [RptSuppliers].[Townnotes] AS [Townnotes]
-    FROM [dbo].[RptSuppliers] AS [RptSuppliers]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="RptUsers" EntityType="Self.RptUsers" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RptUsers].[UserId] AS [UserId], 
-    [RptUsers].[FirstName] AS [FirstName], 
-    [RptUsers].[MiddleName] AS [MiddleName], 
-    [RptUsers].[LastName] AS [LastName], 
-    [RptUsers].[Email] AS [Email], 
-    [RptUsers].[Password] AS [Password], 
-    [RptUsers].[BranchCode] AS [BranchCode], 
-    [RptUsers].[BranchName] AS [BranchName], 
-    [RptUsers].[SectorCode] AS [SectorCode], 
-    [RptUsers].[SectorName] AS [SectorName], 
-    [RptUsers].[RoleName] AS [RoleName]
-    FROM [dbo].[RptUsers] AS [RptUsers]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="SupplierAccount" EntityType="Self.SupplierAccount" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SupplierAccount].[SupplierCode] AS [SupplierCode], 
-    [SupplierAccount].[SupplierName] AS [SupplierName], 
-    [SupplierAccount].[Debit] AS [Debit], 
-    [SupplierAccount].[Credit] AS [Credit], 
-    [SupplierAccount].[ToatalPurchase] AS [ToatalPurchase]
-    FROM [dbo].[SupplierAccount] AS [SupplierAccount]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="SuppliersData" EntityType="Self.SuppliersData" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SuppliersData].[SupplierCode] AS [SupplierCode], 
-    [SuppliersData].[SupplierName] AS [SupplierName], 
-    [SuppliersData].[SupplierEname] AS [SupplierEname], 
-    [SuppliersData].[SupplierAddress1] AS [SupplierAddress1], 
-    [SuppliersData].[SupplierTel1] AS [SupplierTel1], 
-    [SuppliersData].[SupplierTel2] AS [SupplierTel2], 
-    [SuppliersData].[CountryName] AS [CountryName], 
-    [SuppliersData].[TownName] AS [TownName], 
-    [SuppliersData].[Email] AS [Email]
-    FROM [dbo].[SuppliersData] AS [SuppliersData]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="UsersData" EntityType="Self.UsersData" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [UsersData].[UserId] AS [UserId], 
-    [UsersData].[FirstName] AS [FirstName], 
-    [UsersData].[MiddleName] AS [MiddleName], 
-    [UsersData].[LastName] AS [LastName], 
-    [UsersData].[Email] AS [Email], 
-    [UsersData].[RoleName] AS [RoleName], 
-    [UsersData].[BranchName] AS [BranchName], 
-    [UsersData].[SectorName] AS [SectorName]
-    FROM [dbo].[UsersData] AS [UsersData]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__BranchCod__UserI__3A6CA48E" Association="Self.FK__BranchCod__UserI__3A6CA48E">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="BranchCode" EntitySet="BranchCode" />
@@ -1693,9 +1181,18 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
     <edmx:ConceptualModels>
       <Schema Namespace="TopSoftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TopSoft" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="Customers_SearchCustomers" ReturnType="Collection(TopSoftModel.Customers_SearchCustomers_Result)">
+          <Parameter Name="ContactName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchItems">
+          <Parameter Name="ContactName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Re" ReturnType="Collection(TopSoftModel.Re_Result)" />
           <EntitySet Name="BranchCode" EntityType="TopSoftModel.BranchCode" />
           <EntitySet Name="CountryCode" EntityType="TopSoftModel.CountryCode" />
+          <EntitySet Name="Customer" EntityType="TopSoftModel.Customer" />
           <EntitySet Name="CustomerCode" EntityType="TopSoftModel.CustomerCode" />
+          <EntitySet Name="Customers" EntityType="TopSoftModel.Customers" />
           <EntitySet Name="DealerCode" EntityType="TopSoftModel.DealerCode" />
           <EntitySet Name="Employee" EntityType="TopSoftModel.Employee" />
           <EntitySet Name="GroupCode" EntityType="TopSoftModel.GroupCode" />
@@ -1706,6 +1203,7 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
           <EntitySet Name="SectorCode" EntityType="TopSoftModel.SectorCode" />
           <EntitySet Name="StoreCode" EntityType="TopSoftModel.StoreCode" />
           <EntitySet Name="SupplierCode" EntityType="TopSoftModel.SupplierCode" />
+          <EntitySet Name="sysdiagrams" EntityType="TopSoftModel.sysdiagrams" />
           <EntitySet Name="TownCode" EntityType="TopSoftModel.TownCode" />
           <EntitySet Name="UnitCode" EntityType="TopSoftModel.UnitCode" />
           <EntitySet Name="UserInfo" EntityType="TopSoftModel.UserInfo" />
@@ -1810,32 +1308,121 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
             <End Role="UserRole" EntitySet="UserRole" />
             <End Role="UserInfo" EntitySet="UserInfo" />
           </AssociationSet>
-          <FunctionImport Name="Customers_SearchCustomers" ReturnType="Collection(TopSoftModel.Customers_SearchCustomers_Result)">
-          <Parameter Name="ContactName" Mode="In" Type="String" />
+          <FunctionImport Name="Customere" ReturnType="Collection(TopSoftModel.Customere_Result)" />
+          <FunctionImport Name="Pu" ReturnType="Collection(TopSoftModel.Pu_Result)" />
+          <FunctionImport Name="ReportMa" ReturnType="Collection(TopSoftModel.ReportMa_Result)" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
-          <FunctionImport Name="SearchItems" EntitySet="ItemCode" ReturnType="Collection(TopSoftModel.ItemCode)">
-          <Parameter Name="ContactName" Mode="In" Type="String" />
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TopSoftModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TopSoftModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="ItemCard" EntityType="TopSoftModel.ItemCard" />
-          <EntitySet Name="RptCustomers" EntityType="TopSoftModel.RptCustomers" />
-          <EntitySet Name="RptDealers" EntityType="TopSoftModel.RptDealers" />
-          <EntitySet Name="RptEmployees" EntityType="TopSoftModel.RptEmployees" />
           <EntitySet Name="RptPurchase" EntityType="TopSoftModel.RptPurchase" />
           <EntitySet Name="RptSales" EntityType="TopSoftModel.RptSales" />
-          <EntitySet Name="RptStore" EntityType="TopSoftModel.RptStore" />
-          <EntitySet Name="RptSuppliers" EntityType="TopSoftModel.RptSuppliers" />
-          <EntitySet Name="RptUsers" EntityType="TopSoftModel.RptUsers" />
-          <EntitySet Name="CustomerAccount" EntityType="TopSoftModel.CustomerAccount" />
-          <EntitySet Name="CustomerData" EntityType="TopSoftModel.CustomerData" />
-          <EntitySet Name="DailySales" EntityType="TopSoftModel.DailySales" />
-          <EntitySet Name="DealersData" EntityType="TopSoftModel.DealersData" />
-          <EntitySet Name="EmployeesData" EntityType="TopSoftModel.EmployeesData" />
-          <EntitySet Name="SupplierAccount" EntityType="TopSoftModel.SupplierAccount" />
-          <EntitySet Name="SuppliersData" EntityType="TopSoftModel.SuppliersData" />
-          <EntitySet Name="UsersData" EntityType="TopSoftModel.UsersData" />
-          <EntitySet Name="Customers" EntityType="TopSoftModel.Customers" />
-          <FunctionImport Name="Re" ReturnType="Collection(TopSoftModel.Re_Result)" />
         </EntityContainer>
+        <ComplexType Name="Customers_SearchCustomers_Result">
+          <Property Type="Int32" Name="Serial" Nullable="false" />
+          <Property Type="Int32" Name="Code" Nullable="true" />
+          <Property Type="String" Name="ArabicName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="EnglishName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DescName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="SerialGroup" Nullable="true" />
+          <Property Type="Int32" Name="Unit1" Nullable="true" />
+          <Property Type="Int32" Name="Unit2" Nullable="true" />
+          <Property Type="Int32" Name="Unit3" Nullable="true" />
+          <Property Type="Double" Name="PricePurchase1Unit1" Nullable="true" />
+          <Property Type="Double" Name="PricePurchase1Unit2" Nullable="true" />
+          <Property Type="Double" Name="PriceSale1Unit1" Nullable="true" />
+          <Property Type="Double" Name="PriceSale1Unit2" Nullable="true" />
+          <Property Type="Double" Name="Counts" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Re_Result">
+          <Property Type="Int32" Name="ItemCode" Nullable="true" />
+          <Property Type="Int32" Name="ItemCode2" Nullable="true" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ItemEName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ItemDescName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ItemDescription" Nullable="true" MaxLength="150" />
+          <Property Type="Double" Name="ItemPurchase1Unit1" Nullable="true" />
+          <Property Type="Double" Name="ItemPurchase1Unit2" Nullable="true" />
+          <Property Type="Double" Name="ItemSales1Unit1" Nullable="true" />
+          <Property Type="Double" Name="ItemSales1Unit2" Nullable="true" />
+          <Property Type="Int32" Name="Unit1" Nullable="true" />
+          <Property Type="Int32" Name="Unit2" Nullable="true" />
+          <Property Type="Int32" Name="Unit3" Nullable="true" />
+          <Property Type="Int32" Name="HSalesCode" Nullable="false" />
+          <Property Type="Int32" Name="HSalesCode2" Nullable="true" />
+          <Property Type="Int32" Name="HSalesCurrency" Nullable="true" />
+          <Property Type="DateTime" Name="HSalesDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="HSalesDealerCode" Nullable="true" />
+          <Property Type="Double" Name="HSalesDiscount" Nullable="true" />
+          <Property Type="Double" Name="HSalesDiscValue" Nullable="true" />
+          <Property Type="Double" Name="HSalesFactor" Nullable="true" />
+          <Property Type="Double" Name="HSalesPrice" Nullable="true" />
+          <Property Type="Double" Name="HSalesQuantity" Nullable="true" />
+          <Property Type="Double" Name="HSalesTax" Nullable="true" />
+          <Property Type="Double" Name="HSalesTotal" Nullable="true" />
+          <Property Type="Double" Name="HSalesTotalAfter" Nullable="true" />
+          <Property Type="Int32" Name="GroupCode" Nullable="true" />
+          <Property Type="Int32" Name="GroupCode2" Nullable="true" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="GroupDescription" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="GroupColorName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="UnitCode" Nullable="true" />
+          <Property Type="Int32" Name="UnitCode2" Nullable="true" />
+          <Property Type="String" Name="UnitName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="UnitDescription" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="StoreCode" Nullable="true" />
+          <Property Type="Int32" Name="StoreCode2" Nullable="true" />
+          <Property Type="String" Name="StoreName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="StoreDescription" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="StoreAddress" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="StoreArea" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone3" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone4" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="CustomerCode" Nullable="true" />
+          <Property Type="Int32" Name="CustomerCode2" Nullable="true" />
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CustomerEName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CustomerDescName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CustomerAddress1" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CustomerAddress2" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="DealerCode" Nullable="true" />
+          <Property Type="Int32" Name="DealerCode2" Nullable="true" />
+          <Property Type="String" Name="DealerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DealerEName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DealerDescName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DealerAddress1" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DealerAddress2" Nullable="true" MaxLength="150" />
+        </ComplexType>
         <EntityType Name="BranchCode">
           <Key>
             <PropertyRef Name="Serial" />
@@ -1861,6 +1448,14 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
           <NavigationProperty Name="StoreCode" Relationship="TopSoftModel.FK__StoreCode__Count__7740A8A4" FromRole="CountryCode" ToRole="StoreCode" />
           <NavigationProperty Name="SupplierCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="CountryCode" ToRole="SupplierCode" />
         </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="CustomerCode">
           <Key>
             <PropertyRef Name="Serial" />
@@ -1885,6 +1480,14 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
           <NavigationProperty Name="Region" Relationship="TopSoftModel.FK__CustomerC__Regio__0682EC34" FromRole="CustomerCode" ToRole="Region" />
           <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__CustomerC__TownS__671F4F74" FromRole="CustomerCode" ToRole="TownCode" />
           <NavigationProperty Name="HSales" Relationship="TopSoftModel.FK__HSales__Customer__23F3538A" FromRole="CustomerCode" ToRole="HSales" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="DealerCode">
           <Key>
@@ -2104,6 +1707,16 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
           <NavigationProperty Name="CountryCode" Relationship="TopSoftModel.FK__SupplierC__Websi__69FBBC1F" FromRole="SupplierCode" ToRole="CountryCode" />
           <NavigationProperty Name="Region" Relationship="TopSoftModel.FK__SupplierC__Regio__086B34A6" FromRole="SupplierCode" ToRole="Region" />
           <NavigationProperty Name="TownCode" Relationship="TopSoftModel.FK__SupplierC__TownS__6AEFE058" FromRole="SupplierCode" ToRole="TownCode" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TownCode">
           <Key>
@@ -2508,22 +2121,142 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="Customers_SearchCustomers_Result">
-          <Property Type="Int32" Name="Serial" Nullable="false" />
-          <Property Type="Int32" Name="Code" Nullable="true" />
-          <Property Type="String" Name="ArabicName" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="EnglishName" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="DescName" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="Description" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="SerialGroup" Nullable="true" />
+        <ComplexType Name="Customere_Result">
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Pu_Result">
+          <Property Type="Int32" Name="ItemCode" Nullable="true" />
+          <Property Type="Int32" Name="ItemCode2" Nullable="true" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ItemEName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ItemDescName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ItemDescription" Nullable="true" MaxLength="150" />
+          <Property Type="Double" Name="ItemPurchase1Unit1" Nullable="true" />
+          <Property Type="Double" Name="ItemPurchase1Unit2" Nullable="true" />
+          <Property Type="Double" Name="ItemSales1Unit1" Nullable="true" />
+          <Property Type="Double" Name="ItemSales1Unit2" Nullable="true" />
           <Property Type="Int32" Name="Unit1" Nullable="true" />
           <Property Type="Int32" Name="Unit2" Nullable="true" />
           <Property Type="Int32" Name="Unit3" Nullable="true" />
-          <Property Type="Double" Name="PricePurchase1Unit1" Nullable="true" />
-          <Property Type="Double" Name="PricePurchase1Unit2" Nullable="true" />
-          <Property Type="Double" Name="PriceSale1Unit1" Nullable="true" />
-          <Property Type="Double" Name="PriceSale1Unit2" Nullable="true" />
-          <Property Type="Double" Name="Counts" Nullable="true" />
+          <Property Type="Int32" Name="HpurchaseCode" Nullable="false" />
+          <Property Type="Int32" Name="HpurchaseCode2" Nullable="true" />
+          <Property Type="Int32" Name="HpurchaseCurrency" Nullable="true" />
+          <Property Type="DateTime" Name="HpurchaseDate" Nullable="true" Precision="23" />
+          <Property Type="Double" Name="HpurchaseDiscount" Nullable="true" />
+          <Property Type="Double" Name="HpurchaseDiscValue" Nullable="true" />
+          <Property Type="Double" Name="HpurchaseFactor" Nullable="true" />
+          <Property Type="Double" Name="HpurchasePrice" Nullable="true" />
+          <Property Type="Double" Name="HpurchaseQuantity" Nullable="true" />
+          <Property Type="Double" Name="HpurchaseTax" Nullable="true" />
+          <Property Type="Double" Name="HpurchaseTotal" Nullable="true" />
+          <Property Type="Double" Name="HpurchaseTotalAfter" Nullable="true" />
+          <Property Type="Int32" Name="GroupCode" Nullable="true" />
+          <Property Type="Int32" Name="GroupCode2" Nullable="true" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="GroupDescription" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="GroupColorName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="UnitCode" Nullable="true" />
+          <Property Type="Int32" Name="UnitCode2" Nullable="true" />
+          <Property Type="String" Name="UnitName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="UnitDescription" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="StoreCode" Nullable="true" />
+          <Property Type="Int32" Name="StoreCode2" Nullable="true" />
+          <Property Type="String" Name="StoreName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="StoreDescription" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="StoreAddress" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="StoreArea" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone3" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone4" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="SupplierCode" Nullable="true" />
+          <Property Type="Int32" Name="SupplierCode2" Nullable="true" />
+          <Property Type="String" Name="SupplierName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SupplierEName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SupplierDescName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SupplierAddress1" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="SupplierAddress2" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="DealerCode" Nullable="true" />
+          <Property Type="Int32" Name="DealerCode2" Nullable="true" />
+          <Property Type="String" Name="DealerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DealerEName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DealerDescName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DealerAddress1" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DealerAddress2" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="ReportMa_Result">
+          <Property Type="Int32" Name="ItemCode" Nullable="true" />
+          <Property Type="Int32" Name="ItemCode2" Nullable="true" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ItemEName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ItemDescName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="ItemDescription" Nullable="true" MaxLength="150" />
+          <Property Type="Double" Name="ItemPurchase1Unit1" Nullable="true" />
+          <Property Type="Double" Name="ItemPurchase1Unit2" Nullable="true" />
+          <Property Type="Double" Name="ItemSales1Unit1" Nullable="true" />
+          <Property Type="Double" Name="ItemSales1Unit2" Nullable="true" />
+          <Property Type="Int32" Name="Unit1" Nullable="true" />
+          <Property Type="Int32" Name="Unit2" Nullable="true" />
+          <Property Type="Int32" Name="Unit3" Nullable="true" />
+          <Property Type="Int32" Name="HSalesCode" Nullable="false" />
+          <Property Type="Int32" Name="HSalesCode2" Nullable="true" />
+          <Property Type="Int32" Name="HSalesCurrency" Nullable="true" />
+          <Property Type="DateTime" Name="HSalesDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="HSalesDealerCode" Nullable="true" />
+          <Property Type="Double" Name="HSalesDiscount" Nullable="true" />
+          <Property Type="Double" Name="HSalesDiscValue" Nullable="true" />
+          <Property Type="Double" Name="HSalesFactor" Nullable="true" />
+          <Property Type="Double" Name="HSalesPrice" Nullable="true" />
+          <Property Type="Double" Name="HSalesQuantity" Nullable="true" />
+          <Property Type="Double" Name="HSalesTax" Nullable="true" />
+          <Property Type="Double" Name="HSalesTotal" Nullable="true" />
+          <Property Type="Double" Name="HSalesTotalAfter" Nullable="true" />
+          <Property Type="Int32" Name="GroupCode" Nullable="true" />
+          <Property Type="Int32" Name="GroupCode2" Nullable="true" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="GroupDescription" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="GroupColorName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="UnitCode" Nullable="true" />
+          <Property Type="Int32" Name="UnitCode2" Nullable="true" />
+          <Property Type="String" Name="UnitName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="UnitDescription" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="StoreCode" Nullable="true" />
+          <Property Type="Int32" Name="StoreCode2" Nullable="true" />
+          <Property Type="String" Name="StoreName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="StoreDescription" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="StoreAddress" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="StoreArea" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone3" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="StorePhone4" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="CustomerCode" Nullable="true" />
+          <Property Type="Int32" Name="CustomerCode2" Nullable="true" />
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CustomerEName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CustomerDescName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CustomerAddress1" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CustomerAddress2" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="DealerCode" Nullable="true" />
+          <Property Type="Int32" Name="DealerCode2" Nullable="true" />
+          <Property Type="String" Name="DealerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DealerEName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DealerDescName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DealerAddress1" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DealerAddress2" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
         <EntityType Name="ItemCard">
           <Key>
@@ -2577,108 +2310,6 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
           <Property Name="HSalesTax" Type="Double" />
           <Property Name="HSalesTotal" Type="Double" />
           <Property Name="HSalesTotalAfter" Type="Double" />
-        </EntityType>
-        <EntityType Name="RptCustomers">
-          <Key>
-            <PropertyRef Name="CustomerCode" />
-          </Key>
-          <Property Name="CustomerCode" Type="Int32" Nullable="false" />
-          <Property Name="CustomerCode2" Type="Int32" />
-          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Telephone3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CountryCode" Type="Int32" />
-          <Property Name="CountryCode2" Type="Int32" />
-          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CountryNotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="TownCode" Type="Int32" />
-          <Property Name="TownCode2" Type="Int32" />
-          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Townnotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="RptDealers">
-          <Key>
-            <PropertyRef Name="DealerCode" />
-          </Key>
-          <Property Name="DealerCode" Type="Int32" Nullable="false" />
-          <Property Name="DealerCode2" Type="Int32" />
-          <Property Name="DealerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DealerEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DealerAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="DealerAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="DealerTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DealerTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Telephone3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CountryCode" Type="Int32" />
-          <Property Name="CountryCode2" Type="Int32" />
-          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CountryNotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="TownCode" Type="Int32" />
-          <Property Name="TownCode2" Type="Int32" />
-          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Townnotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="hsalesCode" Type="Int32" />
-          <Property Name="HsalesCode2" Type="Int32" />
-          <Property Name="HsalesCurrency" Type="Int32" />
-          <Property Name="HsalesDate" Type="DateTime" Precision="3" />
-          <Property Name="HsalesDealerCode" Type="Int32" />
-          <Property Name="HsalesDiscount" Type="Double" />
-          <Property Name="HsalesDiscValue" Type="Double" />
-          <Property Name="HsalesFactor" Type="Double" />
-          <Property Name="HsalesPrice" Type="Double" />
-          <Property Name="HsalesQuantity" Type="Double" />
-          <Property Name="FirstPayment" Type="Double" />
-          <Property Name="HsalesTax" Type="Double" />
-          <Property Name="HsalesTotal" Type="Double" />
-          <Property Name="HsalesTotalAfter" Type="Double" />
-          <Property Name="HpurchaseCode" Type="Int32" />
-          <Property Name="HpurchaseCode2" Type="Int32" />
-          <Property Name="HpurchaseCurrency" Type="Int32" />
-          <Property Name="HpurchaseDate" Type="DateTime" Precision="3" />
-          <Property Name="HpurchaseDealerCode" Type="Int32" />
-          <Property Name="HpurchaseDiscount" Type="Double" />
-          <Property Name="HpurchaseDiscValue" Type="Double" />
-          <Property Name="HpurchaseFactor" Type="Double" />
-          <Property Name="HpurchasePrice" Type="Double" />
-          <Property Name="HpurchaseQuantity" Type="Double" />
-          <Property Name="HpurchaseTax" Type="Double" />
-          <Property Name="HpurchaseTotal" Type="Double" />
-          <Property Name="HpurchaseTotalAfter" Type="Double" />
-        </EntityType>
-        <EntityType Name="RptEmployees">
-          <Key>
-            <PropertyRef Name="EmployeeCode" />
-          </Key>
-          <Property Name="EmployeeCode" Type="Int32" Nullable="false" />
-          <Property Name="EmployeeCode2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Telephone3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CountryCode" Type="Int32" />
-          <Property Name="CountryCode2" Type="Int32" />
-          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CountryNotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="TownCode" Type="Int32" />
-          <Property Name="TownCode2" Type="Int32" />
-          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Townnotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="RptPurchase">
           <Key>
@@ -2807,256 +2438,99 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
           <Property Name="DealerAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="DealerAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="RptStore">
-          <Key>
-            <PropertyRef Name="StoreCode" />
-          </Key>
-          <Property Name="StoreCode" Type="Int32" Nullable="false" />
-          <Property Name="StoreCode2" Type="Int32" />
-          <Property Name="StoreName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="StoreDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="StoreAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="StoreArea" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StorePhone1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StorePhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StorePhone3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StorePhone4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeCode" Type="Int32" />
-          <Property Name="EmployeeCode2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeEName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeDescName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CountryCode" Type="Int32" />
-          <Property Name="CountryCode2" Type="Int32" />
-          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CountryNotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="TownCode" Type="Int32" />
-          <Property Name="TownCode2" Type="Int32" />
-          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Townnotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="RptSuppliers">
-          <Key>
-            <PropertyRef Name="SupplierCode" />
-          </Key>
-          <Property Name="SupplierCode" Type="Int32" Nullable="false" />
-          <Property Name="SupplierCode2" Type="Int32" />
-          <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Telephone3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Website" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CountryCode" Type="Int32" />
-          <Property Name="CountryCode2" Type="Int32" />
-          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CountryNotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="TownCode" Type="Int32" />
-          <Property Name="TownCode2" Type="Int32" />
-          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Townnotes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="RptUsers">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="BranchCode" Type="Int32" />
-          <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SectorCode" Type="Int32" />
-          <Property Name="SectorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="CustomerAccount">
-          <Key>
-            <PropertyRef Name="Debit" />
-            <PropertyRef Name="Credit" />
-          </Key>
-          <Property Name="CustomerCode" Type="Int32" />
-          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Debit" Type="Int32" Nullable="false" />
-          <Property Name="Credit" Type="Int32" Nullable="false" />
-          <Property Name="TotalSales" Type="Double" />
-        </EntityType>
-        <EntityType Name="CustomerData">
-          <Key>
-            <PropertyRef Name="CustomerCode" />
-          </Key>
-          <Property Name="CustomerCode" Type="Int32" Nullable="false" />
-          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="DailySales">
-          <Key>
-            <PropertyRef Name="hsalesCode" />
-          </Key>
-          <Property Name="hsalesCode" Type="Int32" Nullable="false" />
-          <Property Name="ItemName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="StoreName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="UnitName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="HsalesQuantity" Type="Double" />
-          <Property Name="HsalesPrice" Type="Double" />
-          <Property Name="Total" Type="Double" />
-        </EntityType>
-        <EntityType Name="DealersData">
-          <Key>
-            <PropertyRef Name="DealerCode" />
-          </Key>
-          <Property Name="DealerCode" Type="Int32" Nullable="false" />
-          <Property Name="DealerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DealerEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DealerAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="DealerTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DealerTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="EmployeesData">
-          <Key>
-            <PropertyRef Name="EmployeeCode" />
-          </Key>
-          <Property Name="EmployeeCode" Type="Int32" Nullable="false" />
-          <Property Name="EmployeeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SupplierAccount">
-          <Key>
-            <PropertyRef Name="Debit" />
-            <PropertyRef Name="Credit" />
-          </Key>
-          <Property Name="SupplierCode" Type="Int32" />
-          <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Debit" Type="Int32" Nullable="false" />
-          <Property Name="Credit" Type="Int32" Nullable="false" />
-          <Property Name="ToatalPurchase" Type="Double" />
-        </EntityType>
-        <EntityType Name="SuppliersData">
-          <Key>
-            <PropertyRef Name="SupplierCode" />
-          </Key>
-          <Property Name="SupplierCode" Type="Int32" Nullable="false" />
-          <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierEname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierTel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierTel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TownName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="UsersData">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SectorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Customers">
-          <Key>
-            <PropertyRef Name="CustomerId" />
-          </Key>
-          <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <ComplexType Name="Re_Result">
-          <Property Type="Int32" Name="ItemCode" Nullable="true" />
-          <Property Type="Int32" Name="ItemCode2" Nullable="true" />
-          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="ItemEName" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="ItemDescName" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="ItemDescription" Nullable="true" MaxLength="150" />
-          <Property Type="Double" Name="ItemPurchase1Unit1" Nullable="true" />
-          <Property Type="Double" Name="ItemPurchase1Unit2" Nullable="true" />
-          <Property Type="Double" Name="ItemSales1Unit1" Nullable="true" />
-          <Property Type="Double" Name="ItemSales1Unit2" Nullable="true" />
-          <Property Type="Int32" Name="Unit1" Nullable="true" />
-          <Property Type="Int32" Name="Unit2" Nullable="true" />
-          <Property Type="Int32" Name="Unit3" Nullable="true" />
-          <Property Type="Int32" Name="HSalesCode" Nullable="false" />
-          <Property Type="Int32" Name="HSalesCode2" Nullable="true" />
-          <Property Type="Int32" Name="HSalesCurrency" Nullable="true" />
-          <Property Type="DateTime" Name="HSalesDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="HSalesDealerCode" Nullable="true" />
-          <Property Type="Double" Name="HSalesDiscount" Nullable="true" />
-          <Property Type="Double" Name="HSalesDiscValue" Nullable="true" />
-          <Property Type="Double" Name="HSalesFactor" Nullable="true" />
-          <Property Type="Double" Name="HSalesPrice" Nullable="true" />
-          <Property Type="Double" Name="HSalesQuantity" Nullable="true" />
-          <Property Type="Double" Name="HSalesTax" Nullable="true" />
-          <Property Type="Double" Name="HSalesTotal" Nullable="true" />
-          <Property Type="Double" Name="HSalesTotalAfter" Nullable="true" />
-          <Property Type="Int32" Name="GroupCode" Nullable="true" />
-          <Property Type="Int32" Name="GroupCode2" Nullable="true" />
-          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="GroupDescription" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="GroupColorName" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="UnitCode" Nullable="true" />
-          <Property Type="Int32" Name="UnitCode2" Nullable="true" />
-          <Property Type="String" Name="UnitName" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="UnitDescription" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="StoreCode" Nullable="true" />
-          <Property Type="Int32" Name="StoreCode2" Nullable="true" />
-          <Property Type="String" Name="StoreName" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="StoreDescription" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="StoreAddress" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="StoreArea" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="StorePhone1" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="StorePhone2" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="StorePhone3" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="StorePhone4" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="CustomerCode" Nullable="true" />
-          <Property Type="Int32" Name="CustomerCode2" Nullable="true" />
-          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CustomerEName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CustomerDescName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CustomerAddress1" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="CustomerAddress2" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="DealerCode" Nullable="true" />
-          <Property Type="Int32" Name="DealerCode2" Nullable="true" />
-          <Property Type="String" Name="DealerName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="DealerEName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="DealerDescName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="DealerAddress1" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="DealerAddress2" Nullable="true" MaxLength="150" />
-        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TopSoftModelStoreContainer" CdmEntityContainer="TopSoft">
+          <FunctionImportMapping FunctionImportName="Customers_SearchCustomers" FunctionName="TopSoftModel.Store.Customers_SearchCustomers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TopSoftModel.Customers_SearchCustomers_Result">
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SerialGroup" ColumnName="SerialGroup" />
+                <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+                <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+                <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+                <ScalarProperty Name="PricePurchase1Unit1" ColumnName="PricePurchase1Unit1" />
+                <ScalarProperty Name="PricePurchase1Unit2" ColumnName="PricePurchase1Unit2" />
+                <ScalarProperty Name="PriceSale1Unit1" ColumnName="PriceSale1Unit1" />
+                <ScalarProperty Name="PriceSale1Unit2" ColumnName="PriceSale1Unit2" />
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchItems" FunctionName="TopSoftModel.Store.Customers_SearchCustomers" />
+          <FunctionImportMapping FunctionImportName="Re" FunctionName="TopSoftModel.Store.Re">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TopSoftModel.Re_Result">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+                <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+                <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+                <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+                <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+                <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+                <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+                <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+                <ScalarProperty Name="HSalesCode" ColumnName="HSalesCode" />
+                <ScalarProperty Name="HSalesCode2" ColumnName="HSalesCode2" />
+                <ScalarProperty Name="HSalesCurrency" ColumnName="HSalesCurrency" />
+                <ScalarProperty Name="HSalesDate" ColumnName="HSalesDate" />
+                <ScalarProperty Name="HSalesDealerCode" ColumnName="HSalesDealerCode" />
+                <ScalarProperty Name="HSalesDiscount" ColumnName="HSalesDiscount" />
+                <ScalarProperty Name="HSalesDiscValue" ColumnName="HSalesDiscValue" />
+                <ScalarProperty Name="HSalesFactor" ColumnName="HSalesFactor" />
+                <ScalarProperty Name="HSalesPrice" ColumnName="HSalesPrice" />
+                <ScalarProperty Name="HSalesQuantity" ColumnName="HSalesQuantity" />
+                <ScalarProperty Name="HSalesTax" ColumnName="HSalesTax" />
+                <ScalarProperty Name="HSalesTotal" ColumnName="HSalesTotal" />
+                <ScalarProperty Name="HSalesTotalAfter" ColumnName="HSalesTotalAfter" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+                <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+                <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+                <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+                <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+                <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+                <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+                <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CustomerCode2" ColumnName="CustomerCode2" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerEName" ColumnName="CustomerEName" />
+                <ScalarProperty Name="CustomerDescName" ColumnName="CustomerDescName" />
+                <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
+                <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+                <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+                <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+                <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+                <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="BranchCode">
             <EntityTypeMapping TypeName="TopSoftModel.BranchCode">
               <MappingFragment StoreEntitySet="BranchCode">
@@ -3075,6 +2549,15 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
                 <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Serial" ColumnName="Serial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="TopSoftModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3097,6 +2580,15 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
                 <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Serial" ColumnName="Serial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="TopSoftModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3301,6 +2793,17 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TopSoftModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TownCode">
             <EntityTypeMapping TypeName="TopSoftModel.TownCode">
               <MappingFragment StoreEntitySet="TownCode">
@@ -3346,28 +2849,168 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Customers_SearchCustomers" FunctionName="TopSoftModel.Store.Customers_SearchCustomers">
+          <FunctionImportMapping FunctionImportName="Customere" FunctionName="TopSoftModel.Store.Customere">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="TopSoftModel.Customers_SearchCustomers_Result">
-                <ScalarProperty Name="Serial" ColumnName="Serial" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
-                <ScalarProperty Name="DescName" ColumnName="DescName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="SerialGroup" ColumnName="SerialGroup" />
-                <ScalarProperty Name="Unit1" ColumnName="Unit1" />
-                <ScalarProperty Name="Unit2" ColumnName="Unit2" />
-                <ScalarProperty Name="Unit3" ColumnName="Unit3" />
-                <ScalarProperty Name="PricePurchase1Unit1" ColumnName="PricePurchase1Unit1" />
-                <ScalarProperty Name="PricePurchase1Unit2" ColumnName="PricePurchase1Unit2" />
-                <ScalarProperty Name="PriceSale1Unit1" ColumnName="PriceSale1Unit1" />
-                <ScalarProperty Name="PriceSale1Unit2" ColumnName="PriceSale1Unit2" />
-                <ScalarProperty Name="Counts" ColumnName="Counts" />
+              <ComplexTypeMapping TypeName="TopSoftModel.Customere_Result">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SearchItems" FunctionName="TopSoftModel.Store.Customers_SearchCustomers" />
+          <FunctionImportMapping FunctionImportName="Pu" FunctionName="TopSoftModel.Store.Pu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TopSoftModel.Pu_Result">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+                <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+                <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+                <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+                <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+                <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+                <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+                <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+                <ScalarProperty Name="HpurchaseCode" ColumnName="HpurchaseCode" />
+                <ScalarProperty Name="HpurchaseCode2" ColumnName="HpurchaseCode2" />
+                <ScalarProperty Name="HpurchaseCurrency" ColumnName="HpurchaseCurrency" />
+                <ScalarProperty Name="HpurchaseDate" ColumnName="HpurchaseDate" />
+                <ScalarProperty Name="HpurchaseDiscount" ColumnName="HpurchaseDiscount" />
+                <ScalarProperty Name="HpurchaseDiscValue" ColumnName="HpurchaseDiscValue" />
+                <ScalarProperty Name="HpurchaseFactor" ColumnName="HpurchaseFactor" />
+                <ScalarProperty Name="HpurchasePrice" ColumnName="HpurchasePrice" />
+                <ScalarProperty Name="HpurchaseQuantity" ColumnName="HpurchaseQuantity" />
+                <ScalarProperty Name="HpurchaseTax" ColumnName="HpurchaseTax" />
+                <ScalarProperty Name="HpurchaseTotal" ColumnName="HpurchaseTotal" />
+                <ScalarProperty Name="HpurchaseTotalAfter" ColumnName="HpurchaseTotalAfter" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+                <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+                <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+                <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+                <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+                <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+                <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+                <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="SupplierCode2" ColumnName="SupplierCode2" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierEName" ColumnName="SupplierEName" />
+                <ScalarProperty Name="SupplierDescName" ColumnName="SupplierDescName" />
+                <ScalarProperty Name="SupplierAddress1" ColumnName="SupplierAddress1" />
+                <ScalarProperty Name="SupplierAddress2" ColumnName="SupplierAddress2" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+                <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+                <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+                <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+                <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReportMa" FunctionName="TopSoftModel.Store.ReportMa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TopSoftModel.ReportMa_Result">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
+                <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
+                <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
+                <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
+                <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
+                <ScalarProperty Name="Unit1" ColumnName="Unit1" />
+                <ScalarProperty Name="Unit2" ColumnName="Unit2" />
+                <ScalarProperty Name="Unit3" ColumnName="Unit3" />
+                <ScalarProperty Name="HSalesCode" ColumnName="HSalesCode" />
+                <ScalarProperty Name="HSalesCode2" ColumnName="HSalesCode2" />
+                <ScalarProperty Name="HSalesCurrency" ColumnName="HSalesCurrency" />
+                <ScalarProperty Name="HSalesDate" ColumnName="HSalesDate" />
+                <ScalarProperty Name="HSalesDealerCode" ColumnName="HSalesDealerCode" />
+                <ScalarProperty Name="HSalesDiscount" ColumnName="HSalesDiscount" />
+                <ScalarProperty Name="HSalesDiscValue" ColumnName="HSalesDiscValue" />
+                <ScalarProperty Name="HSalesFactor" ColumnName="HSalesFactor" />
+                <ScalarProperty Name="HSalesPrice" ColumnName="HSalesPrice" />
+                <ScalarProperty Name="HSalesQuantity" ColumnName="HSalesQuantity" />
+                <ScalarProperty Name="HSalesTax" ColumnName="HSalesTax" />
+                <ScalarProperty Name="HSalesTotal" ColumnName="HSalesTotal" />
+                <ScalarProperty Name="HSalesTotalAfter" ColumnName="HSalesTotalAfter" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+                <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+                <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
+                <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+                <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
+                <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
+                <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
+                <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
+                <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CustomerCode2" ColumnName="CustomerCode2" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerEName" ColumnName="CustomerEName" />
+                <ScalarProperty Name="CustomerDescName" ColumnName="CustomerDescName" />
+                <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
+                <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
+                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+                <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
+                <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
+                <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
+                <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="TopSoftModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="TopSoftModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="TopSoftModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="TopSoftModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TopSoftModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="TopSoftModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TopSoftModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TopSoftModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TopSoftModel.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="ItemCard">
             <EntityTypeMapping TypeName="TopSoftModel.ItemCard">
               <MappingFragment StoreEntitySet="ItemCard">
@@ -3419,111 +3062,6 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
                 <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
                 <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RptCustomers">
-            <EntityTypeMapping TypeName="TopSoftModel.RptCustomers">
-              <MappingFragment StoreEntitySet="RptCustomers">
-                <ScalarProperty Name="Townnotes" ColumnName="Townnotes" />
-                <ScalarProperty Name="TownName" ColumnName="TownName" />
-                <ScalarProperty Name="TownCode2" ColumnName="TownCode2" />
-                <ScalarProperty Name="TownCode" ColumnName="TownCode" />
-                <ScalarProperty Name="CountryNotes" ColumnName="CountryNotes" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="CountryCode2" ColumnName="CountryCode2" />
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
-                <ScalarProperty Name="CustomerTel2" ColumnName="CustomerTel2" />
-                <ScalarProperty Name="CustomerTel1" ColumnName="CustomerTel1" />
-                <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
-                <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
-                <ScalarProperty Name="CustomerEname" ColumnName="CustomerEname" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="CustomerCode2" ColumnName="CustomerCode2" />
-                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RptDealers">
-            <EntityTypeMapping TypeName="TopSoftModel.RptDealers">
-              <MappingFragment StoreEntitySet="RptDealers">
-                <ScalarProperty Name="HpurchaseTotalAfter" ColumnName="HpurchaseTotalAfter" />
-                <ScalarProperty Name="HpurchaseTotal" ColumnName="HpurchaseTotal" />
-                <ScalarProperty Name="HpurchaseTax" ColumnName="HpurchaseTax" />
-                <ScalarProperty Name="HpurchaseQuantity" ColumnName="HpurchaseQuantity" />
-                <ScalarProperty Name="HpurchasePrice" ColumnName="HpurchasePrice" />
-                <ScalarProperty Name="HpurchaseFactor" ColumnName="HpurchaseFactor" />
-                <ScalarProperty Name="HpurchaseDiscValue" ColumnName="HpurchaseDiscValue" />
-                <ScalarProperty Name="HpurchaseDiscount" ColumnName="HpurchaseDiscount" />
-                <ScalarProperty Name="HpurchaseDealerCode" ColumnName="HpurchaseDealerCode" />
-                <ScalarProperty Name="HpurchaseDate" ColumnName="HpurchaseDate" />
-                <ScalarProperty Name="HpurchaseCurrency" ColumnName="HpurchaseCurrency" />
-                <ScalarProperty Name="HpurchaseCode2" ColumnName="HpurchaseCode2" />
-                <ScalarProperty Name="HpurchaseCode" ColumnName="HpurchaseCode" />
-                <ScalarProperty Name="HsalesTotalAfter" ColumnName="HsalesTotalAfter" />
-                <ScalarProperty Name="HsalesTotal" ColumnName="HsalesTotal" />
-                <ScalarProperty Name="HsalesTax" ColumnName="HsalesTax" />
-                <ScalarProperty Name="FirstPayment" ColumnName="FirstPayment" />
-                <ScalarProperty Name="HsalesQuantity" ColumnName="HsalesQuantity" />
-                <ScalarProperty Name="HsalesPrice" ColumnName="HsalesPrice" />
-                <ScalarProperty Name="HsalesFactor" ColumnName="HsalesFactor" />
-                <ScalarProperty Name="HsalesDiscValue" ColumnName="HsalesDiscValue" />
-                <ScalarProperty Name="HsalesDiscount" ColumnName="HsalesDiscount" />
-                <ScalarProperty Name="HsalesDealerCode" ColumnName="HsalesDealerCode" />
-                <ScalarProperty Name="HsalesDate" ColumnName="HsalesDate" />
-                <ScalarProperty Name="HsalesCurrency" ColumnName="HsalesCurrency" />
-                <ScalarProperty Name="HsalesCode2" ColumnName="HsalesCode2" />
-                <ScalarProperty Name="hsalesCode" ColumnName="hsalesCode" />
-                <ScalarProperty Name="Townnotes" ColumnName="Townnotes" />
-                <ScalarProperty Name="TownName" ColumnName="TownName" />
-                <ScalarProperty Name="TownCode2" ColumnName="TownCode2" />
-                <ScalarProperty Name="TownCode" ColumnName="TownCode" />
-                <ScalarProperty Name="CountryNotes" ColumnName="CountryNotes" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="CountryCode2" ColumnName="CountryCode2" />
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
-                <ScalarProperty Name="DealerTel2" ColumnName="DealerTel2" />
-                <ScalarProperty Name="DealerTel1" ColumnName="DealerTel1" />
-                <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
-                <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
-                <ScalarProperty Name="DealerEname" ColumnName="DealerEname" />
-                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
-                <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
-                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RptEmployees">
-            <EntityTypeMapping TypeName="TopSoftModel.RptEmployees">
-              <MappingFragment StoreEntitySet="RptEmployees">
-                <ScalarProperty Name="Townnotes" ColumnName="Townnotes" />
-                <ScalarProperty Name="TownName" ColumnName="TownName" />
-                <ScalarProperty Name="TownCode2" ColumnName="TownCode2" />
-                <ScalarProperty Name="TownCode" ColumnName="TownCode" />
-                <ScalarProperty Name="CountryNotes" ColumnName="CountryNotes" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="CountryCode2" ColumnName="CountryCode2" />
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
-                <ScalarProperty Name="EmployeeTel2" ColumnName="EmployeeTel2" />
-                <ScalarProperty Name="EmployeeTel1" ColumnName="EmployeeTel1" />
-                <ScalarProperty Name="EmployeeAddress2" ColumnName="EmployeeAddress2" />
-                <ScalarProperty Name="EmployeeAddress1" ColumnName="EmployeeAddress1" />
-                <ScalarProperty Name="EmployeeEname" ColumnName="EmployeeEname" />
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-                <ScalarProperty Name="EmployeeCode2" ColumnName="EmployeeCode2" />
-                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3656,264 +3194,6 @@ warning 6002: The table/view 'TopSoft.dbo.UsersData' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RptStore">
-            <EntityTypeMapping TypeName="TopSoftModel.RptStore">
-              <MappingFragment StoreEntitySet="RptStore">
-                <ScalarProperty Name="Townnotes" ColumnName="Townnotes" />
-                <ScalarProperty Name="TownName" ColumnName="TownName" />
-                <ScalarProperty Name="TownCode2" ColumnName="TownCode2" />
-                <ScalarProperty Name="TownCode" ColumnName="TownCode" />
-                <ScalarProperty Name="CountryNotes" ColumnName="CountryNotes" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="CountryCode2" ColumnName="CountryCode2" />
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
-                <ScalarProperty Name="EmployeeAddress2" ColumnName="EmployeeAddress2" />
-                <ScalarProperty Name="EmployeeAddress1" ColumnName="EmployeeAddress1" />
-                <ScalarProperty Name="EmployeeDescName" ColumnName="EmployeeDescName" />
-                <ScalarProperty Name="EmployeeEName" ColumnName="EmployeeEName" />
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-                <ScalarProperty Name="EmployeeCode2" ColumnName="EmployeeCode2" />
-                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
-                <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
-                <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
-                <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
-                <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
-                <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
-                <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
-                <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
-                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
-                <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
-                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RptSuppliers">
-            <EntityTypeMapping TypeName="TopSoftModel.RptSuppliers">
-              <MappingFragment StoreEntitySet="RptSuppliers">
-                <ScalarProperty Name="Townnotes" ColumnName="Townnotes" />
-                <ScalarProperty Name="TownName" ColumnName="TownName" />
-                <ScalarProperty Name="TownCode2" ColumnName="TownCode2" />
-                <ScalarProperty Name="TownCode" ColumnName="TownCode" />
-                <ScalarProperty Name="CountryNotes" ColumnName="CountryNotes" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="CountryCode2" ColumnName="CountryCode2" />
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Telephone3" ColumnName="Telephone3" />
-                <ScalarProperty Name="SupplierTel2" ColumnName="SupplierTel2" />
-                <ScalarProperty Name="SupplierTel1" ColumnName="SupplierTel1" />
-                <ScalarProperty Name="SupplierAddress2" ColumnName="SupplierAddress2" />
-                <ScalarProperty Name="SupplierAddress1" ColumnName="SupplierAddress1" />
-                <ScalarProperty Name="SupplierEname" ColumnName="SupplierEname" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="SupplierCode2" ColumnName="SupplierCode2" />
-                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RptUsers">
-            <EntityTypeMapping TypeName="TopSoftModel.RptUsers">
-              <MappingFragment StoreEntitySet="RptUsers">
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
-                <ScalarProperty Name="SectorCode" ColumnName="SectorCode" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CustomerAccount">
-            <EntityTypeMapping TypeName="TopSoftModel.CustomerAccount">
-              <MappingFragment StoreEntitySet="CustomerAccount">
-                <ScalarProperty Name="TotalSales" ColumnName="TotalSales" />
-                <ScalarProperty Name="Credit" ColumnName="Credit" />
-                <ScalarProperty Name="Debit" ColumnName="Debit" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CustomerData">
-            <EntityTypeMapping TypeName="TopSoftModel.CustomerData">
-              <MappingFragment StoreEntitySet="CustomerData">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="TownName" ColumnName="TownName" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="CustomerTel2" ColumnName="CustomerTel2" />
-                <ScalarProperty Name="CustomerTel1" ColumnName="CustomerTel1" />
-                <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
-                <ScalarProperty Name="CustomerEname" ColumnName="CustomerEname" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DailySales">
-            <EntityTypeMapping TypeName="TopSoftModel.DailySales">
-              <MappingFragment StoreEntitySet="DailySales">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="HsalesPrice" ColumnName="HsalesPrice" />
-                <ScalarProperty Name="HsalesQuantity" ColumnName="HsalesQuantity" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="hsalesCode" ColumnName="hsalesCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DealersData">
-            <EntityTypeMapping TypeName="TopSoftModel.DealersData">
-              <MappingFragment StoreEntitySet="DealersData">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="TownName" ColumnName="TownName" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="DealerTel2" ColumnName="DealerTel2" />
-                <ScalarProperty Name="DealerTel1" ColumnName="DealerTel1" />
-                <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
-                <ScalarProperty Name="DealerEname" ColumnName="DealerEname" />
-                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
-                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EmployeesData">
-            <EntityTypeMapping TypeName="TopSoftModel.EmployeesData">
-              <MappingFragment StoreEntitySet="EmployeesData">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="TownName" ColumnName="TownName" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="EmployeeTel2" ColumnName="EmployeeTel2" />
-                <ScalarProperty Name="EmployeeTel1" ColumnName="EmployeeTel1" />
-                <ScalarProperty Name="EmployeeAddress1" ColumnName="EmployeeAddress1" />
-                <ScalarProperty Name="EmployeeEname" ColumnName="EmployeeEname" />
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SupplierAccount">
-            <EntityTypeMapping TypeName="TopSoftModel.SupplierAccount">
-              <MappingFragment StoreEntitySet="SupplierAccount">
-                <ScalarProperty Name="ToatalPurchase" ColumnName="ToatalPurchase" />
-                <ScalarProperty Name="Credit" ColumnName="Credit" />
-                <ScalarProperty Name="Debit" ColumnName="Debit" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SuppliersData">
-            <EntityTypeMapping TypeName="TopSoftModel.SuppliersData">
-              <MappingFragment StoreEntitySet="SuppliersData">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="TownName" ColumnName="TownName" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="SupplierTel2" ColumnName="SupplierTel2" />
-                <ScalarProperty Name="SupplierTel1" ColumnName="SupplierTel1" />
-                <ScalarProperty Name="SupplierAddress1" ColumnName="SupplierAddress1" />
-                <ScalarProperty Name="SupplierEname" ColumnName="SupplierEname" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsersData">
-            <EntityTypeMapping TypeName="TopSoftModel.UsersData">
-              <MappingFragment StoreEntitySet="UsersData">
-                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="TopSoftModel.Customers">
-              <MappingFragment StoreEntitySet="Customers">
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Re" FunctionName="TopSoftModel.Store.Re">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TopSoftModel.Re_Result">
-                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
-                <ScalarProperty Name="ItemCode2" ColumnName="ItemCode2" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="ItemEName" ColumnName="ItemEName" />
-                <ScalarProperty Name="ItemDescName" ColumnName="ItemDescName" />
-                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
-                <ScalarProperty Name="ItemPurchase1Unit1" ColumnName="ItemPurchase1Unit1" />
-                <ScalarProperty Name="ItemPurchase1Unit2" ColumnName="ItemPurchase1Unit2" />
-                <ScalarProperty Name="ItemSales1Unit1" ColumnName="ItemSales1Unit1" />
-                <ScalarProperty Name="ItemSales1Unit2" ColumnName="ItemSales1Unit2" />
-                <ScalarProperty Name="Unit1" ColumnName="Unit1" />
-                <ScalarProperty Name="Unit2" ColumnName="Unit2" />
-                <ScalarProperty Name="Unit3" ColumnName="Unit3" />
-                <ScalarProperty Name="HSalesCode" ColumnName="HSalesCode" />
-                <ScalarProperty Name="HSalesCode2" ColumnName="HSalesCode2" />
-                <ScalarProperty Name="HSalesCurrency" ColumnName="HSalesCurrency" />
-                <ScalarProperty Name="HSalesDate" ColumnName="HSalesDate" />
-                <ScalarProperty Name="HSalesDealerCode" ColumnName="HSalesDealerCode" />
-                <ScalarProperty Name="HSalesDiscount" ColumnName="HSalesDiscount" />
-                <ScalarProperty Name="HSalesDiscValue" ColumnName="HSalesDiscValue" />
-                <ScalarProperty Name="HSalesFactor" ColumnName="HSalesFactor" />
-                <ScalarProperty Name="HSalesPrice" ColumnName="HSalesPrice" />
-                <ScalarProperty Name="HSalesQuantity" ColumnName="HSalesQuantity" />
-                <ScalarProperty Name="HSalesTax" ColumnName="HSalesTax" />
-                <ScalarProperty Name="HSalesTotal" ColumnName="HSalesTotal" />
-                <ScalarProperty Name="HSalesTotalAfter" ColumnName="HSalesTotalAfter" />
-                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
-                <ScalarProperty Name="GroupCode2" ColumnName="GroupCode2" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
-                <ScalarProperty Name="GroupColorName" ColumnName="GroupColorName" />
-                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
-                <ScalarProperty Name="UnitCode2" ColumnName="UnitCode2" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="UnitDescription" ColumnName="UnitDescription" />
-                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
-                <ScalarProperty Name="StoreCode2" ColumnName="StoreCode2" />
-                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
-                <ScalarProperty Name="StoreDescription" ColumnName="StoreDescription" />
-                <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
-                <ScalarProperty Name="StoreArea" ColumnName="StoreArea" />
-                <ScalarProperty Name="StorePhone1" ColumnName="StorePhone1" />
-                <ScalarProperty Name="StorePhone2" ColumnName="StorePhone2" />
-                <ScalarProperty Name="StorePhone3" ColumnName="StorePhone3" />
-                <ScalarProperty Name="StorePhone4" ColumnName="StorePhone4" />
-                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
-                <ScalarProperty Name="CustomerCode2" ColumnName="CustomerCode2" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="CustomerEName" ColumnName="CustomerEName" />
-                <ScalarProperty Name="CustomerDescName" ColumnName="CustomerDescName" />
-                <ScalarProperty Name="CustomerAddress1" ColumnName="CustomerAddress1" />
-                <ScalarProperty Name="CustomerAddress2" ColumnName="CustomerAddress2" />
-                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
-                <ScalarProperty Name="DealerCode2" ColumnName="DealerCode2" />
-                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
-                <ScalarProperty Name="DealerEName" ColumnName="DealerEName" />
-                <ScalarProperty Name="DealerDescName" ColumnName="DealerDescName" />
-                <ScalarProperty Name="DealerAddress1" ColumnName="DealerAddress1" />
-                <ScalarProperty Name="DealerAddress2" ColumnName="DealerAddress2" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

@@ -1,0 +1,30 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "أخر سعر بيع للصنف";
+    Layout = null;
+}
+<style>
+    .body {
+        width: 336px;
+        height: 300px;
+    }
+</style>
+<div class="x">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>الصنفth>
+            <th>الوحده</th>
+            <th>أخر سعر بيع</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <tr>
+                <td>@Model.Rows[i][0]</td>
+                <td>@Model.Rows[i][1]</td>
+                <td>@Model.Rows[i][2]</td>
+            </tr>
+        }
+    </table>
+    </div>
+

@@ -197,22 +197,19 @@
     <Compile Include="Models\CountryCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerAccount.cs">
+    <Compile Include="Models\Customer.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomerCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerData.cs">
+    <Compile Include="Models\Customere_Result.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customers.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customers_SearchCustomers_Result.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DailySales.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DBModel.Context.cs">
@@ -233,13 +230,7 @@
     <Compile Include="Models\DealerCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DealersData.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Employee.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EmployeesData.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GroupCode.cs">
@@ -259,19 +250,16 @@
     <Compile Include="Models\ItemCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Pu_Result.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Region.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReportMa_Result.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Re_Result.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptCustomers.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptDealers.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptEmployees.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RptPurchase.cs">
@@ -280,29 +268,23 @@
     <Compile Include="Models\RptSales.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RptStore.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptSuppliers.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RptUsers.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SectorCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StoreCode.cs">
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SupplierAccount.cs">
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StoreCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SupplierAccountModel.cs" />
     <Compile Include="Models\SupplierCode.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SuppliersData.cs">
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TownCode.cs">
@@ -315,9 +297,6 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserRole.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UsersData.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -431,6 +410,10 @@
     <Content Include="Reports\DataSet2.xsc">
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\AKSoft.pubxml" />
+    <None Include="Properties\PublishProfiles\ga.pubxml" />
+    <None Include="Properties\PublishProfiles\ghl.pubxml" />
+    <None Include="Properties\PublishProfiles\Inventory Management System.pubxml" />
     <None Include="Reports\DataSet2.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DataSet21.Designer.cs</LastGenOutput>

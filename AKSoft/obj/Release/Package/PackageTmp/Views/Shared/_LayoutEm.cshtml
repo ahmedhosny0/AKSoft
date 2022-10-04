@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/main.js"></script>
-    <link rel="stylesheet" href="~/Content/styl.css" />
+    <link rel="stylesheet" href="~/Content/st.css" />
 
     <style>
         .dropbtn {
@@ -58,7 +58,7 @@
 
 </head>
 
-<body>
+<body style="direction:rtl;">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -67,52 +67,53 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Sales Man", "Sales", "Product", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("الرئيسيه", "Sales", "MainPages", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*<li>
-                        <div class="dropdown">
-                            <button onclick="myFunction2()" class="dropbtn">Definitions</button>
-                            <div id="myDropdown2" class="dropdown-content">
-                                <a href="/Product/SaveBranch">Define Branch</a>
-                                <a href="/Product/SaveSector">Define Sector</a>
-                                <a href="/Product/SaveCountry">Define Country</a>
-                                <a href="/Product/SaveTown">Define Town</a>
-                                <a href="/Product/SaveDealer">Define Dealer</a>
+                            <div class="dropdown">
+                                <button onclick="myFunction2()" class="dropbtn">Definitions</button>
+                                <div id="myDropdown2" class="dropdown-content">
+                                    <a href="/Branch/SaveBranch">Define Branch</a>
+                                    <a href="/Sector/SaveSector">Define Sector</a>
+                                    <a href="/Country/SaveCountry">Define Country</a>
+                                    <a href="/Town/SaveTown">Define Town</a>
+                                    <a href="/Dealer/SaveDealer">Define Dealer</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>*@
-                                        @*<li><a href="/Product/SaveStock">Stores</a></li>
-        <li><a href="/Product/SaveGroup">Category</a></li>
-        <li><a href="/Product/SaveUnit">Unit</a></li>
-        <li><a href="/Product/SaveProduct">Product</a></li>
-        <li><a href="/Product/SaveCustomer">Customers</a></li>
+                        </li>*@
+                    @*<li><a href="/Store/SaveStock">Stores</a></li>
+                         <li><a href="/Group/SaveGroup">Category</a></li>
+                         <li><a href="/Unit/SaveUnit">Unit</a></li>
+                         <li><a href="/Product/SaveProduct">Product</a></li>
+                         <li><a href="/Customer/SaveCustomer">Customers</a></li>
 
-        <li><a href="/Product/SaveSupplier">Suppliers</a></li>
-       <li><a href="/Product/SaveInvoicePurchase">Purchase</a></li>
-                                        *@
-                    <li><a href="/Product/SaveInvoiceSales">Sales</a></li>
+                         <li><a href="/Supplier/SaveSupplier">Suppliers</a></li>
+                        <li><a href="/Purchases/SaveInvoicePurchase">Purchase</a></li>
+                    *@
+                    <li><a href="/ExchangePermission/ExchangePermission">إذن صرف</a></li>
+                    <li><a href="/Sales/SaveInvoiceSales">فاتورة مبيعات</a></li>
 
                     @*<li>
-                        
-                        <div class="dropdown">
-                            <button onclick="myFunction()" class="dropbtn">Reports</button>
-                            <div id="myDropdown" class="dropdown-content">
-                                <a href="/Reports/DailySales">Daily Sales</a>
-                                <a href="/Reports/ItemsBalance">Items Balance</a>
-                                <a href="/Reports/ItemsState">Items State</a>
-                                <a href="/Reports/ProfitofItems">Profit of Items</a>
-                                <a href="/Reports/StocksState">Stocks State</a>
-                                <a href="/Reports/DailyPurchases">Daily Purchases</a>
-                                <a href="/Reports/CustomersData">Customers Data</a>
-                                <a href="/Reports/CustomerAccount">Customer Account</a>
-                                <a href="/Reports/SupplierAccount">Supplier Account</a>
-                                <a href="/Reports/SupplierData">Supplier Data</a>
+
+                            <div class="dropdown">
+                                <button onclick="myFunction()" class="dropbtn">Reports</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <a href="/Reports/DailySales">Daily Sales</a>
+                                    <a href="/Reports/ItemsBalance">أرصدة الأصناف</a>
+                                    <a href="/Reports/ItemsState">Items State</a>
+                                    <a href="/Reports/ProfitofItems">ربحية الأصناف</a>
+                                    <a href="/Reports/StocksState">بيانات المخازن</a>
+                                    <a href="/Reports/DailyPurchases">الحركة اليومية للمشتريات</a>
+                                    <a href="/Reports/CustomersData">Customers Data</a>
+                                    <a href="/Reports/CustomerAccount">كشف حساب عميل</a>
+                                    <a href="/Reports/SupplierAccount">كشف حساب مورد</a>
+                                    <a href="/Reports/SupplierData">بيانات الموردين</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>*@
-                 
+                        </li>*@
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -130,42 +131,42 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
-    /* When the user clicks on the button,
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
 
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function (event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
                 }
             }
         }
-    }
-    function myFunction2() {
-        document.getElementById("myDropdown2").classList.toggle("show");
-    }
+        function myFunction2() {
+            document.getElementById("myDropdown2").classList.toggle("show");
+        }
 
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function (event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
                 }
             }
         }
-    }
     </script>
 
 </body>

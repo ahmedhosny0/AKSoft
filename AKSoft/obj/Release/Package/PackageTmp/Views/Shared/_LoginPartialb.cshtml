@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Display Units";
 }
-if (Convert.ToInt32(Session["Role"]) == 4)
+if (Convert.ToInt32(Session["Role"]) == 2)
 {
     ViewBag.Title = "Display Units";
     Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
@@ -15,26 +15,26 @@ if (Convert.ToInt32(Session["Role"]) == 4)
 @if (TempData["Al"] != null)
 {
     <script>
-        swal("Deleted!", "Item has been deleted.", "success");
+        swal("تم الحذف!", "تم حذف الحركة بنجاح.", "success");
     </script>
-    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    // <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
 }
 @if (TempData["As"] != null)
 {
     <script>
-        swal("Modified Successfully!", " ", "success");
+        swal("الحمد لله تم التعديل بنجاح", " ", "success");
     </script>
-    // <strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    // <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
 }
 @if (TempData["A"] != null)
 {
     <script>
-        swal("Oops...", "Something went wrong!Not Allowed", "error");
+        swal("عزيزي المستخدم"," هناك خطأ بسيط يرجي مراجعة الداتا أو الصلاحية", "error");
     </script>
-    //<strong style="color:green">Saved successfully! </strong>@TempData["Al"]
+    //<strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
 }
 <h2>Display Units</h2>
-<a href="@Url.Action("SaveUnit","Product")">Add Unit</a>
+<a href="@Url.Action("SaveUnit","Unit")">Add Unit</a>
 <table class="table table-bordered table-striped">
     <tr>
         <th>ID</th>
@@ -55,8 +55,8 @@ if (Convert.ToInt32(Session["Role"]) == 4)
             <td>@Model.Rows[i][3]</td>
             <td>@Model.Rows[i][4]</td>
             <td>
-                <a href="@Url.Action("EditUnit", "Product", new { @id = @Model.Rows[i][0] })">Edit</a>
-                <a href="@Url.Action("DeleteUnit", "Product", new {@id=@Model.Rows[i][0] })">Delete</a>
+                <a href="@Url.Action("EditUnit", "Unit", new { @id = @Model.Rows[i][0] })">تعديل</a> --
+                <a href="@Url.Action("DeleteUnit", "Unit", new {@id=@Model.Rows[i][0] })">حذف</a>
             </td>
         </tr>
     }

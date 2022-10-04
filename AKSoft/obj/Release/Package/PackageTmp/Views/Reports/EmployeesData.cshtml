@@ -1,0 +1,65 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "بيانات الموظفين";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<h2>بيانات الموظفين</h2>
+<a href="@Url.Action("SaveEmployee", "Employee")">تعريف موظف</a>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>كود الموظف</th>
+        <th>الإسم عربي</th>
+        <th>الإسم انجليزي</th>
+        <th>العنوان</th>
+        <th>تليفون1</th>
+        <th>تليفون2</th>
+        <th>الدوله</th>
+        <th>المدينه</th>
+        <th>البريد الإلكتروني</th>
+    </tr>
+
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td>@Model.Rows[i][7]</td>
+            <td>@Model.Rows[i][8]</td>
+        </tr>
+    }
+</table>
+
+

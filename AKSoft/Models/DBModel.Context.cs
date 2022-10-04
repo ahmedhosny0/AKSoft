@@ -29,7 +29,9 @@ namespace AKSoft.Models
     
         public virtual DbSet<BranchCode> BranchCode { get; set; }
         public virtual DbSet<CountryCode> CountryCode { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<CustomerCode> CustomerCode { get; set; }
+        public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<DealerCode> DealerCode { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<GroupCode> GroupCode { get; set; }
@@ -40,28 +42,14 @@ namespace AKSoft.Models
         public virtual DbSet<SectorCode> SectorCode { get; set; }
         public virtual DbSet<StoreCode> StoreCode { get; set; }
         public virtual DbSet<SupplierCode> SupplierCode { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TownCode> TownCode { get; set; }
         public virtual DbSet<UnitCode> UnitCode { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<ItemCard> ItemCard { get; set; }
-        public virtual DbSet<RptCustomers> RptCustomers { get; set; }
-        public virtual DbSet<RptDealers> RptDealers { get; set; }
-        public virtual DbSet<RptEmployees> RptEmployees { get; set; }
         public virtual DbSet<RptPurchase> RptPurchase { get; set; }
         public virtual DbSet<RptSales> RptSales { get; set; }
-        public virtual DbSet<RptStore> RptStore { get; set; }
-        public virtual DbSet<RptSuppliers> RptSuppliers { get; set; }
-        public virtual DbSet<RptUsers> RptUsers { get; set; }
-        public virtual DbSet<CustomerAccount> CustomerAccount { get; set; }
-        public virtual DbSet<CustomerData> CustomerData { get; set; }
-        public virtual DbSet<DailySales> DailySales { get; set; }
-        public virtual DbSet<DealersData> DealersData { get; set; }
-        public virtual DbSet<EmployeesData> EmployeesData { get; set; }
-        public virtual DbSet<SupplierAccount> SupplierAccount { get; set; }
-        public virtual DbSet<SuppliersData> SuppliersData { get; set; }
-        public virtual DbSet<UsersData> UsersData { get; set; }
-        public virtual DbSet<Customers> Customers { get; set; }
     
         public virtual ObjectResult<Customers_SearchCustomers_Result> Customers_SearchCustomers(string contactName)
         {
@@ -72,27 +60,136 @@ namespace AKSoft.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Customers_SearchCustomers_Result>("Customers_SearchCustomers", contactNameParameter);
         }
     
-        public virtual ObjectResult<ItemCode> SearchItems(string contactName)
+        public virtual int SearchItems(string contactName)
         {
             var contactNameParameter = contactName != null ?
                 new ObjectParameter("ContactName", contactName) :
                 new ObjectParameter("ContactName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemCode>("SearchItems", contactNameParameter);
-        }
-    
-        public virtual ObjectResult<ItemCode> SearchItems(string contactName, MergeOption mergeOption)
-        {
-            var contactNameParameter = contactName != null ?
-                new ObjectParameter("ContactName", contactName) :
-                new ObjectParameter("ContactName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemCode>("SearchItems", mergeOption, contactNameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SearchItems", contactNameParameter);
         }
     
         public virtual ObjectResult<Re_Result> Re()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Re_Result>("Re");
+        }
+    
+        public virtual ObjectResult<Customere_Result> Customere()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Customere_Result>("Customere");
+        }
+    
+        public virtual ObjectResult<Pu_Result> Pu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Pu_Result>("Pu");
+        }
+    
+        public virtual ObjectResult<ReportMa_Result> ReportMa()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReportMa_Result>("ReportMa");
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }

@@ -385,8 +385,8 @@ E:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.OAuth.xml
 E:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.Google.xml
 E:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.Twitter.xml
 E:\My-Git\AKSoft\AKSoft\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.csprojResolveAssemblyReference.cache
 E:\My-Git\AKSoft\AKSoft\obj\Debug\RdlCompile.cache
 E:\My-Git\AKSoft\AKSoft\obj\Debug\RdlCompile.compiled
 E:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.dll
 E:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.pdb
+E:\My-Git\AKSoft\AKSoft\obj\Debug\AKSoft.csprojResolveAssemblyReference.cache

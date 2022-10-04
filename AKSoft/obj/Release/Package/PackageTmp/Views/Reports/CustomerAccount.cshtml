@@ -1,18 +1,45 @@
 ﻿@model System.Data.DataTable
 @{
-    ViewBag.Title = "Customer Account";
+    ViewBag.Title = "كشف حساب عميل";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Customer Account</h2>
-<a href="@Url.Action("SaveCustomer", "Product")">Add Customer</a>
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<h2>كشف حساب عميل</h2>
+<a href="@Url.Action("SaveCustomer", "Customer")">تعريف عميل</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>Customer ID</th>
-        <th>Customer Name</th>
-        <th>Debit</th>
-        <th>Credit</th>
-        <th>Total Sales</th>
+        <th>الكود</th>
+        <th>إسم العميل</th>
+        <th>مدين</th>
+        <th>دائن</th>
+        <th>إجمالي المبيعات</th>
     </tr>
 
     @for (int i = 0; i < Model.Rows.Count; i++)

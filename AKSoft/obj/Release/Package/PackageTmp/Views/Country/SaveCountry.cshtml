@@ -1,0 +1,98 @@
+﻿@model AKSoft.Models.CountryCode
+@{    ViewBag.Title = "تعريف دولة";
+}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 2)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 3)
+{
+    Layout = "~/Views/Shared/_LayPurMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 4)
+{
+    Layout = "~/Views/Shared/_LayPurAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 5)
+{
+    Layout = "~/Views/Shared/_LaySaMa.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 6)
+{
+    Layout = "~/Views/Shared/_LaySaAcc.cshtml";
+}
+if (Convert.ToInt32(Session["Role"]) == 7)
+{
+    Layout = "~/Views/Shared/_LayoutWorker.cshtml";
+}
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>A</title>
+    <link rel="stylesheet" href="~/Content/st.css" />
+    <script src="~/Scripts/sweetalert.min.js"></script>@*Library for sweety message*@
+    <script type="text/javascript" src="~/Scripts/main.js"> </script>
+    <style>
+        .Elements {
+            background-color: #e5e5e5;
+            list-style-type: none;
+            border: ridge 1px;
+            margin: 0;
+            padding: 8px;
+        }
+
+        .head {
+            background-color: #3577ff;
+            width: 40%;
+            color: white;
+                        font-size:18px;
+        }
+    </style>
+
+</head>
+<body>
+    <div style="direction:rtl;">
+        <h1 class="head save">تعريف دولة</h1>
+    </div>
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("تم الحفظ بنجاح", " ", "success");
+        </script>
+        <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
+    }
+    @using (Html.BeginForm("SaveCountry", "Country", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="Elements">
+            <li class="">
+                <label class="Lab">الكود</label>
+                            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "", @Value = @ViewBag.MaxCode } })
+            </li>
+            <li class="">
+                <label class="Lab">الإسم</label>
+                @Html.EditorFor(model => model.ArabicName, new { htmlAttributes = new { @class = "Txt", @placeholder = "ArabicName", @required = "required" } }) @*Required TextBox*@
+            </li>
+            <li class="">
+                <label class="Lab">ملاحظات</label>
+                @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "Txt", @placeholder = "Description" } })
+            </li>
+
+            <li class="">
+                <button class="save">حفظ</button>
+                <a href="@Url.Action("DisplayCountries", "Country")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
+            </li>
+        </ul>
+    }
+</body>
+</html>
+
+
+

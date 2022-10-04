@@ -1,0 +1,113 @@
+﻿@model AKSoft.Models.HSales
+@{ViewBag.Title = "ConvertBetweenStocks";}
+@{if (Convert.ToInt32(Session["Role"]) == 1)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+  if (Convert.ToInt32(Session["Role"]) == 3)
+{ 
+    Layout = "~/Views/Shared/_LayoutEm.cshtml";
+
+}
+  if (Convert.ToInt32(Session["Role"]) == 2)
+  {
+      Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+
+  }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="~/Content/st.css" />
+    <script src="~/Scripts/sweetalert.min.js"></script>
+<style>
+.Elements{
+   background-color: #e5e5e5; 
+  list-style-type: none;
+  border:ridge 1px;
+  margin: 0;
+ padding: 15px;
+}
+        .head
+        {
+                 background-color: #3577ff;
+    width: 40%;
+                font-size:18px;
+    color: white
+        }
+</style>
+</head>
+<body>
+    <br />
+    @if (TempData["Al"] != null)
+    {
+        <script>
+            swal("تم الحفظ بنجاح", " ", "success");
+        </script>
+        <strong style="color:green">تم الحفظ بفضل الله </strong>@TempData["Al"]
+    }
+
+    @using (Html.BeginForm("ConvertBetweenStocks", "ConvertBetweenStocks", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+    <h1 class="head save">Convert Between Stocks</h1>
+    <ul class="Elements gs">
+            <li class="">
+                <label class="Lab">Date</label>
+                @Html.EditorFor(model => model.AddUserDate, new { htmlAttributes = new { @Value = @DateTime.Now.ToShortDateString(), @class = "form-control Txt drop" } }) @*Required TextBox*@
+                <label class="Lab">Branch</label>
+                @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList7 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+                <label class="Lab">Sector</label>
+                @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList8 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+              </li>
+       <li>
+            <label class="Lab">From Store</label>
+            @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+            <label class="Lab">To Store</label>
+            @Html.DropDownListFor(model => model.StoreSerial, ViewBag.DepartmentList2 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" }) @*Required DropDownList *@
+          </li>
+        <li>
+            <label class="Lab">Notes</label>
+           @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt", @placeholder = "Notes", @style = "width:100%", } })
+</li>
+            <li>
+                <label class="Lab">Product Name</label>
+                @Html.DropDownListFor(model => model.ItemSerial, ViewBag.DepartmentList4 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+                <label class="Lab">Category</label>
+                @Html.DropDownListFor(model => model.GroupSerial, ViewBag.DepartmentList3 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+                 <label class="Lab">Unit Name</label>
+                @Html.DropDownListFor(model => model.UnitSerial, ViewBag.DepartmentList1 as SelectList, "--select--", new { @class = "Txt drop", @required = "required" })
+            </li>
+            <li>
+                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "Lab" })
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Quantity", @id = "txtFirstNo", @onkeyup = "Multiy()", @required = "required" } })
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "Lab" })
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Price", @id = "txtSecondNo", @onkeyup = "Multiy()", @required = "required" } }) @*Multiply function in js*@
+                @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "Lab" })
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "Txt drop", @placeholder = "Total", @id = "txtResult" } })
+            </li>
+            <li>
+                <button class="save">Save</button>
+                <a href="@Url.Action("DisplayInvoiceSales", "Product")"><input style="background-color:#0bf765" class="save" value="عرض الكل" /></a>
+            </li>
+
+
+    </ul>
+
+    }
+
+    <script type="text/javascript">
+        function Multiy() {
+            var txtFirstNo = document.getElementById('txtFirstNo').value;
+            var txtSecondNo = document.getElementById('txtSecondNo').value;
+            var result = parseFloat(txtFirstNo) * parseFloat(txtSecondNo);//Don't forget the captial in float
+            if (!isNaN(result)) {
+                document.getElementById('txtResult').value = result;
+            }
+        }
+    </script>
+</body>
+</html>
